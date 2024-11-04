@@ -22,6 +22,10 @@ public class ColorManager : KeywordHandler
                 colorStore.narratorColor = Color.blue;
                 colorStore.hudColor = Color.blue;
                 break;
+            case "green":
+                colorStore.narratorColor = Color.green;
+                colorStore.hudColor = Color.green;
+                break;
             default:
                 return "Color not yet supported";
         }
