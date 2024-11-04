@@ -573,7 +573,7 @@ MonoBehaviour:
   - {fileID: 2072455476}
   - {fileID: 1788555018}
   texts: []
-  colorType: 0
+  colorType: 1
 --- !u!1 &264957934
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,21 +19,57 @@ public class ColorManager : KeywordHandler
     /// <returns>A string to be displayed to the user.</returns>
     public override string ReadTokens(string[] tokens)
     {
-        if (tokens.Length <= 1)
-            return "Usage: color <color1> ...";
+        string helpString = "Usage: color <color1> <optional: target>\nTargets:\nh: apply to only hud\nn: apply to only narrator";
 
+        if (tokens.Length < 2 || tokens.Length > 3 || tokens[1].Equals("help"))
+            return helpString;
+
+        Color targetColor;
         switch(tokens[1])
         {
             case "blue":
-                colorStore.narratorColor = Color.blue;
-                colorStore.hudColor = Color.blue;
+                targetColor = Color.blue;
                 break;
             case "green":
-                colorStore.narratorColor = Color.green;
-                colorStore.hudColor = Color.green;
+                targetColor = Color.green;
+                break;
+            case "red":
+                targetColor = Color.red;
+                break;
+            case "white":
+                targetColor = Color.white;
+                break;
+            case "yellow":
+                targetColor = Color.yellow;
+                break;
+            case "cyan":
+                targetColor = Color.cyan;
+                break;
+            case "magenta":
+                targetColor = Color.magenta;
                 break;
             default:
-                return "Color not yet supported";
+                return "Color not yet supported.";
+        }
+
+        if(tokens.Length < 3)
+        {
+            colorStore.hudColor = targetColor;
+            colorStore.narratorColor = targetColor;
+        }
+        else
+        {
+            switch(tokens[2])
+            {
+                case "n":
+                    colorStore.narratorColor = targetColor;
+                    break;
+                case "h":
+                    colorStore.hudColor = targetColor;
+                    break;
+                default:
+                    return "Invalid color target";
+            }
         }
 
         colorStore.UpdateColorables();
