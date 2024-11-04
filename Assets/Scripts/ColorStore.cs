@@ -19,6 +19,10 @@ public class ColorStore : ScriptableObject
     [SerializeField] public Color hudColor;
     List<Colorable> colorableObjects = new List<Colorable>();
 
+    /// <summary>
+    /// Unsubscribes all colorable objects. 
+    /// Mainly for uses when leaving play mode to clear references.
+    /// </summary>
     public void OnDisable()
     {
         colorableObjects.Clear();

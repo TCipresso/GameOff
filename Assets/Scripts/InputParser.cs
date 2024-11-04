@@ -46,8 +46,12 @@ public class InputParser : MonoBehaviour
         string result;
         if (input.Equals("")) return;
 
-        //TODO: Check if the input is a string related to one of the scene's options.
-        
+        //TODO
+        //Scene option parsing
+        //if(is a scene option)
+            //Do the scene option
+        //else
+        //Keyword Parsing
         string[] tokens = input.ToLower().Split(" ");
         switch(tokens[0])
         {

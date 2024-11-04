@@ -7,6 +7,7 @@ using UnityEngine;
 /// updates the state of the game according to the 
 /// keyword.
 /// </summary>
+//Abstract because you cannot serialize interfaces. Allows you to make a list of keyword handlers using the editor if needed.
 public abstract class KeywordHandler : MonoBehaviour
 {
     /// <summary>

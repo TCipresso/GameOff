@@ -11,6 +11,12 @@ public class ColorManager : KeywordHandler
 {
     [SerializeField] ColorStore colorStore;
 
+    /// <summary>
+    /// Reads the provided tokens and updates the colors of 
+    /// the specified elements.
+    /// </summary>
+    /// <param name="tokens">Tokens from user input.</param>
+    /// <returns>A string to be displayed to the user.</returns>
     public override string ReadTokens(string[] tokens)
     {
         if (tokens.Length <= 1)

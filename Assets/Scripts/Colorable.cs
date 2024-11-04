@@ -19,11 +19,18 @@ public class Colorable : MonoBehaviour
     [SerializeField] List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
     public ColorTypes colorType;
 
+    /// <summary>
+    /// Subscribe to the color score and get my color.
+    /// </summary>
     private void Awake()
     {
         UpdateColor(colorStore.GetColor(this, colorType));
     }
 
+    /// <summary>
+    /// Update the color of my images and text to the provided color.
+    /// </summary>
+    /// <param name="color"><see cref="Color"/> to update to.</param>
     public void UpdateColor(Color color)
     {
         for(int i = 0; i < images.Count; i++)
