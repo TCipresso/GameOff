@@ -10,8 +10,10 @@ using TMPro;
 /// </summary>
 public class InputParser : MonoBehaviour
 {
-    [Header("Input Field")]
+    [Header("UI Elements")]
     [SerializeField] TMP_InputField inputField;
+    [SerializeField] Transform outputArea;
+    [SerializeField] GameObject outputPrefab;
 
     [Header("Keyword Handlers")]
     [SerializeField] ColorManager colorManager;
@@ -39,10 +41,10 @@ public class InputParser : MonoBehaviour
     /// then passed to the correct handler.
     /// </summary>
     /// <param name="input">The input entered in the inputField</param>
-    /// <returns>An HTTP status code because I'm extra like that.</returns>
-    public int ParseInput(string input)
+    public void ParseInput(string input)
     {
-        if (input.Equals("")) return 400;
+        string result;
+        if (input.Equals("")) return;
 
         //TODO: Check if the input is a string related to one of the scene's options.
         
@@ -50,10 +52,9 @@ public class InputParser : MonoBehaviour
         switch(tokens[0])
         {
             case "color":
-                colorManager.ReadTokens(tokens);
-                return 200;
+                result = colorManager.ReadTokens(tokens);
+                Instantiate(outputPrefab, outputArea).GetComponent<TextMeshProUGUI>().text = result;
+                break;
         }
-        
-        return 404;
     }
 }
