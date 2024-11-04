@@ -13,6 +13,10 @@ public class InputParser : MonoBehaviour
     [Header("Input Field")]
     [SerializeField] TMP_InputField inputField;
 
+    /// <summary>
+    /// Adds a listener to input field to parse input only
+    /// when return is pressed.
+    /// </summary>
     private void Start()
     {
         inputField.onEndEdit.AddListener(text =>
@@ -22,9 +26,18 @@ public class InputParser : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Parse input tokenizes the input inserted by the player. It
+    /// first checks if it is an input related to the scene and then
+    /// checks if it is an input related to a keyword. The tokens are 
+    /// then passed to the correct handler.
+    /// </summary>
+    /// <param name="input">The input entered in the inputField</param>
+    /// <returns>An HTTP status code because I'm extra like that.</returns>
     public int ParseInput(string input)
     {
+        //A keyword handler doesn't need to know it's own keyword just fyi.
         Debug.Log(input);
-        return 200;
+        return 404;
     }
 }
