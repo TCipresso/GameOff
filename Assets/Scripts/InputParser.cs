@@ -41,16 +41,16 @@ public class InputParser : MonoBehaviour
     {
         if (input.Equals("")) return 400;
 
-        //A keyword handler doesn't need to know it's own keyword just fyi.
+        //TODO: Check if the input is a string related to one of the scene's options.
+        
         string[] tokens = input.ToLower().Split(" ");
         switch(tokens[0])
         {
             case "color":
                 colorManager.ReadTokens(tokens);
-                break;
+                return 200;
         }
         
-        Debug.Log(input);
         return 404;
     }
 }
