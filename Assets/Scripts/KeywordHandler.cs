@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A Keyword is any word that takes specific
-/// inputs to update the state of the game.
+/// A KeywordHanlder handles a specific keyword and 
+/// updates the state of the game according to the 
+/// keyword.
 /// </summary>
-public abstract class Keyword : MonoBehaviour
+public abstract class KeywordHandler : MonoBehaviour
 {
     /// <summary>
     /// Takes in a series of tokens. Each implementation of 
