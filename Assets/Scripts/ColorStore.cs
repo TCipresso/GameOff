@@ -8,6 +8,7 @@ public enum ColorTypes { HUDColor, NarratorColor }
 /// ColorStore is a scriptatble object that stores 
 /// the colors for <see cref="Colorable"/> objects.
 /// </summary>
+[CreateAssetMenu(menuName = "Scriptable Objects/Color Store")]
 public class ColorStore : ScriptableObject
 {
     [Header("Colors")]
