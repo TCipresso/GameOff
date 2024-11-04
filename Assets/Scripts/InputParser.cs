@@ -24,8 +24,11 @@ public class InputParser : MonoBehaviour
     {
         inputField.onEndEdit.AddListener(text =>
         {
-            if(Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
                 ParseInput(text);
+                inputField.text = "";
+            }
         });
     }
 
