@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2276fb1d7d0e2448bb9270656016985, type: 3}
   m_Name: Color Store
   m_EditorClassIdentifier: 
-  narratorColor: {r: 0.85098046, g: 0.13333334, b: 0.13333334, a: 0}
-  hudColor: {r: 0, g: 0.78823537, b: 0.20000002, a: 0}
+  narratorColor: {r: 0.85098046, g: 0.13333334, b: 0.13333334, a: 1}
+  hudColor: {r: 0, g: 0.78823537, b: 0.20000002, a: 1}
