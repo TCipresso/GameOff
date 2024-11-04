@@ -43,7 +43,7 @@ public class InputParser : MonoBehaviour
     /// <param name="input">The input entered in the inputField</param>
     public void ParseInput(string input)
     {
-        string result;
+        string result = ">";
         if (input.Equals("")) return;
 
         //TODO
@@ -56,7 +56,7 @@ public class InputParser : MonoBehaviour
         switch(tokens[0])
         {
             case "color":
-                result = colorManager.ReadTokens(tokens);
+                result += colorManager.ReadTokens(tokens);
                 Instantiate(outputPrefab, outputArea).GetComponent<TextMeshProUGUI>().text = result;
                 break;
         }
