@@ -26,9 +26,9 @@ public class Colorable : MonoBehaviour
 
     public void UpdateColor(Color color)
     {
-        foreach(Image image in images)
-            image.color = color;
-        foreach(TextMeshProUGUI text in texts)
-            text.color = color;
+        for(int i = 0; i < images.Count; i++)
+            images[i].color = color;
+        for(int i = 0; i < texts.Count; i++)
+            texts[i].color = color;
     }
 }
