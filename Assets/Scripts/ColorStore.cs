@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Denotes which type of color your want from <see cref="ColorStore"/>
+/// </summary>
 public enum ColorTypes { HUDColor, NarratorColor }
 
 /// <summary>
@@ -12,10 +15,16 @@ public enum ColorTypes { HUDColor, NarratorColor }
 public class ColorStore : ScriptableObject
 {
     [Header("Colors")]
-    [SerializeField] Color narratorColor;
-    [SerializeField] Color hudColor;
+    [SerializeField] public Color narratorColor;
+    [SerializeField] public Color hudColor;
     List<Colorable> colorableObjects = new List<Colorable>();
 
+    /// <summary>
+    /// Subscribes a <see cref="Colorable"/>. Returns the color wanted.
+    /// </summary>
+    /// <param name="obj">The <see cref="Colorable"/> object.</param>
+    /// <param name="wanted">The <see cref="ColorTypes"/> wanted.</param>
+    /// <returns>The color of the <see cref="ColorTypes"/> wanted.</returns>
     public Color GetColor(Colorable obj, ColorTypes wanted)
     {
         colorableObjects.Add(obj);
@@ -29,8 +38,23 @@ public class ColorStore : ScriptableObject
         }
     }
 
-    public void UpdateColors()
+    /// <summary>
+    /// Tells every colorable to update their color.
+    /// </summary>
+    public void UpdateColorables()
     {
-        //TODO: Go through each colorable and tell them to change.
+        //Could probably optimize it to only update colorable whose colors actually changed.
+        foreach(Colorable obj in colorableObjects)
+        {
+            switch(obj.colorType)
+            {
+                case ColorTypes.HUDColor:
+                    obj.UpdateColor(hudColor); 
+                    break;
+                case ColorTypes.NarratorColor:
+                    obj.UpdateColor(narratorColor);
+                    break;
+            }
+        }
     }
 }
