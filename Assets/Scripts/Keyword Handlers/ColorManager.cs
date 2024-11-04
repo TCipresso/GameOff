@@ -9,8 +9,25 @@ using UnityEngine;
 /// </summary>
 public class ColorManager : KeywordHandler
 {
+    [SerializeField] ColorStore colorStore;
+
     public override string ReadTokens(string[] tokens)
     {
-        return "Tokens Read";
+        if (tokens.Length <= 1)
+            return "Usage: color <color1> ...";
+
+        switch(tokens[1])
+        {
+            case "blue":
+                colorStore.narratorColor = Color.blue;
+                colorStore.hudColor = Color.blue;
+                break;
+            default:
+                return "Color not yet supported";
+        }
+
+        colorStore.UpdateColorables();
+        
+        return "Colors updated";
     }
 }
