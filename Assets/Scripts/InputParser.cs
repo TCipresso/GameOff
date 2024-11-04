@@ -13,6 +13,9 @@ public class InputParser : MonoBehaviour
     [Header("Input Field")]
     [SerializeField] TMP_InputField inputField;
 
+    [Header("Keyword Handlers")]
+    [SerializeField] ColorManager colorManager;
+
     /// <summary>
     /// Adds a listener to input field to parse input only
     /// when return is pressed.
@@ -36,7 +39,17 @@ public class InputParser : MonoBehaviour
     /// <returns>An HTTP status code because I'm extra like that.</returns>
     public int ParseInput(string input)
     {
+        if (input.Equals("")) return 400;
+
         //A keyword handler doesn't need to know it's own keyword just fyi.
+        string[] tokens = input.ToLower().Split(" ");
+        switch(tokens[0])
+        {
+            case "color":
+                colorManager.ReadTokens(tokens);
+                break;
+        }
+        
         Debug.Log(input);
         return 404;
     }
