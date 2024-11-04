@@ -19,6 +19,11 @@ public class ColorStore : ScriptableObject
     [SerializeField] public Color hudColor;
     List<Colorable> colorableObjects = new List<Colorable>();
 
+    public void OnDisable()
+    {
+        colorableObjects.Clear();
+    }
+
     /// <summary>
     /// Subscribes a <see cref="Colorable"/>. Returns the color wanted.
     /// </summary>
