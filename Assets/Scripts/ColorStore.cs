@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Denotes which type of color your want from <see cref="ColorStore"/>
-/// </summary>
-public enum ColorTypes { HUDColor, NarratorColor }
-
-/// <summary>
 /// ColorStore is a scriptatble object that stores 
 /// the colors for <see cref="Colorable"/> objects.
 /// </summary>
@@ -15,8 +10,7 @@ public enum ColorTypes { HUDColor, NarratorColor }
 public class ColorStore : ScriptableObject
 {
     [Header("Colors")]
-    [SerializeField] public Color narratorColor;
-    [SerializeField] public Color hudColor;
+    [SerializeField] public Color[] colors;
     List<Colorable> colorableObjects = new List<Colorable>();
 
     /// <summary>
@@ -32,19 +26,25 @@ public class ColorStore : ScriptableObject
     /// Subscribes a <see cref="Colorable"/>. Returns the color wanted.
     /// </summary>
     /// <param name="obj">The <see cref="Colorable"/> object.</param>
-    /// <param name="wanted">The <see cref="ColorTypes"/> wanted.</param>
-    /// <returns>The color of the <see cref="ColorTypes"/> wanted.</returns>
-    public Color GetColor(Colorable obj, ColorTypes wanted)
+    /// <param name="wanted">The <see cref="ColorType"/> wanted.</param>
+    /// <returns>The color of the <see cref="ColorType"/> wanted.</returns>
+    public Color GetColor(Colorable obj, ColorType wanted)
     {
         colorableObjects.Add(obj);
-        switch (wanted)
-        {
-            default:
-            case ColorTypes.HUDColor:
-                return hudColor;
-            case ColorTypes.NarratorColor:
-                return narratorColor;
-        }
+        return GetColor(wanted);
+    }
+
+    /// <summary>
+    /// Returns the color wanted.
+    /// </summary>
+    /// <param name="wanted">The <see cref="ColorType"> wanted.</param>
+    /// <returns>The color of the <see cref="ColorType"> wanted.</returns>
+    public Color GetColor(ColorType wanted)
+    {
+        int index = (int)wanted;
+        if (index < 0 || index > colors.Length)
+            return colors[0];
+        return colors[index];
     }
 
     /// <summary>
@@ -57,11 +57,18 @@ public class ColorStore : ScriptableObject
         {
             switch(obj.colorType)
             {
-                case ColorTypes.HUDColor:
-                    obj.UpdateColor(hudColor); 
+                default:
+                case ColorType.HUDCOLOR:
+                    obj.UpdateColor(colors[0]); 
                     break;
-                case ColorTypes.NarratorColor:
-                    obj.UpdateColor(narratorColor);
+                case ColorType.NARRATORCOLOR:
+                    obj.UpdateColor(colors[1]);
+                    break;
+                case ColorType.INPUTCOLOR:
+                    obj.UpdateColor(colors[2]);
+                    break;
+                case ColorType.STORYCOLOR:
+                    obj.UpdateColor(colors[3]);
                     break;
             }
         }

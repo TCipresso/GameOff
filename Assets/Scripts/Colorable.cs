@@ -17,7 +17,7 @@ public class Colorable : MonoBehaviour
     [Header("Colorable Parts")]
     [SerializeField] List<Image> images = new List<Image>();
     [SerializeField] List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
-    public ColorTypes colorType;
+    public ColorType colorType;
 
     /// <summary>
     /// Subscribe to the color score and get my color.
@@ -37,5 +37,13 @@ public class Colorable : MonoBehaviour
             images[i].color = color;
         for(int i = 0; i < texts.Count; i++)
             texts[i].color = color;
+    }
+
+    /// <summary>
+    /// Update the color of my images and texts using my cached <see cref="ColorType"/>.
+    /// </summary>
+    public void UpdateColor()
+    {
+        UpdateColor(colorStore.GetColor(colorType));
     }
 }

@@ -12,8 +12,6 @@ public class InputParser : MonoBehaviour
 {
     [Header("UI Elements")]
     [SerializeField] TMP_InputField inputField;
-    [SerializeField] Transform outputArea;
-    [SerializeField] GameObject outputPrefab;
 
     [Header("Keyword Handlers")]
     [SerializeField] ColorManager colorManager;
@@ -43,8 +41,10 @@ public class InputParser : MonoBehaviour
     /// <param name="input">The input entered in the inputField</param>
     public void ParseInput(string input)
     {
-        string result = ">";
         if (input.Equals("")) return;
+        
+        TextOutput.instance.Print(input, ColorType.INPUTCOLOR, OutputCarrot.USER);
+        string output = "";
 
         //TODO
         //Scene option parsing
@@ -56,9 +56,11 @@ public class InputParser : MonoBehaviour
         switch(tokens[0])
         {
             case "color":
-                result += colorManager.ReadTokens(tokens);
-                Instantiate(outputPrefab, outputArea).GetComponent<TextMeshProUGUI>().text = result;
+                output = colorManager.ReadTokens(tokens);
                 break;
         }
+
+        if(!output.Equals(""))
+            TextOutput.instance.Print(output, ColorType.STORYCOLOR);
     }
 }
