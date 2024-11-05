@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 /// <summary>
 /// ColorManager is a class that controlls the colors
@@ -30,38 +31,25 @@ public class ColorManager : KeywordHandler
             return e.Message;
         }
 
-        if (tokens.Length < 3)
+        if (tokens.Length < 3) //No target.
         {
             for (int i = 0; i < colorStore.colors.Length; i++)
             {
                 colorStore.colors[i] = targetColor;
             }
         }
-        else
+        else //Targeted.
         {
-            int target = 0;
-            switch (tokens[2])
-            {
-                case "h":
-                    target = 0;
-                    break;
-                case "n":
-                    target = 1;
-                    break;
-                case "i":
-                    target = 2;
-                    break;
-                case "s":
-                    target = 3;
-                    break;
-                default:
-                    return "Invalid color target";
+            int target;
+            try {
+                target = DetermineTarget(tokens[2]);
+            } catch (System.InvalidOperationException e) {
+                return e.Message;
             }
             colorStore.colors[target] = targetColor;
         }
 
         colorStore.UpdateColorables();
-
         return "Successfully updated colors.";
     }
 
@@ -91,6 +79,29 @@ public class ColorManager : KeywordHandler
                 return Color.magenta;
             default:
                 throw new System.InvalidOperationException("Provided color is not supported.");
+        }
+    }
+
+    /// <summary>
+    /// Determines the target that is represented by the string.
+    /// </summary>
+    /// <param name="target">The representation of target wanted.</param>
+    /// <returns>The corresponding color index of the target.</returns>
+    /// <exception cref="System.InvalidOperationException">Thrown when a target is not supported.</exception>
+    private int DetermineTarget(string target)
+    {
+        switch (target)
+        {
+            case "h":
+                return 0;
+            case "n":
+                return 1;
+            case "i":
+                return 2;
+            case "s":
+                return 3;
+            default:
+                throw new System.InvalidOperationException("Provide target is not supported.");
         }
     }
 }
