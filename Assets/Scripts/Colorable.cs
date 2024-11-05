@@ -39,6 +39,9 @@ public class Colorable : MonoBehaviour
             texts[i].color = color;
     }
 
+    /// <summary>
+    /// Update the color of my images and texts using my cached <see cref="ColorType"/>.
+    /// </summary>
     public void UpdateColor()
     {
         UpdateColor(colorStore.GetColor(colorType));
