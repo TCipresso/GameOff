@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Denotes which type of color your want from <see cref="ColorStore"/>
-/// </summary>
-public enum ColorTypes { HUDColor, NarratorColor }
-
-/// <summary>
 /// ColorStore is a scriptatble object that stores 
 /// the colors for <see cref="Colorable"/> objects.
 /// </summary>
