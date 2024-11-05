@@ -17,7 +17,7 @@ public class TextOutput : MonoBehaviour
         instance = this;
     }
 
-    public void Print(string text, ColorType colorType=ColorType.HUDColor, OutputCarrot outputCarrot=OutputCarrot.SYSTEM)
+    public void Print(string text, ColorType colorType=ColorType.HUDCOLOR, OutputCarrot outputCarrot=OutputCarrot.SYSTEM)
     {
         GameObject textObject = Instantiate(textPrefab, transform);
         

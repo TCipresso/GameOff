@@ -35,9 +35,9 @@ public class ColorStore : ScriptableObject
         switch (wanted)
         {
             default:
-            case ColorType.HUDColor:
+            case ColorType.HUDCOLOR:
                 return hudColor;
-            case ColorType.NarratorColor:
+            case ColorType.NARRATORCOLOR:
                 return narratorColor;
         }
     }
@@ -52,10 +52,10 @@ public class ColorStore : ScriptableObject
         {
             switch(obj.colorType)
             {
-                case ColorType.HUDColor:
+                case ColorType.HUDCOLOR:
                     obj.UpdateColor(hudColor); 
                     break;
-                case ColorType.NarratorColor:
+                case ColorType.NARRATORCOLOR:
                     obj.UpdateColor(narratorColor);
                     break;
             }
