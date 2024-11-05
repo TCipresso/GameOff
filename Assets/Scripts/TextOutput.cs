@@ -35,6 +35,7 @@ public class TextOutput : MonoBehaviour
 {
     public static TextOutput instance { get; private set; }
     [SerializeField] GameObject textPrefab;
+    [SerializeField] Transform outputStore;
 
     /// <summary>
     /// Singleton.
@@ -54,7 +55,19 @@ public class TextOutput : MonoBehaviour
     /// <param name="outputCarrot">The <see cref="OutputCarrot"/> to be prefixed to the output.</param>
     public void Print(string text, ColorType colorType=ColorType.HUDCOLOR, OutputCarrot outputCarrot=OutputCarrot.SYSTEM)
     {
-        GameObject textObject = Instantiate(textPrefab, transform);
+        GameObject textObject;
+        if(outputStore.childCount == 0) {
+            textObject = transform.GetChild(0).gameObject;
+            Transform sacrifice = textObject.transform;
+            sacrifice.SetParent(outputStore);
+            sacrifice.localPosition.Set(0, 0, 0);
+            sacrifice.SetParent(transform);
+        }
+        else
+        {
+            textObject = outputStore.GetChild(0).gameObject;
+            textObject.transform.SetParent(transform);
+        }
         
         string outputString = GetCarrot(outputCarrot);
         outputString += text;
