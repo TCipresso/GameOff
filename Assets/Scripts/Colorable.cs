@@ -17,7 +17,7 @@ public class Colorable : MonoBehaviour
     [Header("Colorable Parts")]
     [SerializeField] List<Image> images = new List<Image>();
     [SerializeField] List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
-    public ColorTypes colorType;
+    public ColorType colorType;
 
     /// <summary>
     /// Subscribe to the color score and get my color.

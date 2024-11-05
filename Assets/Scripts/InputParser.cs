@@ -43,7 +43,7 @@ public class InputParser : MonoBehaviour
     {
         if (input.Equals("")) return;
         
-        TextOutput.instance.Print(input, ColorTypes.HUDColor, OutputCarrot.USER);
+        TextOutput.instance.Print(input, ColorType.HUDColor, OutputCarrot.USER);
         string output = "";
 
         //TODO

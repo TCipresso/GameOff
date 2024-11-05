@@ -27,17 +27,17 @@ public class ColorStore : ScriptableObject
     /// Subscribes a <see cref="Colorable"/>. Returns the color wanted.
     /// </summary>
     /// <param name="obj">The <see cref="Colorable"/> object.</param>
-    /// <param name="wanted">The <see cref="ColorTypes"/> wanted.</param>
-    /// <returns>The color of the <see cref="ColorTypes"/> wanted.</returns>
-    public Color GetColor(Colorable obj, ColorTypes wanted)
+    /// <param name="wanted">The <see cref="ColorType"/> wanted.</param>
+    /// <returns>The color of the <see cref="ColorType"/> wanted.</returns>
+    public Color GetColor(Colorable obj, ColorType wanted)
     {
         colorableObjects.Add(obj);
         switch (wanted)
         {
             default:
-            case ColorTypes.HUDColor:
+            case ColorType.HUDColor:
                 return hudColor;
-            case ColorTypes.NarratorColor:
+            case ColorType.NarratorColor:
                 return narratorColor;
         }
     }
@@ -52,10 +52,10 @@ public class ColorStore : ScriptableObject
         {
             switch(obj.colorType)
             {
-                case ColorTypes.HUDColor:
+                case ColorType.HUDColor:
                     obj.UpdateColor(hudColor); 
                     break;
-                case ColorTypes.NarratorColor:
+                case ColorType.NarratorColor:
                     obj.UpdateColor(narratorColor);
                     break;
             }
