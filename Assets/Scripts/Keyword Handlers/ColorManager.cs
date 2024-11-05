@@ -24,36 +24,15 @@ public class ColorManager : KeywordHandler
             return "Usage: color <color1> <optional: target>\nTargets:\nh: apply to only hud\nn: apply to only narrator\ni: applies to your inputs\ns: applies to descriptive texts.";
 
         Color targetColor;
-        switch(tokens[1])
-        {
-            case "blue":
-                targetColor = Color.blue;
-                break;
-            case "green":
-                targetColor = Color.green;
-                break;
-            case "red":
-                targetColor = Color.red;
-                break;
-            case "white":
-                targetColor = Color.white;
-                break;
-            case "yellow":
-                targetColor = Color.yellow;
-                break;
-            case "cyan":
-                targetColor = Color.cyan;
-                break;
-            case "magenta":
-                targetColor = Color.magenta;
-                break;
-            default:
-                return "Color not yet supported.";
+        try {
+            targetColor = DetermineColor(tokens[1]);
+        } catch (System.InvalidOperationException e) {
+            return e.Message;
         }
 
-        if(tokens.Length < 3)
+        if (tokens.Length < 3)
         {
-            for(int i = 0; i < colorStore.colors.Length; i++)
+            for (int i = 0; i < colorStore.colors.Length; i++)
             {
                 colorStore.colors[i] = targetColor;
             }
@@ -61,7 +40,7 @@ public class ColorManager : KeywordHandler
         else
         {
             int target = 0;
-            switch(tokens[2])
+            switch (tokens[2])
             {
                 case "h":
                     target = 0;
@@ -82,7 +61,36 @@ public class ColorManager : KeywordHandler
         }
 
         colorStore.UpdateColorables();
-        
+
         return "Successfully updated colors.";
+    }
+
+    /// <summary>
+    /// Determines the color that is represented by the string.
+    /// </summary>
+    /// <param name="color">The name of the color wanted.</param>
+    /// <returns>The <see cref="Color"/> represented by the string.</returns>
+    /// <exception cref="System.InvalidOperationException">Thrown when a color is not supported.</exception>
+    private Color DetermineColor(string color)
+    {
+        switch (color)
+        {
+            case "blue":
+                return Color.blue;
+            case "green":
+                return Color.green;
+            case "red":
+                return Color.red;
+            case "white":
+                return Color.white;
+            case "yellow":
+                return Color.yellow;
+            case "cyan":
+                return Color.cyan;
+            case "magenta":
+                return Color.magenta;
+            default:
+                throw new System.InvalidOperationException("Provided color is not supported.");
+        }
     }
 }
