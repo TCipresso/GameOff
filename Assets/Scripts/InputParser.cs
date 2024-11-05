@@ -43,7 +43,7 @@ public class InputParser : MonoBehaviour
     {
         if (input.Equals("")) return;
         
-        TextOutput.instance.Print(input, ColorType.HUDCOLOR, OutputCarrot.USER);
+        TextOutput.instance.Print(input, ColorType.INPUTCOLOR, OutputCarrot.USER);
         string output = "";
 
         //TODO
@@ -61,6 +61,6 @@ public class InputParser : MonoBehaviour
         }
 
         if(!output.Equals(""))
-            TextOutput.instance.Print(output);
+            TextOutput.instance.Print(output, ColorType.STORYCOLOR);
     }
 }
