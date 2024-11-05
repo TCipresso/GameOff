@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -19,7 +20,7 @@ public class ColorManager : KeywordHandler
     /// <returns>A string to be displayed to the user.</returns>
     public override string ReadTokens(string[] tokens)
     {
-        string helpString = "Usage: color <color1> <optional: target>\nTargets:\nh: apply to only hud\nn: apply to only narrator";
+        string helpString = "Usage: color <color1> <optional: target>\nTargets:\nh: apply to only hud\nn: apply to only narrator\ni: applies to your inputs\ns: applies to descriptive texts";
 
         if (tokens.Length < 2 || tokens.Length > 3 || tokens[1].Equals("help"))
             return helpString;
@@ -54,22 +55,32 @@ public class ColorManager : KeywordHandler
 
         if(tokens.Length < 3)
         {
-            colorStore.hudColor = targetColor;
-            colorStore.narratorColor = targetColor;
+            for(int i = 0; i < colorStore.colors.Length; i++)
+            {
+                colorStore.colors[i] = targetColor;
+            }
         }
         else
         {
+            int target = 0;
             switch(tokens[2])
             {
-                case "n":
-                    colorStore.narratorColor = targetColor;
-                    break;
                 case "h":
-                    colorStore.hudColor = targetColor;
+                    target = 0;
+                    break;
+                case "n":
+                    target = 1;
+                    break;
+                case "i":
+                    target = 2;
+                    break;
+                case "s":
+                    target = 3;
                     break;
                 default:
                     return "Invalid color target";
             }
+            colorStore.colors[target] = targetColor;
         }
 
         colorStore.UpdateColorables();

@@ -10,8 +10,7 @@ using UnityEngine;
 public class ColorStore : ScriptableObject
 {
     [Header("Colors")]
-    [SerializeField] public Color narratorColor;
-    [SerializeField] public Color hudColor;
+    [SerializeField] public Color[] colors;
     List<Colorable> colorableObjects = new List<Colorable>();
 
     /// <summary>
@@ -42,14 +41,10 @@ public class ColorStore : ScriptableObject
     /// <returns>The color of the <see cref="ColorType"> wanted.</returns>
     public Color GetColor(ColorType wanted)
     {
-        switch (wanted)
-        {
-            default:
-            case ColorType.HUDCOLOR:
-                return hudColor;
-            case ColorType.NARRATORCOLOR:
-                return narratorColor;
-        }
+        int index = (int)wanted;
+        if (index < 0 || index > colors.Length)
+            return colors[0];
+        return colors[index];
     }
 
     /// <summary>
@@ -62,11 +57,18 @@ public class ColorStore : ScriptableObject
         {
             switch(obj.colorType)
             {
+                default:
                 case ColorType.HUDCOLOR:
-                    obj.UpdateColor(hudColor); 
+                    obj.UpdateColor(colors[0]); 
                     break;
                 case ColorType.NARRATORCOLOR:
-                    obj.UpdateColor(narratorColor);
+                    obj.UpdateColor(colors[1]);
+                    break;
+                case ColorType.INPUTCOLOR:
+                    obj.UpdateColor(colors[2]);
+                    break;
+                case ColorType.STORYCOLOR:
+                    obj.UpdateColor(colors[3]);
                     break;
             }
         }
