@@ -56,26 +56,31 @@ public class TextOutput : MonoBehaviour
     {
         GameObject textObject = Instantiate(textPrefab, transform);
         
-        string outputString;
-        switch(outputCarrot)
-        {
-            case OutputCarrot.NONE:
-                outputString = "";
-                break;
-            case OutputCarrot.USER:
-                outputString = "/>";
-                break;
-            default: 
-            case OutputCarrot.SYSTEM:
-                outputString = ">";
-                break;
-            case OutputCarrot.QUESTION:
-                outputString = "?>";
-                break;
-        }
+        string outputString = GetCarrot(outputCarrot);
         outputString += text;
         
         textObject.GetComponent<TextMeshProUGUI>().text = outputString;
         textObject.GetComponent<Colorable>().colorType = colorType;
+    }
+
+    /// <summary>
+    /// Gets the proper carrot depending on <see cref="OutputCarrot"/>
+    /// </summary>
+    /// <param name="outputCarrot">The <see cref="OutputCarrot"/> to get.</param>
+    /// <returns>A string representing the <see cref="OutputCarrot"/></returns>
+    private string GetCarrot(OutputCarrot outputCarrot)
+    {
+        switch (outputCarrot)
+        {
+            case OutputCarrot.NONE:
+                return "";
+            case OutputCarrot.USER:
+                return "/>";
+            default:
+            case OutputCarrot.SYSTEM:
+                return ">";
+            case OutputCarrot.QUESTION:
+                return "?>";
+        }
     }
 }
