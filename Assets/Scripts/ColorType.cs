@@ -11,5 +11,15 @@ public enum ColorType
     /// <summary>
     /// Color of dialogue from the narrator color.
     /// </summary>
-    NARRATORCOLOR
+    NARRATORCOLOR,
+
+    /// <summary>
+    /// Color of the player input.
+    /// </summary>
+    INPUTCOLOR,
+
+    /// <summary>
+    /// Color of descriptive and story dialogue.
+    /// </summary>
+    STORYCOLOR
 }
