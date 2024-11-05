@@ -587,7 +587,7 @@ MonoBehaviour:
   - {fileID: 2072455476}
   - {fileID: 1788555018}
   texts: []
-  colorType: 1
+  colorType: 0
 --- !u!1 &264957934
 GameObject:
   m_ObjectHideFlags: 0
@@ -4343,7 +4343,7 @@ MonoBehaviour:
   - {fileID: 1223548929}
   - {fileID: 1414902006}
   - {fileID: 1878140575}
-  colorType: 0
+  colorType: 2
 --- !u!1 &1878140573
 GameObject:
   m_ObjectHideFlags: 0
