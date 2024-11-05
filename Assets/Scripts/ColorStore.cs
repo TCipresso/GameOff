@@ -32,6 +32,16 @@ public class ColorStore : ScriptableObject
     public Color GetColor(Colorable obj, ColorType wanted)
     {
         colorableObjects.Add(obj);
+        return GetColor(wanted);
+    }
+
+    /// <summary>
+    /// Returns the color wanted.
+    /// </summary>
+    /// <param name="wanted">The <see cref="ColorType"> wanted.</param>
+    /// <returns>The color of the <see cref="ColorType"> wanted.</returns>
+    public Color GetColor(ColorType wanted)
+    {
         switch (wanted)
         {
             default:
