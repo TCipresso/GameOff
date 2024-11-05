@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 147639765}
   - component: {fileID: 147639764}
   - component: {fileID: 147639766}
+  - component: {fileID: 147639767}
   m_Layer: 5
   m_Name: Dialogue Container
   m_TagString: Untagged
@@ -386,6 +387,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &147639767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147639762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3bf4310d058bd543a229ad6e335ddb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPrefab: {fileID: 3564636616487426600, guid: 332f0607dbc686244816ba7e1b6050cf, type: 3}
 --- !u!1 &155192905
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,8 +4324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1856952947}
-  outputArea: {fileID: 147639763}
-  outputPrefab: {fileID: 3564636616487426600, guid: 332f0607dbc686244816ba7e1b6050cf, type: 3}
   colorManager: {fileID: 2041287936}
 --- !u!114 &1856952951
 MonoBehaviour:
