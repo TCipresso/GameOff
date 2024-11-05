@@ -28,11 +28,17 @@ public enum OutputCarrot {
     QUESTION 
 }
 
+/// <summary>
+/// A singleton object to display output text to.
+/// </summary>
 public class TextOutput : MonoBehaviour
 {
     public static TextOutput instance { get; private set; }
     [SerializeField] GameObject textPrefab;
 
+    /// <summary>
+    /// Singleton.
+    /// </summary>
     private void Awake()
     {
         if (instance != null)
@@ -40,6 +46,12 @@ public class TextOutput : MonoBehaviour
         instance = this;
     }
 
+    /// <summary>
+    /// Print an output to the screen.
+    /// </summary>
+    /// <param name="text">Text to output.</param>
+    /// <param name="colorType">The <see cref="ColorType"/> to color the output.</param>
+    /// <param name="outputCarrot">The <see cref="OutputCarrot"/> to be prefixed to the output.</param>
     public void Print(string text, ColorType colorType=ColorType.HUDCOLOR, OutputCarrot outputCarrot=OutputCarrot.SYSTEM)
     {
         GameObject textObject = Instantiate(textPrefab, transform);
