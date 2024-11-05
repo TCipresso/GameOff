@@ -20,10 +20,8 @@ public class ColorManager : KeywordHandler
     /// <returns>A string to be displayed to the user.</returns>
     public override string ReadTokens(string[] tokens)
     {
-        string helpString = "Usage: color <color1> <optional: target>\nTargets:\nh: apply to only hud\nn: apply to only narrator\ni: applies to your inputs\ns: applies to descriptive texts";
-
         if (tokens.Length < 2 || tokens.Length > 3 || tokens[1].Equals("help"))
-            return helpString;
+            return "Usage: color <color1> <optional: target>\nTargets:\nh: apply to only hud\nn: apply to only narrator\ni: applies to your inputs\ns: applies to descriptive texts.";
 
         Color targetColor;
         switch(tokens[1])
