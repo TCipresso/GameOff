@@ -3,7 +3,30 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public enum OutputCarrot { NONE, USER, SYSTEM, QUESTION }
+/// <summary>
+/// Enum to denote what type of > to prefix to output.
+/// </summary>
+public enum OutputCarrot { 
+    /// <summary>
+    /// No >
+    /// </summary>
+    NONE, 
+
+    /// <summary>
+    /// />
+    /// </summary>
+    USER, 
+
+    /// <summary>
+    /// >
+    /// </summary>
+    SYSTEM,
+    
+    /// <summary>
+    /// ?>
+    /// </summary>
+    QUESTION 
+}
 
 public class TextOutput : MonoBehaviour
 {
