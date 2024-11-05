@@ -3678,7 +3678,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customCursor: {fileID: 2800000, guid: d135caf1fbb59724d826bd7bcf1cef83, type: 3}
-  hotspot: {x: 0, y: 0}
+  hoverCursor: {fileID: 0}
+  redClickCursor: {fileID: 0}
+  uiCursorImage: {fileID: 0}
+  customCursorSprite: {fileID: 0}
+  hoverCursorSprite: {fileID: 0}
+  redClickSprite: {fileID: 0}
+  mainCamera: {fileID: 1570223186}
 --- !u!4 &1360784986
 Transform:
   m_ObjectHideFlags: 0
