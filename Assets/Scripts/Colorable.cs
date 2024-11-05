@@ -38,4 +38,9 @@ public class Colorable : MonoBehaviour
         for(int i = 0; i < texts.Count; i++)
             texts[i].color = color;
     }
+
+    public void UpdateColor()
+    {
+        UpdateColor(colorStore.GetColor(colorType));
+    }
 }

@@ -60,7 +60,9 @@ public class TextOutput : MonoBehaviour
         outputString += text;
         
         textObject.GetComponent<TextMeshProUGUI>().text = outputString;
-        textObject.GetComponent<Colorable>().colorType = colorType;
+        Colorable textColor = textObject.GetComponent<Colorable>();
+        textColor.colorType = colorType;
+        textColor.UpdateColor();
     }
 
     /// <summary>
