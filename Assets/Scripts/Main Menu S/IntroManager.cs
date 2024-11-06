@@ -9,8 +9,10 @@ public class IntroManager : MonoBehaviour
     public AudioSource bootSound;
     public GameObject startBox;
     public GameObject powerButton;
-    public Image logoImage; // Reference to the logo Image component
-    public Image powerButtonImage; // Reference to the power button Image component
+    public GameObject Off; // Reference to the Off object
+    public GameObject StartUp; // Reference to the StartUp object
+    public Image logoImage;
+    public Image powerButtonImage;
     public TextMeshProUGUI textBox1;
     public TextMeshProUGUI textBox2;
     public TextMeshProUGUI textBox3;
@@ -19,7 +21,8 @@ public class IntroManager : MonoBehaviour
     public float typingSpeed1 = 0.02f;
     public float typingSpeed2 = 0.02f;
     public float typingSpeed3 = 0.02f;
-    public float fadeDuration = 1.5f; // Duration of each fade in/out
+    public float fadeDuration = 1.5f;
+    public float offDisableDelay = 1f; // Duration Off object stays active
     private bool hasStarted = false;
     public int maxLinesInTerminal = 30;
 
@@ -132,7 +135,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
     {
         // Fade in the logo, wait, then fade it out
         yield return StartCoroutine(FadeIn(logoImage));
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
         yield return StartCoroutine(FadeOut(logoImage));
 
         // Enable and fade in the power button after the logo sequence
@@ -160,8 +163,41 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
         yield return StartCoroutine(TypeText(textBox1, startupLines1, typingSpeed1));
         yield return StartCoroutine(TypeText(textBox2, startupLines2, typingSpeed2));
         yield return StartCoroutine(TypeTextWithScroll(textBox3, startupLines3, typingSpeed3));
+
+        // Play the UI animation
         uiAnimation.Play("Screen_Slam");
+
+        // Wait for the animation to finish before disabling startBox
+        AnimationClip clip = uiAnimation.GetClip("Screen_Slam");
+        if (clip != null)
+        {
+            yield return new WaitForSecondsRealtime(clip.length);
+        }
+
+        // Disable startBox, stop bootSound, and enable Off object
+        if (startBox != null)
+        {
+            startBox.SetActive(false);
+        }
+
+        if (bootSound.isPlaying)
+        {
+            bootSound.Stop();
+        }
+
+        if (Off != null)
+        {
+            Off.SetActive(true);
+            yield return new WaitForSecondsRealtime(offDisableDelay);
+            Off.SetActive(false);
+        }
+
+        if (StartUp != null)
+        {
+            StartUp.SetActive(false);
+        }
     }
+
 
     private IEnumerator FadeIn(Image image)
     {
@@ -170,7 +206,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
         {
             float alpha = Mathf.Lerp(0, 1, elapsedTime / fadeDuration);
             SetImageAlpha(image, alpha);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         SetImageAlpha(image, 1);
@@ -183,7 +219,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
         {
             float alpha = Mathf.Lerp(1, 0, elapsedTime / fadeDuration);
             SetImageAlpha(image, alpha);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         SetImageAlpha(image, 0);
@@ -195,7 +231,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
         for (int i = 0; i < flickerCount; i++)
         {
             startBox.SetActive(!startBox.activeSelf);
-            yield return new WaitForSeconds(flickerDuration);
+            yield return new WaitForSecondsRealtime(flickerDuration);
         }
         startBox.SetActive(true);
     }
@@ -207,10 +243,10 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
             foreach (char c in line)
             {
                 textBox.text += c;
-                yield return new WaitForSeconds(typingSpeed);
+                yield return new WaitForSecondsRealtime(typingSpeed);
             }
             textBox.text += "\n";
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
     }
 
@@ -225,7 +261,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
             {
                 currentLine += c;
                 textBox.text = string.Join("\n", displayedLines) + "\n" + currentLine;
-                yield return new WaitForSeconds(typingSpeed);
+                yield return new WaitForSecondsRealtime(typingSpeed);
             }
 
             displayedLines.Add(line);
@@ -236,7 +272,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
             }
             textBox.text = string.Join("\n", displayedLines);
 
-            yield return new WaitForSeconds(0.0001f);
+            yield return new WaitForSecondsRealtime(0.005f);
         }
     }
 }

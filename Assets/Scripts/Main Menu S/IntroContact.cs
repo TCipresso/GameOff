@@ -5,7 +5,9 @@ public class IntroContact : MonoBehaviour
 {
     public GameObject comp;
     public GameObject Off;
+    public GameObject StartUp;
     public float delay = 2f;
+    public float offDisableDelay = 1f; // Duration Off object stays active
 
     public void StartSequence2()
     {
@@ -14,18 +16,27 @@ public class IntroContact : MonoBehaviour
 
     private IEnumerator ExecuteAfterDelay()
     {
-        yield return new WaitForSeconds(delay);
+        // Use WaitForSecondsRealtime for precise timing
+        yield return new WaitForSecondsRealtime(delay);
 
-        // Disable the comp object
         if (comp != null)
         {
             comp.SetActive(false);
         }
 
-        // Enable the Off object
         if (Off != null)
         {
             Off.SetActive(true);
+
+            // Wait for 1 second in real time before disabling Off
+            yield return new WaitForSecondsRealtime(offDisableDelay);
+
+            Off.SetActive(false);
+        }
+
+        if (StartUp != null)
+        {
+            StartUp.SetActive(false);
         }
     }
 }
