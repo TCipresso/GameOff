@@ -210,7 +210,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
                 yield return new WaitForSeconds(typingSpeed);
             }
             textBox.text += "\n";
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 
@@ -236,7 +236,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
             }
             textBox.text = string.Join("\n", displayedLines);
 
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.0001f);
         }
     }
 }
