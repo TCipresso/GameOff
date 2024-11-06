@@ -16,12 +16,12 @@ public class IntroTwo : MonoBehaviour
 
     private IEnumerator PlayIntroSequence()
     {
-        // Wait 2 seconds, then fade in the CMPNAME text
-        yield return new WaitForSeconds(2f);
+        // Wait 2 seconds in real time, then fade in the CMPNAME text
+        yield return new WaitForSecondsRealtime(2f);
         yield return StartCoroutine(FadeInText(CMPNAME));
 
-        // Hold the text fully visible for the specified duration
-        yield return new WaitForSeconds(holdDuration);
+        // Hold the text fully visible for the specified duration in real time
+        yield return new WaitForSecondsRealtime(holdDuration);
 
         // Fade out the CMPNAME text
         yield return StartCoroutine(FadeOutText(CMPNAME));
@@ -38,7 +38,7 @@ public class IntroTwo : MonoBehaviour
         {
             color.a = Mathf.Lerp(0, 1, elapsedTime / fadeDuration);
             text.color = color;
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime; // Use real-time delta
             yield return null;
         }
 
@@ -57,7 +57,7 @@ public class IntroTwo : MonoBehaviour
         {
             color.a = Mathf.Lerp(1, 0, elapsedTime / fadeDuration);
             text.color = color;
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime; // Use real-time delta
             yield return null;
         }
 
