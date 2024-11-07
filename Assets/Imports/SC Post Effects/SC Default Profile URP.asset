@@ -275,7 +275,7 @@ MonoBehaviour:
   active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 0.027
+    m_Value: 0.042
   cropToFit:
     m_OverrideState: 1
     m_Value: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ce1611ace1a9a4a8284d45a924bdcd, type: 3}
   m_Name: Dithering
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   lut:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 7a95f13299f9b0948aff699c1881bfc6, type: 3}
@@ -366,7 +366,7 @@ MonoBehaviour:
     m_Value: 1
   luminanceThreshold:
     m_OverrideState: 0
-    m_Value: 0.5
+    m_Value: 0.29
   tiling:
     m_OverrideState: 0
     m_Value: 1
