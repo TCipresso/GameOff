@@ -3789,17 +3789,17 @@ MonoBehaviour:
   introMessages:
   - text: Hello
     clearDelay: 2
-  - text: Hmm...
-    clearDelay: 2
-  - text: I don't seem to recognize you
+  - text: Hm, I don't seem to recognize you...
     clearDelay: 3
-  - text: Tell me what is your name?
+  - text: Tell me
+    clearDelay: 2
+  - text: Who are you?
     clearDelay: 3
   mainMessages:
-  - text: I see... {PlayerName}
-    clearDelay: 1
-  - text: Tell me do you seek the treasure?
+  - text: I see {PlayerName}
     clearDelay: 2
+  - text: WaIt {PlayerName}????. Chat????
+    clearDelay: 1.5
   typingSpeed: 0.05
   typingSound: {fileID: 308420756}
   playerInputField: {fileID: 1154898878}
@@ -3901,7 +3901,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 15
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []

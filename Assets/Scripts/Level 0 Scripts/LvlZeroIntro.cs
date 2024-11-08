@@ -22,7 +22,7 @@ public class LvlZeroIntro : MonoBehaviour
     public TMP_InputField playerInputField;
 
     [Header("Player Name Settings")]
-    public Color playerNameColor = Color.yellow; // Set the color in the inspector
+    public Color playerNameColor = Color.yellow;
 
     private int currentMessageIndex = 0;
     private bool waitingForPlayerInput = false;
@@ -88,26 +88,32 @@ public class LvlZeroIntro : MonoBehaviour
 
     private IEnumerator TypeMessage(string message)
     {
-        int charIndex = 0;
-
-        // Set the entire message with color tags in the dialogueText
+        int visibleCharCount = 0;
         dialogueText.text = message;
-        dialogueText.maxVisibleCharacters = 0; // Initially, no characters are visible
+        dialogueText.maxVisibleCharacters = 0;
 
-        // Reveal one character at a time
-        while (dialogueText.maxVisibleCharacters < message.Length)
+        for (int i = 0; i < message.Length; i++)
         {
-            dialogueText.maxVisibleCharacters++;
-
-            // Play typing sound every other character
-            if (typingSound != null && charIndex % 2 == 0)
+            if (message[i] == '<')
             {
-                typingSound.Stop();
-                typingSound.Play();
+                while (i < message.Length && message[i] != '>')
+                {
+                    i++;
+                }
             }
+            else
+            {
+                visibleCharCount++;
+                dialogueText.maxVisibleCharacters = visibleCharCount;
+                if (typingSound != null && visibleCharCount % 2 == 0)
+                {
+                    typingSound.Stop();
+                    typingSound.Play();
+                }
 
-            charIndex++;
-            yield return new WaitForSecondsRealtime(typingSpeed);
+                yield return new WaitForSecondsRealtime(typingSpeed);
+            }
         }
     }
+
 }

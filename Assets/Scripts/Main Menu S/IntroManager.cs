@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement; // Import for scene management
+using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
     public AudioSource bootSound;
     public GameObject startBox;
     public GameObject powerButton;
-    public GameObject Off; // Reference to the Off object
-    public GameObject StartUp; // Reference to the StartUp object
+    public GameObject Off;
+    public GameObject StartUp;
     public Image logoImage;
     public Image powerButtonImage;
     public TextMeshProUGUI textBox1;
@@ -23,7 +23,7 @@ public class IntroManager : MonoBehaviour
     public float typingSpeed2 = 0.02f;
     public float typingSpeed3 = 0.02f;
     public float fadeDuration = 1.5f;
-    public float offDisableDelay = 1f; // Duration Off object stays active
+    public float offDisableDelay = 1f;
     private bool hasStarted = false;
     public int maxLinesInTerminal = 30;
 
@@ -163,12 +163,8 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
         textBox1.text = "";
         textBox2.text = "";
         textBox3.text = "";
-
-        // Initialize the images' opacity
         SetImageAlpha(logoImage, 0);
         SetImageAlpha(powerButtonImage, 0);
-
-        // Start the logo fade-in and fade-out automatically
         StartCoroutine(LogoIntroSequence());
     }
 
@@ -181,12 +177,9 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
 
     private IEnumerator LogoIntroSequence()
     {
-        // Fade in the logo, wait, then fade it out
         yield return StartCoroutine(FadeIn(logoImage));
         yield return new WaitForSecondsRealtime(2.0f);
         yield return StartCoroutine(FadeOut(logoImage));
-
-        // Enable and fade in the power button after the logo sequence
         powerButton.SetActive(true);
         yield return StartCoroutine(FadeIn(powerButtonImage));
     }
@@ -195,34 +188,26 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
     {
         if (hasStarted) return;
         hasStarted = true;
-
-        // Disable the power button to prevent further clicks
         powerButton.SetActive(false);
-
-        // Start the main intro sequence
         StartCoroutine(PlayIntroSequence());
     }
 
     private IEnumerator PlayIntroSequence()
     {
-        // Start the main intro sequence after clicking the power button
         bootSound.Play();
         yield return StartCoroutine(FlickerStartBox());
         yield return StartCoroutine(TypeText(textBox1, startupLines1, typingSpeed1));
         yield return StartCoroutine(TypeText(textBox2, startupLines2, typingSpeed2));
         yield return StartCoroutine(TypeTextWithScroll(textBox3, startupLines3, typingSpeed3));
 
-        // Play the UI animation
         uiAnimation.Play("Screen_Slam");
-
-        // Wait for the animation to finish before disabling startBox
         AnimationClip clip = uiAnimation.GetClip("Screen_Slam");
+
         if (clip != null)
         {
             yield return new WaitForSecondsRealtime(clip.length);
         }
 
-        // Disable startBox, stop bootSound, and enable Off object
         if (startBox != null)
         {
             startBox.SetActive(false);
@@ -245,10 +230,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
             StartUp.SetActive(false);
         }
 
-        // Add a 2-second delay before switching scenes
         yield return new WaitForSecondsRealtime(2f);
-
-        // Load the "Level 0" scene
         SceneManager.LoadScene("Level 0");
     }
 
