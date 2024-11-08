@@ -61,6 +61,9 @@ public class InputParser : MonoBehaviour
             case "color":
                 output = colorManager.ReadTokens(tokens);
                 break;
+            case "move":
+                output = GameManager.instance.AttemptMove(tokens);
+                break;
         }
 
         if (!output.Equals("")) TextOutput.instance.Print(output, ColorType.STORYCOLOR);

@@ -14,6 +14,11 @@ public class Routes
         return direction;
     }
 
+    public PointOfInterest GetDestination()
+    {
+        return destination;
+    }
+
     public bool CanTravel()
     {
         /*False conditions*/
@@ -40,5 +45,14 @@ public class PointOfInterest : ScriptableObject
     {
         if (image == null) return null; //We should define a global default image.
         return image;
+    }
+
+    public PointOfInterest Move(string[] tokens)
+    {
+        for(int i = 0; i < routes.Count; i++)
+        {
+            if (tokens[1].Equals(routes[i].GetDirection().ToLower().Trim()) && routes[i].CanTravel()) return routes[i].GetDestination();
+        }
+        return null;
     }
 }

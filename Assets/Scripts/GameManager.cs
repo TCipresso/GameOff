@@ -21,4 +21,12 @@ public class GameManager : MonoBehaviour
     {
         return currentPOI.GetImage();
     }
+
+    public string AttemptMove(string[] tokens)
+    {
+        PointOfInterest destination = currentPOI.Move(tokens);
+        if(destination == null) return "Cannot move in that direction.";
+        currentPOI = destination;
+        return currentPOI.GetDescription();
+    }
 }
