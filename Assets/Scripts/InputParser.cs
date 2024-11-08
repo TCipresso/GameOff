@@ -60,7 +60,7 @@ public class InputParser : MonoBehaviour
                 break;
         }
 
-        if(!output.Equals(""))
-            TextOutput.instance.Print(output, ColorType.STORYCOLOR);
+        if (!output.Equals("")) TextOutput.instance.Print(output, ColorType.STORYCOLOR);
+        else TextOutput.instance.Print("Unrecognized Input", ColorType.STORYCOLOR);
     }
 }
