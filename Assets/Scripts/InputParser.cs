@@ -18,7 +18,8 @@ public class InputParser : MonoBehaviour
 
     /// <summary>
     /// Adds a listener to input field to parse input only
-    /// when return is pressed.
+    /// when return is pressed. Print the text of the starting
+    /// POI.
     /// </summary>
     private void Start()
     {
@@ -30,6 +31,8 @@ public class InputParser : MonoBehaviour
                 inputField.text = "";
             }
         });
+
+        TextOutput.instance.Print(GameManager.instance.GetCurrentPOIDesc(), ColorType.STORYCOLOR);
     }
 
     /// <summary>
@@ -58,9 +61,12 @@ public class InputParser : MonoBehaviour
             case "color":
                 output = colorManager.ReadTokens(tokens);
                 break;
+            case "move":
+                output = GameManager.instance.AttemptMove(tokens);
+                break;
         }
 
-        if(!output.Equals(""))
-            TextOutput.instance.Print(output, ColorType.STORYCOLOR);
+        if (!output.Equals("")) TextOutput.instance.Print(output, ColorType.STORYCOLOR);
+        else TextOutput.instance.Print("Unrecognized Input", ColorType.STORYCOLOR);
     }
 }

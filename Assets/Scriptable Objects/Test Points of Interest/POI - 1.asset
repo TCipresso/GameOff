@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec4e27edbc11f44aba093695a59f572, type: 3}
+  m_Name: POI - 1
+  m_EditorClassIdentifier: 
+  description: POI - 1
+  image: {fileID: 0}
+  routes:
+  - direction: left
+    destination: {fileID: 11400000, guid: 197cf5af939de2a45aab7904cdf1e805, type: 2}
+  - direction: forward
+    destination: {fileID: 11400000, guid: dfd1968aa97736f4884190b47e692f10, type: 2}
+  - direction: right
+    destination: {fileID: 11400000, guid: c922461baaf39a54c914cb3f4d4ead77, type: 2}
