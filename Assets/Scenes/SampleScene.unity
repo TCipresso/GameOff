@@ -3731,7 +3731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad2c55f88249b44aa3487dd8ec1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPOI: {fileID: 0}
+  currentPOI: {fileID: 11400000, guid: a6544291a262a8b4dabe644ef3ebcd7a, type: 2}
 --- !u!1 &1414902004
 GameObject:
   m_ObjectHideFlags: 0
