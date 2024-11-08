@@ -6,7 +6,7 @@ using UnityEngine;
 /// Pairs a direction (<see cref="string"/>) to a destination (<see cref="PointOfInterest"/>).
 /// </summary>
 [System.Serializable]
-public class Routes
+public class Route
 {
     [SerializeField] string direction;
     [SerializeField] PointOfInterest destination;

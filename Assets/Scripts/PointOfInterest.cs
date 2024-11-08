@@ -12,7 +12,7 @@ public class PointOfInterest : ScriptableObject
     [TextArea(3, 10)]
     [SerializeField] string description = "";
     [SerializeField] Sprite image;
-    [SerializeField] List<Routes> routes = new List<Routes>();
+    [SerializeField] List<Route> routes = new List<Route>();
 
     /// <summary>
     /// Get the description of the current POI if it has one.
