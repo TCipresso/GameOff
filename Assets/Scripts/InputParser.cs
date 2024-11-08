@@ -18,7 +18,8 @@ public class InputParser : MonoBehaviour
 
     /// <summary>
     /// Adds a listener to input field to parse input only
-    /// when return is pressed.
+    /// when return is pressed. Print the text of the starting
+    /// POI.
     /// </summary>
     private void Start()
     {
@@ -30,6 +31,8 @@ public class InputParser : MonoBehaviour
                 inputField.text = "";
             }
         });
+
+        TextOutput.instance.Print(GameManager.instance.GetCurrentPOIDesc(), ColorType.STORYCOLOR);
     }
 
     /// <summary>
