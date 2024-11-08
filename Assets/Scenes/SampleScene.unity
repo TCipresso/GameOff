@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 228907422}
   - component: {fileID: 228907421}
   - component: {fileID: 228907420}
+  - component: {fileID: 228907423}
   m_Layer: 5
   m_Name: Hour glass
   m_TagString: Untagged
@@ -675,6 +676,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228907418}
   m_CullTransparentMesh: 1
+--- !u!114 &228907423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228907418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images:
+  - {fileID: 228907421}
+  texts: []
+  colorType: 0
 --- !u!1 &231516124
 GameObject:
   m_ObjectHideFlags: 0
