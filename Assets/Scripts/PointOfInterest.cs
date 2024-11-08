@@ -8,6 +8,18 @@ public class Routes
     [SerializeField] string direction;
     [SerializeField] PointOfInterest destination;
     //[SerializeField] CheatsIDunnoWhateverWeEndUpCallingThis requiredCheats;
+
+    public string GetDirection()
+    {
+        return direction;
+    }
+
+    public bool CanTravel()
+    {
+        /*False conditions*/
+
+        return true;
+    }
 }
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Point of Interest")]
