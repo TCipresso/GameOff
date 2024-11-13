@@ -16,9 +16,9 @@ public class PointOfInterest : ScriptableObject
     [SerializeField] string noEncounterString = "This room is empty. You are safe.";
 
     /// <summary>
-    /// States if the POI has an encounter.
+    /// States if the POI has an <see cref="Encounter"/>.
     /// </summary>
-    /// <returns>True if POI has an encounter, false otherwise.</returns>
+    /// <returns>True if POI has an <see cref="Encounter"/>, false otherwise.</returns>
     public bool HasEncounter()
     {
         return encounter != null;
@@ -59,10 +59,10 @@ public class PointOfInterest : ScriptableObject
     }
 
     /// <summary>
-    /// Checks if tokens contains a keyword for POI's encounter.
+    /// Checks if tokens contains a keyword for POI's <see cref="Encounter"/>.
     /// </summary>
     /// <param name="tokens">Tokens from player input.</param>
-    /// <returns>True if POI's encounter can parse input, false otherwise.</returns>
+    /// <returns>True if POI's <see cref="Encounter"/> can parse input, false otherwise.</returns>
     public bool IsEncounterKeyword(string[] tokens)
     {
         if (encounter == null) return false;
@@ -70,7 +70,8 @@ public class PointOfInterest : ScriptableObject
     }
 
     /// <summary>
-    /// Reads player's input tokens. POIEncounter handles input 
+    /// Reads player's input tokens. POI or it <see cref="Encounter"/> handles input depending on
+    /// the game state and who can handle it.
     /// </summary>
     /// <param name="tokens">Tokens from player input.</param>
     /// <returns>A response message from activity.</returns>
