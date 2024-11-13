@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec4e27edbc11f44aba093695a59f572, type: 3}
   m_Name: POI - 2
   m_EditorClassIdentifier: 
-  description: POI - 2
-  image: {fileID: 0}
   routes:
   - direction: left
     destination: {fileID: 11400000, guid: dfd1968aa97736f4884190b47e692f10, type: 2}
@@ -21,3 +19,5 @@ MonoBehaviour:
     destination: {fileID: 11400000, guid: c922461baaf39a54c914cb3f4d4ead77, type: 2}
   - direction: right
     destination: {fileID: 11400000, guid: a6544291a262a8b4dabe644ef3ebcd7a, type: 2}
+  image: {fileID: 0}
+  encounter: {fileID: 11400000, guid: 63737eaba05141c42917900e61d1d92c, type: 2}

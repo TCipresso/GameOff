@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 /// <summary>
 /// InputParser is an object to be used with text input.
@@ -49,24 +50,22 @@ public class InputParser : MonoBehaviour
         TextOutput.instance.Print(input, ColorType.INPUTCOLOR, OutputCarrot.USER);
         string output = "";
 
-        //TODO
-        //Scene option parsing
-        //if(is a scene option)
-            //Do the scene option
-        //else
-        //Keyword Parsing
         string[] tokens = input.ToLower().Split(" ");
-        switch(tokens[0])
+        if (GameManager.instance.IsPOIKeyword(tokens)) output = GameManager.instance.ParsePOIKeyword(tokens);
+        else
         {
-            case "color":
-                output = colorManager.ReadTokens(tokens);
-                break;
-            case "move":
-                output = GameManager.instance.AttemptMove(tokens);
-                break;
+            switch (tokens[0])
+            {
+                case "color":
+                    output = colorManager.ReadTokens(tokens);
+                    break;
+                case "move":
+                    output = GameManager.instance.AttemptMove(tokens);
+                    break;
+            }
         }
 
         if (!output.Equals("")) TextOutput.instance.Print(output, ColorType.STORYCOLOR);
-        else TextOutput.instance.Print("Unrecognized Input", ColorType.STORYCOLOR);
+        else TextOutput.instance.Print("Unrecognized Input", ColorType.HUDCOLOR);
     }
 }

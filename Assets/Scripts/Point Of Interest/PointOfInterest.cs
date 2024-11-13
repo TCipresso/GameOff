@@ -9,10 +9,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Objects/Point of Interest")]
 public class PointOfInterest : ScriptableObject
 {
-    [TextArea(3, 10)]
-    [SerializeField] string description = "";
-    [SerializeField] Sprite image;
     [SerializeField] List<Route> routes = new List<Route>();
+    [SerializeField] Sprite image;
+    [SerializeField] Encounter encounter;
+    [TextArea(3, 10)]
+    [SerializeField] string noEncounterString = "This room is empty. You are safe.";
+
+    /// <summary>
+    /// States if the POI has an <see cref="Encounter"/>.
+    /// </summary>
+    /// <returns>True if POI has an <see cref="Encounter"/>, false otherwise.</returns>
+    public bool HasEncounter()
+    {
+        return encounter != null;
+    }
 
     /// <summary>
     /// Get the description of the current POI if it has one.
@@ -20,8 +30,8 @@ public class PointOfInterest : ScriptableObject
     /// <returns>The description (or lack of) of the POI.</returns>
     public string GetDescription()
     {
-        if (description.Length == 0) return "There is no discription of this place.";
-        return description;
+        if (encounter == null) return noEncounterString;
+        return encounter.GetDescription();
     }
 
     /// <summary>
@@ -35,16 +45,72 @@ public class PointOfInterest : ScriptableObject
     }
 
     /// <summary>
+    /// Checks if tokens contains a keyword for the POI.
+    /// </summary>
+    /// <param name="tokens">Tokens from player input.</param>
+    /// <returns>True if POI can parse input, false otherwise.</returns>
+    public bool IsPOIKeyword(string[] tokens)
+    {
+        foreach (string token in tokens)
+        {
+            if (token.Equals("search")) return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Checks if tokens contains a keyword for POI's <see cref="Encounter"/>.
+    /// </summary>
+    /// <param name="tokens">Tokens from player input.</param>
+    /// <returns>True if POI's <see cref="Encounter"/> can parse input, false otherwise.</returns>
+    public bool IsEncounterKeyword(string[] tokens)
+    {
+        if (encounter == null) return false;
+        return encounter.IsEncounterKeyword(tokens);
+    }
+
+    /// <summary>
+    /// Reads player's input tokens. POI or it <see cref="Encounter"/> handles input depending on
+    /// the game state and who can handle it.
+    /// </summary>
+    /// <param name="tokens">Tokens from player input.</param>
+    /// <returns>A response message from activity.</returns>
+    public string ParsePOIKeywords(string[] tokens)
+    {
+        if (GameManager.instance.IsInEncounter() && (encounter != null && encounter.IsEncounterKeyword(tokens)))
+        {
+            return encounter.ParseEncounterKeywords(tokens);
+        }
+        else
+        {
+            foreach (string token in tokens)
+            {
+                switch (token)
+                {
+                    case "search":
+                        return GameManager.instance.IsInEncounter() ? 
+                            (encounter != null ? encounter.GetDescription() : "How are we in an encounter but POI doesn't have one???") 
+                            : noEncounterString;
+                }
+            }
+        }
+
+        return $"Keyword not recognized for {name}.";
+    }
+
+    /// <summary>
     /// Move through a route.
     /// </summary>
     /// <param name="tokens">Tokens defining what route to take.</param>
     /// <returns>The <see cref="PointOfInterest"/> if the route is vaild, null otherwise.</returns>
     public PointOfInterest Move(string[] tokens)
     {
-        for(int i = 0; i < routes.Count; i++)
+        foreach(Route route in routes)
         {
-            //I could extend this and have it check multiple tokens for more detailed directions. Just lmk.
-            if (tokens[1].Equals(routes[i].GetDirection().ToLower().Trim()) && routes[i].CanTravel()) return routes[i].GetDestination();
+            foreach(string token in tokens)
+            {
+                if (token.Equals(route.GetDirection().ToLower().Trim()) && route.CanTravel()) return route.GetDestination();
+            }
         }
         return null;
     }
