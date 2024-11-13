@@ -7,7 +7,7 @@ public class MovementInput : MonoBehaviour
     [SerializeField] MoveableObject puppet;
     Vector2 input = new Vector2();
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (puppet == null) return;
         input.x = Input.GetAxisRaw("Horizontal");

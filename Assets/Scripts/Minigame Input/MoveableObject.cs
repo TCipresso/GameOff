@@ -5,21 +5,16 @@ using UnityEngine;
 public class MoveableObject : MonoBehaviour
 {
     [SerializeField] float speed = 100f;
-    Vector2 cachedPosition;
+    [SerializeField] Rigidbody2D rb;
 
-    private void Start()
-    {
-        cachedPosition = transform.position;
-    }
 
     public void Move(Vector2 input)
     {
-        if (input.x < -0.01f || 0.01f < input.x)
-            cachedPosition.x += input.x * speed * Time.deltaTime;
+        Vector3 direction = transform.right * input.x + transform.up * input.y;
 
-        if (input.y < -0.01f || 0.01f < input.y)
-            cachedPosition.y += input.y * speed * Time.deltaTime;
-
-        transform.position = cachedPosition;
+        if (direction.magnitude >= 0.01)
+        {
+            rb.MovePosition(transform.position + direction * Time.deltaTime * speed);
+        }
     }
 }
