@@ -15,6 +15,10 @@ public class PointOfInterest : ScriptableObject
     [TextArea(3, 10)]
     [SerializeField] string noEncounterString = "This room is empty. You are safe.";
 
+    /// <summary>
+    /// States if the POI has an encounter.
+    /// </summary>
+    /// <returns>True if POI has an encounter, false otherwise.</returns>
     public bool HasEncounter()
     {
         return encounter != null;
@@ -40,6 +44,11 @@ public class PointOfInterest : ScriptableObject
         return image;
     }
 
+    /// <summary>
+    /// Checks if tokens contains a keyword for the POI.
+    /// </summary>
+    /// <param name="tokens">Tokens from player input.</param>
+    /// <returns>True if POI can parse input, false otherwise.</returns>
     public bool IsPOIKeyword(string[] tokens)
     {
         foreach (string token in tokens)
@@ -49,6 +58,22 @@ public class PointOfInterest : ScriptableObject
         return false;
     }
 
+    /// <summary>
+    /// Checks if tokens contains a keyword for POI's encounter.
+    /// </summary>
+    /// <param name="tokens">Tokens from player input.</param>
+    /// <returns>True if POI's encounter can parse input, false otherwise.</returns>
+    public bool IsEncounterKeyword(string[] tokens)
+    {
+        if (encounter == null) return false;
+        return encounter.IsEncounterKeyword(tokens);
+    }
+
+    /// <summary>
+    /// Reads player's input tokens and reacts accordingly if POI can handle token.
+    /// </summary>
+    /// <param name="tokens">Tokens from player input.</param>
+    /// <returns>A return message from activity.</returns>
     public string ParsePOIKeywords(string[] tokens)
     {
         if (GameManager.instance.IsInEncounter() && encounter.IsEncounterKeyword(tokens))
@@ -68,11 +93,6 @@ public class PointOfInterest : ScriptableObject
         }
 
         return $"Keyword not recognized for {name}.";
-    }
-
-    public bool IsEncounterKeyword(string[] tokens)
-    {
-        return encounter.IsEncounterKeyword(tokens);
     }
 
     /// <summary>
