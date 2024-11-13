@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Starting POI")]
     [SerializeField] PointOfInterest currentPOI;
     public static GameManager instance { private set; get; }
+    [SerializeField] private bool inEncounter = false;
     
     /// <summary>
     /// Singleton
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
+
+        inEncounter = currentPOI.HasEncounter();
     }
 
     /// <summary>
@@ -46,9 +49,17 @@ public class GameManager : MonoBehaviour
     /// <returns>The description of the new POI or a line stating move failure.</returns>
     public string AttemptMove(string[] tokens)
     {
+        if (inEncounter /*&& !noclipped*/) return "You cannot leave in the middle of an encounter!";
+
         PointOfInterest destination = currentPOI.Move(tokens);
         if(destination == null) return "Cannot move in that direction.";
         currentPOI = destination;
+        inEncounter = currentPOI.HasEncounter();
         return currentPOI.GetDescription();
+    }
+
+    public void LeaveEnounter()
+    {
+        inEncounter = false;
     }
 }

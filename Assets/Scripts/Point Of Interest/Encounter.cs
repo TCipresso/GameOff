@@ -18,4 +18,9 @@ public class Encounter : ScriptableObject
     {
         return subjectSprite;
     }
+
+    public void LeaveEncounter()
+    {
+        GameManager.instance.LeaveEnounter();
+    }
 }

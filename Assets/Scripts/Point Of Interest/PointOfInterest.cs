@@ -11,7 +11,14 @@ public class PointOfInterest : ScriptableObject
 {
     [SerializeField] List<Route> routes = new List<Route>();
     [SerializeField] Sprite image;
-    [SerializeField] Encounter encounter; 
+    [SerializeField] Encounter encounter;
+    [TextArea(3, 10)]
+    [SerializeField] string noEncounterString = "This room is empty. You are safe.";
+
+    public bool HasEncounter()
+    {
+        return encounter != null;
+    }
 
     /// <summary>
     /// Get the description of the current POI if it has one.
@@ -19,6 +26,7 @@ public class PointOfInterest : ScriptableObject
     /// <returns>The description (or lack of) of the POI.</returns>
     public string GetDescription()
     {
+        if (encounter == null) return noEncounterString;
         return encounter.GetDescription();
     }
 
