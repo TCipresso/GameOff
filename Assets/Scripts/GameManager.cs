@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// GameManager is the class that stores the current
@@ -42,6 +43,16 @@ public class GameManager : MonoBehaviour
         return currentPOI.GetImage();
     }
 
+    public bool IsPOIKeyword(string[] tokens)
+    {
+        return (inEncounter && currentPOI.IsEncounterKeyword(tokens)) || currentPOI.IsPOIKeyword(tokens);
+    }
+
+    public string ParsePOIKeyword(string[] tokens)
+    {
+        return currentPOI.ParsePOIKeywords(tokens);
+    }
+
     /// <summary>
     /// Attempts to move in the direction stated in the tokens.
     /// </summary>
@@ -56,6 +67,11 @@ public class GameManager : MonoBehaviour
         currentPOI = destination;
         inEncounter = currentPOI.HasEncounter();
         return currentPOI.GetDescription();
+    }
+
+    public bool IsInEncounter()
+    {
+        return inEncounter;
     }
 
     public void LeaveEnounter()

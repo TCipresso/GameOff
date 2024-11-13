@@ -40,6 +40,41 @@ public class PointOfInterest : ScriptableObject
         return image;
     }
 
+    public bool IsPOIKeyword(string[] tokens)
+    {
+        foreach (string token in tokens)
+        {
+            if (token.Equals("search")) return true;
+        }
+        return false;
+    }
+
+    public string ParsePOIKeywords(string[] tokens)
+    {
+        if (GameManager.instance.IsInEncounter() && encounter.IsEncounterKeyword(tokens))
+        {
+            return encounter.ParseEncounterKeywords(tokens);
+        }
+        else
+        {
+            foreach (string token in tokens)
+            {
+                switch (token)
+                {
+                    case "search":
+                        return GameManager.instance.IsInEncounter() ? encounter.GetDescription() : noEncounterString;
+                }
+            }
+        }
+
+        return $"Keyword not recognized for {name}.";
+    }
+
+    public bool IsEncounterKeyword(string[] tokens)
+    {
+        return encounter.IsEncounterKeyword(tokens);
+    }
+
     /// <summary>
     /// Move through a route.
     /// </summary>

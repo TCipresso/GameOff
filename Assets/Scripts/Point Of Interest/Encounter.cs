@@ -6,7 +6,7 @@ using UnityEngine;
 public class Encounter : ScriptableObject
 {
     [TextArea(3, 10)]
-    [SerializeField] string description = "No Description";
+    [SerializeField] string description = "This is a test encounter. Type continue to continue.";
     [SerializeField] Sprite subjectSprite;
 
     public string GetDescription()
@@ -22,5 +22,30 @@ public class Encounter : ScriptableObject
     public void LeaveEncounter()
     {
         GameManager.instance.LeaveEnounter();
+    }
+
+    public bool IsEncounterKeyword(string[] tokens)
+    {
+        foreach(string token in tokens)
+        {
+            if (token.Equals("continue")) return true;
+        }
+        return false;
+    }
+
+    public string ParseEncounterKeywords(string[] tokens)
+    {
+        foreach(string token in tokens)
+        {
+            switch(token)
+            {
+                case "continue":
+                    LeaveEncounter();
+                    Debug.Log("Leaving Encounter");
+                    return "Leaving Encounter";
+            }
+        }
+
+        return $"Keyword not recognized for {name}.";
     }
 }
