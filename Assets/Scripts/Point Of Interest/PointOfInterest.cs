@@ -70,13 +70,13 @@ public class PointOfInterest : ScriptableObject
     }
 
     /// <summary>
-    /// Reads player's input tokens and reacts accordingly if POI can handle token.
+    /// Reads player's input tokens. POIEncounter handles input 
     /// </summary>
     /// <param name="tokens">Tokens from player input.</param>
     /// <returns>A return message from activity.</returns>
     public string ParsePOIKeywords(string[] tokens)
     {
-        if (GameManager.instance.IsInEncounter() && encounter.IsEncounterKeyword(tokens))
+        if (GameManager.instance.IsInEncounter() && (encounter != null && encounter.IsEncounterKeyword(tokens)))
         {
             return encounter.ParseEncounterKeywords(tokens);
         }
@@ -87,7 +87,9 @@ public class PointOfInterest : ScriptableObject
                 switch (token)
                 {
                     case "search":
-                        return GameManager.instance.IsInEncounter() ? encounter.GetDescription() : noEncounterString;
+                        return GameManager.instance.IsInEncounter() ? 
+                            (encounter != null ? encounter.GetDescription() : "How are we in an encounter but POI doesn't have one???") 
+                            : noEncounterString;
                 }
             }
         }
