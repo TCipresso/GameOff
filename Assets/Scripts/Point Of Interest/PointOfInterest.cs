@@ -9,7 +9,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Objects/Point of Interest")]
 public class PointOfInterest : ScriptableObject
 {
-    [TextArea(3, 10)]
     [SerializeField] List<Route> routes = new List<Route>();
     [SerializeField] Sprite image;
     [SerializeField] Encounter encounter; 
@@ -20,9 +19,7 @@ public class PointOfInterest : ScriptableObject
     /// <returns>The description (or lack of) of the POI.</returns>
     public string GetDescription()
     {
-        return "POI are being redone";
-        //if (description.Length == 0) return "There is no discription of this place.";
-        //return description;
+        return encounter.GetDescription();
     }
 
     /// <summary>
@@ -42,10 +39,12 @@ public class PointOfInterest : ScriptableObject
     /// <returns>The <see cref="PointOfInterest"/> if the route is vaild, null otherwise.</returns>
     public PointOfInterest Move(string[] tokens)
     {
-        for(int i = 0; i < routes.Count; i++)
+        foreach(Route route in routes)
         {
-            //I could extend this and have it check multiple tokens for more detailed directions. Just lmk.
-            if (tokens[1].Equals(routes[i].GetDirection().ToLower().Trim()) && routes[i].CanTravel()) return routes[i].GetDestination();
+            foreach(string token in tokens)
+            {
+                if (token.Equals(route.GetDirection().ToLower().Trim()) && route.CanTravel()) return route.GetDestination();
+            }
         }
         return null;
     }
