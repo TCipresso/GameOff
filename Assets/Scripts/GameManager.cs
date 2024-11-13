@@ -43,11 +43,21 @@ public class GameManager : MonoBehaviour
         return currentPOI.GetImage();
     }
 
+    /// <summary>
+    /// Checks if current POI or current POI's encounter can parse the input.
+    /// </summary>
+    /// <param name="tokens">Tokens from player input.</param>
+    /// <returns>True if the current POI or its encounter can parse the input, false otherwise.</returns>
     public bool IsPOIKeyword(string[] tokens)
     {
         return (inEncounter && currentPOI.IsEncounterKeyword(tokens)) || currentPOI.IsPOIKeyword(tokens);
     }
 
+    /// <summary>
+    /// Parse the player's input using the current POI.
+    /// </summary>
+    /// <param name="tokens">Tokens from player input.</param>
+    /// <returns>A response message from POI message parse.</returns>
     public string ParsePOIKeyword(string[] tokens)
     {
         return currentPOI.ParsePOIKeywords(tokens);
@@ -69,11 +79,18 @@ public class GameManager : MonoBehaviour
         return currentPOI.GetDescription();
     }
 
+    /// <summary>
+    /// Tracks if the game is currently in an encounter.
+    /// </summary>
+    /// <returns>True if the game is currently in an encounter, false otherwise.</returns>
     public bool IsInEncounter()
     {
         return inEncounter;
     }
 
+    /// <summary>
+    /// Sets inEncounter to false.
+    /// </summary>
     public void LeaveEnounter()
     {
         inEncounter = false;

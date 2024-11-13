@@ -73,7 +73,7 @@ public class PointOfInterest : ScriptableObject
     /// Reads player's input tokens. POIEncounter handles input 
     /// </summary>
     /// <param name="tokens">Tokens from player input.</param>
-    /// <returns>A return message from activity.</returns>
+    /// <returns>A response message from activity.</returns>
     public string ParsePOIKeywords(string[] tokens)
     {
         if (GameManager.instance.IsInEncounter() && (encounter != null && encounter.IsEncounterKeyword(tokens)))
