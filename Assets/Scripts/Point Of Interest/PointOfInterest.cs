@@ -10,9 +10,9 @@ using UnityEngine;
 public class PointOfInterest : ScriptableObject
 {
     [TextArea(3, 10)]
-    [SerializeField] string description = "";
-    [SerializeField] Sprite image;
     [SerializeField] List<Route> routes = new List<Route>();
+    [SerializeField] Sprite image;
+    [SerializeField] Encounter encounter; 
 
     /// <summary>
     /// Get the description of the current POI if it has one.
@@ -20,8 +20,9 @@ public class PointOfInterest : ScriptableObject
     /// <returns>The description (or lack of) of the POI.</returns>
     public string GetDescription()
     {
-        if (description.Length == 0) return "There is no discription of this place.";
-        return description;
+        return "POI are being redone";
+        //if (description.Length == 0) return "There is no discription of this place.";
+        //return description;
     }
 
     /// <summary>
