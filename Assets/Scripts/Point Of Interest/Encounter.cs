@@ -12,7 +12,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     [TextArea(3, 10)]
     [SerializeField] string description = "This is a test encounter. Type \"continue\" to continue.";
     [SerializeField] Sprite subjectSprite;
-    [SerializeField] Minigame minigame;
+    [SerializeField] int minigame;
 
     /// <summary>
     /// Get the description of the encounter.
@@ -76,7 +76,6 @@ public class Encounter : ScriptableObject, MinigameCaller
                     return "Leaving Encounter";
                 case "play":
                     StartMinigame();
-                    if(minigame != null) Debug.Log($"{name} starting {minigame.name}");
                     return "Starting Minigame";
             }
         }
@@ -86,12 +85,7 @@ public class Encounter : ScriptableObject, MinigameCaller
 
     public void StartMinigame()
     {
-        if(minigame == null)
-        {
-            Debug.LogError($"{name} does not have a minigame and you are trying to start one!");
-            return;
-        }
-        minigame.StartMinigame(this);
+        MinigameManager.instance.PlayMinigame(minigame, this);
     }
 
     public void CompleteMinigame(MinigameStatus gameResult)
@@ -103,6 +97,7 @@ public class Encounter : ScriptableObject, MinigameCaller
                 break;
             case MinigameStatus.WIN:
                 TextOutput.instance.Print("Game won.");
+                LeaveEncounter();
                 break;
             default:
                 TextOutput.instance.Print($"Unknown game status {gameResult}");
