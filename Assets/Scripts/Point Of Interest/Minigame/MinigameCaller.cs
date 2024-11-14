@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface MinigameCaller
 {
+    public void StartMinigame();
     public void CompleteMinigame(int gameResult);
 }
