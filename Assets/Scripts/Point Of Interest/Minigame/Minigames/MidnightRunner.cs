@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// MidnightRunner is a <see cref="Minigame"/> where the player has 
+/// to avoid falling <see cref="Obstacle"/>s.
+/// </summary>
 public class MidnightRunner : Minigame
 {
     [SerializeField] ObstacleSpawner spawner;

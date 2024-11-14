@@ -19,5 +19,9 @@ public abstract class ObstacleSpawner : MonoBehaviour, ReportHit
     /// Start the <see cref="Obstacle"/> spawning pattern.
     /// </summary>
     public abstract void SpawnObstacle();
+
+    /// <summary>
+    /// Stop the <see cref="Obstacle"/> spawning pattern.
+    /// </summary>
     public abstract void StopSpawning();
 }

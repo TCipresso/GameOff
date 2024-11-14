@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Distance limiter limits the distance from an anchor.
+/// </summary>
 public class DistanceLimiter : MonoBehaviour
 {
     [SerializeField] Transform anchor;

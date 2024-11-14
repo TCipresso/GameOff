@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ObstacleRainer is an <see cref="ObstacleSpawner"/> that spawns a 
+/// line of staggered <see cref="Obstacle"/>s.
+/// </summary>
 public class ObstacleRainer : ObstacleSpawner
 {
     [SerializeField] List<GameObject> obstacles;
@@ -20,9 +24,12 @@ public class ObstacleRainer : ObstacleSpawner
         StartCoroutine(SpawnCoroutine());
     }
 
+    /// <summary>
+    /// Choose a random inactive <see cref="Obstacle"/> to drop.
+    /// </summary>
+    /// <returns>An <see cref="IEnumerator"/></returns>
     IEnumerator SpawnCoroutine()
     {
-        Random.InitState(9999);
         for (int i = Random.Range(0, obstacles.Count); i < obstacles.Count; i = Random.Range(0, obstacles.Count))
         {
             yield return new WaitForSeconds(timeBetweenSpawns);

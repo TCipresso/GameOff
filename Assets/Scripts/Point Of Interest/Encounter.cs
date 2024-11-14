@@ -83,11 +83,19 @@ public class Encounter : ScriptableObject, MinigameCaller
         return $"Keyword not recognized for {name}.";
     }
 
+    /// <summary>
+    /// Starts the <see cref="Minigame"/> this encounter is associated with
+    /// through the <see cref="MinigameManager"/>
+    /// </summary>
     public void StartMinigame()
     {
         MinigameManager.instance.PlayMinigame(minigame, this);
     }
 
+    /// <summary>
+    /// Handle the <see cref="MinigameStatus"/> from the <see cref="Minigame"/> I started.
+    /// </summary>
+    /// <param name="gameResult"></param>
     public void CompleteMinigame(MinigameStatus gameResult)
     {
         switch(gameResult)

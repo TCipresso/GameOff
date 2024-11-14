@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Moves an object linearly using transform.
+/// </summary>
 public class MoveForward : MonoBehaviour
 {
     [SerializeField] float speed;
@@ -21,6 +24,10 @@ public class MoveForward : MonoBehaviour
         Move();
     }
 
+    /// <summary>
+    /// Moves the game object linearly with its transform
+    /// in the direction and speed wanted.
+    /// </summary>
     private void Move()
     {
         if(!horizontal && !vertical)
