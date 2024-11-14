@@ -17,6 +17,9 @@ public class MidnightRunner : Minigame
         base.StartMinigame(caller);
         runner.transform.localPosition = new Vector2(0, -250); //I did not want to mess with localPosition and position. This is going to bite someone in the ass.
         runner.SetActive(true);
+        if (runner.TryGetComponent<MoveableObject>(out MoveableObject movableRunner)) MovementInput.instance.SetPuppet(movableRunner);
+        else { Debug.LogWarning("Runner is not a MoveableObjet"); }
+
         spawner.reporter = this;
         spawner.SpawnObstacle();
         StartCoroutine(Timer());
