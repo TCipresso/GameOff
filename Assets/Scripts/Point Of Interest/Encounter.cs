@@ -76,7 +76,7 @@ public class Encounter : ScriptableObject, MinigameCaller
                     return "Leaving Encounter";
                 case "play":
                     StartMinigame();
-                    Debug.Log($"{name} starting {minigame.name}");
+                    if(minigame != null) Debug.Log($"{name} starting {minigame.name}");
                     return "Starting Minigame";
             }
         }
