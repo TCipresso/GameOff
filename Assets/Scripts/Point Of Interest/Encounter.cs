@@ -94,14 +94,14 @@ public class Encounter : ScriptableObject, MinigameCaller
         minigame.StartMinigame(this);
     }
 
-    public void CompleteMinigame(int gameResult)
+    public void CompleteMinigame(MinigameStatus gameResult)
     {
         switch(gameResult)
         {
-            case -1:
+            case MinigameStatus.LOST:
                 TextOutput.instance.Print("Game lost.");
                 break;
-            case 1:
+            case MinigameStatus.WIN:
                 TextOutput.instance.Print("Game won.");
                 break;
             default:
