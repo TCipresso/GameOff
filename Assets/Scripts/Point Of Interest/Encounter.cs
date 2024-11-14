@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 /*[CreateAssetMenu(menuName = "Scriptable Objects/Encounters/Test Encounter")] DO NOT USE THIS ENCOUNTER FOR ANYTHING OTHER THAN TESTS
  * ALL EXTENSIONS OF ENCOUNTER SHOULD HAVE menuName = "Scriptable Objects/Encounters/abc FOR ITS CreateAssetMenu"*/
-public class Encounter : ScriptableObject
+public class Encounter : ScriptableObject, MinigameCaller
 {
     [TextArea(3, 10)]
     [SerializeField] string description = "This is a test encounter. Type \"continue\" to continue.";
     [SerializeField] Sprite subjectSprite;
+    [SerializeField] int minigame;
 
     /// <summary>
     /// Get the description of the encounter.
@@ -48,7 +49,12 @@ public class Encounter : ScriptableObject
     {
         foreach(string token in tokens)
         {
-            if (token.Equals("continue")) return true;
+            switch(token)
+            {
+                case "continue":
+                case "play":
+                    return true;
+            }
         }
         return false;
     }
@@ -68,9 +74,42 @@ public class Encounter : ScriptableObject
                     LeaveEncounter();
                     Debug.Log("Leaving Encounter");
                     return "Leaving Encounter";
+                case "play":
+                    StartMinigame();
+                    return "Starting Minigame";
             }
         }
 
         return $"Keyword not recognized for {name}.";
+    }
+
+    /// <summary>
+    /// Starts the <see cref="Minigame"/> this encounter is associated with
+    /// through the <see cref="MinigameManager"/>
+    /// </summary>
+    public void StartMinigame()
+    {
+        MinigameManager.instance.PlayMinigame(minigame, this);
+    }
+
+    /// <summary>
+    /// Handle the <see cref="MinigameStatus"/> from the <see cref="Minigame"/> I started.
+    /// </summary>
+    /// <param name="gameResult"></param>
+    public void CompleteMinigame(MinigameStatus gameResult)
+    {
+        switch(gameResult)
+        {
+            case MinigameStatus.LOST:
+                TextOutput.instance.Print("Game lost.");
+                break;
+            case MinigameStatus.WIN:
+                TextOutput.instance.Print("Game won.");
+                LeaveEncounter();
+                break;
+            default:
+                TextOutput.instance.Print($"Unknown game status {gameResult}");
+                break;
+        }
     }
 }
