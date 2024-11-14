@@ -8,7 +8,7 @@ using UnityEngine;
 public class MovementInput : MonoBehaviour
 {
     [SerializeField] MoveableObject puppet;
-    private static MovementInput instance;
+    public static MovementInput instance { get; private set; }
     Vector2 input = new Vector2();
 
     private void Awake()
