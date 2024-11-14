@@ -19,7 +19,6 @@ public class MovementInput : MonoBehaviour
         if (puppet == null) return;
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
-        Debug.Log($"{input.x} {input.y}");
         puppet.Move(input);
     }
 
