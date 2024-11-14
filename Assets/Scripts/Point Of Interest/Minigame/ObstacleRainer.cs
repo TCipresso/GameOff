@@ -10,7 +10,7 @@ public class ObstacleRainer : ObstacleSpawner
     public override void SpawnObstacle()
     {
         foreach(GameObject obstacle in obstacles) { 
-            obstacle.transform.position = new Vector2(obstacle.transform.position.x, 0); //This is assuming the obstacles are children of the spawner.
+            obstacle.transform.position = new Vector2(obstacle.transform.position.x, transform.position.y);
             obstacle.SetActive(false);
         }
         StartCoroutine(SpawnCoroutine());
@@ -32,17 +32,18 @@ public class ObstacleRainer : ObstacleSpawner
                 while (i != start && obstacles[i].activeSelf);
             }
             if (obstacles[i].activeSelf) continue;
-            obstacles[i].transform.position = new Vector2(obstacles[i].transform.position.x, 0);
+            obstacles[i].transform.position = new Vector2(obstacles[i].transform.position.x, transform.position.y);
             obstacles[i].SetActive(true);
         }
     }
 
     public override void StopSpawning()
     {
-        StopCoroutine(SpawnCoroutine());
+        StopAllCoroutines();
         foreach (GameObject obstacle in obstacles)
         {
-            obstacle.transform.position = new Vector2(obstacle.transform.position.x, 0);
+            obstacle.transform.position = new Vector2(obstacle.transform.position.x, transform.position.y);
+            obstacle.SetActive(false);
         }
     }
 }
