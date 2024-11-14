@@ -18,5 +18,5 @@ public abstract class Minigame : MonoBehaviour, ReportHit
 
     public abstract void EndMinigame();
 
-    public abstract void ReportHit();
+    public abstract void Report();
 }

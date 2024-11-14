@@ -51,8 +51,8 @@ public class ObstacleRainer : ObstacleSpawner
         }
     }
 
-    public override void ReportHit()
+    public override void Report()
     {
-        reporter.ReportHit();
+        reporter.Report();
     }
 }
