@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 /*[CreateAssetMenu(menuName = "Scriptable Objects/Encounters/Test Encounter")] DO NOT USE THIS ENCOUNTER FOR ANYTHING OTHER THAN TESTS
  * ALL EXTENSIONS OF ENCOUNTER SHOULD HAVE menuName = "Scriptable Objects/Encounters/abc FOR ITS CreateAssetMenu"*/
-public class Encounter : ScriptableObject
+public class Encounter : ScriptableObject, MinigameCaller
 {
     [TextArea(3, 10)]
     [SerializeField] string description = "This is a test encounter. Type \"continue\" to continue.";
     [SerializeField] Sprite subjectSprite;
+    [SerializeField] Minigame minigame;
 
     /// <summary>
     /// Get the description of the encounter.
@@ -48,7 +49,12 @@ public class Encounter : ScriptableObject
     {
         foreach(string token in tokens)
         {
-            if (token.Equals("continue")) return true;
+            switch(token)
+            {
+                case "continue":
+                case "play":
+                    return true;
+            }
         }
         return false;
     }
@@ -68,9 +74,39 @@ public class Encounter : ScriptableObject
                     LeaveEncounter();
                     Debug.Log("Leaving Encounter");
                     return "Leaving Encounter";
+                case "play":
+                    StartMinigame();
+                    Debug.Log($"{name} starting {minigame.name}");
+                    return "Starting Minigame";
             }
         }
 
         return $"Keyword not recognized for {name}.";
+    }
+
+    public void StartMinigame()
+    {
+        if(minigame == null)
+        {
+            Debug.LogError($"{name} does not have a minigame and you are trying to start one!");
+            return;
+        }
+        minigame.StartMinigame(this);
+    }
+
+    public void CompleteMinigame(int gameResult)
+    {
+        switch(gameResult)
+        {
+            case -1:
+                TextOutput.instance.Print("Game lost.");
+                break;
+            case 1:
+                TextOutput.instance.Print("Game won.");
+                break;
+            default:
+                TextOutput.instance.Print($"Unknown game status {gameResult}");
+                break;
+        }
     }
 }
