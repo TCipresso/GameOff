@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ReportHit
 {
-    public void Report();
+    public void ReportObstacleHit();
 }

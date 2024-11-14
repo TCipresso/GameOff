@@ -8,6 +8,6 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (reporter != null) reporter.Report();
+        if (reporter != null) reporter.ReportObstacleHit();
     }
 }

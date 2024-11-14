@@ -25,7 +25,7 @@ public class MidnightRunner : Minigame
         caller.CompleteMinigame(MinigameStatus.WIN);
     }
 
-    public override void Report()
+    public override void ReportObstacleHit()
     {
         StopAllCoroutines();
         EndMinigame();

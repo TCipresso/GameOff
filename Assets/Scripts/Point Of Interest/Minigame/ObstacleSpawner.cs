@@ -9,7 +9,15 @@ using UnityEngine;
 public abstract class ObstacleSpawner : MonoBehaviour, ReportHit
 {
     public ReportHit reporter { protected get; set; }
-    public abstract void Report();
+
+    /// <summary>
+    /// Tell reporter that one of my <see cref="Obstacle"/>s hit something.
+    /// </summary>
+    public abstract void ReportObstacleHit();
+
+    /// <summary>
+    /// Start the <see cref="Obstacle"/> spawning pattern.
+    /// </summary>
     public abstract void SpawnObstacle();
     public abstract void StopSpawning();
 }

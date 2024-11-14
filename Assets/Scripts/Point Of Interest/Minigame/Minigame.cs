@@ -18,5 +18,8 @@ public abstract class Minigame : MonoBehaviour, ReportHit
 
     public abstract void EndMinigame();
 
-    public abstract void Report();
+    /// <summary>
+    /// Allows <see cref="Obstacle"/>s to report when they get hit.
+    /// </summary>
+    public abstract void ReportObstacleHit();
 }
