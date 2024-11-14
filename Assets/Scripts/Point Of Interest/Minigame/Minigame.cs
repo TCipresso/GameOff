@@ -4,10 +4,15 @@ using UnityEngine;
 
 public abstract class Minigame : MonoBehaviour
 {
-    private MinigameCaller caller;
+    protected MinigameCaller caller;
     
     public virtual void StartMinigame(MinigameCaller caller)
     {
+        /*if(caller == null)
+        {
+            Debug.LogError($"{name} Cannot start a game with a null caller");
+            return;
+        }*/
         this.caller = caller;
     }
 
