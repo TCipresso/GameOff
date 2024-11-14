@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Minigame : MonoBehaviour
+public abstract class Minigame : MonoBehaviour, ReportHit
 {
     protected MinigameCaller caller;
     
@@ -17,4 +17,6 @@ public abstract class Minigame : MonoBehaviour
     }
 
     public abstract void EndMinigame();
+
+    public abstract void ReportHit();
 }

@@ -11,6 +11,10 @@ public class ObstacleRainer : ObstacleSpawner
     {
         foreach(GameObject obstacle in obstacles) { 
             obstacle.transform.position = new Vector2(obstacle.transform.position.x, transform.position.y);
+            if(obstacle.TryGetComponent<Obstacle>(out Obstacle cur))
+            {
+                cur.reporter = this;
+            }
             obstacle.SetActive(false);
         }
         StartCoroutine(SpawnCoroutine());
@@ -45,5 +49,10 @@ public class ObstacleRainer : ObstacleSpawner
             obstacle.transform.position = new Vector2(obstacle.transform.position.x, transform.position.y);
             obstacle.SetActive(false);
         }
+    }
+
+    public override void ReportHit()
+    {
+        reporter.ReportHit();
     }
 }
