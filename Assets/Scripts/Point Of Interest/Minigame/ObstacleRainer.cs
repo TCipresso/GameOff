@@ -10,12 +10,15 @@ public class ObstacleRainer : ObstacleSpawner
 {
     [SerializeField] List<GameObject> obstacles;
     [SerializeField] float timeBetweenSpawns;
+    [SerializeField] bool vertical = true;
 
     public override void SpawnObstacle()
     {
         foreach(GameObject obstacle in obstacles) { 
-            obstacle.transform.position = new Vector2(obstacle.transform.position.x, transform.position.y);
-            if(obstacle.TryGetComponent<Obstacle>(out Obstacle cur))
+            if (vertical) obstacle.transform.position = new Vector2(obstacle.transform.position.x, transform.position.y);
+            else obstacle.transform.position = new Vector2(transform.position.x, obstacle.transform.position.y);
+
+            if (obstacle.TryGetComponent<Obstacle>(out Obstacle cur))
             {
                 cur.reporter = this;
             }
@@ -43,7 +46,9 @@ public class ObstacleRainer : ObstacleSpawner
                 while (i != start && obstacles[i].activeSelf);
             }
             if (obstacles[i].activeSelf) continue;
-            obstacles[i].transform.position = new Vector2(obstacles[i].transform.position.x, transform.position.y);
+
+            if (vertical) obstacles[i].transform.position = new Vector2(obstacles[i].transform.position.x, transform.position.y);
+            else obstacles[i].transform.position = new Vector2(transform.position.x, obstacles[i].transform.position.y);
             obstacles[i].SetActive(true);
         }
     }
@@ -53,7 +58,8 @@ public class ObstacleRainer : ObstacleSpawner
         StopAllCoroutines();
         foreach (GameObject obstacle in obstacles)
         {
-            obstacle.transform.position = new Vector2(obstacle.transform.position.x, transform.position.y);
+            if (vertical) obstacle.transform.position = new Vector2(obstacle.transform.position.x, transform.position.y);
+            else obstacle.transform.position = new Vector2(transform.position.x, obstacle.transform.position.y);
             obstacle.SetActive(false);
         }
     }
