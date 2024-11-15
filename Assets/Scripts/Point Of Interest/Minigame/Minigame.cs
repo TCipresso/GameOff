@@ -9,6 +9,7 @@ using UnityEngine;
 public abstract class Minigame : MonoBehaviour, ReportHit
 {
     protected MinigameCaller caller;
+    [SerializeField] protected bool showResultOnUI = true;
     
     /// <summary>
     /// Starts the minigame.

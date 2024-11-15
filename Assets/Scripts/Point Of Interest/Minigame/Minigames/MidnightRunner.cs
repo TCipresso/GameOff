@@ -33,6 +33,7 @@ public class MidnightRunner : Minigame
     {
         yield return new WaitForSeconds(gameDuration);
         EndMinigame();
+        if (showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.WIN);
         caller?.CompleteMinigame(MinigameStatus.WIN); // Check for null caller
     }
 
@@ -40,6 +41,7 @@ public class MidnightRunner : Minigame
     {
         StopAllCoroutines();
         EndMinigame();
+        if (showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.LOST);
         caller?.CompleteMinigame(MinigameStatus.LOST); // Check for null caller
     }
 
