@@ -25,10 +25,7 @@ public class MinigameResultUI : MonoBehaviour
     /// <param name="minigameStatus">The resulting <see cref="MinigameStatus"/> you want to show</param>
     public void ShowResult(MinigameStatus minigameStatus)
     {
-        StopAllCoroutines();
-        if(win.activeSelf) win.SetActive(false);
-        if(lost.activeSelf) lost.SetActive(false);
-
+        HideResults();
         switch (minigameStatus)
         {
             case MinigameStatus.WIN:
@@ -46,13 +43,22 @@ public class MinigameResultUI : MonoBehaviour
     }
 
     /// <summary>
+    /// Turns off the UI element
+    /// </summary>
+    public void HideResults()
+    {
+        StopAllCoroutines();
+        if (win.activeSelf) win.SetActive(false);
+        if (lost.activeSelf) lost.SetActive(false);
+    }
+
+    /// <summary>
     /// Turn off UI element after duration.
     /// </summary>
     /// <returns>An <see cref="IEnumerator"/></returns>
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(duration);
-        if(win.activeSelf) win.SetActive(false);
-        if(lost.activeSelf) lost.SetActive(false);
+        HideResults();
     }
 }

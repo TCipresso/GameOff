@@ -16,6 +16,7 @@ public class MidnightRunner : Minigame
     public override void StartMinigame(MinigameCaller caller)
     {
         base.StartMinigame(caller);
+        StopAllCoroutines();
         runner.transform.localPosition = new Vector2(0, -250); //I did not want to mess with localPosition and position. This is going to bite someone in the ass.
         runner.SetActive(true);
 

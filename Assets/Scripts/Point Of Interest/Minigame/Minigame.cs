@@ -23,6 +23,7 @@ public abstract class Minigame : MonoBehaviour, ReportHit
             return;
         }
         this.caller = caller;
+        MinigameResultUI.instance.HideResults();
     }
 
     /// <summary>
