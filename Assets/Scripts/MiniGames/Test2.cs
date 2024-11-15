@@ -6,7 +6,7 @@ using UnityEngine;
 /// MidnightRunner is a <see cref="Minigame"/> where the player has 
 /// to avoid falling <see cref="Obstacle"/>s.
 /// </summary>
-public class MidnightRunner : Minigame
+public class Test2 : Minigame
 {
     [SerializeField] ObstacleSpawner spawner;
     [SerializeField] GameObject runner;

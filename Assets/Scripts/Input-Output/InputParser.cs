@@ -17,6 +17,8 @@ public class InputParser : MonoBehaviour
     [Header("Keyword Handlers")]
     [SerializeField] ColorManager colorManager;
 
+    [SerializeField] CheatCodeManager cheatCodeManager;
+
     /// <summary>
     /// Adds a listener to input field to parse input only
     /// when return is pressed. Print the text of the starting
@@ -45,13 +47,16 @@ public class InputParser : MonoBehaviour
     /// <param name="input">The input entered in the inputField</param>
     public void ParseInput(string input)
     {
-        if (input.Equals("")) return;
-        
+        if (string.IsNullOrEmpty(input)) return;
+
         TextOutput.instance.Print(input, ColorType.INPUTCOLOR, OutputCarrot.USER);
         string output = "";
 
         string[] tokens = input.ToLower().Split(" ");
-        if (GameManager.instance.IsPOIKeyword(tokens)) output = GameManager.instance.ParsePOIKeyword(tokens);
+        if (GameManager.instance.IsPOIKeyword(tokens))
+        {
+            output = GameManager.instance.ParsePOIKeyword(tokens);
+        }
         else
         {
             switch (tokens[0])
@@ -62,10 +67,23 @@ public class InputParser : MonoBehaviour
                 case "move":
                     output = GameManager.instance.AttemptMove(tokens);
                     break;
+                case "godmode":
+                    cheatCodeManager.TryActivateCheat("GodMode");
+                    output = "Godmode enabled!";
+                    break;
+                case "noclip":
+                    cheatCodeManager.TryActivateCheat("NoClip");
+                    output = "No Clip enabled!";
+                    break;
+
+
             }
         }
 
-        if (!output.Equals("")) TextOutput.instance.Print(output, ColorType.STORYCOLOR);
-        else TextOutput.instance.Print("Unrecognized Input", ColorType.HUDCOLOR);
+        if (!string.IsNullOrEmpty(output))
+        {
+            TextOutput.instance.Print(output, ColorType.STORYCOLOR);
+        }
     }
+
 }

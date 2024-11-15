@@ -8,5 +8,5 @@ public class CheatCode : ScriptableObject
     public string cheatName;
     public string[] alternateSpellings;
     public int maxUses;
-    public GameObject MiniGame;
+    public int minigameIndex;
 }

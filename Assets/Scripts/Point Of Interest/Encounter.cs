@@ -53,6 +53,7 @@ public class Encounter : ScriptableObject, MinigameCaller
             {
                 case "continue":
                 case "play":
+                case "godmode":
                     return true;
             }
         }
@@ -74,7 +75,10 @@ public class Encounter : ScriptableObject, MinigameCaller
                     LeaveEncounter();
                     Debug.Log("Leaving Encounter");
                     return "Leaving Encounter";
-                case "play":
+                case "play"://godmode test
+                    StartMinigame();
+                    return "Starting Minigame";
+                case "godmode"://godmode test
                     StartMinigame();
                     return "Starting Minigame";
             }
