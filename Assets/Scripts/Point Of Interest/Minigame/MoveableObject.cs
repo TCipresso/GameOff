@@ -8,14 +8,14 @@ using UnityEngine;
 /// </summary>
 public class MoveableObject : MonoBehaviour
 {
-    [SerializeField] float speed = 100f;
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] protected float speed = 100f;
+    [SerializeField] protected Rigidbody2D rb;
 
     /// <summary>
     /// Move the object's rigidbody in the direction of the input.
     /// </summary>
     /// <param name="input">A <see cref="Vector2"/> representing the user's input.</param>
-    public void Move(Vector2 input)
+    public virtual void Move(Vector2 input)
     {
         Vector3 direction = transform.right * input.x + transform.up * input.y;
 

@@ -15,5 +15,8 @@ MonoBehaviour:
   description: 'Encounter for POI - 2
 
     This is a test encounter. Type "continue"
-    to continue.'
+    to continue.
+
+    This one has Flappy Bird'
   subjectSprite: {fileID: 0}
+  minigame: 1
