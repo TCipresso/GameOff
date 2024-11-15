@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// JumpableObject is a <see cref="MoveableObject"/> that only jumps.
+/// </summary>
 public class JumpableObject : MoveableObject
 {
     [SerializeField] float jumpForce;

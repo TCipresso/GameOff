@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// FlappyBird is a <see cref="Minigame"/> that tries its best
+/// to be like the original game
+/// </summary>
 public class FlappyBird : Minigame
 {
     [SerializeField] float duration = 5f;
@@ -24,6 +28,10 @@ public class FlappyBird : Minigame
         StartCoroutine(Timer());
     }
 
+    /// <summary>
+    /// Ends the minigame after a duration.
+    /// </summary>
+    /// <returns>An <see cref="IEnumerator"/></returns>
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(duration);
