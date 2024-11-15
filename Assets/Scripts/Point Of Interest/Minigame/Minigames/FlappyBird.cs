@@ -27,15 +27,22 @@ public class FlappyBird : Minigame
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(duration);
-    }
-
-    public override void EndMinigame()
-    {
-        throw new System.NotImplementedException();
+        EndMinigame();
+        if (showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.WIN);
+        caller?.CompleteMinigame(MinigameStatus.WIN);
     }
 
     public override void ReportObstacleHit()
     {
-        throw new System.NotImplementedException();
+        EndMinigame();
+        if (showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.LOST);
+        caller?.CompleteMinigame(MinigameStatus.LOST);
+    }
+
+    public override void EndMinigame()
+    {
+        StopAllCoroutines();
+        bird.SetActive(false);
+        spawner.StopSpawning();
     }
 }

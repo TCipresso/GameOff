@@ -40,7 +40,6 @@ public class MidnightRunner : Minigame
 
     public override void ReportObstacleHit()
     {
-        StopAllCoroutines();
         EndMinigame();
         if (showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.LOST);
         caller?.CompleteMinigame(MinigameStatus.LOST); // Check for null caller
@@ -48,6 +47,7 @@ public class MidnightRunner : Minigame
 
     public override void EndMinigame()
     {
+        StopAllCoroutines();
         runner.SetActive(false);
         spawner.StopSpawning();
     }
