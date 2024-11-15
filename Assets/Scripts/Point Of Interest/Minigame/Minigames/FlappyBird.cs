@@ -12,7 +12,7 @@ public class FlappyBird : Minigame
     {
         base.StartMinigame(caller);
         StopAllCoroutines();
-        bird.transform.localPosition = Vector3.zero;
+        bird.transform.localPosition = new Vector2(-250, 0);
         bird.SetActive(true);
         if(bird.TryGetComponent<MoveableObject>(out MoveableObject moveableBird))
             MovementInput.instance.SetPuppet(moveableBird);
