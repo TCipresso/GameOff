@@ -1770,9 +1770,9 @@ MonoBehaviour:
   duration: 10
   passPoints: 100
   currPoints: 0
-  pointsPerClick: 10
-  timeBetweenDecay: 0.2
-  pointsLostPerDecay: 1
+  pointsPerClick: 20
+  timeBetweenDecay: 0.1
+  pointsLostPerDecay: 10
   button: {fileID: 948035912}
   progressObject: {fileID: 522319674}
 --- !u!1 &228907418
