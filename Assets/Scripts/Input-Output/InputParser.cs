@@ -17,6 +17,13 @@ public class InputParser : MonoBehaviour
     [SerializeField] ColorManager colorManager;
 
     [SerializeField] CheatCodeManager cheatCodeManager;
+    public static InputParser instance;
+
+    private void Awake()
+    {
+        if (instance != null) Destroy(gameObject);
+        instance = this;
+    }
 
     /// <summary>
     /// Adds a listener to input field to parse input only
