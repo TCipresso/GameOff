@@ -46,14 +46,22 @@ public class InputParser : MonoBehaviour
         TextOutput.instance.Print(GameManager.instance.GetCurrentPOIDesc(), ColorType.STORYCOLOR);
     }
 
+    /// <summary>
+    /// Activates the input area.
+    /// </summary>
     public virtual void ActivateInput()
     {
+        inputField.text = "";
         textArea.SetActive(true);
         carrot.SetActive(true);
     }
 
+    /// <summary>
+    /// Deactivates the input area
+    /// </summary>
     public virtual void DeactivateInput()
     {
+        inputField.text = "";
         textArea.SetActive(false);
         carrot.SetActive(false);
     }
