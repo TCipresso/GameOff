@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 
 /// <summary>
 /// InputParser is an object to be used with text input.
@@ -12,12 +11,21 @@ using UnityEditor.Experimental.GraphView;
 public class InputParser : MonoBehaviour
 {
     [Header("UI Elements")]
-    [SerializeField] TMP_InputField inputField;
+    [SerializeField] protected TMP_InputField inputField;
+    [SerializeField] protected GameObject textArea;
+    [SerializeField] protected GameObject carrot;
 
     [Header("Keyword Handlers")]
     [SerializeField] ColorManager colorManager;
 
     [SerializeField] CheatCodeManager cheatCodeManager;
+    public static InputParser instance { get; private set; }
+
+    private void Awake()
+    {
+        if (instance != null) Destroy(gameObject);
+        instance = this;
+    }
 
     /// <summary>
     /// Adds a listener to input field to parse input only
@@ -39,13 +47,33 @@ public class InputParser : MonoBehaviour
     }
 
     /// <summary>
+    /// Activates the input area.
+    /// </summary>
+    public virtual void ActivateInput()
+    {
+        inputField.text = "";
+        textArea.SetActive(true);
+        carrot.SetActive(true);
+    }
+
+    /// <summary>
+    /// Deactivates the input area
+    /// </summary>
+    public virtual void DeactivateInput()
+    {
+        inputField.text = "";
+        textArea.SetActive(false);
+        carrot.SetActive(false);
+    }
+
+    /// <summary>
     /// Parse input tokenizes the input inserted by the player. It
     /// first checks if it is an input related to the scene and then
     /// checks if it is an input related to a keyword. The tokens are 
     /// then passed to the correct handler.
     /// </summary>
     /// <param name="input">The input entered in the inputField</param>
-    public void ParseInput(string input)
+    public virtual void ParseInput(string input)
     {
         if (string.IsNullOrEmpty(input)) return;
 

@@ -15,5 +15,8 @@ MonoBehaviour:
   description: 'Encounter for POI - 4
 
     This is a test encounter. Type "continue"
-    to continue.'
+    to continue.
+
+    This one has Prompt Type.'
   subjectSprite: {fileID: 0}
+  minigame: 3

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -28,14 +29,30 @@ public enum OutputCarrot {
     QUESTION 
 }
 
+[System.Serializable]
+public struct OutputString
+{
+    public string text;
+    public OutputCarrot outputCarrot;
+    public ColorType colorType;
+
+    public OutputString(string text, OutputCarrot outputCarrot=OutputCarrot.SYSTEM, ColorType colorType = ColorType.HUDCOLOR)
+    {
+        this.text = text;
+        this.outputCarrot = outputCarrot;
+        this.colorType = colorType;
+    }
+}
+
 /// <summary>
 /// A singleton object to display output text to.
 /// </summary>
 public class TextOutput : MonoBehaviour
 {
     public static TextOutput instance { get; private set; }
-    [SerializeField] GameObject textPrefab;
-    [SerializeField] Transform outputStore;
+    [SerializeField] ColorStore colorStore;
+    [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    private List<OutputString> outputs = new List<OutputString>(20);
 
     /// <summary>
     /// Singleton.
@@ -55,27 +72,24 @@ public class TextOutput : MonoBehaviour
     /// <param name="outputCarrot">The <see cref="OutputCarrot"/> to be prefixed to the output.</param>
     public void Print(string text, ColorType colorType=ColorType.HUDCOLOR, OutputCarrot outputCarrot=OutputCarrot.SYSTEM)
     {
-        GameObject textObject;
-        if(outputStore.childCount == 0) {
-            textObject = transform.GetChild(0).gameObject;
-            Transform sacrifice = textObject.transform;
-            sacrifice.SetParent(outputStore);
-            sacrifice.localPosition.Set(0, 0, 0);
-            sacrifice.SetParent(transform);
-        }
-        else
+        OutputString newOutput = new OutputString(text, outputCarrot, colorType);
+        if(outputs.Count == outputs.Capacity) outputs.RemoveAt(0);
+        outputs.Add(newOutput);
+        ShowText();
+    }
+
+    public void ShowText()
+    {
+        StringBuilder output = new StringBuilder();
+        foreach (OutputString outputString in outputs)
         {
-            textObject = outputStore.GetChild(0).gameObject;
-            textObject.transform.SetParent(transform);
+            Color32 outputColor = colorStore.GetColor(outputString.colorType);
+            output.Append(
+                $"<color=#{outputColor.r.ToString("x2")}{outputColor.g.ToString("x2")}{outputColor.b.ToString("x2")}{outputColor.a.ToString("x2")}>" +
+                $"{GetCarrot(outputString.outputCarrot)} {outputString.text}</color>\n");
         }
-        
-        string outputString = GetCarrot(outputCarrot);
-        outputString += text;
-        
-        textObject.GetComponent<TextMeshProUGUI>().text = outputString;
-        Colorable textColor = textObject.GetComponent<Colorable>();
-        textColor.colorType = colorType;
-        textColor.UpdateColor();
+
+        textMeshProUGUI.text = output.ToString();
     }
 
     /// <summary>
