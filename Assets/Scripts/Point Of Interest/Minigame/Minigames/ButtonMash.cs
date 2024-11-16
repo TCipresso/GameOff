@@ -11,6 +11,7 @@ public class ButtonMash : Minigame
     [SerializeField] float timeBetweenDecay = .2f;
     [SerializeField] float pointsLostPerDecay = 1f;
     [SerializeField] GameObject button;
+    [SerializeField] Transform progressObject;
 
     public override void StartMinigame(MinigameCaller caller)
     {
@@ -18,6 +19,8 @@ public class ButtonMash : Minigame
         currPoints = 0f;
         base.StartMinigame(caller);
         button.SetActive(true);
+        progressObject.gameObject.SetActive(true);
+        progressObject.localScale = Vector2.zero;
         StartCoroutine(Timer());
         StartCoroutine(Decay());
     }
@@ -40,9 +43,17 @@ public class ButtonMash : Minigame
     public void LosePoints(float points)
     {
         if (currPoints <= 0) return;
-        
+
         currPoints -= points;
         if (currPoints < 0) currPoints = 0;
+        ShowProgress();
+    }
+
+    private void ShowProgress()
+    {
+        float percentage = currPoints / passPoints;
+        if (percentage > 1) percentage = 1;
+        progressObject.localScale = new Vector2(percentage, percentage);
     }
 
     public void EarnPoints()
@@ -53,11 +64,14 @@ public class ButtonMash : Minigame
     public void EarnPoints(float points)
     {
         currPoints += points;
+        ShowProgress();
     }
 
     public override void EndMinigame()
     {
         button.SetActive(false);
+        progressObject.localScale = Vector2.zero;
+        progressObject.gameObject.SetActive(false);
         StopAllCoroutines();
         if (currPoints >= passPoints) {
             caller.CompleteMinigame(MinigameStatus.WIN);
