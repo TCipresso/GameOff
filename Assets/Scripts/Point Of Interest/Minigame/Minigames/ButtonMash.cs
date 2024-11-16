@@ -51,7 +51,7 @@ public class ButtonMash : Minigame
 
     private void ShowProgress()
     {
-        float percentage = currPoints / passPoints;
+        float percentage = currPoints / (passPoints * 1.25f);
         if (percentage > 1) percentage = 1;
         progressObject.localScale = new Vector2(percentage, percentage);
     }
