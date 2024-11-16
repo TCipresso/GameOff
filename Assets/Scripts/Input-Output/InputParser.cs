@@ -19,7 +19,7 @@ public class InputParser : MonoBehaviour
     [SerializeField] ColorManager colorManager;
 
     [SerializeField] CheatCodeManager cheatCodeManager;
-    public static InputParser instance;
+    public static InputParser instance { get; private set; }
 
     private void Awake()
     {
