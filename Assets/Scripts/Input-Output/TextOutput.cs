@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -30,6 +29,7 @@ public enum OutputCarrot {
     QUESTION 
 }
 
+[System.Serializable]
 public struct OutputString
 {
     public string text;
@@ -51,8 +51,8 @@ public class TextOutput : MonoBehaviour
 {
     public static TextOutput instance { get; private set; }
     [SerializeField] ColorStore colorStore;
-    private List<OutputString> outputs = new List<OutputString>(20);
     [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    private List<OutputString> outputs = new List<OutputString>(20);
 
     /// <summary>
     /// Singleton.
@@ -75,7 +75,11 @@ public class TextOutput : MonoBehaviour
         OutputString newOutput = new OutputString(text, outputCarrot, colorType);
         if(outputs.Count == outputs.Capacity) outputs.RemoveAt(0);
         outputs.Add(newOutput);
-        
+        ShowText();
+    }
+
+    public void ShowText()
+    {
         StringBuilder output = new StringBuilder();
         foreach (OutputString outputString in outputs)
         {

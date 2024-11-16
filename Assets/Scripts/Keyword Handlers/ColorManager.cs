@@ -48,6 +48,7 @@ public class ColorManager : KeywordHandler
         }
 
         colorStore.UpdateColorables();
+        TextOutput.instance.ShowText();
         return "Successfully updated colors.";
     }
 
