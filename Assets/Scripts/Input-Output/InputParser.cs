@@ -12,6 +12,8 @@ public class InputParser : MonoBehaviour
 {
     [Header("UI Elements")]
     [SerializeField] TMP_InputField inputField;
+    [SerializeField] GameObject textArea;
+    [SerializeField] GameObject carrot;
 
     [Header("Keyword Handlers")]
     [SerializeField] ColorManager colorManager;
@@ -42,6 +44,18 @@ public class InputParser : MonoBehaviour
         });
 
         TextOutput.instance.Print(GameManager.instance.GetCurrentPOIDesc(), ColorType.STORYCOLOR);
+    }
+
+    public void ActivateInput()
+    {
+        textArea.SetActive(true);
+        carrot.SetActive(true);
+    }
+
+    public void DeactivateInput()
+    {
+        textArea.SetActive(false);
+        carrot.SetActive(false);
     }
 
     /// <summary>
