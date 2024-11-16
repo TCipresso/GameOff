@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -9,16 +10,21 @@ public class PromptType : Minigame
     [SerializeField] int curPoints = 0;
     [SerializeField] int winPoints = 3;
     [SerializeField] TextMeshProUGUI promptArea;
+    [SerializeField] MinigameTextInput inputArea;
     [SerializeField] List<string> prompts = new List<string>();
     private string curPrompt = string.Empty;
     private int curPromptIndex = 0;
 
     public override void StartMinigame(MinigameCaller caller)
     {
+        StopAllCoroutines();
         base.StartMinigame(caller);
+        curPoints = 0;
         promptArea.gameObject.SetActive(true);
         promptArea.text = "";
         InputParser.instance.DeactivateInput();
+        inputArea.promptMinigame = this;
+        inputArea.ActivateInput();
         NewPrompt();
         StartCoroutine(Timer());
     }
@@ -41,8 +47,11 @@ public class PromptType : Minigame
 
     public override void EndMinigame()
     {
+        StopAllCoroutines();
         promptArea.text = "";
         promptArea.gameObject.SetActive(false);
+        inputArea.DeactivateInput();
+        InputParser.instance.ActivateInput();
         if (curPoints >= winPoints) {
             caller.CompleteMinigame(MinigameStatus.WIN);
             if (showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.WIN);
@@ -69,6 +78,12 @@ public class PromptType : Minigame
 
     public virtual void ReadTextInput(string[] tokens)
     {
-        throw new System.NotImplementedException();
+        StringBuilder stringBuilder = new StringBuilder();
+        foreach (string token in tokens)
+        {
+            stringBuilder.Append(token);
+            stringBuilder.Append(" ");
+        }
+        ReadTextInput(stringBuilder.ToString());
     }
 }

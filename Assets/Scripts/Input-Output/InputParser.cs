@@ -11,9 +11,9 @@ using TMPro;
 public class InputParser : MonoBehaviour
 {
     [Header("UI Elements")]
-    [SerializeField] TMP_InputField inputField;
-    [SerializeField] GameObject textArea;
-    [SerializeField] GameObject carrot;
+    [SerializeField] protected TMP_InputField inputField;
+    [SerializeField] protected GameObject textArea;
+    [SerializeField] protected GameObject carrot;
 
     [Header("Keyword Handlers")]
     [SerializeField] ColorManager colorManager;
@@ -46,13 +46,13 @@ public class InputParser : MonoBehaviour
         TextOutput.instance.Print(GameManager.instance.GetCurrentPOIDesc(), ColorType.STORYCOLOR);
     }
 
-    public void ActivateInput()
+    public virtual void ActivateInput()
     {
         textArea.SetActive(true);
         carrot.SetActive(true);
     }
 
-    public void DeactivateInput()
+    public virtual void DeactivateInput()
     {
         textArea.SetActive(false);
         carrot.SetActive(false);
@@ -65,7 +65,7 @@ public class InputParser : MonoBehaviour
     /// then passed to the correct handler.
     /// </summary>
     /// <param name="input">The input entered in the inputField</param>
-    public void ParseInput(string input)
+    public virtual void ParseInput(string input)
     {
         if (string.IsNullOrEmpty(input)) return;
 
