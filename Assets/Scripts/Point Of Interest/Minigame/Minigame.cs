@@ -10,6 +10,7 @@ public abstract class Minigame : MonoBehaviour, ReportHit
 {
     protected MinigameCaller caller;
     [SerializeField] protected bool showResultOnUI = true;
+    [SerializeField] protected TimerUI timerUIElement;
     
     /// <summary>
     /// Starts the minigame.

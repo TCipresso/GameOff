@@ -29,7 +29,8 @@ public class ButtonMash : Minigame
         button.SetActive(true);
         progressObject.gameObject.SetActive(true);
         progressObject.localScale = Vector2.zero;
-        
+
+        timerUIElement.StartTimer(duration);
         StartCoroutine(Timer());
         StartCoroutine(Decay());
     }
@@ -105,7 +106,8 @@ public class ButtonMash : Minigame
         button.SetActive(false);
         progressObject.localScale = Vector2.zero;
         progressObject.gameObject.SetActive(false);
-        
+
+        timerUIElement.StopTimer();
         StopAllCoroutines();
         
         if (currPoints >= passPoints) {

@@ -37,6 +37,7 @@ public class PromptType : Minigame
         inputArea.ActivateInput();
 
         NewPrompt();
+        timerUIElement.StartTimer(duration);
         StartCoroutine(Timer());
     }
 
@@ -67,7 +68,8 @@ public class PromptType : Minigame
     public override void EndMinigame()
     {
         StopAllCoroutines();
-        
+        timerUIElement.StopTimer();
+
         promptArea.text = "";
         promptArea.gameObject.SetActive(false);
         inputArea.DeactivateInput();

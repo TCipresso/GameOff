@@ -27,6 +27,7 @@ public class MidnightRunner : Minigame
 
         spawner.reporter = this;
         spawner.SpawnObstacle();
+        timerUIElement.StartTimer(gameDuration);
         StartCoroutine(Timer());
     }
 
@@ -47,6 +48,7 @@ public class MidnightRunner : Minigame
 
     public override void EndMinigame()
     {
+        timerUIElement.StopTimer();
         StopAllCoroutines();
         runner.SetActive(false);
         spawner.StopSpawning();
