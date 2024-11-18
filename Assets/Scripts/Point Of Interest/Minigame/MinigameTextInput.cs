@@ -41,6 +41,6 @@ public class MinigameTextInput : InputParser
     /// <param name="input">The input the player entered in the inputField.</param>
     public override void ParseInput(string input)
     {
-        promptMinigame.ReadTextInput(input);
+        promptMinigame.ReadTextInput(input.Split(' '));
     }
 }

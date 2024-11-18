@@ -12,16 +12,16 @@ using UnityEngine;
 public class PromptType : Minigame
 {
     [Header("Game Statistics")]
-    [SerializeField] float duration = 10f;
-    [SerializeField] int curPoints = 0;
-    [SerializeField] int winPoints = 3;
-    [SerializeField] List<string> prompts = new List<string>();
-    private string curPrompt = string.Empty;
-    private int curPromptIndex = 0;
+    [SerializeField] protected float duration = 10f;
+    [SerializeField] protected int curPoints = 0;
+    [SerializeField] protected int winPoints = 3;
+    [SerializeField] protected List<string> prompts = new List<string>();
+    protected string curPrompt = string.Empty;
+    protected int curPromptIndex = 0;
 
     [Header("UI Elements")]
-    [SerializeField] TextMeshProUGUI promptArea;
-    [SerializeField] MinigameTextInput inputArea;
+    [SerializeField] protected TextMeshProUGUI promptArea;
+    [SerializeField] protected MinigameTextInput inputArea;
     
 
     public override void StartMinigame(MinigameCaller caller)
@@ -45,7 +45,7 @@ public class PromptType : Minigame
     /// Gets a new prompt from the list and presents it to the player.
     /// Tries to avoid duplicate prompts.
     /// </summary>
-    private void NewPrompt()
+    protected virtual void NewPrompt()
     {
         int prev = curPromptIndex;
         curPromptIndex = Random.Range(0, prompts.Count);
