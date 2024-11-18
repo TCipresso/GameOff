@@ -10,5 +10,7 @@ public enum MinigameStatus
 {
     LOST = -1, 
     INPROGRESS = 0, 
-    WIN = 1
+    WIN = 1,
+    FISTBUMP,
+    MISSBUMP
 }

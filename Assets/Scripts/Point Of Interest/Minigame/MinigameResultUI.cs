@@ -10,6 +10,8 @@ public class MinigameResultUI : MonoBehaviour
     public static MinigameResultUI instance { get; private set; }
     [SerializeField] GameObject win;
     [SerializeField] GameObject lost;
+    [SerializeField] GameObject fistBump;
+    [SerializeField] GameObject missBump;
     [SerializeField] float duration = 2f;
 
     private void Awake()
@@ -36,6 +38,14 @@ public class MinigameResultUI : MonoBehaviour
                 lost.SetActive(true);
                 StartCoroutine(Timer());
                 break;
+            case MinigameStatus.FISTBUMP:
+                fistBump.SetActive(true);
+                StartCoroutine(Timer());
+                break;
+            case MinigameStatus.MISSBUMP:
+                missBump.SetActive(true);
+                StartCoroutine(Timer());
+                break;
             default:
                 Debug.LogWarning("Unkown MinigameStatus sent to MinigameResultUI");
                 break;
@@ -50,6 +60,8 @@ public class MinigameResultUI : MonoBehaviour
         StopAllCoroutines();
         if (win.activeSelf) win.SetActive(false);
         if (lost.activeSelf) lost.SetActive(false);
+        if (fistBump.activeSelf) fistBump.SetActive(false);
+        if (missBump.activeSelf) missBump.SetActive(false);
     }
 
     /// <summary>
