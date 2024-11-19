@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0fd8f53b9809dd47ab01e6cce91210d, type: 3}
-  m_Name: E - 11
+  m_Name: E - 12
   m_EditorClassIdentifier: 
-  description: 'Encounter for POI - 2
+  description: 'Encounter for POI - 3
 
     This is a test encounter. Type "continue"
     to continue.
 
-    This one has Pony Island.'
+    This one has Three Card Monte.'
   subjectSprite: {fileID: 0}
   minigame: 11
