@@ -12,7 +12,6 @@ public class MidnightRunner : Minigame
     [SerializeField] GameObject runner;
     [SerializeField] float gameDuration;
 
-
     public override void StartMinigame(MinigameCaller caller)
     {
         base.StartMinigame(caller);
