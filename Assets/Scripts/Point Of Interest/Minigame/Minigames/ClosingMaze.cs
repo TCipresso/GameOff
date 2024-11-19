@@ -13,7 +13,7 @@ public class ClosingMaze : Minigame
         StopAllCoroutines();
         base.StartMinigame(caller);
 
-        runner.transform.localPosition = new Vector2(-250, 0);
+        runner.transform.localPosition = new Vector2(-275, 0);
         runner.SetActive(true);
         if (runner.TryGetComponent<MoveableObject>(out MoveableObject movableRunner))
         {
