@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// PrancableObject is a <see cref="MoveableObject"/> that just jumps.
+/// Unliked <see cref="JumpableObject"/>, this object can only jump once 
+/// and can only jump again when something tells it it can.
+/// </summary>
 public class PrancableObject : MoveableObject
 {
     [SerializeField] float jumpForce;
@@ -20,6 +25,9 @@ public class PrancableObject : MoveableObject
         }
     }
 
+    /// <summary>
+    /// Allows the prancable object to jump again.
+    /// </summary>
     public void MakeJumpable()
     {
         canJump = true;

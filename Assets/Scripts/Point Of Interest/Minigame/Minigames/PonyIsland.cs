@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// PonyIsland is a <see cref="Minigame"/> where the 
+/// player has to jump over fences.
+/// </summary>
 public class PonyIsland : Minigame
 {
     [SerializeField] float duration;

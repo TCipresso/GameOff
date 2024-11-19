@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ObstacleClosingMaze is a <see cref="ObstacleSpawner"/> that spawns 
+/// a maze and a wall that closes in on the player.
+/// </summary>
 public class ObstacleClosingMaze : ObstacleSpawner
 {
     [SerializeField] Obstacle wall;
     [SerializeField] Vector2 wallStartingPosition = Vector2.zero;
     [SerializeField] List<Obstacle> mazes = new List<Obstacle>();
+    
     public override void ReportObstacleHit()
     {
         reporter.ReportObstacleHit();
