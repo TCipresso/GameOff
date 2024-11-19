@@ -20,5 +20,5 @@ MonoBehaviour:
   - direction: right
     destination: {fileID: 11400000}
   image: {fileID: 0}
-  encounter: {fileID: 11400000, guid: f1ab861aabe604e4ca6b8d6ca86f6f1e, type: 2}
+  encounter: {fileID: 11400000, guid: b100d4d3904ac9843991461ff86791c2, type: 2}
   noEncounterString: This room is empty. You are safe.
