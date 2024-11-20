@@ -4627,6 +4627,16 @@ MonoBehaviour:
   - Conscript
   - Wellbeing
   - Entropy
+  - Enigma
+  - Arcane
+  - Bewilder
+  - Mystic
+  - Ambiguous
+  - Apparent
+  - Cipher
+  - Sinners
+  - Decrypt
+  - Altman
   promptArea: {fileID: 1321716464}
   inputArea: {fileID: 1491552932}
 --- !u!1 &566366844
@@ -5835,6 +5845,16 @@ MonoBehaviour:
   - Conscript
   - Wellbeing
   - Entropy
+  - Enigma
+  - Arcane
+  - Bewilder
+  - Mystic
+  - Ambiguous
+  - Apparent
+  - Cipher
+  - Sinners
+  - Decrypt
+  - Altman
   promptArea: {fileID: 1174786887}
   inputArea: {fileID: 1491552932}
   progressText: {fileID: 850026731}
@@ -9502,6 +9522,16 @@ MonoBehaviour:
   - Conscript
   - Wellbeing
   - Entropy
+  - Enigma
+  - Arcane
+  - Bewilder
+  - Mystic
+  - Ambiguous
+  - Apparent
+  - Cipher
+  - Sinners
+  - Decrypt
+  - Altman
   promptArea: {fileID: 1599993524}
   inputArea: {fileID: 1491552932}
 --- !u!1 &1088648669
