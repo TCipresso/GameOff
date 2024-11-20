@@ -34,8 +34,6 @@ public class SkibidiRizzler : PromptType
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(duration);
-        caller.CompleteMinigame(MinigameStatus.LOST);
-        MinigameResultUI.instance.ShowResult(MinigameStatus.LOST);
         EndMinigame();
     }
 
@@ -68,8 +66,7 @@ public class SkibidiRizzler : PromptType
         {
             if (prompts.Contains(token.ToLower()))
             {
-                caller.CompleteMinigame(MinigameStatus.WIN);
-                MinigameResultUI.instance.ShowResult(MinigameStatus.FISTBUMP);
+                curPoints = winPoints;
                 EndMinigame();
             }
         }

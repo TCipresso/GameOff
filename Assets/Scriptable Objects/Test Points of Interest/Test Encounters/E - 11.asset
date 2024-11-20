@@ -19,4 +19,4 @@ MonoBehaviour:
 
     This one has Pony Island.'
   subjectSprite: {fileID: 0}
-  minigame: 11
+  minigame: 10
