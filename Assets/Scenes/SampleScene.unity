@@ -19427,6 +19427,9 @@ MonoBehaviour:
   wallStartingPosition: {x: -900, y: 0}
   mazes:
   - {fileID: 1218163903}
+  - {fileID: 1687116313}
+  - {fileID: 406723014}
+  - {fileID: 879971943}
 --- !u!1 &1687039745
 GameObject:
   m_ObjectHideFlags: 0
