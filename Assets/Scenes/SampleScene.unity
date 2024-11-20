@@ -11523,7 +11523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916a3e5cb61c37645b6af3d633b5713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 27.5
   onFixedUpdate: 0
   horizontal: 1
   vertical: 0
@@ -19426,7 +19426,7 @@ MonoBehaviour:
   wall: {fileID: 1068141764}
   wallStartingPosition: {x: -900, y: 0}
   mazes:
-  - {fileID: 879971943}
+  - {fileID: 1218163903}
 --- !u!1 &1687039745
 GameObject:
   m_ObjectHideFlags: 0
