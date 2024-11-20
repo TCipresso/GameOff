@@ -42,6 +42,7 @@ public class PonyIsland : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         timerUIElement.StopTimer();
         StopAllCoroutines();
         spawner.StopSpawning();

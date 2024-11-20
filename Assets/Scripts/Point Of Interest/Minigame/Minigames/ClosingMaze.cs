@@ -36,6 +36,7 @@ public class ClosingMaze : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         StopAllCoroutines();
         obstacleSpawner.StopSpawning();
         runner.SetActive(false);

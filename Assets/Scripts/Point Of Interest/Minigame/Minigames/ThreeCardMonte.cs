@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class ThreeCardMonte : Minigame
 {
-    [SerializeField] bool[] winner = new bool[3];
+    bool[] winner = new bool[3];
     [SerializeField] int shuffles = 10;
     [SerializeField] GameObject selectionBlocker;
     [SerializeField] GameObject hint;
@@ -88,6 +88,7 @@ public class ThreeCardMonte : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         StopAllCoroutines();
         selectionBlocker.SetActive(false);
         foreach(GameObject button in buttons)

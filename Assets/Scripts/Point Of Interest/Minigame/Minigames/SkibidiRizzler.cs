@@ -41,6 +41,7 @@ public class SkibidiRizzler : PromptType
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         StopAllCoroutines();
         timerUIElement.StopTimer();
         promptArea.gameObject.SetActive(false);

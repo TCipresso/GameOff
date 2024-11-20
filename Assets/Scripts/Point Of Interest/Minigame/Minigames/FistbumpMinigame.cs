@@ -43,6 +43,7 @@ public class FistbumpMinigame : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         StopAllCoroutines();
         timerUIElement.StopTimer();
         button.SetActive(false);

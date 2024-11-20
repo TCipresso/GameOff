@@ -50,6 +50,7 @@ public class FlappyBird : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         timerUIElement.StopTimer();
         StopAllCoroutines();
         bird.SetActive(false);

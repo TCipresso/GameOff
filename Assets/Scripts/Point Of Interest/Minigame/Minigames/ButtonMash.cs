@@ -103,6 +103,7 @@ public class ButtonMash : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         button.SetActive(false);
         progressObject.localScale = Vector2.zero;
         progressObject.gameObject.SetActive(false);

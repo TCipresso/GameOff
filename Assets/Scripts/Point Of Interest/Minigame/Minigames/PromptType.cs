@@ -67,6 +67,7 @@ public class PromptType : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         StopAllCoroutines();
         timerUIElement.StopTimer();
 

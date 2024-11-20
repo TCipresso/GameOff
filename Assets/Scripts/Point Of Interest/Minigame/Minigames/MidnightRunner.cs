@@ -47,6 +47,7 @@ public class MidnightRunner : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
         timerUIElement.StopTimer();
         StopAllCoroutines();
         runner.SetActive(false);
