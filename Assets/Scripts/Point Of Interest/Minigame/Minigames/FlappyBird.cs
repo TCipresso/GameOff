@@ -25,6 +25,7 @@ public class FlappyBird : Minigame
 
         spawner.reporter = this;
         spawner.SpawnObstacle();
+        timerUIElement.StartTimer(duration);
         StartCoroutine(Timer());
     }
 
@@ -49,6 +50,8 @@ public class FlappyBird : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
+        timerUIElement.StopTimer();
         StopAllCoroutines();
         bird.SetActive(false);
         spawner.StopSpawning();

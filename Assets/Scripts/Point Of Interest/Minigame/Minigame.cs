@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Minigame is an abstract class that represents all minigames
@@ -10,6 +11,8 @@ public abstract class Minigame : MonoBehaviour, ReportHit
 {
     protected MinigameCaller caller;
     [SerializeField] protected bool showResultOnUI = true;
+    [SerializeField] protected TimerUI timerUIElement;
+    [SerializeField] protected GameObject background;
     
     /// <summary>
     /// Starts the minigame.
@@ -23,13 +26,17 @@ public abstract class Minigame : MonoBehaviour, ReportHit
             return;
         }
         this.caller = caller;
+        background.SetActive(true);
         MinigameResultUI.instance.HideResults();
     }
 
     /// <summary>
     /// Cleans up the minigame and tells the caller the ending <see cref="MinigameStatus"/>
     /// </summary>
-    public abstract void EndMinigame();
+    public virtual void EndMinigame()
+    {
+        background.SetActive(false);
+    }
 
     /// <summary>
     /// Allows <see cref="Obstacle"/>s to report when they get hit.

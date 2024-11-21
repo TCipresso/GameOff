@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: POI - 3
   m_EditorClassIdentifier: 
   routes:
-  - direction: left
+  - direction: right
     destination: {fileID: 11400000, guid: 197cf5af939de2a45aab7904cdf1e805, type: 2}
   - direction: forward
     destination: {fileID: 11400000, guid: a6544291a262a8b4dabe644ef3ebcd7a, type: 2}
-  - direction: right
+  - direction: left
     destination: {fileID: 11400000, guid: c922461baaf39a54c914cb3f4d4ead77, type: 2}
   image: {fileID: 0}
-  encounter: {fileID: 11400000, guid: 9bd2f34fb34f7cb48959770ae3f4e62a, type: 2}
+  encounter: {fileID: 11400000, guid: 3f0ac5c82dee0ee469aaaa3c587c8b15, type: 2}
+  noEncounterString: This room is empty. You are safe.

@@ -12,7 +12,6 @@ public class MidnightRunner : Minigame
     [SerializeField] GameObject runner;
     [SerializeField] float gameDuration;
 
-
     public override void StartMinigame(MinigameCaller caller)
     {
         base.StartMinigame(caller);
@@ -27,6 +26,7 @@ public class MidnightRunner : Minigame
 
         spawner.reporter = this;
         spawner.SpawnObstacle();
+        timerUIElement.StartTimer(gameDuration);
         StartCoroutine(Timer());
     }
 
@@ -47,6 +47,8 @@ public class MidnightRunner : Minigame
 
     public override void EndMinigame()
     {
+        base.EndMinigame();
+        timerUIElement.StopTimer();
         StopAllCoroutines();
         runner.SetActive(false);
         spawner.StopSpawning();
