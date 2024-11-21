@@ -1,115 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using TMPro;
 using UnityEngine;
 
-/// <summary>
-/// Enum to denote what type of > to prefix to output.
-/// </summary>
-public enum OutputCarrot { 
-    /// <summary>
-    /// No >
-    /// </summary>
-    NONE, 
-
-    /// <summary>
-    /// />
-    /// </summary>
-    USER, 
-
-    /// <summary>
-    /// >
-    /// </summary>
-    SYSTEM,
-    
-    /// <summary>
-    /// ?>
-    /// </summary>
-    QUESTION 
-}
-
-[System.Serializable]
-public struct OutputString
+public enum OutputCarrot
 {
-    public string text;
-    public OutputCarrot outputCarrot;
-    public ColorType colorType;
-
-    public OutputString(string text, OutputCarrot outputCarrot=OutputCarrot.SYSTEM, ColorType colorType = ColorType.HUDCOLOR)
-    {
-        this.text = text;
-        this.outputCarrot = outputCarrot;
-        this.colorType = colorType;
-    }
+    NONE,
+    USER,
+    SYSTEM,
+    QUESTION
 }
 
-/// <summary>
-/// A singleton object to display output text to.
-/// </summary>
 public class TextOutput : MonoBehaviour
 {
     public static TextOutput instance { get; private set; }
-    [SerializeField] ColorStore colorStore;
-    [SerializeField] TextMeshProUGUI textMeshProUGUI;
-    private List<OutputString> outputs = new List<OutputString>(20);
 
-    /// <summary>
-    /// Singleton.
-    /// </summary>
+    [Header("TextMeshPro Settings")]
+    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] private float typingSpeed = 0.05f;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip typingSound;
+    [SerializeField] private int charsPerSound = 5;
+
+    private Queue<string> messageQueue = new Queue<string>();
+    private bool isTyping = false;
+
     private void Awake()
     {
         if (instance != null)
             Destroy(gameObject);
-        instance = this;
+        else
+            instance = this;
     }
 
-    /// <summary>
-    /// Print an output to the screen.
-    /// </summary>
-    /// <param name="text">Text to output.</param>
-    /// <param name="colorType">The <see cref="ColorType"/> to color the output.</param>
-    /// <param name="outputCarrot">The <see cref="OutputCarrot"/> to be prefixed to the output.</param>
-    public void Print(string text, ColorType colorType=ColorType.HUDCOLOR, OutputCarrot outputCarrot=OutputCarrot.SYSTEM)
+    public void Print(string text, OutputCarrot outputCarrot = OutputCarrot.SYSTEM)
     {
-        OutputString newOutput = new OutputString(text, outputCarrot, colorType);
-        if(outputs.Count == outputs.Capacity) outputs.RemoveAt(0);
-        outputs.Add(newOutput);
-        ShowText();
-    }
-
-    public void ShowText()
-    {
-        StringBuilder output = new StringBuilder();
-        foreach (OutputString outputString in outputs)
+        string prefixedText = $"{GetCarrot(outputCarrot)} {text}\n";
+        messageQueue.Enqueue(prefixedText);
+        if (!isTyping)
         {
-            Color32 outputColor = colorStore.GetColor(outputString.colorType);
-            output.Append(
-                $"<color=#{outputColor.r.ToString("x2")}{outputColor.g.ToString("x2")}{outputColor.b.ToString("x2")}{outputColor.a.ToString("x2")}>" +
-                $"{GetCarrot(outputString.outputCarrot)} {outputString.text}</color>\n");
+            StartCoroutine(TypeText());
         }
-
-        textMeshProUGUI.text = output.ToString();
     }
 
-    /// <summary>
-    /// Gets the proper carrot depending on <see cref="OutputCarrot"/>
-    /// </summary>
-    /// <param name="outputCarrot">The <see cref="OutputCarrot"/> to get.</param>
-    /// <returns>A string representing the <see cref="OutputCarrot"/></returns>
+    private IEnumerator TypeText()
+    {
+        isTyping = true;
+        int charCount = 0;
+        while (messageQueue.Count > 0)
+        {
+            string text = messageQueue.Dequeue();
+            foreach (char c in text)
+            {
+                textMeshProUGUI.text += c;
+                charCount++;
+                if (charCount % charsPerSound == 0)
+                {
+                    audioSource.PlayOneShot(typingSound);
+                }
+                yield return new WaitForSeconds(typingSpeed);
+            }
+        }
+        isTyping = false;
+    }
+
     private string GetCarrot(OutputCarrot outputCarrot)
     {
         switch (outputCarrot)
         {
-            case OutputCarrot.NONE:
-                return "";
-            case OutputCarrot.USER:
-                return "/>";
-            default:
-            case OutputCarrot.SYSTEM:
-                return ">";
-            case OutputCarrot.QUESTION:
-                return "?>";
+            case OutputCarrot.NONE: return "";
+            case OutputCarrot.USER: return "/>";
+            case OutputCarrot.QUESTION: return "?>";
+            default: return ">";
         }
+    }
+
+    public void Clear()
+    {
+        messageQueue.Clear();
+        textMeshProUGUI.text = "";
+        StopAllCoroutines();
+        isTyping = false;
+    }
+
+    public bool IsTyping()
+    {
+        return isTyping;
     }
 }

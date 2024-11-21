@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ColorManager is a class that controlls the colors
+/// ColorManager is a class that controls the colors
 /// of elements on the screen. It tells objects to update
 /// their color.
 /// </summary>
@@ -23,32 +23,41 @@ public class ColorManager : KeywordHandler
             return "Usage: color <color1> <optional: target>\nTargets:\nh: apply to only hud\nn: apply to only narrator\ni: applies to your inputs\ns: applies to descriptive texts.";
 
         Color targetColor;
-        try {
+        try
+        {
             targetColor = DetermineColor(tokens[1]);
-        } catch (System.InvalidOperationException e) {
+        }
+        catch (System.InvalidOperationException e)
+        {
             return e.Message;
         }
 
-        if (tokens.Length < 3) //No target.
+        if (tokens.Length < 3) // No target.
         {
             for (int i = 0; i < colorStore.colors.Length; i++)
             {
                 colorStore.colors[i] = targetColor;
             }
         }
-        else //Targeted.
+        else // Targeted.
         {
             int target;
-            try {
+            try
+            {
                 target = DetermineTarget(tokens[2]);
-            } catch (System.InvalidOperationException e) {
+            }
+            catch (System.InvalidOperationException e)
+            {
                 return e.Message;
             }
             colorStore.colors[target] = targetColor;
         }
 
         colorStore.UpdateColorables();
-        TextOutput.instance.ShowText();
+
+        // Output success message to the text area with typing effect
+        //TextOutput.instance.Print("Successfully updated colors.", ColorType.HUDCOLOR);
+
         return "Successfully updated colors.";
     }
 
@@ -100,7 +109,7 @@ public class ColorManager : KeywordHandler
             case "s":
                 return 3;
             default:
-                throw new System.InvalidOperationException("Provide target is not supported.");
+                throw new System.InvalidOperationException("Provided target is not supported.");
         }
     }
 }

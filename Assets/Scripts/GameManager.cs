@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("Starting POI")]
     [SerializeField] PointOfInterest currentPOI;
     public static GameManager instance { private set; get; }
-    [SerializeField] private bool inEncounter = false; //Only serialized for debugging purposes.
-    
+    [SerializeField] private bool inEncounter = false; // Only serialized for debugging purposes.
+
     /// <summary>
     /// Singleton
     /// </summary>
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         inEncounter = currentPOI.HasEncounter();
+        CheckEncounterType(); // Check the encounter type at the start of the game
     }
 
     /// <summary>
@@ -73,9 +74,12 @@ public class GameManager : MonoBehaviour
         if (inEncounter /*&& !noclipped*/) return "You cannot leave in the middle of an encounter!";
 
         PointOfInterest destination = currentPOI.Move(tokens);
-        if(destination == null) return "Cannot move in that direction.";
+        if (destination == null) return "Cannot move in that direction.";
         currentPOI = destination;
         inEncounter = currentPOI.HasEncounter();
+
+        CheckEncounterType(); // Check the encounter type after moving
+
         return currentPOI.GetDescription();
     }
 
@@ -95,4 +99,51 @@ public class GameManager : MonoBehaviour
     {
         inEncounter = false;
     }
+
+    /// <summary>
+    /// Checks the type of encounter at the current POI and prints whether it's combat or non-combat.
+    /// </summary>
+    private void CheckEncounterType()
+    {
+        if (currentPOI == null)
+        {
+            Debug.LogError("GameManager: currentPOI is not assigned.");
+            return;
+        }
+
+        Debug.Log("GameManager: currentPOI is assigned.");
+
+        if (!inEncounter)
+        {
+            Debug.Log("GameManager: No encounter at the current POI.");
+            return;
+        }
+
+        Encounter encounter = currentPOI.GetEncounter();
+        if (encounter == null)
+        {
+            Debug.LogWarning("GameManager: Current POI has an encounter flag but no encounter object.");
+            return;
+        }
+
+        Debug.Log("GameManager: Encounter retrieved successfully.");
+
+        if (encounter.IsCombatEncounter())
+        {
+            Debug.Log("GameManager: Combat encounter started.");
+            if (Combat.instance == null)
+            {
+                Debug.LogError("GameManager: Combat.instance is null. Ensure Combat is in the scene.");
+                return;
+            }
+            Combat.instance.InitiateCombat(encounter);
+        }
+        else
+        {
+            Debug.Log("GameManager: Non-combat encounter.");
+        }
+    }
+
+
+
 }

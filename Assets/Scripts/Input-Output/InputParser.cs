@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 /// <summary>
 /// InputParser is an object to be used with text input.
-/// It takes a string as an input, find the correct input 
+/// It takes a string as an input, finds the correct input 
 /// handler, and then updates the state of the game.
 /// </summary>
 public class InputParser : MonoBehaviour
@@ -17,8 +16,8 @@ public class InputParser : MonoBehaviour
 
     [Header("Keyword Handlers")]
     [SerializeField] ColorManager colorManager;
-
     [SerializeField] CheatCodeManager cheatCodeManager;
+
     public static InputParser instance { get; private set; }
 
     private void Awake()
@@ -43,7 +42,6 @@ public class InputParser : MonoBehaviour
             }
         });
 
-        TextOutput.instance.Print(GameManager.instance.GetCurrentPOIDesc(), ColorType.STORYCOLOR);
     }
 
     /// <summary>
@@ -57,7 +55,7 @@ public class InputParser : MonoBehaviour
     }
 
     /// <summary>
-    /// Deactivates the input area
+    /// Deactivates the input area.
     /// </summary>
     public virtual void DeactivateInput()
     {
@@ -77,8 +75,14 @@ public class InputParser : MonoBehaviour
     {
         if (string.IsNullOrEmpty(input)) return;
 
-        TextOutput.instance.Print(input, ColorType.INPUTCOLOR, OutputCarrot.USER);
+        TextOutput.instance.Print($"/> {input}"); // Prefix user input with user carrot
         string output = "";
+
+        if (Combat.instance.IsCombatActive())
+        {
+            Combat.instance.HandlePlayerInput(input);
+            return;
+        }
 
         string[] tokens = input.ToLower().Split(" ");
         if (GameManager.instance.IsPOIKeyword(tokens))
@@ -103,15 +107,15 @@ public class InputParser : MonoBehaviour
                     cheatCodeManager.TryActivateCheat("NoClip");
                     output = "No Clip enabled!";
                     break;
-
-
+                default:
+                    output = "Unknown command.";
+                    break;
             }
         }
 
         if (!string.IsNullOrEmpty(output))
         {
-            TextOutput.instance.Print(output, ColorType.STORYCOLOR);
+            TextOutput.instance.Print(output);
         }
     }
-
 }
