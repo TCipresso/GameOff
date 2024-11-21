@@ -1,13 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int playerHP = 100;  
-    public int dmg = 10; 
+    public int playerHP = 100;
+    public int dmg = 10;
     public int speed = 5;
     public float baseTypingSpeed = 5f;
+    public bool isDefending = false;
+
+    [Header("UI References")]
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI damageText;
+    public TextMeshProUGUI speedText;
+    public event Action OnHealthChanged;
+
+    void UpdateUI()
+    {
+        hpText.text = $"{playerHP}";
+        damageText.text = $"{dmg}";
+        speedText.text = $"{speed}";
+    }
+
+    void Start()
+    {
+        UpdateUI();
+    }
 
     public void TakeDamage(int amount)
     {
@@ -17,35 +36,16 @@ public class PlayerStats : MonoBehaviour
             playerHP = 0;
             Die();
         }
-    }
-
-    public void IncreaseDamage(int amount)
-    {
-        dmg += amount;
-    }
-
-    public void DecreaseDamage(int amount)
-    {
-        dmg = Mathf.Max(0, dmg - amount);
-    }
-
-    public void IncreaseSpeed(int amount)
-    {
-        speed += amount;
-    }
-
-    public void DecreaseSpeed(int amount)
-    {
-        speed = Mathf.Max(0, speed - amount);
-    }
-
-    private void Die()
-    {
-        if (playerHP <= 0)
+        else
         {
-            Debug.Log("Player has died.");
-            //Game Over Screen Here.
-        
+            Debug.Log($"Player took {amount} damage. Remaining HP: {playerHP}");
         }
-}
+        UpdateUI();
+        OnHealthChanged?.Invoke();
+    }
+
+    public void Die()
+    {
+        Debug.Log("Player has died.");
+    }
 }

@@ -58,6 +58,12 @@ public class PointOfInterest : ScriptableObject
         return false;
     }
 
+    public Encounter GetEncounter()
+    {
+        return encounter; 
+    }
+
+
     /// <summary>
     /// Checks if tokens contains a keyword for POI's <see cref="Encounter"/>.
     /// </summary>

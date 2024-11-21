@@ -10,9 +10,21 @@ using UnityEngine;
 public class Encounter : ScriptableObject, MinigameCaller
 {
     [TextArea(3, 10)]
-    [SerializeField] string description = "This is a test encounter. Type \"continue\" to continue.";
+    [SerializeField] public string description = "This is a test encounter. Type \"continue\" to continue.";
     [SerializeField] Sprite subjectSprite;
     [SerializeField] int minigame;
+
+    [Header("Encounter Details")]
+    [SerializeField] string encounterName; // Name of the encounter
+    [SerializeField] int enemyIndex; // Index of the enemy in EncounterManager
+    [SerializeField] bool isCombat; // Whether this is a combat encounter
+    [SerializeField] int enemySpeedMin = 3; // Minimum speed of the enemy
+    [SerializeField] int enemySpeedMax = 7; // Maximum speed of the enemy
+
+    [Header("Enemy Attack Dialogue")]
+    [SerializeField] List<string> attackDialogues = new List<string>(); // List of attack dialogues
+
+    private int enemySpeed; // Speed of the enemy for this encounter
 
     /// <summary>
     /// Get the description of the encounter.
@@ -33,6 +45,59 @@ public class Encounter : ScriptableObject, MinigameCaller
     }
 
     /// <summary>
+    /// Get the name of the encounter.
+    /// </summary>
+    /// <returns>The name of the encounter.</returns>
+    public string GetEncounterName()
+    {
+        return encounterName;
+    }
+
+    /// <summary>
+    /// Get the index of the enemy prefab for this encounter.
+    /// </summary>
+    /// <returns>The index of the enemy.</returns>
+    public int GetEnemyIndex()
+    {
+        return enemyIndex;
+    }
+
+    /// <summary>
+    /// Check if this encounter is a combat encounter.
+    /// </summary>
+    /// <returns>True if it is a combat encounter, false otherwise.</returns>
+    public bool IsCombatEncounter()
+    {
+        return isCombat;
+    }
+
+    /// <summary>
+    /// Initialize the enemy speed within the defined range.
+    /// </summary>
+    public void InitializeEnemySpeed()
+    {
+        enemySpeed = Random.Range(enemySpeedMin, enemySpeedMax + 1);
+    }
+
+    /// <summary>
+    /// Get the speed of the enemy for this encounter.
+    /// </summary>
+    /// <returns>The speed of the enemy.</returns>
+    public int GetEnemySpeed()
+    {
+        return enemySpeed;
+    }
+
+    /// <summary>
+    /// Get the list of attack dialogues for this encounter.
+    /// </summary>
+    /// <returns>A list of attack dialogues.</returns>
+    public List<string> GetAttackDialogues()
+    {
+        return attackDialogues;
+    }
+
+    /// <summary>
     /// Clean/Update game state and leave the encounter.
     /// </summary>
     public void LeaveEncounter()
@@ -47,9 +112,9 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <returns>True if encounter can handle input, false otherwise.</returns>
     public bool IsEncounterKeyword(string[] tokens)
     {
-        foreach(string token in tokens)
+        foreach (string token in tokens)
         {
-            switch(token)
+            switch (token)
             {
                 case "continue":
                 case "play":
@@ -67,18 +132,18 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <returns>A response message from activity.</returns>
     public string ParseEncounterKeywords(string[] tokens)
     {
-        foreach(string token in tokens)
+        foreach (string token in tokens)
         {
-            switch(token)
+            switch (token)
             {
                 case "continue":
                     LeaveEncounter();
                     Debug.Log("Leaving Encounter");
                     return "Leaving Encounter";
-                case "play"://godmode test
+                case "play": //godmode test
                     StartMinigame();
                     return "Starting Minigame";
-                case "godmode"://godmode test
+                case "godmode": //godmode test
                     StartMinigame();
                     return "Starting Minigame";
             }
@@ -102,7 +167,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <param name="gameResult"></param>
     public void CompleteMinigame(MinigameStatus gameResult)
     {
-        switch(gameResult)
+        switch (gameResult)
         {
             case MinigameStatus.LOST:
                 TextOutput.instance.Print("Game lost.");
