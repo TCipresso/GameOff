@@ -12,11 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fd8f53b9809dd47ab01e6cce91210d, type: 3}
   m_Name: E - 1
   m_EditorClassIdentifier: 
-  description: 'Encounter for POI - 1
+  description: '>Encounter for POI - 1
 
-    This is a test encounter. Type "continue"
-    to continue.
+    >A goblin appears down the hallway.
 
-    This one has Midnight Runner.'
-  subjectSprite: {fileID: 0}
+    >Knife
+    drawn eyeing your valubles.'
+  subjectSprite: {fileID: -780591183, guid: a8f4c1eb92c0a0d48adeda2055234b0b, type: 3}
   minigame: 0
+  encounterName: Goblin
+  enemyIndex: 0
+  isCombat: 1
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  attackDialogues:
+  - 'The goblin snickers with excitement as it wants all your "Shinies". You look
+    aorund the halls desperately looking for a way out. You see a scripture on the
+    ground with the symbol of holy magic. The first page you open enlightens the
+    word: "Goblin Mode" then vanishes.'
