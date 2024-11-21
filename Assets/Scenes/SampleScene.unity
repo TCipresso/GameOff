@@ -1031,6 +1031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 124618686}
   - component: {fileID: 124618685}
+  - component: {fileID: 124618687}
   m_Layer: 0
   m_Name: Minigame Manager
   m_TagString: Untagged
@@ -1055,6 +1056,14 @@ MonoBehaviour:
   - {fileID: 1230579431}
   - {fileID: 208154027}
   - {fileID: 562103889}
+  - {fileID: 1297562655}
+  - {fileID: 1101568515}
+  - {fileID: 489163063}
+  - {fileID: 433646521}
+  - {fileID: 1332969678}
+  - {fileID: 296106370}
+  - {fileID: 997149965}
+  - {fileID: 445563686}
 --- !u!4 &124618686
 Transform:
   m_ObjectHideFlags: 0
@@ -1070,6 +1079,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124618687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124618684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd257afb9cacf584fa32841335d85399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: {fileID: 997149965}
 --- !u!1 &136642430
 GameObject:
   m_ObjectHideFlags: 0
@@ -6431,51 +6453,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 70}
   m_EdgeRadius: 0
---- !u!1 &664910539
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 664910541}
-  - component: {fileID: 664910540}
-  m_Layer: 0
-  m_Name: Minigame Tester
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &664910540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664910539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd257afb9cacf584fa32841335d85399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  test: {fileID: 997149965}
---- !u!4 &664910541
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664910539}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665492569
 GameObject:
   m_ObjectHideFlags: 0
@@ -25381,4 +25358,3 @@ SceneRoots:
   - {fileID: 1308599789}
   - {fileID: 124618686}
   - {fileID: 1059133223}
-  - {fileID: 664910541}
