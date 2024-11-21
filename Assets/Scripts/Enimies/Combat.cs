@@ -141,25 +141,22 @@ public class Combat : MonoBehaviour
 
     private void PlayerAttack()
     {
-        // Trigger the mini-game and wait for it to finish before continuing.
         ddrMinigame.SetActive(true);
         currentState = CombatState.WaitForMiniGame;
-        UpdateInputFieldState();// Pause the state machine here
+        UpdateInputFieldState();
         StartCoroutine(WaitForMiniGameCompletion());
     }
 
     private IEnumerator WaitForMiniGameCompletion()
     {
-        yield return new WaitUntil(() => miniGameComplete);  // Wait until the mini-game is marked complete
-
-        // Mini-game finished, now apply damage
+        yield return new WaitUntil(() => miniGameComplete);
         ApplyDamageAndCheckForEnemyDefeat();
     }
 
     public void MiniGameCompleted()
     {
         Debug.Log("Combat has received the mini-game completion signal.");
-        miniGameComplete = true;  // Set this flag to true when the mini-game is done
+        miniGameComplete = true;
     }
 
     private void ApplyDamageAndCheckForEnemyDefeat()
