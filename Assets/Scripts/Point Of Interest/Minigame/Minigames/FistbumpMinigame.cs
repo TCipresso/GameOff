@@ -27,7 +27,7 @@ public class FistbumpMinigame : Minigame
     {
         yield return new WaitForSeconds(duration);
         caller.CompleteMinigame(MinigameStatus.LOST);
-        MinigameResultUI.instance.ShowResult(MinigameStatus.MISSBUMP);
+        if(showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.MISSBUMP);
         EndMinigame();
     }
 
@@ -37,7 +37,7 @@ public class FistbumpMinigame : Minigame
     public void Fistbump()
     {
         caller.CompleteMinigame(MinigameStatus.WIN);
-        MinigameResultUI.instance.ShowResult(MinigameStatus.FISTBUMP);
+        if(showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.FISTBUMP);
         EndMinigame();
     }
 
