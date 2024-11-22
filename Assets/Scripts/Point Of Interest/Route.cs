@@ -8,7 +8,7 @@ using UnityEngine;
 [System.Serializable]
 public class Route
 {
-    [SerializeField] string direction;
+    [SerializeField] string direction = "forward";
     [SerializeField] PointOfInterest destination;
     //[SerializeField] CheatsIDunnoWhateverWeEndUpCallingThis requiredCheats;
 
