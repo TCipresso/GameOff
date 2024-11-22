@@ -58,6 +58,11 @@ public class PointOfInterest : ScriptableObject
         return false;
     }
 
+    public void SetEncounter(Encounter encounter)
+    {
+        this.encounter = encounter;
+    }
+
     public Encounter GetEncounter()
     {
         return encounter; 
