@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class EncounterGenerator : MonoBehaviour
 {
+    [Header("Test Start")]
     [SerializeField] public PointOfInterest startingPOI;
+
+    [Header("Encounters")]
     [SerializeField] List<Encounter> combatEncounters;
     [SerializeField] List<Encounter> nonCombatEncounters;
+    [SerializeField] List<Encounter> bossEncounters;
+    [SerializeField] int bossIndex;
+
+    [Header("Generation Parameters")]
     [Tooltip("Noncombat Encounters (x) : Combat Encounters (y)")]
     [SerializeField] Vector2 nCToCRatio = new Vector2(1, 2);
     [Range(0, 100)]
@@ -19,6 +26,7 @@ public class EncounterGenerator : MonoBehaviour
 
     private void IterativeDFS(PointOfInterest root)
     {
+        bool atStart = true;
         int maxNonCombatEncounters = (int) nCToCRatio.x;
         int maxCombatEncounters = (int) nCToCRatio.y;
         int nonCombatEncountersRemaining = maxNonCombatEncounters;
@@ -40,7 +48,26 @@ public class EncounterGenerator : MonoBehaviour
                 if (!visited.Contains(destination) && !stack.Contains(destination)) stack.Push(destination);
             }
 
-            AddEncounter(current, ref nonCombatEncountersRemaining, maxNonCombatEncounters, ref combatEncountersRemaining, maxCombatEncounters);
+            if (!atStart) {
+                //In pathway room.
+                if (routes.Count > 0)
+                    AddEncounter(current, ref nonCombatEncountersRemaining, maxNonCombatEncounters, ref combatEncountersRemaining, maxCombatEncounters);
+                
+                //In the boss room. Makes it where the ending room always has a boss.
+                else
+                { 
+                    Debug.Log($"{current.name} is the boss room.");
+                    current.SetEncounter(bossEncounters[bossIndex]);
+                }
+            }
+
+            //In starting room. Makes it where starting room is always empty so the player doesn't start in combat and has time to settle in.
+            else {
+                Debug.Log($"{current.name} is the starting room.");
+                current.SetEncounter(null);
+                atStart = false;
+                nonCombatEncountersRemaining--;
+            }
         }
 
         Debug.Log($"Visited {visited.Count} nodes.");
