@@ -58,6 +58,11 @@ public class PointOfInterest : ScriptableObject
         return false;
     }
 
+    public List<Route> GetRoutes()
+    {
+        return routes;
+    }
+
     public void SetEncounter(Encounter encounter)
     {
         this.encounter = encounter;
