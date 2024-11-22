@@ -15338,7 +15338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad2c55f88249b44aa3487dd8ec1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPOI: {fileID: 11400000, guid: a6544291a262a8b4dabe644ef3ebcd7a, type: 2}
+  currentPOI: {fileID: 11400000, guid: 14eac94e7fb95ba4cbea116c50ea2eb7, type: 2}
   inEncounter: 0
 --- !u!114 &1360784988
 MonoBehaviour:
