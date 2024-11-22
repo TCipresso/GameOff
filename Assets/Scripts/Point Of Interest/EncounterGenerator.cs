@@ -5,7 +5,7 @@ using UnityEngine;
 public class EncounterGenerator : MonoBehaviour
 {
     [Header("Test Start")]
-    [SerializeField] public PointOfInterest startingPOI;
+    [SerializeField] PointOfInterest startingPOI;
 
     [Header("Encounters")]
     [SerializeField] List<Encounter> combatEncounters;
@@ -18,6 +18,11 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] Vector2 nCToCRatio = new Vector2(1, 2);
     [Range(0, 100)]
     [SerializeField] int chanceToIgnoreRatio = 10;
+
+    public void GenerateEncounters()
+    {
+        GenerateEncounters(startingPOI);
+    }
 
     public void GenerateEncounters(PointOfInterest root)
     {

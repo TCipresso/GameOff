@@ -13,7 +13,7 @@ public class EncounterGeneratorEditor : Editor
 
         if(GUILayout.Button("Generate Encounters"))
         {
-            generator.GenerateEncounters(generator.startingPOI);
+            generator.GenerateEncounters();
         }
     }
 }
