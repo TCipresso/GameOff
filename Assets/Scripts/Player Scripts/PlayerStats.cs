@@ -53,6 +53,26 @@ public class PlayerStats : MonoBehaviour
         OnHealthChanged?.Invoke();
     }
 
+    /// <summary>
+    /// Heals player to full HP.
+    /// </summary>
+    public void Heal()
+    {
+        Heal(maxHP);
+    }
+
+    /// <summary>
+    /// Heals player by provided amount.
+    /// </summary>
+    /// <param name="amount">Amount to heal player.</param>
+    public void Heal(int amount)
+    {
+        playerHP += amount;
+        if (playerHP > maxHP) playerHP = maxHP;
+        UpdateUI();
+        //OnHealthChanged?.Invoke(); //I don't know what this is, so I'm not gonna use it just in case. I'll let you properly handle that.
+    }
+
     public void Die()
     {
         Debug.Log("Player has died.");
