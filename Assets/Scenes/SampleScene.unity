@@ -15338,7 +15338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad2c55f88249b44aa3487dd8ec1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPOI: {fileID: 11400000, guid: 197cf5af939de2a45aab7904cdf1e805, type: 2}
+  currentPOI: {fileID: 11400000, guid: dfd1968aa97736f4884190b47e692f10, type: 2}
   inEncounter: 0
 --- !u!114 &1360784988
 MonoBehaviour:
@@ -15383,6 +15383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be23bf8fe35db51459ac31881f2451df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 100
   playerHP: 100
   dmg: 10
   speed: 50

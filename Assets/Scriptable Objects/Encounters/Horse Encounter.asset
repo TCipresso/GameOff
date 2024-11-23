@@ -18,18 +18,22 @@ MonoBehaviour:
     something.
   subjectSprite: {fileID: 0}
   minigame: 0
-  encounterName: 
+  encounterName: Horse Encounter
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 10
+  evilHorseChance: 20
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0
-  isEvil: 1
+  isEvil: 0
+  healthBoostAmount: 5
+  damageBoostAmount: 1
+  speedBoostAmount: 3
+  typingSpeedBoostAmount: 2
   petResponse:
   - Its fur shines like the dawn of a new day. You can feel the horse's strong muscles
     under its skin. This horse has been well kept.
