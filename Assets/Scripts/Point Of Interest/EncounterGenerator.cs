@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EncounterGenerator : MonoBehaviour
@@ -12,6 +13,10 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] List<Encounter> nonCombatEncounters;
     [SerializeField] List<Encounter> bossEncounters;
     [SerializeField] int bossIndex;
+    private int maxNonCombatEncounters;
+    private int maxCombatEncounters;
+    private int nonCombatEncountersRemaining;
+    private int combatEncountersRemaining;
 
     [Header("Generation Parameters")]
     [Tooltip("Noncombat Encounters (x) : Combat Encounters (y)")]
@@ -26,16 +31,16 @@ public class EncounterGenerator : MonoBehaviour
 
     public void GenerateEncounters(PointOfInterest root)
     {
+        maxNonCombatEncounters = (int)nCToCRatio.x;
+        maxCombatEncounters = (int)nCToCRatio.y;
+        nonCombatEncountersRemaining = maxNonCombatEncounters;
+        combatEncountersRemaining = maxCombatEncounters;
         IterativeDFS(root);
     }
 
     private void IterativeDFS(PointOfInterest root)
     {
         bool atStart = true;
-        int maxNonCombatEncounters = (int) nCToCRatio.x;
-        int maxCombatEncounters = (int) nCToCRatio.y;
-        int nonCombatEncountersRemaining = maxNonCombatEncounters;
-        int combatEncountersRemaining = maxCombatEncounters;
 
         Stack<PointOfInterest> stack = new Stack<PointOfInterest>();
         List<PointOfInterest> visited = new List<PointOfInterest>();
@@ -53,32 +58,40 @@ public class EncounterGenerator : MonoBehaviour
                 if (!visited.Contains(destination) && !stack.Contains(destination)) stack.Push(destination);
             }
 
-            if (!atStart) {
-                //In pathway room.
-                if (routes.Count > 0)
-                    AddEncounter(current, ref nonCombatEncountersRemaining, maxNonCombatEncounters, ref combatEncountersRemaining, maxCombatEncounters);
-                
-                //In the boss room. Makes it where the ending room always has a boss.
-                else
-                { 
-                    Debug.Log($"{current.name} is the boss room.");
-                    current.SetEncounter(bossEncounters[bossIndex]);
-                }
-            }
-
-            //In starting room. Makes it where starting room is always empty so the player doesn't start in combat and has time to settle in.
-            else {
-                Debug.Log($"{current.name} is the starting room.");
-                current.SetEncounter(null);
-                atStart = false;
-                nonCombatEncountersRemaining--;
-            }
+            if (current.AllowEncounterChange()) PopulatePOIEncounter(current, routes.Count, atStart);
+            else Debug.Log($"{current.name} does not allow encounter changes");
+            if (atStart) atStart = false;
         }
 
         Debug.Log($"Visited {visited.Count} nodes.");
     }
 
-    private void AddEncounter(PointOfInterest root, ref int nonCombatEncountersRemaining, int maxNonCombatEncounters, ref int combatEncountersRemaining, int maxCombatEncounters)
+    private void PopulatePOIEncounter(PointOfInterest root, int numRoutes, bool atStart)
+    {
+        if (!atStart)
+        {
+            //In pathway room.
+            if (numRoutes > 0)
+                AddEncounter(root);
+
+            //In the boss room. Makes it where the ending room always has a boss.
+            else
+            {
+                Debug.Log($"{root.name} is the boss room.");
+                root.SetEncounter(bossEncounters[bossIndex]);
+            }
+        }
+
+        //In starting room. Makes it where starting room is always empty so the player doesn't start in combat and has time to settle in.
+        else
+        {
+            Debug.Log($"{root.name} is the starting room.");
+            root.SetEncounter(null);
+            nonCombatEncountersRemaining--;
+        }
+    }
+
+    private void AddEncounter(PointOfInterest root)
     {
         //I noticed that there would be a pattern if we kept to the ratio all the time,
         //so there's a random chance that the ratio is ignored.
