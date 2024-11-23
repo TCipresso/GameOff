@@ -14,6 +14,12 @@ public class HorseEncounter : Encounter
     [SerializeField] bool forceEvilHorse = false;
     [SerializeField] bool isEvil = false;
 
+    [Header("Good Horse Outcomes")]
+    [SerializeField] int healthBoostAmount = 5;
+    [SerializeField] int damageBoostAmount = 1;
+    [SerializeField] int speedBoostAmount = 3;
+    [SerializeField] int typingSpeedBoostAmount = 2;
+
     [Header("Horse Flavor")]
     [TextArea(3, 10)]
     [SerializeField] List<string> petResponse = new List<string>();
@@ -103,7 +109,12 @@ public class HorseEncounter : Encounter
             Combat.instance.InitiateCombat(this);
             return evilHorseAccept;
         }
-        //Here I'd boost the player's stats.
+
+        PlayerStats.instance.maxHP += healthBoostAmount;
+        PlayerStats.instance.playerHP += healthBoostAmount;
+        PlayerStats.instance.dmg += damageBoostAmount;
+        PlayerStats.instance.speed += speedBoostAmount;
+        PlayerStats.instance.baseTypingSpeed += healthBoostAmount;
         GameManager.instance.LeaveEnounter();
         return goodHorseAccept;
     }
