@@ -4,6 +4,10 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats instance;
+
+    //Hey, you should separate these into base stats and current stats.
+    public int maxHP = 100;
     public int playerHP = 100;
     public int dmg = 10;
     public int speed = 5;
@@ -21,6 +25,11 @@ public class PlayerStats : MonoBehaviour
         hpText.text = $"{playerHP}";
         damageText.text = $"{dmg}";
         speedText.text = $"{speed}";
+    }
+
+    private void Awake()
+    {
+        if (instance == null) instance = this; //Can't destroy as this is with every other major system :(.
     }
 
     void Start()
