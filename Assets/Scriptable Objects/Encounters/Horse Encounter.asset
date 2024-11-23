@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c219f9598dd2a246a14ca5a8031c2ee, type: 3}
+  m_Name: Horse Encounter
+  m_EditorClassIdentifier: 
+  description: A horse stands alone in the center of the room. A saddle sits on its
+    back, but its rider is no where to be found. There are no signs of its rider
+    ever coming back. The horse stares into your eyes as if it wants to give you
+    something.
+  subjectSprite: {fileID: 0}
+  minigame: 0
+  encounterName: 
+  enemyIndex: 0
+  isCombat: 0
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  attackDialogues: []
+  baseEvilHorseChance: 10
+  evilHorseChance: 10
+  evilHorseChanceIncrease: 10
+  increaseChancePerGoodHorse: 1
+  forceEvilHorse: 0
+  isEvil: 1
+  petResponse:
+  - Its fur shines like the dawn of a new day. You can feel the horse's strong muscles
+    under its skin. This horse has been well kept.
+  - The soot of the nearby flame has tarnished the horse's fur. It has been in this
+    room for a while.
+  - As your hand passes through the horse's fur, you disturb the fine layer of dust
+    that rests on the horse's skin. You can feel the horse's weakend muscles. It
+    has been in this room for longer than it should have.
+  - 'The horse lets out a weak neigh. Its fur unkempt. Its muscles atrophied. This
+    is its first contact with someone for far too long. '
+  - The horse stares furlong as if it doesn't notice you petting it. It doesn't react
+    no matter how you pet it.
+  - There are patches of fur missing. The exposed skin is sickly white. The horse
+    looks at you as if it doesn't want to be alone anymore.
+  - As you move your hand through the horse's fur, you can feel something move underneath
+    its skin. It can't be the horse's muscles as they're far too athropied to feel.
+  - As you run your fingers through the horse's mane, the horse jerks its head as
+    it lets out a sickly cough. Parts of its mane are tangled to your fingers.
+  - The horse pulls away from your hand. It stares at you. After some time, it approaches
+    your hand. It jerks away once again when you touch it.
+  - The horse's fur peels off its skin and gets stuck on the palm of you hand. You
+    can see the horse's decayed muscles through the gaps in its skin.
+  evilHorseAccept: The horse lunges at your hand. You pull your hand away before
+    its mouth closes with all its might.
+  evilHorseDeny: As you walk away, the horse stares with sadness in its eyes. A malice
+    pierces the horse's dispair.
+  goodHorseAccept: The horse guides you to its old owner's pouch. It is offering
+    the belongings of its previous owner.
+  goodHorseDeny: As you walk away, the horse stares with sadness in its eyes. Its
+    dispair grows into grief.
