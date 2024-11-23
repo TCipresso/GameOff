@@ -32,8 +32,6 @@ public class HorseEncounter : Encounter
     [TextArea(3, 10)]
     [SerializeField] string goodHorseDeny;
 
-
-
     public override string GetDescription()
     {
         if(evilHorseChance == 0) evilHorseChance = baseEvilHorseChance;
@@ -114,7 +112,7 @@ public class HorseEncounter : Encounter
         PlayerStats.instance.playerHP += healthBoostAmount;
         PlayerStats.instance.dmg += damageBoostAmount;
         PlayerStats.instance.speed += speedBoostAmount;
-        PlayerStats.instance.baseTypingSpeed += healthBoostAmount;
+        PlayerStats.instance.baseTypingSpeed += typingSpeedBoostAmount;
         GameManager.instance.LeaveEnounter();
         return goodHorseAccept;
     }
