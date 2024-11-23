@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// FountainEncounter is a Noncombat <see cref="Encounter"/>. It will fully heal 
+/// the player if they chose to bathe in it.
+/// </summary>
 [CreateAssetMenu(menuName ="Scriptable Objects/Encounters/Fountain Encounter")]
 public class FountainEncounter : Encounter
 {
@@ -52,6 +56,10 @@ public class FountainEncounter : Encounter
         return $"Keyword not recognized.";
     }
 
+    /// <summary>
+    /// Heals the player to full.
+    /// </summary>
+    /// <returns>Description of the player bathing.</returns>
     private string AcceptFountain()
     {
         PlayerStats.instance.Heal();
@@ -59,6 +67,10 @@ public class FountainEncounter : Encounter
         return batheString;
     }
 
+    /// <summary>
+    /// Leave the encounter.
+    /// </summary>
+    /// <returns>Description of the player leaving.</returns>
     private string DenyFountain()
     {
         GameManager.instance.LeaveEnounter();
