@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec4e27edbc11f44aba093695a59f572, type: 3}
+  m_Name: f3_2_r0
+  m_EditorClassIdentifier: 
+  routes:
+  - direction: left
+    destination: {fileID: 11400000, guid: 952f1418c4f527a429db7c210eeac33a, type: 2}
+  - direction: forward
+    destination: {fileID: 11400000, guid: 9fbfeca0cd599004695100c1d8613255, type: 2}
+  - direction: right
+    destination: {fileID: 11400000, guid: cd5c8470ecf58144383c1c4395dc7df9, type: 2}
+  image: {fileID: 0}
+  encounter: {fileID: 0}
+  noEncounterString: This room is empty. You are safe.
