@@ -25,7 +25,7 @@ MonoBehaviour:
   enemySpeedMax: 7
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 20
+  evilHorseChance: 40
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0
@@ -56,6 +56,8 @@ MonoBehaviour:
     your hand. It jerks away once again when you touch it.
   - The horse's fur peels off its skin and gets stuck on the palm of you hand. You
     can see the horse's decayed muscles through the gaps in its skin.
+  appleResponse: The horse chomps down on the apple as if it hasn't eaten in days.
+    It is greatful. You don't feel any hostility from it.
   evilHorseAccept: The horse lunges at your hand. You pull your hand away before
     its mouth closes with all its might.
   evilHorseDeny: As you walk away, the horse stares with sadness in its eyes. A malice

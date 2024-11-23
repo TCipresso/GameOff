@@ -24,6 +24,8 @@ public class HorseEncounter : Encounter
     [TextArea(3, 10)]
     [SerializeField] List<string> petResponse = new List<string>();
     [TextArea(3, 10)]
+    [SerializeField] string appleResponse;
+    [TextArea(3, 10)]
     [SerializeField] string evilHorseAccept;
     [TextArea(3, 10)]
     [SerializeField] string evilHorseDeny;
@@ -62,6 +64,7 @@ public class HorseEncounter : Encounter
                 case "pet":
                 case "accept":
                 case "deny":
+                case "apple":
                     return true;
             }
         }
@@ -86,6 +89,9 @@ public class HorseEncounter : Encounter
                 case "deny":
                     Debug.Log("Declining horse's offer");
                     return DenyHorse();
+                case "apple":
+                    Debug.Log("Giving Apple to horse");
+                    return GiveApple();
             }
         }
 
@@ -125,5 +131,17 @@ public class HorseEncounter : Encounter
             return evilHorseDeny;
         }
         return goodHorseDeny;
+    }
+
+    private string GiveApple()
+    {
+        /*
+         * if(haveApple) {
+         * apples--;
+         */
+        isEvil = false;
+        return appleResponse;
+        //}
+        //return "You have no apples to give.";
     }
 }
