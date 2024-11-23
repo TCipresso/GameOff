@@ -28,6 +28,7 @@ public class Combat : MonoBehaviour
     [Header("Mini Game")]
     public GameObject ddrMinigame;
     private bool miniGameComplete = false;
+    public GameObject Loading;
 
     private enum CombatState
     {
@@ -156,6 +157,7 @@ public class Combat : MonoBehaviour
     public void MiniGameCompleted()
     {
         Debug.Log("Combat has received the mini-game completion signal.");
+        Loading.SetActive(false);
         miniGameComplete = true;
     }
 
@@ -198,8 +200,9 @@ public class Combat : MonoBehaviour
     private IEnumerator EnemyTurn()
     {
         UpdateInputFieldState();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         TextOutput.instance.Print("Enemy's Turn");
+        yield return new WaitForSeconds(3);
         UpdateInputFieldState();
 
         if (currentEnemyScript != null)
