@@ -54,7 +54,7 @@ public class FountainEncounter : Encounter
 
     private string AcceptFountain()
     {
-        PlayerStats.instance.playerHP = PlayerStats.instance.maxHP;
+        PlayerStats.instance.Heal();
         GameManager.instance.LeaveEnounter();
         return batheString;
     }
