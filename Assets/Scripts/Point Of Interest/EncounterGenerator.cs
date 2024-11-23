@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// EncounterGenerator navigates a graph of <see cref="PointOfInterest"/>s 
+/// and populates each POI with an <see cref="Encounter"/>.
+/// </summary>
 public class EncounterGenerator : MonoBehaviour
 {
     [Header("Test Start")]
@@ -24,11 +28,18 @@ public class EncounterGenerator : MonoBehaviour
     [Range(0, 100)]
     [SerializeField] int chanceToIgnoreRatio = 10;
 
+    /// <summary>
+    /// Generate floor's encounters based on this object's startingPOI.
+    /// </summary>
     public void GenerateEncounters()
     {
         GenerateEncounters(startingPOI);
     }
 
+    /// <summary>
+    /// Generate floor's encounters based on provided root.
+    /// </summary>
+    /// <param name="root"><see cref="PointOfInterest"/> to start graph navigation.</param>
     public void GenerateEncounters(PointOfInterest root)
     {
         maxNonCombatEncounters = (int)nCToCRatio.x;
@@ -66,6 +77,22 @@ public class EncounterGenerator : MonoBehaviour
         Debug.Log($"Visited {visited.Count} nodes.");
     }
 
+    /// <summary>
+    /// Determine what type of encounter is best for provided root.
+    /// </summary>
+    /// <param name="root">Current <see cref="PointOfInterest"/></param>
+    /// <param name="atStart">Is this the floor's starting root?</param>
+    private void PopulatePOIEncounter(PointOfInterest root, bool atStart = false)
+    {
+        PopulatePOIEncounter(root, root.GetRoutes().Count, atStart);
+    }
+
+    /// <summary>
+    /// Determine what type of encounter is best for provided root.
+    /// </summary>
+    /// <param name="root">Current <see cref="PointOfInterest"/></param>
+    /// <param name="numRoutes">The number of <see cref="Route"/>s this POI has.</param>
+    /// <param name="atStart">Is this the floor's starting root?</param>
     private void PopulatePOIEncounter(PointOfInterest root, int numRoutes, bool atStart)
     {
         if (!atStart)
@@ -91,6 +118,10 @@ public class EncounterGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Add an encount to current <see cref="PointOfInterest"/>.
+    /// </summary>
+    /// <param name="root">Current <see cref="PointOfInterest"/></param>
     private void AddEncounter(PointOfInterest root)
     {
         //I noticed that there would be a pattern if we kept to the ratio all the time,
@@ -133,6 +164,10 @@ public class EncounterGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the current <see cref="PointOfInterest"/>'s <see cref="Encounter"/> to a Noncombat Encounter.
+    /// </summary>
+    /// <param name="root">The current <see cref="PointOfInterest"/></param>
     private void SetNoncombatEncounter(PointOfInterest root)
     {
         Debug.Log($"{root.name} is a noncombat encounter");
@@ -142,6 +177,10 @@ public class EncounterGenerator : MonoBehaviour
         else root.SetEncounter(nonCombatEncounters[chosenEncounter]);
     }
 
+    /// <summary>
+    /// Set the current <see cref="PointOfInterest"/>'s <see cref="Encounter"/> to a Combat Encounter.
+    /// </summary>
+    /// <param name="root">The current <see cref="PointOfInterest"/></param>
     private void SetCombatEncounter(PointOfInterest root)
     {
         Debug.Log($"{root.name} is a combat encounter");
