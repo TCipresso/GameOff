@@ -15476,7 +15476,7 @@ MonoBehaviour:
   combatEncounters:
   - {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
   nonCombatEncounters:
-  - {fileID: 11400000, guid: 63737eaba05141c42917900e61d1d92c, type: 2}
+  - {fileID: 11400000, guid: 41e4f0b878d90e34dbc9f49104b13577, type: 2}
   bossEncounters:
   - {fileID: 11400000, guid: 3f0ac5c82dee0ee469aaaa3c587c8b15, type: 2}
   bossIndex: 0
