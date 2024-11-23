@@ -30,7 +30,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// Get the description of the encounter.
     /// </summary>
     /// <returns>The description of the encounter.</returns>
-    public string GetDescription()
+    public virtual string GetDescription()
     {
         return description;
     }
@@ -110,7 +110,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// </summary>
     /// <param name="tokens">Tokens from player input.</param>
     /// <returns>True if encounter can handle input, false otherwise.</returns>
-    public bool IsEncounterKeyword(string[] tokens)
+    public virtual bool IsEncounterKeyword(string[] tokens)
     {
         foreach (string token in tokens)
         {
@@ -130,7 +130,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// </summary>
     /// <param name="tokens">Tokens from player input.</param>
     /// <returns>A response message from activity.</returns>
-    public string ParseEncounterKeywords(string[] tokens)
+    public virtual string ParseEncounterKeywords(string[] tokens)
     {
         foreach (string token in tokens)
         {
@@ -149,7 +149,7 @@ public class Encounter : ScriptableObject, MinigameCaller
             }
         }
 
-        return $"Keyword not recognized for {name}.";
+        return $"Keyword not recognized.";
     }
 
     /// <summary>
