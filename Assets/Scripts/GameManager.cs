@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
         inEncounter = currentPOI.HasEncounter();
         CheckEncounterType(); // Check the encounter type at the start of the game
+        TextOutput.instance.Print(GetCurrentPOIDesc());
     }
 
     /// <summary>
