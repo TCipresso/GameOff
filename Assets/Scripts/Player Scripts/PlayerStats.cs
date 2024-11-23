@@ -5,7 +5,8 @@ using TMPro;
 public class PlayerStats : MonoBehaviour
 {
     public int playerHP = 100;
-    public int dmg = 10;
+    public int baseDmg = 15; // Base damage for the player
+    public int dmg = 15;     // Current damage (can increase during mini-game)
     public int speed = 5;
     public float baseTypingSpeed = 5f;
     public bool isDefending = false;
@@ -47,5 +48,26 @@ public class PlayerStats : MonoBehaviour
     public void Die()
     {
         Debug.Log("Player has died.");
+    }
+
+    /// <summary>
+    /// Adds bonus damage to the player's current damage and updates the UI.
+    /// </summary>
+    /// <param name="bonus">Amount of bonus damage to add.</param>
+    public void AddDamage(int bonus)
+    {
+        dmg += bonus;
+        Debug.Log($"Bonus damage added! Current damage: {dmg}");
+        UpdateUI();
+    }
+
+    /// <summary>
+    /// Resets the player's damage to the base value and updates the UI.
+    /// </summary>
+    public void ResetDamage()
+    {
+        dmg = baseDmg;
+        Debug.Log($"Damage reset to base value: {dmg}");
+        UpdateUI();
     }
 }

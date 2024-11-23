@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 public class AttackMiniGame : MonoBehaviour
 {
+    [Header("Player Stats")]
+    public PlayerStats playerStats;
+
     [Header("Arrow Prefabs")]
     public GameObject upArrowPrefab;
     public GameObject downArrowPrefab;
@@ -27,8 +30,8 @@ public class AttackMiniGame : MonoBehaviour
     public AudioSource audioSource;
 
     [Header("UI Components")]
-    public Image timerBarImage; // Timer bar as an image
-    public float miniGameDuration = 10f; // Total duration for the mini-game
+    public Image timerBarImage;
+    public float miniGameDuration = 10f;
 
     [Header("Sequence Settings")]
     public Transform spawnPoint;
@@ -46,12 +49,14 @@ public class AttackMiniGame : MonoBehaviour
     private string[] arrowDirections = { "Up", "Down", "Left", "Right" };
 
     private float remainingTime;
+    private int completedSequences = 0;
 
     private void OnEnable()
     {
         arrowPrefabs = new GameObject[] { upArrowPrefab, downArrowPrefab, leftArrowPrefab, rightArrowPrefab };
         GenerateSequence();
         StartMiniGameTimer();
+        completedSequences = 0;
     }
 
     private void Update()
@@ -81,7 +86,6 @@ public class AttackMiniGame : MonoBehaviour
             }
         }
 
-        // Check player input
         HandleInput();
     }
 
@@ -144,6 +148,8 @@ public class AttackMiniGame : MonoBehaviour
             if (currentProgress >= sequence.Count)
             {
                 Debug.Log("Sequence Completed!");
+                completedSequences++;
+                playerStats.AddDamage(5); // Add bonus damage for the completed sequence
                 GenerateSequence(); // Start a new sequence
             }
         }
@@ -222,11 +228,12 @@ public class AttackMiniGame : MonoBehaviour
         }
     }
 
-
-
     private void EndMiniGame()
     {
-        Debug.Log("Mini-game ended.");
+        Debug.Log($"Mini-game ended. Completed sequences: {completedSequences}");
+
+        //playerStats.ResetDamage(); //do not touch this Tommy
+
         Combat.instance.MiniGameCompleted();
         gameObject.SetActive(false); // Disable the mini-game
     }

@@ -11753,6 +11753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHP: 100
+  baseDmg: 15
   dmg: 10
   speed: 50
   baseTypingSpeed: 999999
@@ -19320,6 +19321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a04e96587fa16f458b70b9ba8648f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 1046918018}
   upArrowPrefab: {fileID: 4310861944225482659, guid: 96327ecb46620164d862b79124a00da1, type: 3}
   downArrowPrefab: {fileID: 2515749697919355080, guid: 0fa9bd3d92dde8e4ca010c168f06f3ce, type: 3}
   leftArrowPrefab: {fileID: 8405352263584145033, guid: 34aa9e99fd88a1140a840a8eb22d9e09, type: 3}

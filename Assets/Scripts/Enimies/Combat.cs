@@ -202,6 +202,7 @@ public class Combat : MonoBehaviour
         UpdateInputFieldState();
         yield return new WaitForSeconds(3);
         TextOutput.instance.Print("Enemy's Turn");
+        playerStats.ResetDamage();
         yield return new WaitForSeconds(3);
         UpdateInputFieldState();
 
