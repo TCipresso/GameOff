@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// HorseEncounter is a Noncombat <see cref="Encounter"/>. 
+/// The desciption of the horse will vary depending on its chance
+/// of it being evil. If the horse is good, the player recieves 
+/// a stat boost. If it is evil, the player has to fight the 
+/// horse. An evil horse can become a good horse by feeding it 
+/// an apple.
+/// </summary>
 [CreateAssetMenu(menuName = "Scriptable Objects/Encounters/Horse Encounter")]
 public class HorseEncounter : Encounter
 {
@@ -34,6 +42,11 @@ public class HorseEncounter : Encounter
     [TextArea(3, 10)]
     [SerializeField] string goodHorseDeny;
 
+    /// <summary>
+    /// Gets the description of the horse and determines if 
+    /// the horse will be good or evil
+    /// </summary>
+    /// <returns>The description of the horse.</returns>
     public override string GetDescription()
     {
         if(evilHorseChance == 0) evilHorseChance = baseEvilHorseChance;
@@ -49,6 +62,10 @@ public class HorseEncounter : Encounter
         return description;
     }
 
+    /// <summary>
+    /// Force the horse to be good or evil.
+    /// </summary>
+    /// <param name="isEvil">Will isEvil be forced.</param>
     public void SetForceEvilHorse(bool isEvil = true)
     {
         forceEvilHorse = isEvil;
@@ -98,6 +115,11 @@ public class HorseEncounter : Encounter
         return $"Keyword not recognized.";
     }
 
+    /// <summary>
+    /// Pet the horse to see how it reacts. The worse the reaction, the
+    /// more likely it's evil.
+    /// </summary>
+    /// <returns>The horse's response</returns>
     private string PetHorse()
     {
         int response = evilHorseChance / 10;
@@ -106,6 +128,11 @@ public class HorseEncounter : Encounter
         return petResponse[response];
     }
 
+    /// <summary>
+    /// Accept the horse's offer. Get stat boost if the horse is good.
+    /// Fight it if the horse is evil.
+    /// </summary>
+    /// <returns>Response to acceptance.</returns>
     private string AcceptHorse()
     {
         if(isEvil)
@@ -123,6 +150,10 @@ public class HorseEncounter : Encounter
         return goodHorseAccept;
     }
 
+    /// <summary>
+    /// Ignore the horse's offer and leave encounter.
+    /// </summary>
+    /// <returns>Horse's respone to denial.</returns>
     private string DenyHorse()
     {
         GameManager.instance.LeaveEnounter();
@@ -133,6 +164,10 @@ public class HorseEncounter : Encounter
         return goodHorseDeny;
     }
 
+    /// <summary>
+    /// Give an apple to the horse to force it to be good.
+    /// </summary>
+    /// <returns>The horse's response to the apple.</returns>
     private string GiveApple()
     {
         /*
