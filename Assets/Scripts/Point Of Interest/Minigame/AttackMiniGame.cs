@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class AttackMiniGame : MonoBehaviour
 {
+    [Header("Player Stats")]
+    public PlayerStats playerStats;
+
     [Header("Arrow Prefabs")]
     public GameObject upArrowPrefab;
     public GameObject downArrowPrefab;
@@ -11,10 +15,23 @@ public class AttackMiniGame : MonoBehaviour
     public GameObject rightArrowPrefab;
 
     [Header("Visual Variants")]
-    public Sprite hollowUpSprite, filledUpSprite, failureUpSprite;
-    public Sprite hollowDownSprite, filledDownSprite, failureDownSprite;
-    public Sprite hollowLeftSprite, filledLeftSprite, failureLeftSprite;
-    public Sprite hollowRightSprite, filledRightSprite, failureRightSprite;
+    public Sprite hollowUpSprite, filledUpSprite;
+    public Sprite hollowDownSprite, filledDownSprite;
+    public Sprite hollowLeftSprite, filledLeftSprite;
+    public Sprite hollowRightSprite, filledRightSprite;
+
+    [Header("Colors")]
+    public Color normalColor = Color.white;
+    public Color failureColor = Color.red;
+
+    [Header("Sounds")]
+    public AudioClip[] successSounds;
+    public AudioClip failureSound;
+    public AudioSource audioSource;
+
+    [Header("UI Components")]
+    public Image timerBarImage;
+    public float miniGameDuration = 10f;
 
     [Header("Sequence Settings")]
     public Transform spawnPoint;
@@ -31,14 +48,31 @@ public class AttackMiniGame : MonoBehaviour
     private GameObject[] arrowPrefabs;
     private string[] arrowDirections = { "Up", "Down", "Left", "Right" };
 
-    private void Start()
+    private float remainingTime;
+    private int completedSequences = 0;
+
+    private void OnEnable()
     {
         arrowPrefabs = new GameObject[] { upArrowPrefab, downArrowPrefab, leftArrowPrefab, rightArrowPrefab };
         GenerateSequence();
+        StartMiniGameTimer();
+        completedSequences = 0;
     }
 
     private void Update()
     {
+        // Update timer
+        if (remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+            UpdateTimerBar();
+        }
+        else
+        {
+            EndMiniGame();
+            return;
+        }
+
         // Spawn sequence arrows
         if (arrowsSpawned < sequenceLength)
         {
@@ -52,7 +86,6 @@ public class AttackMiniGame : MonoBehaviour
             }
         }
 
-        // Check player input
         HandleInput();
     }
 
@@ -68,8 +101,8 @@ public class AttackMiniGame : MonoBehaviour
 
     private void GenerateSequence()
     {
+        ClearPreviousSequence();
         sequence.Clear();
-        spawnedArrows.Clear();
         arrowsSpawned = 0;
         currentProgress = 0;
 
@@ -108,19 +141,21 @@ public class AttackMiniGame : MonoBehaviour
     {
         if (input == sequence[currentProgress])
         {
-            // Correct input: Change arrow to filled
             UpdateArrowVisual(currentProgress, true);
+            PlaySuccessSound(currentProgress);
             currentProgress++;
 
             if (currentProgress >= sequence.Count)
             {
                 Debug.Log("Sequence Completed!");
+                completedSequences++;
+                playerStats.AddDamage(5); // Add bonus damage for the completed sequence
                 GenerateSequence(); // Start a new sequence
             }
         }
         else
         {
-            // Incorrect input: Flash red and reset sequence
+            PlayFailureSound();
             StartCoroutine(HandleFailure());
         }
     }
@@ -142,25 +177,16 @@ public class AttackMiniGame : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator HandleFailure()
+    private IEnumerator HandleFailure()
     {
-        // Show red flash
         foreach (GameObject arrow in spawnedArrows)
         {
             Image arrowImage = arrow.GetComponent<Image>();
-            switch (sequence[spawnedArrows.IndexOf(arrow)])
-            {
-                case "Up": arrowImage.sprite = failureUpSprite; break;
-                case "Down": arrowImage.sprite = failureDownSprite; break;
-                case "Left": arrowImage.sprite = failureLeftSprite; break;
-                case "Right": arrowImage.sprite = failureRightSprite; break;
-            }
+            arrowImage.color = failureColor;
         }
 
-        // Wait briefly to show the red flash
         yield return new WaitForSeconds(0.5f);
 
-        // Reset to hollow arrows
         foreach (GameObject arrow in spawnedArrows)
         {
             Image arrowImage = arrow.GetComponent<Image>();
@@ -171,8 +197,60 @@ public class AttackMiniGame : MonoBehaviour
                 case "Left": arrowImage.sprite = hollowLeftSprite; break;
                 case "Right": arrowImage.sprite = hollowRightSprite; break;
             }
+            arrowImage.color = normalColor;
         }
 
-        currentProgress = 0; // Reset progress
+        currentProgress = 0;
+    }
+
+    private void ClearPreviousSequence()
+    {
+        foreach (GameObject arrow in spawnedArrows)
+        {
+            Destroy(arrow);
+        }
+
+        spawnedArrows.Clear();
+    }
+
+    private void StartMiniGameTimer()
+    {
+        remainingTime = miniGameDuration;
+        UpdateTimerBar();
+    }
+
+    private void UpdateTimerBar()
+    {
+        if (timerBarImage != null)
+        {
+            float normalizedTime = remainingTime / miniGameDuration;
+            timerBarImage.rectTransform.localScale = new Vector3(normalizedTime, 1, 1);
+        }
+    }
+
+    private void EndMiniGame()
+    {
+        Debug.Log($"Mini-game ended. Completed sequences: {completedSequences}");
+
+        //playerStats.ResetDamage(); //do not touch this Tommy
+
+        Combat.instance.MiniGameCompleted();
+        gameObject.SetActive(false); // Disable the mini-game
+    }
+
+    private void PlaySuccessSound(int index)
+    {
+        if (index < successSounds.Length && audioSource != null)
+        {
+            audioSource.PlayOneShot(successSounds[index]);
+        }
+    }
+
+    private void PlayFailureSound()
+    {
+        if (failureSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(failureSound);
+        }
     }
 }
