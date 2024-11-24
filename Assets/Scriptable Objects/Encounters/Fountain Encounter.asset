@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419576b96c9075e4e9a86d272c9948b4, type: 3}
+  m_Name: Fountain Encounter
+  m_EditorClassIdentifier: 
+  description: 'A fluorescent fuchsia fountain stands in the middle of the room.
+    Its water shimmers in the tourch light. It beckons you to bathe in it. '
+  subjectSprite: {fileID: 0}
+  minigame: 0
+  encounterName: Healing Fountain
+  enemyIndex: 0
+  isCombat: 0
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  attackDialogues: []
+  batheString: As the water runs across your skin, you can feel it repair your broken
+    body. Your dirty hair shining with a renewed beauty. Your skin smoothening with
+    every drop. Your tired muscles regaining strength. However, before long, the
+    water runs dry. The fountain used everything to bring you back to full strength.
+    You thank it before moving on.
+  ignoreString: The sounds of running water fill your ears as you walk away. You
+    feel like you missed an enormous opportunity.
