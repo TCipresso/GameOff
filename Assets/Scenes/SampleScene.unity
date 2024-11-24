@@ -15479,7 +15479,7 @@ MonoBehaviour:
   nonCombatEncounters:
   - {fileID: 11400000, guid: 41e4f0b878d90e34dbc9f49104b13577, type: 2}
   bossEncounters:
-  - {fileID: 11400000, guid: 3f0ac5c82dee0ee469aaaa3c587c8b15, type: 2}
+  - {fileID: 11400000, guid: e025478594f23e14da6ebe71f62a50f9, type: 2}
   bossIndex: 0
   nCToCRatio: {x: 1, y: 2}
   chanceToIgnoreRatio: 10
