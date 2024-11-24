@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats instance; // Singleton instance
 
+    public int maxHP = 100;
     public int playerHP = 100;
     public int baseDmg = 15; // Base damage for the player
     public int dmg = 15;     // Current damage (can increase during mini-game)
@@ -57,7 +58,7 @@ public class PlayerStats : MonoBehaviour
             Debug.Log($"Player took {amount} damage. Remaining HP: {playerHP}");
         }
         UpdateUI();
-        OnHealthChanged?.Invoke();
+        OnHealthChanged?.Invoke();//this flashes the UI red when player takes damage.
     }
 
     public void Die()
@@ -85,4 +86,21 @@ public class PlayerStats : MonoBehaviour
         Debug.Log($"Damage reset to base value: {dmg}");
         UpdateUI();
     }
+
+    public void Heal()
+    {
+        Heal(maxHP);
+    }
+
+    /// <summary>
+    /// Heals player by provided amount.
+    /// </summary>
+    /// <param name="amount">Amount to heal player.</param>
+    public void Heal(int amount)
+    {
+        playerHP += amount;
+        if (playerHP > maxHP) playerHP = maxHP;
+        UpdateUI();
+    }
+
 }
