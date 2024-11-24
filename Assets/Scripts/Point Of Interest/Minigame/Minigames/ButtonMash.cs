@@ -41,7 +41,7 @@ public class ButtonMash : Minigame
     /// <returns>An <see cref="IEnumerator"/></returns>
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         EndMinigame();
     }
 
@@ -53,7 +53,7 @@ public class ButtonMash : Minigame
     {
         while (true)
         {
-            yield return new WaitForSeconds(timeBetweenDecay);
+            yield return new WaitForSecondsRealtime(timeBetweenDecay);
             LosePoints(pointsLostPerDecay);
         }
     }

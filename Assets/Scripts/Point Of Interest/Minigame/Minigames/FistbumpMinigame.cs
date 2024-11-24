@@ -25,7 +25,7 @@ public class FistbumpMinigame : Minigame
     /// <returns>An <see cref="IEnumerator"/></returns>
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         caller.CompleteMinigame(MinigameStatus.LOST);
         if(showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.MISSBUMP);
         EndMinigame();
