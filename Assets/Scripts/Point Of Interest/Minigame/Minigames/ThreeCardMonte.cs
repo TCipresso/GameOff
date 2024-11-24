@@ -41,7 +41,7 @@ public class ThreeCardMonte : Minigame
     /// <returns>An <see cref="IEnumerator"/></returns>
     IEnumerator Shuffle()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(2);
         hint.SetActive(false);
 
         for(int i = 0; i < shuffles; i++)
@@ -57,7 +57,7 @@ public class ThreeCardMonte : Minigame
 
             //Do a little blink animation.
             for(int j = 0; j < 2; j++) {
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSecondsRealtime(.5f);
                 buttons[start].SetActive(!buttons[start].activeSelf);
                 buttons[end].SetActive(!buttons[end].activeSelf);
             }

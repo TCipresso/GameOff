@@ -32,7 +32,7 @@ public class MidnightRunner : Minigame
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(gameDuration);
+        yield return new WaitForSecondsRealtime(gameDuration);
         EndMinigame();
         if (showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.WIN);
         caller?.CompleteMinigame(MinigameStatus.WIN); // Check for null caller

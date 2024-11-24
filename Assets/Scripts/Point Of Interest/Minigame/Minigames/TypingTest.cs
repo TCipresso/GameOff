@@ -60,7 +60,7 @@ public class TypingTest : PromptType
     /// <returns>An <see cref="IEnumerator"/></returns>
     IEnumerator Timer(float duration)
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         EndMinigame();
     }
 

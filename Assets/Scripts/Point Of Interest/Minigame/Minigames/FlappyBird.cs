@@ -35,7 +35,7 @@ public class FlappyBird : Minigame
     /// <returns>An <see cref="IEnumerator"/></returns>
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         EndMinigame();
         if (showResultOnUI) MinigameResultUI.instance.ShowResult(MinigameStatus.WIN);
         caller?.CompleteMinigame(MinigameStatus.WIN);

@@ -664,6 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 42671581}
   - component: {fileID: 42671582}
+  - component: {fileID: 42671583}
   m_Layer: 5
   m_Name: Minigame Timer
   m_TagString: Untagged
@@ -704,6 +705,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 1052207319}
+  colorable: {fileID: 42671583}
+--- !u!114 &42671583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42671580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images: []
+  texts:
+  - {fileID: 1052207319}
+  colorType: 0
 --- !u!1 &82266063
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 82266064}
   - component: {fileID: 82266065}
+  - component: {fileID: 82266066}
   m_Layer: 5
   m_Name: Midnight Runner
   m_TagString: Untagged
@@ -757,9 +777,32 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 82266066}
   spawner: {fileID: 2079549713}
   runner: {fileID: 647248592}
   gameDuration: 10
+--- !u!114 &82266066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82266063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images:
+  - {fileID: 647248595}
+  - {fileID: 1453671129}
+  - {fileID: 136642433}
+  - {fileID: 1296139227}
+  - {fileID: 969119562}
+  - {fileID: 1622122273}
+  texts: []
+  colorType: 0
 --- !u!1 &100940434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd257afb9cacf584fa32841335d85399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 997149965}
+  test: {fileID: 1230579431}
 --- !u!1 &136642430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,6 +2048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 208154026}
   - component: {fileID: 208154027}
+  - component: {fileID: 208154028}
   m_Layer: 0
   m_Name: Button Mash
   m_TagString: Untagged
@@ -2044,6 +2088,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 208154028}
   duration: 10
   passPoints: 100
   currPoints: 0
@@ -2052,6 +2097,24 @@ MonoBehaviour:
   pointsLostPerDecay: 10
   button: {fileID: 948035912}
   progressObject: {fileID: 522319674}
+--- !u!114 &208154028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208154025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images:
+  - {fileID: 15986928}
+  - {fileID: 948035915}
+  texts: []
+  colorType: 0
 --- !u!1 &228907418
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296106369}
   - component: {fileID: 296106370}
+  - component: {fileID: 296106371}
   m_Layer: 5
   m_Name: Yap Pat
   m_TagString: Untagged
@@ -2750,12 +2814,31 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 296106371}
   duration: 180
   curPoints: 0
   winPoints: 150
   prompts: []
   promptArea: {fileID: 535190024}
   inputArea: {fileID: 1491552932}
+--- !u!114 &296106371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296106368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images: []
+  texts:
+  - {fileID: 535190024}
+  - {fileID: 544364804}
+  colorType: 0
 --- !u!1 &299417102
 GameObject:
   m_ObjectHideFlags: 0
@@ -3945,6 +4028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 433646520}
   - component: {fileID: 433646521}
+  - component: {fileID: 433646522}
   m_Layer: 0
   m_Name: Three Card Monte
   m_TagString: Untagged
@@ -3987,6 +4071,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 433646522}
   shuffles: 10
   selectionBlocker: {fileID: 1150127520}
   hint: {fileID: 1756368085}
@@ -3994,6 +4079,26 @@ MonoBehaviour:
   - {fileID: 430470934}
   - {fileID: 981688349}
   - {fileID: 396205368}
+--- !u!114 &433646522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433646519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images:
+  - {fileID: 430470936}
+  - {fileID: 981688351}
+  - {fileID: 396205371}
+  texts:
+  - {fileID: 1756368087}
+  colorType: 0
 --- !u!1 &439177096
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,6 +4318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 445563683}
   - component: {fileID: 445563686}
+  - component: {fileID: 445563687}
   m_Layer: 5
   m_Name: Skibidi Rizzler
   m_TagString: Untagged
@@ -4255,6 +4361,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 445563687}
   duration: 10
   curPoints: 0
   winPoints: 3
@@ -4405,6 +4512,24 @@ MonoBehaviour:
   promptArea: {fileID: 1044710321}
   inputArea: {fileID: 1491552932}
   brainrotPrompt: Skibidi Rizzler got the Gyatt?!?
+--- !u!114 &445563687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445563682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images: []
+  texts:
+  - {fileID: 1044710321}
+  - {fileID: 1874447005}
+  colorType: 0
 --- !u!1 &489163061
 GameObject:
   m_ObjectHideFlags: 0
@@ -4415,6 +4540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 489163062}
   - component: {fileID: 489163063}
+  - component: {fileID: 489163064}
   m_Layer: 0
   m_Name: Fistbump
   m_TagString: Untagged
@@ -4453,8 +4579,27 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 489163064}
   duration: 5
   button: {fileID: 1768524786}
+--- !u!114 &489163064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489163061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images:
+  - {fileID: 1768524789}
+  texts:
+  - {fileID: 1225352546}
+  colorType: 0
 --- !u!1 &522319673
 GameObject:
   m_ObjectHideFlags: 0
@@ -5005,6 +5150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 562103888}
   - component: {fileID: 562103889}
+  - component: {fileID: 562103890}
   m_Layer: 5
   m_Name: Prompt Type
   m_TagString: Untagged
@@ -5047,6 +5193,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 562103890}
   duration: 10
   curPoints: 0
   winPoints: 3
@@ -5068,6 +5215,24 @@ MonoBehaviour:
   - Occult
   promptArea: {fileID: 1321716464}
   inputArea: {fileID: 1491552932}
+--- !u!114 &562103890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562103887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images: []
+  texts:
+  - {fileID: 1321716464}
+  - {fileID: 1542202044}
+  colorType: 0
 --- !u!1 &576995677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8829,6 +8994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 997149964}
   - component: {fileID: 997149965}
+  - component: {fileID: 997149966}
   m_Layer: 5
   m_Name: Descramble
   m_TagString: Untagged
@@ -8871,6 +9037,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 997149966}
   duration: 10
   curPoints: 0
   winPoints: 3
@@ -8892,6 +9059,24 @@ MonoBehaviour:
   - Occult
   promptArea: {fileID: 1320685270}
   inputArea: {fileID: 1491552932}
+--- !u!114 &997149966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997149963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images: []
+  texts:
+  - {fileID: 1320685270}
+  - {fileID: 1263443112}
+  colorType: 0
 --- !u!1 &1000869236
 GameObject:
   m_ObjectHideFlags: 0
@@ -11474,6 +11659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101568514}
   - component: {fileID: 1101568515}
+  - component: {fileID: 1101568516}
   m_Layer: 5
   m_Name: Pony Island
   m_TagString: Untagged
@@ -11519,11 +11705,34 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 1101568516}
   duration: 10
   runner: {fileID: 429925442}
   spawner: {fileID: 299417104}
   jumpTrigger: {fileID: 1798359506}
   floor: {fileID: 953410956}
+--- !u!114 &1101568516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101568513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images:
+  - {fileID: 429925440}
+  - {fileID: 1865002766}
+  - {fileID: 1811902804}
+  - {fileID: 265850365}
+  - {fileID: 931698847}
+  - {fileID: 770451636}
+  texts: []
+  colorType: 0
 --- !u!1 &1107614361
 GameObject:
   m_ObjectHideFlags: 0
@@ -13146,6 +13355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230579430}
   - component: {fileID: 1230579431}
+  - component: {fileID: 1230579432}
   m_Layer: 5
   m_Name: Flappy Bird
   m_TagString: Untagged
@@ -13189,9 +13399,39 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 1230579432}
   duration: 10
   bird: {fileID: 2004071685}
   spawner: {fileID: 1517244244}
+--- !u!114 &1230579432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230579428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images:
+  - {fileID: 2004071689}
+  - {fileID: 1657490267}
+  - {fileID: 1046129813}
+  - {fileID: 1873062157}
+  - {fileID: 2098269834}
+  - {fileID: 1307875244}
+  - {fileID: 1709109056}
+  - {fileID: 827669568}
+  - {fileID: 234139339}
+  - {fileID: 1385585539}
+  - {fileID: 1160721993}
+  - {fileID: 626366713}
+  - {fileID: 200510378}
+  texts: []
+  colorType: 0
 --- !u!1 &1230581769
 GameObject:
   m_ObjectHideFlags: 0
@@ -14010,6 +14250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1297562654}
   - component: {fileID: 1297562655}
+  - component: {fileID: 1297562656}
   m_Layer: 5
   m_Name: Closing Maze
   m_TagString: Untagged
@@ -14054,9 +14295,61 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 1297562656}
   obstacleSpawner: {fileID: 665492571}
   runner: {fileID: 913261577}
   endTrigger: {fileID: 1135229839}
+--- !u!114 &1297562656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297562653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images:
+  - {fileID: 913261582}
+  - {fileID: 1710068956}
+  - {fileID: 1142283745}
+  - {fileID: 443098094}
+  - {fileID: 2006848404}
+  - {fileID: 2122518963}
+  - {fileID: 547346339}
+  - {fileID: 855370795}
+  - {fileID: 1398491628}
+  - {fileID: 1250068501}
+  - {fileID: 745601470}
+  - {fileID: 1002402620}
+  - {fileID: 2088446142}
+  - {fileID: 523573300}
+  - {fileID: 1014330790}
+  - {fileID: 247019344}
+  - {fileID: 1230581771}
+  - {fileID: 1712831530}
+  - {fileID: 899197887}
+  - {fileID: 721754703}
+  - {fileID: 1089331604}
+  - {fileID: 1811354989}
+  - {fileID: 1325014841}
+  - {fileID: 1476817060}
+  - {fileID: 305606865}
+  - {fileID: 1451366320}
+  - {fileID: 1943855904}
+  - {fileID: 1448038128}
+  - {fileID: 1470891474}
+  - {fileID: 795951452}
+  - {fileID: 1539293498}
+  - {fileID: 1786602474}
+  - {fileID: 1468396562}
+  - {fileID: 1756594486}
+  - {fileID: 1062323269}
+  texts: []
+  colorType: 0
 --- !u!1 &1307875242
 GameObject:
   m_ObjectHideFlags: 0
@@ -14643,6 +14936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1332969677}
   - component: {fileID: 1332969678}
+  - component: {fileID: 1332969679}
   m_Layer: 5
   m_Name: Typing Test
   m_TagString: Untagged
@@ -14685,6 +14979,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
+  colorable: {fileID: 1332969679}
   duration: 10
   curPoints: 0
   winPoints: 5
@@ -14712,6 +15007,25 @@ MonoBehaviour:
   - 18
   - 15
   wordsPerRound: 03000000030000000400000005000000
+--- !u!114 &1332969679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332969676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb6027dfc3d0448c4e0c09a97a8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+  images: []
+  texts:
+  - {fileID: 1651032303}
+  - {fileID: 1348483500}
+  - {fileID: 2018215336}
+  colorType: 0
 --- !u!1 &1348483498
 GameObject:
   m_ObjectHideFlags: 0
@@ -14992,7 +15306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad2c55f88249b44aa3487dd8ec1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPOI: {fileID: 11400000, guid: 197cf5af939de2a45aab7904cdf1e805, type: 2}
+  currentPOI: {fileID: 11400000, guid: c922461baaf39a54c914cb3f4d4ead77, type: 2}
   inEncounter: 0
 --- !u!114 &1360784988
 MonoBehaviour:
@@ -15135,8 +15449,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
   nonCombatEncounters:
   - {fileID: 11400000, guid: 41e4f0b878d90e34dbc9f49104b13577, type: 2}
-  bossEncounters:
   - {fileID: 11400000, guid: e025478594f23e14da6ebe71f62a50f9, type: 2}
+  - {fileID: 11400000, guid: 8ba8d3710754e394ca54b1355c04b3de, type: 2}
+  bossEncounters:
+  - {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
   bossIndex: 0
   nCToCRatio: {x: 1, y: 2}
   chanceToIgnoreRatio: 10

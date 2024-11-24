@@ -25,7 +25,7 @@ MonoBehaviour:
   enemySpeedMax: 7
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 40
+  evilHorseChance: 50
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0

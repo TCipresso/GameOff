@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a576b3863cc15c54fba67b83246bf4a0, type: 3}
+  m_Name: Trap Encounter
+  m_EditorClassIdentifier: 
+  description: You hear a clink as you take a step. You look down and find a metal
+    plate. Right as you realized what happened, metal bars shut tight on your leg.
+    You struggle to set your leg free.
+  subjectSprite: {fileID: 0}
+  minigame: 2
+  encounterName: 
+  enemyIndex: 0
+  isCombat: 0
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  attackDialogues: []
+  speedLoss: 5
+  damage: 5
+  failureResponse: You fail to open the trap. Out of options, you pull out your leg
+    with all your might. Your leg flies out of the trap bruised and injured.
+  successResponse: You free your leg from the trap. Luckly the metal bars didn't
+    shut too tight. You are relatively unscathed.

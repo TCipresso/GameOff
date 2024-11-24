@@ -21,6 +21,7 @@ public class HorseEncounter : Encounter
     [SerializeField] bool increaseChancePerGoodHorse = true;
     [SerializeField] bool forceEvilHorse = false;
     [SerializeField] bool isEvil = false;
+    bool isSetUp = false;
 
     [Header("Good Horse Outcomes")]
     [SerializeField] int healthBoostAmount = 5;
@@ -42,6 +43,11 @@ public class HorseEncounter : Encounter
     [TextArea(3, 10)]
     [SerializeField] string goodHorseDeny;
 
+    private void OnDisable()
+    {
+        isSetUp = false;
+    }
+
     /// <summary>
     /// Gets the description of the horse and determines if 
     /// the horse will be good or evil
@@ -49,6 +55,9 @@ public class HorseEncounter : Encounter
     /// <returns>The description of the horse.</returns>
     public override string GetDescription()
     {
+        if (isSetUp) return description;
+
+        isSetUp = true;
         if(evilHorseChance == 0) evilHorseChance = baseEvilHorseChance;
         if(forceEvilHorse || Random.Range(0, 100) + 1 <= evilHorseChance)
         {
@@ -113,6 +122,12 @@ public class HorseEncounter : Encounter
         }
 
         return $"Keyword not recognized.";
+    }
+
+    public override void LeaveEncounter()
+    {
+        isSetUp = false;
+        base.LeaveEncounter();
     }
 
     /// <summary>
