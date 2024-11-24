@@ -4,6 +4,8 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats instance; // Singleton instance
+
     public int playerHP = 100;
     public int baseDmg = 15; // Base damage for the player
     public int dmg = 15;     // Current damage (can increase during mini-game)
@@ -16,6 +18,19 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI speedText;
     public event Action OnHealthChanged;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("Duplicate PlayerStats detected. Destroying duplicate.");
+            Destroy(gameObject);
+        }
+    }
 
     void UpdateUI()
     {

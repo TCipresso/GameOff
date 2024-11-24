@@ -58,7 +58,7 @@ public class TextOutput : MonoBehaviour
                 {
                     audioSource.PlayOneShot(typingSound);
                 }
-                yield return new WaitForSeconds(typingSpeed);
+                yield return new WaitForSecondsRealtime(typingSpeed);
             }
         }
         isTyping = false;

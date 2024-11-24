@@ -10,7 +10,7 @@ public class ArrowSpawner : MonoBehaviour
 
     private void Start()
     {
-        spawnDelay = Random.Range(0.8f, 1.5f);
+        spawnDelay = Random.Range(1f, 3f);
     }
 
     void Update()
@@ -20,7 +20,7 @@ public class ArrowSpawner : MonoBehaviour
         {
             SpawnArrow();
             timer = 0;
-            spawnDelay = Random.Range(0.8f, 1.5f);
+            spawnDelay = Random.Range(2f, 3.5f);
         }
     }
 

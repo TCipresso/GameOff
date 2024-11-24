@@ -25,8 +25,9 @@ public class Combat : MonoBehaviour
     private bool combatActive = false;
     private Encounter currentEncounter;
 
-    [Header("Mini Game")]
-    public GameObject ddrMinigame;
+    [Header("Mini Games")]
+    public GameObject ddrMinigame;    // Attack mini-game
+    public GameObject defendMinigame; // Defend mini-game
     private bool miniGameComplete = false;
     public GameObject Loading;
 
@@ -132,12 +133,6 @@ public class Combat : MonoBehaviour
                 TextOutput.instance.Print("Invalid command. Please type 'attack', 'defend', or 'investigate'");
                 return;
         }
-
-        //if (currentEnemyScript != null && !currentEnemyScript.IsDefeated())
-        //{
-          //  currentState = CombatState.EnemyTurn;
-           // StartCoroutine(EnemyTurn());
-     //   }
     }
 
     private void PlayerAttack()
@@ -148,10 +143,19 @@ public class Combat : MonoBehaviour
         StartCoroutine(WaitForMiniGameCompletion());
     }
 
+    private void PlayerDefend()
+    {
+        Debug.Log("Defend mini-game started!");
+        defendMinigame.SetActive(true);
+        currentState = CombatState.WaitForMiniGame;
+        UpdateInputFieldState();
+        StartCoroutine(WaitForMiniGameCompletion());
+    }
+
     private IEnumerator WaitForMiniGameCompletion()
     {
         yield return new WaitUntil(() => miniGameComplete);
-        ApplyDamageAndCheckForEnemyDefeat();
+        CompleteMiniGameAction();
     }
 
     public void MiniGameCompleted()
@@ -159,6 +163,25 @@ public class Combat : MonoBehaviour
         Debug.Log("Combat has received the mini-game completion signal.");
         Loading.SetActive(false);
         miniGameComplete = true;
+    }
+
+    private void CompleteMiniGameAction()
+    {
+        if (currentState == CombatState.WaitForMiniGame)
+        {
+            if (ddrMinigame.activeSelf)
+            {
+                ApplyDamageAndCheckForEnemyDefeat();
+            }
+            else if (defendMinigame.activeSelf)
+            {
+                ApplyDefense();
+            }
+
+            ddrMinigame.SetActive(false);
+            defendMinigame.SetActive(false);
+            currentState = CombatState.EnemyTurn;
+        }
     }
 
     private void ApplyDamageAndCheckForEnemyDefeat()
@@ -179,14 +202,14 @@ public class Combat : MonoBehaviour
                 StartCoroutine(EnemyTurn());
             }
         }
-        miniGameComplete = false;  // Reset the flag for the next usage
+        miniGameComplete = false; // Reset the flag for the next usage
     }
 
-    private void PlayerDefend()
+    private void ApplyDefense()
     {
-        TextOutput.instance.Print("You defend! The enemy's next attack will deal reduced damage.");
-        playerStats.isDefending = true;
-        UpdateInputFieldState();
+        Debug.Log("Defense applied: Enemy's attack will be reduced!");
+        playerStats.isDefending = true; // Flag for reduced enemy damage
+        miniGameComplete = false; // Reset for future use
     }
 
     private void Investigate(Encounter encounter)
@@ -200,10 +223,10 @@ public class Combat : MonoBehaviour
     private IEnumerator EnemyTurn()
     {
         UpdateInputFieldState();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
         TextOutput.instance.Print("Enemy's Turn");
         playerStats.ResetDamage();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
         UpdateInputFieldState();
 
         if (currentEnemyScript != null)
@@ -225,7 +248,7 @@ public class Combat : MonoBehaviour
             }
         }
         UpdateInputFieldState();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSecondsRealtime(1.5f);
         currentState = CombatState.PlayerTurn;
         TextOutput.instance.Print("Player's Turn ACTIONS: 'ATTACK'     'DEFEND'     'INVESTIGATE'");
         UpdateInputFieldState();
