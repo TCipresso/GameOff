@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class PointOfInterest : ScriptableObject
     [SerializeField] Encounter encounter;
     [TextArea(3, 10)]
     [SerializeField] string noEncounterString = "This room is empty. You are safe.";
+    [SerializeField] bool allowEncounterChange = true;
 
     /// <summary>
     /// States if the POI has an <see cref="Encounter"/>.
@@ -22,6 +24,11 @@ public class PointOfInterest : ScriptableObject
     public bool HasEncounter()
     {
         return encounter != null;
+    }
+
+    public bool AllowEncounterChange()
+    {
+        return allowEncounterChange;
     }
 
     /// <summary>
@@ -56,6 +63,17 @@ public class PointOfInterest : ScriptableObject
             if (token.Equals("search")) return true;
         }
         return false;
+    }
+
+    public List<Route> GetRoutes()
+    {
+        return routes;
+    }
+
+    public void SetEncounter(Encounter encounter)
+    {
+        if (!allowEncounterChange) throw new InvalidOperationException($"{name} does not allow encounter changing.");
+        this.encounter = encounter;
     }
 
     public Encounter GetEncounter()
