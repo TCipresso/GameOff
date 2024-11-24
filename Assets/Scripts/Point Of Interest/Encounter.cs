@@ -100,7 +100,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <summary>
     /// Clean/Update game state and leave the encounter.
     /// </summary>
-    public void LeaveEncounter()
+    public virtual void LeaveEncounter()
     {
         GameManager.instance.LeaveEnounter();
     }
