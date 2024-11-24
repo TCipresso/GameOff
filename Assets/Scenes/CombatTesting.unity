@@ -13285,6 +13285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be23bf8fe35db51459ac31881f2451df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 100
   playerHP: 100
   baseDmg: 15
   dmg: 10
@@ -26536,7 +26537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2073998465
 RectTransform:
   m_ObjectHideFlags: 0

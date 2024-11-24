@@ -1822,22 +1822,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a04e96587fa16f458b70b9ba8648f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
   upArrowPrefab: {fileID: 4310861944225482659, guid: 96327ecb46620164d862b79124a00da1, type: 3}
   downArrowPrefab: {fileID: 2515749697919355080, guid: 0fa9bd3d92dde8e4ca010c168f06f3ce, type: 3}
   leftArrowPrefab: {fileID: 8405352263584145033, guid: 34aa9e99fd88a1140a840a8eb22d9e09, type: 3}
   rightArrowPrefab: {fileID: 8196446610955359934, guid: 4d7b9ae59ee8aa140bf2b4ae2251a4f3, type: 3}
   hollowUpSprite: {fileID: 21300000, guid: 593e3fdfaff6eb0429c3fd795602e8da, type: 3}
   filledUpSprite: {fileID: 21300000, guid: a9983b942eacf2f4190e0002692cff03, type: 3}
-  failureUpSprite: {fileID: 21300000, guid: a9983b942eacf2f4190e0002692cff03, type: 3}
   hollowDownSprite: {fileID: 21300000, guid: 6849728d3f1179640aa6ccfd67e13826, type: 3}
   filledDownSprite: {fileID: 21300000, guid: e35f3a5f63820ea4bba2266fbb2d6bb0, type: 3}
-  failureDownSprite: {fileID: 21300000, guid: e35f3a5f63820ea4bba2266fbb2d6bb0, type: 3}
   hollowLeftSprite: {fileID: 21300000, guid: 89474e15126d87c4a8cae5851fadf63a, type: 3}
   filledLeftSprite: {fileID: 21300000, guid: 04f0e74a4bf616646b251debb2683bfb, type: 3}
-  failureLeftSprite: {fileID: 21300000, guid: 04f0e74a4bf616646b251debb2683bfb, type: 3}
   hollowRightSprite: {fileID: 21300000, guid: 6849728d3f1179640aa6ccfd67e13826, type: 3}
   filledRightSprite: {fileID: 21300000, guid: bc11b287910f0b74eb67767970d1b6a8, type: 3}
-  failureRightSprite: {fileID: 21300000, guid: bc11b287910f0b74eb67767970d1b6a8, type: 3}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  failureColor: {r: 1, g: 0, b: 0, a: 1}
+  successSounds: []
+  failureSound: {fileID: 0}
+  audioSource: {fileID: 0}
+  timerBarImage: {fileID: 0}
+  miniGameDuration: 10
   spawnPoint: {fileID: 1716528939}
   sequenceLength: 5
   spawnInterval: 0.5
@@ -11140,7 +11144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1059133223
 Transform:
   m_ObjectHideFlags: 0
@@ -15035,6 +15039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   playerHP: 100
+  baseDmg: 15
   dmg: 10
   speed: 50
   baseTypingSpeed: 999999
@@ -15059,6 +15064,8 @@ MonoBehaviour:
   playerStats: {fileID: 1360784990}
   playerInputFieldObject: {fileID: 1856952945}
   ddrMinigame: {fileID: 599008884}
+  defendMinigame: {fileID: 0}
+  Loading: {fileID: 0}
 --- !u!114 &1360784992
 MonoBehaviour:
   m_ObjectHideFlags: 0

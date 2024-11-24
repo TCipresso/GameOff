@@ -40,11 +40,6 @@ public class PlayerStats : MonoBehaviour
         speedText.text = $"{speed}";
     }
 
-    private void Awake()
-    {
-        if (instance == null) instance = this; //Can't destroy as this is with every other major system :(.
-    }
-
     void Start()
     {
         UpdateUI();
@@ -112,20 +107,5 @@ public class PlayerStats : MonoBehaviour
         UpdateUI();
     }
 
-    public void Heal()
-    {
-        Heal(maxHP);
-    }
-
-    /// <summary>
-    /// Heals player by provided amount.
-    /// </summary>
-    /// <param name="amount">Amount to heal player.</param>
-    public void Heal(int amount)
-    {
-        playerHP += amount;
-        if (playerHP > maxHP) playerHP = maxHP;
-        UpdateUI();
-    }
 
 }
