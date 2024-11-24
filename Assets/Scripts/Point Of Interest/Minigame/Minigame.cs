@@ -13,6 +13,7 @@ public abstract class Minigame : MonoBehaviour, ReportHit
     [SerializeField] protected bool showResultOnUI = true;
     [SerializeField] protected TimerUI timerUIElement;
     [SerializeField] protected GameObject background;
+    [SerializeField] protected Colorable colorable;
     
     /// <summary>
     /// Starts the minigame.
@@ -28,6 +29,7 @@ public abstract class Minigame : MonoBehaviour, ReportHit
         this.caller = caller;
         background.SetActive(true);
         MinigameResultUI.instance.HideResults();
+        colorable?.UpdateColor();
     }
 
     /// <summary>

@@ -9,6 +9,7 @@ using UnityEngine;
 public class TimerUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI textElement;
+    [SerializeField] Colorable colorable;
     private float duration = 0f;
 
     /// <summary>
@@ -19,6 +20,7 @@ public class TimerUI : MonoBehaviour
     {
         ShowTimer();
         this.duration = duration;
+        colorable?.UpdateColor();
         StartCoroutine(Timer());
     }
 
