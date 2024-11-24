@@ -165,13 +165,15 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// Handle the <see cref="MinigameStatus"/> from the <see cref="Minigame"/> I started.
     /// </summary>
     /// <param name="gameResult"></param>
-    public void CompleteMinigame(MinigameStatus gameResult)
+    public virtual void CompleteMinigame(MinigameStatus gameResult)
     {
         switch (gameResult)
         {
+            case MinigameStatus.MISSBUMP:
             case MinigameStatus.LOST:
                 TextOutput.instance.Print("Game lost.");
                 break;
+            case MinigameStatus.FISTBUMP:
             case MinigameStatus.WIN:
                 TextOutput.instance.Print("Game won.");
                 LeaveEncounter();
