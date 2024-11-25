@@ -35,6 +35,7 @@ public class TextOutput : MonoBehaviour
 
     public void Print(string text, OutputCarrot outputCarrot = OutputCarrot.SYSTEM)
     {
+        if (string.IsNullOrEmpty(text)) return;
         string prefixedText = $"{GetCarrot(outputCarrot)} {text}\n";
         messageQueue.Enqueue(prefixedText);
         if (!isTyping)
