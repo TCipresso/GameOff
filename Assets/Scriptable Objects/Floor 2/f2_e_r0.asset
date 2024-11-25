@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec4e27edbc11f44aba093695a59f572, type: 3}
   m_Name: f2_e_r0
   m_EditorClassIdentifier: 
-  routes:
-  - direction: down
-    destination: {fileID: 11400000, guid: cc8921dea5cd1cd4b95d1a6c8eaa7e09, type: 2}
+  routes: []
   image: {fileID: 0}
   encounter: {fileID: 0}
   noEncounterString: This room is empty. You are safe.
