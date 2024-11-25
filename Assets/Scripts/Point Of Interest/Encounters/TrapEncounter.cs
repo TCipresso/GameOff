@@ -64,7 +64,7 @@ public class TrapEncounter : Encounter
     private void TrapFail()
     {
         PlayerStats.instance.TakeDamage(damage);
-        PlayerStats.instance.speed -= speedLoss;
+        PlayerStats.instance.DecreaseSpeed(speedLoss);
         TextOutput.instance.Print(failureResponse);
         LeaveEncounter();
     }

@@ -156,11 +156,11 @@ public class HorseEncounter : Encounter
             return evilHorseAccept;
         }
 
+
         PlayerStats.instance.maxHP += healthBoostAmount;
-        PlayerStats.instance.playerHP += healthBoostAmount;
-        PlayerStats.instance.dmg += damageBoostAmount;
-        PlayerStats.instance.speed += speedBoostAmount;
-        PlayerStats.instance.baseTypingSpeed += typingSpeedBoostAmount;
+        PlayerStats.instance.Heal(healthBoostAmount);
+        PlayerStats.instance.AddDamage(damageBoostAmount);
+        PlayerStats.instance.IncreaseSpeed(speedBoostAmount);
         GameManager.instance.LeaveEnounter();
         return goodHorseAccept;
     }
