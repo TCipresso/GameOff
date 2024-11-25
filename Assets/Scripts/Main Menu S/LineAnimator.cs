@@ -18,7 +18,7 @@ public class LineAnimator : MonoBehaviour
         foreach (GameObject line in lineAnimations)
         {
             line.SetActive(true); // Enable the line, which should start its animation
-            yield return new WaitForSeconds(delayBetweenAnimations); // Wait for the animation to complete
+            yield return new WaitForSecondsRealtime(delayBetweenAnimations); // Wait for the animation to complete
         }
 
         ShowLoadingScreen();
@@ -32,7 +32,7 @@ public class LineAnimator : MonoBehaviour
 
     IEnumerator StartMiniGameAfterDelay()
     {
-        yield return new WaitForSeconds(2); // Delay before starting the mini-game
+        yield return new WaitForSecondsRealtime(2); // Delay before starting the mini-game
         loadingScreen.SetActive(false);
         ddrMinigame.SetActive(true);
     }
