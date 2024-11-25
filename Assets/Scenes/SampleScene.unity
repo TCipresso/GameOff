@@ -15307,7 +15307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad2c55f88249b44aa3487dd8ec1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPOI: {fileID: 11400000, guid: 197cf5af939de2a45aab7904cdf1e805, type: 2}
+  currentPOI: {fileID: 11400000, guid: dfd1968aa97736f4884190b47e692f10, type: 2}
   inEncounter: 0
 --- !u!114 &1360784988
 MonoBehaviour:
@@ -15455,6 +15455,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 41e4f0b878d90e34dbc9f49104b13577, type: 2}
   - {fileID: 11400000, guid: e025478594f23e14da6ebe71f62a50f9, type: 2}
   - {fileID: 11400000, guid: 8ba8d3710754e394ca54b1355c04b3de, type: 2}
+  - {fileID: 11400000, guid: 4159ca27e6cbabf4597913667bd22eff, type: 2}
   nCToCRatio: {x: 1, y: 2}
   chanceToIgnoreRatio: 10
 --- !u!114 &1360784994
