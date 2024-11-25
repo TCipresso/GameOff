@@ -15,8 +15,6 @@ public class EncounterGenerator : MonoBehaviour
     [Header("Encounters")]
     [SerializeField] List<Encounter> combatEncounters;
     [SerializeField] List<Encounter> nonCombatEncounters;
-    [SerializeField] List<Encounter> bossEncounters;
-    [SerializeField] int bossIndex;
     private int maxNonCombatEncounters;
     private int maxCombatEncounters;
     private int nonCombatEncountersRemaining;
@@ -55,8 +53,6 @@ public class EncounterGenerator : MonoBehaviour
 
     private void IterativeDFS(PointOfInterest root, int floorIndex)
     {
-        bool atStart = true;
-
         Stack<PointOfInterest> stack = new Stack<PointOfInterest>();
         List<PointOfInterest> visited = new List<PointOfInterest>();
         stack.Push(root);
@@ -80,54 +76,11 @@ public class EncounterGenerator : MonoBehaviour
                 current.AddRoute(new Route("down", startingRooms[floorIndex + 1]));
             }
 
-
-            if (current.AllowEncounterChange()) PopulatePOIEncounter(current, routes.Count, atStart);
+            if (current.AllowEncounterChange()) AddEncounter(current);
             else Debug.Log($"{current.name} does not allow encounter changes");
-            if (atStart) atStart = false;
         }
 
         Debug.Log($"Visited {visited.Count} nodes.");
-    }
-
-    /// <summary>
-    /// Determine what type of encounter is best for provided root.
-    /// </summary>
-    /// <param name="root">Current <see cref="PointOfInterest"/></param>
-    /// <param name="atStart">Is this the floor's starting root?</param>
-    private void PopulatePOIEncounter(PointOfInterest root, bool atStart = false)
-    {
-        PopulatePOIEncounter(root, root.GetRoutes().Count, atStart);
-    }
-
-    /// <summary>
-    /// Determine what type of encounter is best for provided root.
-    /// </summary>
-    /// <param name="root">Current <see cref="PointOfInterest"/></param>
-    /// <param name="numRoutes">The number of <see cref="Route"/>s this POI has.</param>
-    /// <param name="atStart">Is this the floor's starting root?</param>
-    private void PopulatePOIEncounter(PointOfInterest root, int numRoutes, bool atStart)
-    {
-        if (!atStart)
-        {
-            //In pathway room.
-            if (numRoutes > 0)
-                AddEncounter(root);
-
-            //In the boss room. Makes it where the ending room always has a boss.
-            else
-            {
-                Debug.Log($"{root.name} is the boss room.");
-                root.SetEncounter(bossEncounters[bossIndex]);
-            }
-        }
-
-        //In starting room. Makes it where starting room is always empty so the player doesn't start in combat and has time to settle in.
-        else
-        {
-            Debug.Log($"{root.name} is the starting room.");
-            root.SetEncounter(null);
-            nonCombatEncountersRemaining--;
-        }
     }
 
     /// <summary>
