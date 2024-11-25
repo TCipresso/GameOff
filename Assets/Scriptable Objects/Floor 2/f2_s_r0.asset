@@ -19,5 +19,7 @@ MonoBehaviour:
     destination: {fileID: 11400000, guid: 9dc7e6ca7eb7a734b9b6c4d4319bb9fb, type: 2}
   image: {fileID: 0}
   encounter: {fileID: 0}
-  noEncounterString: This room is empty. You are safe.
+  noEncounterString: The stones at your feet creak as you step on them. They have
+    been undisturbed for a long time. You take a deep breath of the stagnant air
+    as you prepare to make your way deeper into the dungeon.
   allowEncounterChange: 0

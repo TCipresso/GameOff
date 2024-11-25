@@ -21,5 +21,8 @@ MonoBehaviour:
     destination: {fileID: 11400000, guid: 5bc9809e6b586d247b296efcd9092800, type: 2}
   image: {fileID: 0}
   encounter: {fileID: 0}
-  noEncounterString: This room is empty. You are safe.
+  noEncounterString: As you step to the bottom of the stair case, you look back up.
+    Only the void stares back. You begin to wonder how deep into the Earth you are.
+    Before long, you snap out of that thought and prepare yourself to venture the
+    final floor of the dungeon.
   allowEncounterChange: 0

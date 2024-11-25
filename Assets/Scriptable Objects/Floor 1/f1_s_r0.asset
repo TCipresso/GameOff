@@ -17,5 +17,7 @@ MonoBehaviour:
     destination: {fileID: 11400000, guid: 14eac94e7fb95ba4cbea116c50ea2eb7, type: 2}
   image: {fileID: 0}
   encounter: {fileID: 0}
-  noEncounterString: This room is empty. You are safe.
+  noEncounterString: You take your first steps into the dungeon. The cold and stale
+    air fills your lungs. The gate shuts behind you. Your torch is your only source
+    of light.
   allowEncounterChange: 0
