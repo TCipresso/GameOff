@@ -141,6 +141,17 @@ public class PlayerStats : MonoBehaviour
     }
 
     /// <summary>
+    /// Increases the player's speed by the specified amount and updates the UI.
+    /// </summary>
+    /// <param name="amount">Amount to increase speed by.</param>
+    public void DecreaseSpeed(int amount)
+    {
+        speed -= amount;
+        Debug.Log($"Speed decreased by {amount}. Current speed: {speed}");
+        UpdateUI();
+    }
+
+    /// <summary>
     /// Enables GodMode by setting the player's HP to a very high value.
     /// </summary>
     public void EnableGodMode()
