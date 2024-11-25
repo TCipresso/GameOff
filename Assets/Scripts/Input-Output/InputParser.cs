@@ -18,12 +18,24 @@ public class InputParser : MonoBehaviour
     [SerializeField] ColorManager colorManager;
     [SerializeField] CheatCodeManager cheatCodeManager;
 
+    [Header("Hint Info")]
+    [TextArea(3, 10)] [SerializeField] string hintText;
+    [SerializeField] float hintTime;
+    Coroutine giveHint;
+
     public static InputParser instance { get; private set; }
 
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
+        giveHint = StartCoroutine(GiveHint());
+    }
+
+    IEnumerator GiveHint()
+    {
+        yield return new WaitForSecondsRealtime(hintTime);
+        TextOutput.instance.Print(hintText);
     }
 
     /// <summary>
@@ -49,6 +61,7 @@ public class InputParser : MonoBehaviour
     /// </summary>
     public virtual void ActivateInput()
     {
+        giveHint = StartCoroutine(GiveHint());
         inputField.text = "";
         textArea.SetActive(true);
         carrot.SetActive(true);
@@ -59,6 +72,7 @@ public class InputParser : MonoBehaviour
     /// </summary>
     public virtual void DeactivateInput()
     {
+        StopCoroutine(giveHint);
         inputField.text = "";
         textArea.SetActive(false);
         carrot.SetActive(false);
@@ -75,8 +89,8 @@ public class InputParser : MonoBehaviour
     {
         if (string.IsNullOrEmpty(input)) return;
 
-        TextOutput.instance.Print($"/> {input}"); // Prefix user input with user carrot
-        string output = "";
+        TextOutput.instance.Print($"{input}", OutputCarrot.USER); // Prefix user input with user carrot
+        string output;
 
         if (Combat.instance.IsCombatActive())
         {
@@ -115,6 +129,8 @@ public class InputParser : MonoBehaviour
 
         if (!string.IsNullOrEmpty(output))
         {
+            StopCoroutine(giveHint);
+            giveHint = StartCoroutine(GiveHint());
             TextOutput.instance.Print(output);
         }
     }

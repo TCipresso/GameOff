@@ -17257,6 +17257,8 @@ MonoBehaviour:
   carrot: {fileID: 439177096}
   colorManager: {fileID: 0}
   cheatCodeManager: {fileID: 0}
+  hintText: 
+  hintTime: 0
   promptMinigame: {fileID: 0}
 --- !u!114 &1491552933
 MonoBehaviour:
@@ -21815,6 +21817,14 @@ MonoBehaviour:
   carrot: {fileID: 1878140573}
   colorManager: {fileID: 2041287936}
   cheatCodeManager: {fileID: 1360784988}
+  hintText: 'Lost? Check your <b>Cheats</b> folder to see what cheats you have! Or
+    you can type:
+
+    -<b>search</b> to describe the room you''re in. Or,
+
+    -<b>help</b>
+    to figure out what keywords you can currently type.'
+  hintTime: 60
 --- !u!114 &1856952951
 MonoBehaviour:
   m_ObjectHideFlags: 0
