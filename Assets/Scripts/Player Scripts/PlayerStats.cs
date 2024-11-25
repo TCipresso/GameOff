@@ -8,17 +8,20 @@ public class PlayerStats : MonoBehaviour
 
     public int maxHP = 100;
     public int playerHP = 100;
-    public int baseDmg = 15; // Base damage for the player
-    public int dmg = 15;     // Current damage (can increase during mini-game)
+    public int baseDmg = 15; 
+    public int dmg = 15;     
     public int speed = 5;
-    public float baseTypingSpeed = 5f;
+    private int baseSpeed; 
+    public float baseTypingSpeed = 99999f; 
+    private float currentTypingSpeed;      
+    private int previousHP;                
     public bool isDefending = false;
 
     [Header("UI References")]
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI speedText;
-    public event Action OnHealthChanged;//this flashes the UI red when player takes damage.
+    public event Action OnHealthChanged; // Flashes the UI red when player takes damage.
 
     private void Awake()
     {
@@ -42,9 +45,16 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        baseSpeed = speed; 
+        currentTypingSpeed = baseTypingSpeed;
         UpdateUI();
     }
 
+    /// <summary>
+    /// Reduces the player's HP by the given amount and updates the UI.
+    /// Triggers health change events.
+    /// </summary>
+    /// <param name="amount">Amount of damage to deal.</param>
     public void TakeDamage(int amount)
     {
         playerHP -= amount;
@@ -58,7 +68,7 @@ public class PlayerStats : MonoBehaviour
             Debug.Log($"Player took {amount} damage. Remaining HP: {playerHP}");
         }
         UpdateUI();
-        OnHealthChanged?.Invoke();//this flashes the UI red when player takes damage.
+        OnHealthChanged?.Invoke(); // Flashes the UI red when player takes damage.
     }
 
     /// <summary>
@@ -70,17 +80,19 @@ public class PlayerStats : MonoBehaviour
     }
 
     /// <summary>
-    /// Heals player by provided amount.
+    /// Heals player by the specified amount.
     /// </summary>
-    /// <param name="amount">Amount to heal player.</param>
+    /// <param name="amount">Amount to heal the player.</param>
     public void Heal(int amount)
     {
         playerHP += amount;
         if (playerHP > maxHP) playerHP = maxHP;
         UpdateUI();
-        //OnHealthChanged?.Invoke(); //I don't know what this is, so I'm not gonna use it just in case. I'll let you properly handle that.
     }
 
+    /// <summary>
+    /// Handles player death.
+    /// </summary>
     public void Die()
     {
         Debug.Log("Player has died.");
@@ -107,5 +119,65 @@ public class PlayerStats : MonoBehaviour
         UpdateUI();
     }
 
+    /// <summary>
+    /// Increases the player's speed by the specified amount and updates the UI.
+    /// </summary>
+    /// <param name="amount">Amount to increase speed by.</param>
+    public void IncreaseSpeed(int amount)
+    {
+        speed += amount;
+        Debug.Log($"Speed increased by {amount}. Current speed: {speed}");
+        UpdateUI();
+    }
 
+    /// <summary>
+    /// Resets the player's speed to the base value and updates the UI.
+    /// </summary>
+    public void ResetSpeed()
+    {
+        speed = baseSpeed;
+        Debug.Log($"Speed reset to base value: {speed}");
+        UpdateUI();
+    }
+
+    /// <summary>
+    /// Enables GodMode by setting the player's HP to a very high value.
+    /// </summary>
+    public void EnableGodMode()
+    {
+        previousHP = playerHP; 
+        playerHP = 999999; 
+        Debug.Log($"GodMode enabled! Current HP: {playerHP}");
+        UpdateUI();
+    }
+
+    /// <summary>
+    /// Resets the player's HP to its previous state before GodMode.
+    /// </summary>
+    public void ResetCurrentHealth()
+    {
+        playerHP = previousHP;
+        Debug.Log($"GodMode disabled! HP reset to previous value: {playerHP}");
+        UpdateUI();
+    }
+
+    /// <summary>
+    /// Decreases the player's typing speed by the specified amount.
+    /// </summary>
+    /// <param name="amount">Amount to decrease typing speed by.</param>
+    public void DecreaseTypingSpeed(float amount)
+    {
+        currentTypingSpeed -= amount;
+        if (currentTypingSpeed < 0) currentTypingSpeed = 0;
+        Debug.Log($"Typing speed decreased by {amount}. Current typing speed: {currentTypingSpeed}");
+    }
+
+    /// <summary>
+    /// Resets the player's typing speed to the base value.
+    /// </summary>
+    public void ResetTypingSpeed()
+    {
+        currentTypingSpeed = baseTypingSpeed;
+        Debug.Log($"Typing speed reset to base value: {currentTypingSpeed}");
+    }
 }
