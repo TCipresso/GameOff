@@ -27,7 +27,7 @@ public class HorseEncounter : Encounter
     [SerializeField] int healthBoostAmount = 5;
     [SerializeField] int damageBoostAmount = 1;
     [SerializeField] int speedBoostAmount = 3;
-    [SerializeField] int typingSpeedBoostAmount = 2;
+    //[SerializeField] int typingSpeedBoostAmount = 2;
 
     [Header("Horse Flavor")]
     [TextArea(3, 10)]
