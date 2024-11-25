@@ -15444,7 +15444,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b6cfb51c0dc3742883ceeeb967cb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPOI: {fileID: 11400000, guid: b888015e971602540b52286e92ab5be7, type: 2}
+  startingRooms:
+  - {fileID: 11400000, guid: b888015e971602540b52286e92ab5be7, type: 2}
+  - {fileID: 11400000, guid: ea9a04512f507b1489480fe14677a59c, type: 2}
+  - {fileID: 11400000, guid: cc8921dea5cd1cd4b95d1a6c8eaa7e09, type: 2}
   combatEncounters:
   - {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
   nonCombatEncounters:

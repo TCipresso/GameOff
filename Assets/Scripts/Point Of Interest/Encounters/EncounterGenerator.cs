@@ -9,8 +9,8 @@ using UnityEngine;
 /// </summary>
 public class EncounterGenerator : MonoBehaviour
 {
-    [Header("Test Start")]
-    [SerializeField] PointOfInterest startingPOI;
+    [Header("Starting Room")]
+    [SerializeField] List<PointOfInterest> startingRooms = new List<PointOfInterest>();
 
     [Header("Encounters")]
     [SerializeField] List<Encounter> combatEncounters;
@@ -33,23 +33,27 @@ public class EncounterGenerator : MonoBehaviour
     /// </summary>
     public void GenerateEncounters()
     {
-        GenerateEncounters(startingPOI);
-    }
-
-    /// <summary>
-    /// Generate floor's encounters based on provided root.
-    /// </summary>
-    /// <param name="root"><see cref="PointOfInterest"/> to start graph navigation.</param>
-    public void GenerateEncounters(PointOfInterest root)
-    {
         maxNonCombatEncounters = (int)nCToCRatio.x;
         maxCombatEncounters = (int)nCToCRatio.y;
         nonCombatEncountersRemaining = maxNonCombatEncounters;
         combatEncountersRemaining = maxCombatEncounters;
-        IterativeDFS(root);
+        
+        for(int i = 0; i < startingRooms.Count; i++)
+        {
+            IterativeDFS(startingRooms[i], i);
+        }
     }
 
-    private void IterativeDFS(PointOfInterest root)
+    /// <summary>
+    /// Generate floor's encounters based on provided root. Deprecated.
+    /// </summary>
+    /// <param name="root"><see cref="PointOfInterest"/> to start graph navigation.</param>
+    public void GenerateEncounters(PointOfInterest root)
+    {
+        GenerateEncounters();
+    }
+
+    private void IterativeDFS(PointOfInterest root, int floorIndex)
     {
         bool atStart = true;
 
@@ -68,6 +72,14 @@ public class EncounterGenerator : MonoBehaviour
                 PointOfInterest destination = route.GetDestination();
                 if (!visited.Contains(destination) && !stack.Contains(destination)) stack.Push(destination);
             }
+            
+            //Must be the ending room. Add a route to the starting room of the next floor.
+            //Here as to avoid nesting previous loop in an else statement.
+            if(routes.Count == 0 && floorIndex < startingRooms.Count - 1)
+            {
+                current.AddRoute(new Route("down", startingRooms[floorIndex + 1]));
+            }
+
 
             if (current.AllowEncounterChange()) PopulatePOIEncounter(current, routes.Count, atStart);
             else Debug.Log($"{current.name} does not allow encounter changes");
