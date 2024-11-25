@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
     /// <returns>The description of the new <see cref="PointOfInterest"/> or a line stating move failure.</returns>
     public string AttemptMove(string[] tokens)
     {
+        if (tokens.Length == 1) return "Usage: move <direction>\ndirection designates which route you want to go down.";
+
         if (inEncounter /*&& !noclipped*/) return "You cannot leave in the middle of an encounter!";
 
         PointOfInterest destination = currentPOI.Move(tokens);
