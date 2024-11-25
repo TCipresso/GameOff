@@ -12,6 +12,12 @@ public class Route
     [SerializeField] PointOfInterest destination;
     //[SerializeField] CheatsIDunnoWhateverWeEndUpCallingThis requiredCheats;
 
+    public Route(string direction, PointOfInterest destination)
+    {
+        this.direction = direction;
+        this.destination = destination;
+    }
+
     /// <summary>
     /// Returns the direction related to this route.
     /// </summary>
