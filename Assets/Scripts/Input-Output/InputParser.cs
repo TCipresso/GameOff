@@ -130,7 +130,7 @@ public class InputParser : MonoBehaviour
         if (!string.IsNullOrEmpty(output))
         {
             StopCoroutine(giveHint);
-            giveHint = StartCoroutine(GiveHint());
+            if(gameObject.activeSelf) giveHint = StartCoroutine(GiveHint());
             TextOutput.instance.Print(output);
         }
     }
