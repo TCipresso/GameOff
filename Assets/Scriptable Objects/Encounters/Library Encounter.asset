@@ -16,7 +16,7 @@ MonoBehaviour:
     nose. Ancient books line the walls and stack on top of each other as far as the
     eye can see. Who knows what ancience secrets this library stores. In the middle
     of the library sits a book upon a pedestal. It is written in a language you have
-    never seen before. <b>Read</b> it or <b>ignore</b> it?
+    never seen before. <i>Read</i> it or <i>ignore</i> it?
   subjectSprite: {fileID: 0}
   minigame: 10
   encounterName: A Library
