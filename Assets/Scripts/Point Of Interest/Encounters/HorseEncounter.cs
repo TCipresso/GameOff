@@ -140,6 +140,9 @@ public class HorseEncounter : Encounter
         int response = evilHorseChance / 10;
         if (response < 0) response = 0;
         else if(response >= petResponse.Count) response = petResponse.Count - 1;
+        string output = petResponse[response];
+
+        if (isEvil) return $"{output} Something urks you.";
         return petResponse[response];
     }
 
