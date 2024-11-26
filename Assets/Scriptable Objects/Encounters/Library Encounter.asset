@@ -41,6 +41,8 @@ MonoBehaviour:
   ignoreText: You hear pages turn as you walk past the pedestal; however, the book
     is gone when you turn around. The pedestal is topped with dust as if the book
     was never there. "Strange," you think before moving on.
+  waiting: 0
+  ignoring: 0
   damage: 1
   speedLost: 5
   typingSpeedLost: 1

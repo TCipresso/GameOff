@@ -112,7 +112,9 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <returns>The list of keywords.</returns>
     public virtual List<string> GetEncounterKeywords()
     {
-        return keywords;
+        List<string> ans = new List<string>();
+        ans.AddRange(keywords);
+        return ans;
     }
 
     /// <summary>
