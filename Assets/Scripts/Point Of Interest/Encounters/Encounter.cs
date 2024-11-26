@@ -106,6 +106,16 @@ public class Encounter : ScriptableObject, MinigameCaller
     }
 
     /// <summary>
+    /// Gets keywords of the specific encounter to be shown to the player.
+    /// </summary>
+    /// <returns>The list of keywords.</returns>
+    public virtual List<string> GetEncounterKeywords()
+    {
+        //"continue" and "play" are test keywords and are not for actual use. "godmode" is a cheat code and shouldn't be shown to the player.
+        return null;
+    }
+
+    /// <summary>
     /// Checks if encounter can handle player's input.
     /// </summary>
     /// <param name="tokens">Tokens from player input.</param>

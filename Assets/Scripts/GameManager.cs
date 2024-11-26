@@ -54,6 +54,24 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Gets all keywords to be shown to the player.
+    /// </summary>
+    /// <returns>A list of keywords.</returns>
+    public List<string> GetKeywords()
+    {
+        List<string> response = currentPOI.GetPOIKeywords();
+        if(response == null) response = new List<string>();
+
+        //These keywords are found in the InputParser.
+        //They're defined here due to the natural flow from Encounter -> POI -> GameManager due their these object's relationships.
+        //The code is noodling as we speak.
+        response.Add("move");
+        response.Add("color");
+
+        return response;
+    }
+
+    /// <summary>
     /// Checks if current <see cref="PointOfInterest"/> or current POI's <see cref="Encounter"/> can parse the input.
     /// </summary>
     /// <param name="tokens">Tokens from player input.</param>
@@ -213,7 +231,4 @@ public class GameManager : MonoBehaviour
             Debug.Log("GameManager: Non-combat encounter.");
         }
     }
-
-
-
 }
