@@ -15460,6 +15460,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e025478594f23e14da6ebe71f62a50f9, type: 2}
   - {fileID: 11400000, guid: 8ba8d3710754e394ca54b1355c04b3de, type: 2}
   - {fileID: 11400000, guid: 4159ca27e6cbabf4597913667bd22eff, type: 2}
+  - {fileID: 11400000, guid: b51fde1b0b167c7439f420396e6311b6, type: 2}
+  - {fileID: 11400000, guid: 85d0f3e94bf090f41bedc5a75eb9485c, type: 2}
   nCToCRatio: {x: 1, y: 2}
   chanceToIgnoreRatio: 10
 --- !u!114 &1360784994

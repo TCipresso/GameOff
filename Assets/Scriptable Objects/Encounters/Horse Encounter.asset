@@ -30,11 +30,11 @@ MonoBehaviour:
   - deny
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 0
+  evilHorseChance: 20
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0
-  isEvil: 0
+  isEvil: 1
   isSetUp: 0
   healthBoostAmount: 5
   damageBoostAmount: 1

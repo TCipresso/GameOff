@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e5bbc22f217284b9bebe27a1d91c45, type: 3}
+  m_Name: Penultimate Encounter
+  m_EditorClassIdentifier: 
+  description: You shouldn't be seeing this description.
+  subjectSprite: {fileID: 0}
+  minigame: 0
+  encounterName: An End
+  enemyIndex: 0
+  isCombat: 0
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  keywords:
+  - <color=#ff000099>noclip</color>
+  attackDialogues: []
+  noclipResponse: After uttering that word, you place your hand on the wall... and
+    miss. Your hand went through the wall. You push the rest of your body through
+    the wall. A corridor awaits on the other side.
+  descriptions:
+  - Your heart sinks as you approach a wall. The path forward has been cut off. Looking
+    back, all you see is the darkness of the void. You can hear the scuttering of
+    the creatures you came across and the ones you have not seen. All paths lead
+    to this point. No way this is the end of the dungeon.
+  - Upon closer inspection, you see a constant stream of dust pouring from the wall.
+    Occasionally more dust falls out of the wall as if it was breathing.
+  - You put your face against the wall. It's warm. The warm air of the wall classes
+    with the permafrost air of the dungeon. There is something wrong with this wall.
+  - You slam your tools against the wall. Nothing. You try again; harder this time.
+    Nothing. You try with all your might. Nothing. It is as if this world only responds
+    to the things it wants you to do. What it wants from you is unknown to you, but
+    not <color=#ff0000>you.</color>
+  - <i>N</i>othing y<i>o</i>u try is getting you <i>c</i>loser to the end. It is
+    as if <i>l</i>ife doesn't want you to continue. Even <i>i</i>f there was a route
+    around, who knows what horrors occu<i>p</i>y this dungeon.
+  descriptionIndex: -1
+  isSetUp: 0
