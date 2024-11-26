@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8010927fc9b56904d84eaf376e5bc19e, type: 3}
+  m_Name: Wizard Encounter
+  m_EditorClassIdentifier: 
+  description: The walls are lined with jars of unknown substances. Books of arcane
+    writings line the floor. A man with an overgrown beard and a sharp pointed hat
+    stands in the middle of the room staring into a glossy white orb. Without turning
+    to face you, the man says, "this orb sees the secrets of your future. Only those
+    skilled in the arcane arts can look into it. If you know them, you may want to
+    <i>chant</i> with me. Otherwise, it would be smarter to <i>pass</i> by."
+  subjectSprite: {fileID: 0}
+  minigame: 8
+  encounterName: A Wizard
+  enemyIndex: 0
+  isCombat: 0
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  keywords:
+  - chant
+  - pass
+  attackDialogues: []
+  chantWait: 3
+  chantText: Though still not facing you, you can see the man's ears perk up. "You
+    are a brave one to be sure," the man says, "but are you a smart one?"
+  ignoreText: You walk past the man. Before leaving the room, you turn around. Nothing.
+    As if he was never there. You shrug off this unconventional encounter and leave
+    the room.
+  smokeText: You reach into your bag and pull out your greatest tobacco. The man
+    turns around and smiles. After a few hours, the man tells you, "I have not had
+    something like this for a long time."
+  chantPassText: The man tells you, "I believe you are worthy to search the orb."
+    You approach the orb. "Look deep into it, and it will tell you what you need
+    to hear," the man whispers to you. You turn around to look at him, but he is
+    no where to be seen. With nothing else to do, you stare deep into the orb.
+  chantFailText: The man lets out a hearty laugh, "only fools take on challenges
+    they are unmatched for!" You start to feel dizzy. Did you say something wrong?
+    Did you accidentally curse yourself? For a moment, your vision blurs. When your
+    vision returns, the man is gone. The orb has losts its luster. It's nothing more
+    than a decoration now. With nothing else to do, you leave the room.
+  speedLost: 10
+  typingSpeedLost: 5
+  damage: 10

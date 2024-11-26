@@ -20,6 +20,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     [SerializeField] bool isCombat; // Whether this is a combat encounter
     [SerializeField] int enemySpeedMin = 3; // Minimum speed of the enemy
     [SerializeField] int enemySpeedMax = 7; // Maximum speed of the enemy
+    [SerializeField] List<string> keywords = new List<string>(); //Only to be shown to the player.
 
     [Header("Enemy Attack Dialogue")]
     [SerializeField] List<string> attackDialogues = new List<string>(); // List of attack dialogues
@@ -103,6 +104,17 @@ public class Encounter : ScriptableObject, MinigameCaller
     public virtual void LeaveEncounter()
     {
         GameManager.instance.LeaveEnounter();
+    }
+
+    /// <summary>
+    /// Gets keywords of the specific encounter to be shown to the player.
+    /// </summary>
+    /// <returns>The list of keywords.</returns>
+    public virtual List<string> GetEncounterKeywords()
+    {
+        List<string> ans = new List<string>();
+        ans.AddRange(keywords);
+        return ans;
     }
 
     /// <summary>

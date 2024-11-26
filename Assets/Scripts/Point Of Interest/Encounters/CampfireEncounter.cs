@@ -17,7 +17,7 @@ public class CampfireEncounter : Encounter
     [SerializeField] int uses = 3;
     int usesLeft;
     [SerializeField] bool isEvil;
-    bool isSetUp = false;
+    [SerializeField] bool isSetUp = false; //Serialized for debugging
 
     [Header("Campfire Flavor")]
     [TextArea(3, 10)] [SerializeField] string restText;
@@ -98,7 +98,7 @@ public class CampfireEncounter : Encounter
             return ambushText;
         }
 
-        GameManager.instance.LeaveEnounter();
+        LeaveEncounter();
         return burnOutText;
     }
 
@@ -108,7 +108,7 @@ public class CampfireEncounter : Encounter
     /// <returns>Response to leaving.</returns>
     private string Leave()
     {
-        GameManager.instance.LeaveEnounter();
+        LeaveEncounter();
         return leaveText;
     }
 

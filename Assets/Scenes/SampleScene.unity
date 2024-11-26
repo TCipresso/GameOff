@@ -15244,8 +15244,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360784986}
-  - component: {fileID: 1360784985}
   - component: {fileID: 1360784987}
+  - component: {fileID: 1360784985}
   - component: {fileID: 1360784988}
   - component: {fileID: 1360784989}
   - component: {fileID: 1360784991}
@@ -15460,6 +15460,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e025478594f23e14da6ebe71f62a50f9, type: 2}
   - {fileID: 11400000, guid: 8ba8d3710754e394ca54b1355c04b3de, type: 2}
   - {fileID: 11400000, guid: 4159ca27e6cbabf4597913667bd22eff, type: 2}
+  - {fileID: 11400000, guid: b51fde1b0b167c7439f420396e6311b6, type: 2}
+  - {fileID: 11400000, guid: 85d0f3e94bf090f41bedc5a75eb9485c, type: 2}
   nCToCRatio: {x: 1, y: 2}
   chanceToIgnoreRatio: 10
 --- !u!114 &1360784994
@@ -17259,6 +17261,7 @@ MonoBehaviour:
   inputField: {fileID: 1491552934}
   textArea: {fileID: 684065085}
   carrot: {fileID: 439177096}
+  helpHandler: {fileID: 0}
   colorManager: {fileID: 0}
   cheatCodeManager: {fileID: 0}
   hintText: 
@@ -21819,6 +21822,7 @@ MonoBehaviour:
   inputField: {fileID: 1856952947}
   textArea: {fileID: 278315056}
   carrot: {fileID: 1878140573}
+  helpHandler: {fileID: 2041287937}
   colorManager: {fileID: 2041287936}
   cheatCodeManager: {fileID: 1360784988}
   hintText: 'Lost? Check your <b>Cheats</b> folder to see what cheats you have! Or
@@ -24204,6 +24208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2041287935}
   - component: {fileID: 2041287936}
+  - component: {fileID: 2041287937}
   m_Layer: 0
   m_Name: Keyword Handlers
   m_TagString: Untagged
@@ -24239,6 +24244,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorStore: {fileID: 11400000, guid: eb1034c4958bdfc4ca243e6451901fcc, type: 2}
+--- !u!114 &2041287937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041287934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461329574599b0b4781d4056f91f4b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2072455474
 GameObject:
   m_ObjectHideFlags: 0

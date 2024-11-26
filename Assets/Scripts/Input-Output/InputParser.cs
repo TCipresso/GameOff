@@ -15,6 +15,7 @@ public class InputParser : MonoBehaviour
     [SerializeField] protected GameObject carrot;
 
     [Header("Keyword Handlers")]
+    [SerializeField] HelpHandler helpHandler;
     [SerializeField] ColorManager colorManager;
     [SerializeField] CheatCodeManager cheatCodeManager;
 
@@ -87,6 +88,7 @@ public class InputParser : MonoBehaviour
     /// <param name="input">The input entered in the inputField</param>
     public virtual void ParseInput(string input)
     {
+        //When adding keywords to the InputParser itself, don't forget to update the GetKeywords in GameManager.
         if (string.IsNullOrEmpty(input)) return;
 
         TextOutput.instance.Print($"{input}", OutputCarrot.USER); // Prefix user input with user carrot
@@ -112,6 +114,9 @@ public class InputParser : MonoBehaviour
                     break;
                 case "move":
                     output = GameManager.instance.AttemptMove(tokens);
+                    break;
+                case "help":
+                    output = helpHandler.ReadTokens(tokens);
                     break;
                 case "godmode":
                     cheatCodeManager.TryActivateCheat("GodMode");

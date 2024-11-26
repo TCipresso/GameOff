@@ -45,12 +45,39 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Gets the routes of the current POI.
+    /// </summary>
+    /// <returns></returns>
+    public List<Route> GetCurrentPOIRoutes()
+    {
+        return currentPOI.GetRoutes();
+    }
+
+    /// <summary>
     /// Gets current <see cref="PointOfInterest"/> image.
     /// </summary>
     /// <returns>The sprite of the current <see cref="PointOfInterest"/></returns>
     public Sprite GetCurrentPOIImage()
     {
         return currentPOI.GetImage();
+    }
+
+    /// <summary>
+    /// Gets all keywords to be shown to the player.
+    /// </summary>
+    /// <returns>A list of keywords.</returns>
+    public List<string> GetKeywords()
+    {
+        List<string> response = currentPOI.GetPOIKeywords();
+        if(response == null) response = new List<string>();
+
+        //These keywords are found in the InputParser.
+        //They're defined here due to the natural flow from Encounter -> POI -> GameManager due their these object's relationships.
+        //The code is noodling as we speak.
+        response.Add("move");
+        response.Add("color");
+
+        return response;
     }
 
     /// <summary>
@@ -80,7 +107,7 @@ public class GameManager : MonoBehaviour
     /// <returns>The description of the new <see cref="PointOfInterest"/> or a line stating move failure.</returns>
     public string AttemptMove(string[] tokens)
     {
-        if (tokens.Length == 1) return "Usage: move <direction>\ndirection designates which route you want to go down.";
+        if (tokens.Length == 1) return "Usage: move <direction>\ndirection: designates which route you want to go down.";
 
         if (inEncounter /*&& !noclipped*/) return "You cannot leave in the middle of an encounter!";
 
@@ -92,15 +119,15 @@ public class GameManager : MonoBehaviour
         CheckEncounterType(); // Check the encounter type after moving
 
         //Routes need to be prompted *after* description, so just wait a frame. Spaghetti code at its finest.
-        if (!inEncounter) StartCoroutine(PromptRoutesAfterMove()); 
+        if (!inEncounter) StartCoroutine(PromptRoutesNextFrame()); 
         return currentPOI.GetDescription();
     }
 
     /// <summary>
-    /// Just ot make sure route prompts appear after description after moving into a safe room.
+    /// Prompting Routes mess a lot of things up, so just wait until everything is done this frame and do the routes next frame.
     /// </summary>
     /// <returns></returns>
-    IEnumerator PromptRoutesAfterMove()
+    IEnumerator PromptRoutesNextFrame()
     {
         yield return null;
         PromptRoutes();
@@ -121,7 +148,7 @@ public class GameManager : MonoBehaviour
     public void LeaveEnounter()
     {
         inEncounter = false;
-        PromptRoutes();
+        StartCoroutine(PromptRoutesNextFrame());
     }
 
     /// <summary>
@@ -213,7 +240,4 @@ public class GameManager : MonoBehaviour
             Debug.Log("GameManager: Non-combat encounter.");
         }
     }
-
-
-
 }

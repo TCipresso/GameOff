@@ -21,7 +21,7 @@ public class HorseEncounter : Encounter
     [SerializeField] bool increaseChancePerGoodHorse = true;
     [SerializeField] bool forceEvilHorse = false;
     [SerializeField] bool isEvil = false;
-    bool isSetUp = false;
+    [SerializeField] bool isSetUp = false;
 
     [Header("Good Horse Outcomes")]
     [SerializeField] int healthBoostAmount = 5;
@@ -140,6 +140,9 @@ public class HorseEncounter : Encounter
         int response = evilHorseChance / 10;
         if (response < 0) response = 0;
         else if(response >= petResponse.Count) response = petResponse.Count - 1;
+        string output = petResponse[response];
+
+        if (isEvil) return $"{output} Something urks you.";
         return petResponse[response];
     }
 

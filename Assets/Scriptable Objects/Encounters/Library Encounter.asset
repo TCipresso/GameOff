@@ -16,14 +16,17 @@ MonoBehaviour:
     nose. Ancient books line the walls and stack on top of each other as far as the
     eye can see. Who knows what ancience secrets this library stores. In the middle
     of the library sits a book upon a pedestal. It is written in a language you have
-    never seen before. <b>Read</b> it or <b>ignore</b> it?
+    never seen before. <i>Read</i> it or <i>ignore</i> it?
   subjectSprite: {fileID: 0}
   minigame: 10
-  encounterName: 
+  encounterName: A Library
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
+  keywords:
+  - read
+  - ignore
   attackDialogues: []
   waitBeforeReadingBook: 3
   readText: You peer into the words written on the page. The symbols are plastered
@@ -38,6 +41,7 @@ MonoBehaviour:
   ignoreText: You hear pages turn as you walk past the pedestal; however, the book
     is gone when you turn around. The pedestal is topped with dust as if the book
     was never there. "Strange," you think before moving on.
+  waiting: 0
   damage: 1
   speedLost: 5
   typingSpeedLost: 1

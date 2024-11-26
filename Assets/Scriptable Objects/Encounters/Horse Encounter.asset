@@ -15,25 +15,30 @@ MonoBehaviour:
   description: A horse stands alone in the center of the room. A saddle sits on its
     back, but its rider is no where to be found. There are no signs of its rider
     ever coming back. The horse stares into your eyes as if it wants to give you
-    something.
+    something. <i>Pet</i>ting the horse may let you know it better. Do you <i>accept</i>
+    or <i>deny</i> the horse's request?
   subjectSprite: {fileID: 0}
   minigame: 0
-  encounterName: Horse Encounter
+  encounterName: A Horse
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
+  keywords:
+  - pet
+  - accept
+  - deny
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 50
+  evilHorseChance: 20
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0
-  isEvil: 0
+  isEvil: 1
+  isSetUp: 0
   healthBoostAmount: 5
   damageBoostAmount: 1
   speedBoostAmount: 3
-  typingSpeedBoostAmount: 2
   petResponse:
   - Its fur shines like the dawn of a new day. You can feel the horse's strong muscles
     under its skin. This horse has been well kept.
@@ -63,6 +68,8 @@ MonoBehaviour:
   evilHorseDeny: As you walk away, the horse stares with sadness in its eyes. A malice
     pierces the horse's dispair.
   goodHorseAccept: The horse guides you to its old owner's pouch. It is offering
-    the belongings of its previous owner.
+    the belongings of its previous owner. You take this as a sign that its previous
+    owner doesn't need their stuff anymore. You take what you need, thank the horse,
+    and move on.
   goodHorseDeny: As you walk away, the horse stares with sadness in its eyes. Its
     dispair grows into grief.

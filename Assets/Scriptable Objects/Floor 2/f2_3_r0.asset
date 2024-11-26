@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routes:
   - direction: forward
-    destination: {fileID: 11400000, guid: e68c513fd839241419c34eebc46b4cfa, type: 2}
+    destination: {fileID: 11400000, guid: 432a03c6057a30844b75f385fa75eb85, type: 2}
   image: {fileID: 0}
-  encounter: {fileID: 0}
+  encounter: {fileID: 11400000, guid: 41e4f0b878d90e34dbc9f49104b13577, type: 2}
   noEncounterString: This room is empty. You are safe.
+  allowEncounterChange: 1

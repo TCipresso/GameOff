@@ -15,5 +15,7 @@ MonoBehaviour:
   routes: []
   image: {fileID: 0}
   encounter: {fileID: 0}
-  noEncounterString: This room is empty. You are safe.
+  noEncounterString: As you make it to the end of the first floor of the dungeon,
+    you find yourself staring down a never ending stair case. What wonders await
+    you? What horrors? The only way to know is to climb <color=#ff0000>down</color>.
   allowEncounterChange: 0

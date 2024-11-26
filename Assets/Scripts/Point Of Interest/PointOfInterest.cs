@@ -86,6 +86,20 @@ public class PointOfInterest : ScriptableObject
         return encounter; 
     }
 
+    /// <summary>
+    /// Gets all of the POI's keywords to be shown to the player.
+    /// </summary>
+    /// <returns>List of keywords.</returns>
+    public List<string> GetPOIKeywords()
+    {
+        List<string> response = null;
+        if (encounter != null) response = encounter.GetEncounterKeywords();
+        if (response == null) response = new List<string>();
+
+        response.Add("search");
+
+        return response;
+    }
 
     /// <summary>
     /// Checks if tokens contains a keyword for POI's <see cref="Encounter"/>.

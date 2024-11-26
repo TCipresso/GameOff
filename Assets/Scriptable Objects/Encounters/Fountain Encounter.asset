@@ -12,15 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419576b96c9075e4e9a86d272c9948b4, type: 3}
   m_Name: Fountain Encounter
   m_EditorClassIdentifier: 
-  description: 'A fluorescent fuchsia fountain stands in the middle of the room.
-    Its water shimmers in the tourch light. It beckons you to bathe in it. '
+  description: A fluorescent fuchsia fountain stands in the middle of the room. Its
+    water shimmers in the tourch light. It beckons you to <i>bathe</i> in it; though,
+    it may be smater to <i>ignore</i> it.
   subjectSprite: {fileID: 0}
   minigame: 0
-  encounterName: Healing Fountain
+  encounterName: A Healing Fountain
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
+  keywords:
+  - bathe
+  - ignore
   attackDialogues: []
   batheString: As the water runs across your skin, you can feel it repair your broken
     body. Your dirty hair shining with a renewed beauty. Your skin smoothening with

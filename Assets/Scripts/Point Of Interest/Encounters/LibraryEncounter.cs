@@ -19,8 +19,7 @@ public class LibraryEncounter : Encounter, Waiter
     [TextArea(3, 10)][SerializeField] string readSuccess;
     [TextArea(3, 10)][SerializeField] string readFailure;
     [TextArea(3, 10)][SerializeField] string ignoreText;
-    bool waiting = false; //To make sure the player cannot enter any keywords during the reading wainting period.
-    bool ignoring = false;
+    [SerializeField] bool waiting = false; //To make sure the player cannot enter any keywords during the reading wainting period.
 
     [Header("Minigame Failure Punishments")]
     [SerializeField] int damage = 1;
@@ -29,7 +28,6 @@ public class LibraryEncounter : Encounter, Waiter
 
     private void OnDisable()
     {
-        ignoring = false;
         waiting = false;
     }
 
@@ -125,23 +123,8 @@ public class LibraryEncounter : Encounter, Waiter
     /// <returns>Null for spahgetti nonsense</returns>
     private string Ignore()
     {
-        //Route prompt appeared before ignore text. So this is why this is so round about.
-        ignoring = true;
         LeaveEncounter();
-        return null;
-    }
-
-    /// <summary>
-    /// Prints ignore text and then leaves encounter.
-    /// </summary>
-    public override void LeaveEncounter()
-    {
-        if(ignoring)
-        {
-            ignoring = false;
-            TextOutput.instance.Print(ignoreText);
-        }
-        base.LeaveEncounter();
+        return ignoreText;
     }
 
     public void WaitComplete()

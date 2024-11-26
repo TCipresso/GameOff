@@ -15,5 +15,8 @@ MonoBehaviour:
   routes: []
   image: {fileID: 0}
   encounter: {fileID: 0}
-  noEncounterString: This room is empty. You are safe.
+  noEncounterString: You approach another staircase. This one is just as foreboding
+    as before. The listless whisper of air rising out of the dungeon echo through
+    the staricase. You think to youself that you should follow the way of the wind,
+    but you recollect your nerve and prepare to go further <color=#ff0000>down</color>.
   allowEncounterChange: 0
