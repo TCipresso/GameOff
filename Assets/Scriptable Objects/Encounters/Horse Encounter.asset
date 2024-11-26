@@ -18,7 +18,7 @@ MonoBehaviour:
     something.
   subjectSprite: {fileID: 0}
   minigame: 0
-  encounterName: Horse Encounter
+  encounterName: A Horse
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
@@ -30,11 +30,12 @@ MonoBehaviour:
   - apple
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 50
+  evilHorseChance: 20
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0
-  isEvil: 0
+  isEvil: 1
+  isSetUp: 0
   healthBoostAmount: 5
   damageBoostAmount: 1
   speedBoostAmount: 3

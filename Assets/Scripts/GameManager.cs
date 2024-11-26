@@ -45,6 +45,15 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Gets the routes of the current POI.
+    /// </summary>
+    /// <returns></returns>
+    public List<Route> GetCurrentPOIRoutes()
+    {
+        return currentPOI.GetRoutes();
+    }
+
+    /// <summary>
     /// Gets current <see cref="PointOfInterest"/> image.
     /// </summary>
     /// <returns>The sprite of the current <see cref="PointOfInterest"/></returns>

@@ -16,7 +16,7 @@ MonoBehaviour:
     Its water shimmers in the tourch light. It beckons you to bathe in it. '
   subjectSprite: {fileID: 0}
   minigame: 0
-  encounterName: Healing Fountain
+  encounterName: A Healing Fountain
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3

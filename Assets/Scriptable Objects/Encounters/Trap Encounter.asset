@@ -17,15 +17,18 @@ MonoBehaviour:
     You struggle to set your leg free.
   subjectSprite: {fileID: 0}
   minigame: 2
-  encounterName: 
+  encounterName: A Trap
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
+  keywords: []
   attackDialogues: []
+  trapDelay: 3
   speedLoss: 5
   damage: 5
   failureResponse: You fail to open the trap. Out of options, you pull out your leg
     with all your might. Your leg flies out of the trap bruised and injured.
   successResponse: You free your leg from the trap. Luckly the metal bars didn't
     shut too tight. You are relatively unscathed.
+  isSetUp: 0

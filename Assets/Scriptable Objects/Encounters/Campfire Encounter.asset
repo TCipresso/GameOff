@@ -17,7 +17,7 @@ MonoBehaviour:
     Your body aches as it wants to rest here.
   subjectSprite: {fileID: 0}
   minigame: 0
-  encounterName: Campfire
+  encounterName: A Campfire
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
@@ -29,6 +29,7 @@ MonoBehaviour:
   healAmount: 5
   uses: 3
   isEvil: 0
+  isSetUp: 0
   restText: The tension in your muscles evaporate as you sit next to the campfire.
     Its flames are still burning but seem to be dwindling.
   burnOutText: The once roaring flame disappears into darkness. Nothing remains other
