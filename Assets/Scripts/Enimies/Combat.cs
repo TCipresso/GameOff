@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;  // Required for TextMeshPro components
+using TMPro; // Required for TextMeshPro components
 
 /// <summary>
 /// Handles the turn-based combat system.
@@ -63,6 +63,16 @@ public class Combat : MonoBehaviour
         }
     }
 
+    public void SetPlayerTurn()
+    {
+        currentState = CombatState.PlayerTurn;
+
+        Debug.Log("Player's Turn: Choose your next action.");
+        TextOutput.instance.Print("Player's Turn ACTIONS: 'ATTACK'     'DEFEND'     'INVESTIGATE'");
+        UpdateInputFieldState();
+    }
+
+
     public void InitiateCombat(Encounter encounter)
     {
         Debug.Log("Initializing combat...");
@@ -94,7 +104,7 @@ public class Combat : MonoBehaviour
 
         currentState = CombatState.Intro;
         UpdateInputFieldState();
-        TextOutput.instance.Print(currentEncounter.description, OutputCarrot.QUESTION);
+        //TextOutput.instance.Print(currentEncounter.description, OutputCarrot.QUESTION);
         float delay = Mathf.Min(currentEncounter.description.Length * 0.05f, 3.0f);
         Invoke(nameof(DoSpeedCheck), delay);
     }
@@ -147,6 +157,7 @@ public class Combat : MonoBehaviour
     {
         Debug.Log("Defend mini-game started!");
         defendMinigame.SetActive(true);
+        miniGameComplete = false;
         currentState = CombatState.WaitForMiniGame;
         UpdateInputFieldState();
         StartCoroutine(WaitForMiniGameCompletion());
@@ -180,8 +191,22 @@ public class Combat : MonoBehaviour
 
             ddrMinigame.SetActive(false);
             defendMinigame.SetActive(false);
-            currentState = CombatState.EnemyTurn;
+            currentState = CombatState.EnemyTurn; // Move to the next combat state
         }
+    }
+
+    /// <summary>
+    /// Handles the result of the defend mini-game, ensuring the combat state updates properly.
+    /// </summary>
+    private void ApplyDefense()
+    {
+        Debug.Log("Defense mini-game completed. Applying defense effect.");
+
+        // Reduce incoming damage or set other defensive effects
+        playerStats.isDefending = true; // Example: Reduce damage taken by half in EnemyTurn
+
+        // Reset mini-game completion flag
+        miniGameComplete = false;
     }
 
     private void ApplyDamageAndCheckForEnemyDefeat()
@@ -203,13 +228,6 @@ public class Combat : MonoBehaviour
             }
         }
         miniGameComplete = false; // Reset the flag for the next usage
-    }
-
-    private void ApplyDefense()
-    {
-        Debug.Log("Defense applied: Enemy's attack will be reduced!");
-        playerStats.isDefending = true; // Flag for reduced enemy damage
-        miniGameComplete = false; // Reset for future use
     }
 
     private void Investigate(Encounter encounter)
@@ -274,5 +292,10 @@ public class Combat : MonoBehaviour
     public bool IsCombatActive()
     {
         return combatActive;
+    }
+
+    public int GetEnemyAttack()
+    {
+        return currentEnemyScript != null ? currentEnemyScript.GetAttack() : 0;
     }
 }

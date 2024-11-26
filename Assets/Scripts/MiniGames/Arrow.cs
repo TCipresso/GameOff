@@ -14,4 +14,14 @@ public class Arrow : MonoBehaviour
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Token"))
+        {
+            Debug.Log("Arrow hit the player! Mini-game failed.");
+            DefendMiniGame.instance.EndMiniGame(false); 
+            Destroy(gameObject);
+        }
+    }
 }

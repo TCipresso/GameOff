@@ -171,6 +171,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 10
   passPoints: 100
   currPoints: 0
@@ -1159,6 +1160,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 10
   curPoints: 0
   winPoints: 3
@@ -7043,6 +7045,8 @@ MonoBehaviour:
   carrot: {fileID: 500680523}
   colorManager: {fileID: 0}
   cheatCodeManager: {fileID: 0}
+  hintText: 
+  hintTime: 0
   promptMinigame: {fileID: 0}
 --- !u!224 &524677854
 RectTransform:
@@ -10867,6 +10871,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 180
   curPoints: 0
   winPoints: 150
@@ -11185,6 +11190,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 5
   button: {fileID: 1892716793}
 --- !u!1 &892616784
@@ -11510,6 +11516,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 10
   curPoints: 0
   winPoints: 3
@@ -11923,6 +11930,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   obstacleSpawner: {fileID: 1653170497}
   runner: {fileID: 600690794}
   endTrigger: {fileID: 1622991430}
@@ -13342,6 +13350,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPOI: {fileID: 11400000, guid: a6544291a262a8b4dabe644ef3ebcd7a, type: 2}
   inEncounter: 0
+  routePromptStart: 
+  routePromptEnd: 
+  noRoutePrompt: 
 --- !u!114 &1046918022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13680,7 +13691,7 @@ GameObject:
   - component: {fileID: 1075917485}
   m_Layer: 5
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13742,13 +13753,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075917481}
   m_CullTransparentMesh: 1
---- !u!65 &1075917485
-BoxCollider:
+--- !u!61 &1075917485
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075917481}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -13757,12 +13770,34 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1078409155
 GameObject:
   m_ObjectHideFlags: 0
@@ -14841,6 +14876,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 10
   curPoints: 0
   winPoints: 5
@@ -17853,6 +17889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 2072990472}
+  colorable: {fileID: 0}
 --- !u!1 &1413087234
 GameObject:
   m_ObjectHideFlags: 0
@@ -18645,6 +18682,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   spawner: {fileID: 2143825487}
   runner: {fileID: 1569489033}
   gameDuration: 10
@@ -19220,6 +19258,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 10
   bird: {fileID: 159214503}
   spawner: {fileID: 2144832676}
@@ -20724,6 +20763,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 10
   curPoints: 0
   winPoints: 3
@@ -21922,6 +21962,8 @@ MonoBehaviour:
   carrot: {fileID: 1280078633}
   colorManager: {fileID: 466026791}
   cheatCodeManager: {fileID: 1046918016}
+  hintText: 
+  hintTime: 0
 --- !u!114 &1770571582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24149,6 +24191,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   shuffles: 10
   selectionBlocker: {fileID: 604977966}
   hint: {fileID: 722076184}
@@ -25683,6 +25726,7 @@ MonoBehaviour:
   showResultOnUI: 1
   timerUIElement: {fileID: 1410464348}
   background: {fileID: 1050382338}
+  colorable: {fileID: 0}
   duration: 10
   runner: {fileID: 1822292698}
   spawner: {fileID: 604199962}
@@ -26725,6 +26769,12 @@ MonoBehaviour:
   playerImage: {fileID: 1075917482}
   moveSpeed: 300
   gameArea: {fileID: 177537210}
+  gameDuration: 10
+  Lineers:
+  - {fileID: 388780688}
+  - {fileID: 1778594141}
+  - {fileID: 715520705}
+  - {fileID: 402294242}
 --- !u!1 &2078050562
 GameObject:
   m_ObjectHideFlags: 0
