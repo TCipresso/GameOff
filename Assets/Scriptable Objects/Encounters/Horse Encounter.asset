@@ -23,6 +23,11 @@ MonoBehaviour:
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
+  keywords:
+  - pet
+  - accept
+  - deny
+  - apple
   attackDialogues: []
   baseEvilHorseChance: 10
   evilHorseChance: 50
@@ -33,7 +38,6 @@ MonoBehaviour:
   healthBoostAmount: 5
   damageBoostAmount: 1
   speedBoostAmount: 3
-  typingSpeedBoostAmount: 2
   petResponse:
   - Its fur shines like the dawn of a new day. You can feel the horse's strong muscles
     under its skin. This horse has been well kept.

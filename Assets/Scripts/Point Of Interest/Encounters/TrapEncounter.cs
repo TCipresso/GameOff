@@ -20,7 +20,7 @@ public class TrapEncounter : Encounter, Waiter
     [SerializeField] string failureResponse;
     [TextArea(3, 10)]
     [SerializeField] string successResponse;
-    bool isSetUp = false;
+    [SerializeField] bool isSetUp = false;
 
     private void OnDisable()
     {

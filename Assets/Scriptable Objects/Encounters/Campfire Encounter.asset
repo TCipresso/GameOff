@@ -22,6 +22,9 @@ MonoBehaviour:
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
+  keywords:
+  - rest
+  - leave
   attackDialogues: []
   healAmount: 5
   uses: 3

@@ -19,8 +19,8 @@ public class LibraryEncounter : Encounter, Waiter
     [TextArea(3, 10)][SerializeField] string readSuccess;
     [TextArea(3, 10)][SerializeField] string readFailure;
     [TextArea(3, 10)][SerializeField] string ignoreText;
-    bool waiting = false; //To make sure the player cannot enter any keywords during the reading wainting period.
-    bool ignoring = false;
+    [SerializeField] bool waiting = false; //To make sure the player cannot enter any keywords during the reading wainting period.
+    [SerializeField] bool ignoring = false;
 
     [Header("Minigame Failure Punishments")]
     [SerializeField] int damage = 1;

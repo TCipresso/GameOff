@@ -20,6 +20,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     [SerializeField] bool isCombat; // Whether this is a combat encounter
     [SerializeField] int enemySpeedMin = 3; // Minimum speed of the enemy
     [SerializeField] int enemySpeedMax = 7; // Maximum speed of the enemy
+    [SerializeField] List<string> keywords = new List<string>(); //Only to be shown to the player.
 
     [Header("Enemy Attack Dialogue")]
     [SerializeField] List<string> attackDialogues = new List<string>(); // List of attack dialogues
@@ -111,8 +112,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <returns>The list of keywords.</returns>
     public virtual List<string> GetEncounterKeywords()
     {
-        //"continue" and "play" are test keywords and are not for actual use. "godmode" is a cheat code and shouldn't be shown to the player.
-        return null;
+        return keywords;
     }
 
     /// <summary>

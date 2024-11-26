@@ -24,6 +24,9 @@ MonoBehaviour:
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
+  keywords:
+  - read
+  - ignore
   attackDialogues: []
   waitBeforeReadingBook: 3
   readText: You peer into the words written on the page. The symbols are plastered

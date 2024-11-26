@@ -17,7 +17,7 @@ public class CampfireEncounter : Encounter
     [SerializeField] int uses = 3;
     int usesLeft;
     [SerializeField] bool isEvil;
-    bool isSetUp = false;
+    [SerializeField] bool isSetUp = false; //Serialized for debugging
 
     [Header("Campfire Flavor")]
     [TextArea(3, 10)] [SerializeField] string restText;

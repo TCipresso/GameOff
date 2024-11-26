@@ -21,7 +21,7 @@ public class HorseEncounter : Encounter
     [SerializeField] bool increaseChancePerGoodHorse = true;
     [SerializeField] bool forceEvilHorse = false;
     [SerializeField] bool isEvil = false;
-    bool isSetUp = false;
+    [SerializeField] bool isSetUp = false;
 
     [Header("Good Horse Outcomes")]
     [SerializeField] int healthBoostAmount = 5;
