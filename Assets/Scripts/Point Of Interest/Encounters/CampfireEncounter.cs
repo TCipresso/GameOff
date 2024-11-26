@@ -98,7 +98,7 @@ public class CampfireEncounter : Encounter
             return ambushText;
         }
 
-        GameManager.instance.LeaveEnounter();
+        LeaveEncounter();
         return burnOutText;
     }
 
@@ -108,7 +108,7 @@ public class CampfireEncounter : Encounter
     /// <returns>Response to leaving.</returns>
     private string Leave()
     {
-        GameManager.instance.LeaveEnounter();
+        LeaveEncounter();
         return leaveText;
     }
 

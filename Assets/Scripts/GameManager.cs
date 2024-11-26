@@ -110,15 +110,15 @@ public class GameManager : MonoBehaviour
         CheckEncounterType(); // Check the encounter type after moving
 
         //Routes need to be prompted *after* description, so just wait a frame. Spaghetti code at its finest.
-        if (!inEncounter) StartCoroutine(PromptRoutesAfterMove()); 
+        if (!inEncounter) StartCoroutine(PromptRoutesNextFrame()); 
         return currentPOI.GetDescription();
     }
 
     /// <summary>
-    /// Just ot make sure route prompts appear after description after moving into a safe room.
+    /// Prompting Routes mess a lot of things up, so just wait until everything is done this frame and do the routes next frame.
     /// </summary>
     /// <returns></returns>
-    IEnumerator PromptRoutesAfterMove()
+    IEnumerator PromptRoutesNextFrame()
     {
         yield return null;
         PromptRoutes();
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
     public void LeaveEnounter()
     {
         inEncounter = false;
-        PromptRoutes();
+        StartCoroutine(PromptRoutesNextFrame());
     }
 
     /// <summary>
