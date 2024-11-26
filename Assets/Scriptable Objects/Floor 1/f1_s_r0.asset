@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routes:
   - direction: forward
-    destination: {fileID: 11400000, guid: 14eac94e7fb95ba4cbea116c50ea2eb7, type: 2}
+    destination: {fileID: 11400000, guid: d6b91a6bddb695e4b892fd43c244dbae, type: 2}
   image: {fileID: 0}
   encounter: {fileID: 0}
   noEncounterString: You take your first steps into the dungeon. The cold and stale

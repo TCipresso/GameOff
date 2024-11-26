@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routes:
   - direction: left
-    destination: {fileID: 11400000, guid: 9fbfeca0cd599004695100c1d8613255, type: 2}
+    destination: {fileID: 11400000, guid: 70caddfd3f635aa4aa30ef5aaf5a7f81, type: 2}
   - direction: forward
-    destination: {fileID: 11400000}
+    destination: {fileID: 11400000, guid: ce42d6468d648f044b8f4697eb5c2679, type: 2}
   - direction: right
-    destination: {fileID: 11400000, guid: 798ebbf633bea9d44991c450505b48fd, type: 2}
+    destination: {fileID: 11400000, guid: aafb21f5b4ee9e2479986e7f6284f192, type: 2}
   image: {fileID: 0}
-  encounter: {fileID: 0}
+  encounter: {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
   noEncounterString: This room is empty. You are safe.
+  allowEncounterChange: 1
