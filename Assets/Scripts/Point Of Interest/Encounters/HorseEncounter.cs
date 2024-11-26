@@ -27,7 +27,7 @@ public class HorseEncounter : Encounter
     [SerializeField] int healthBoostAmount = 5;
     [SerializeField] int damageBoostAmount = 1;
     [SerializeField] int speedBoostAmount = 3;
-    [SerializeField] int typingSpeedBoostAmount = 2;
+    //[SerializeField] int typingSpeedBoostAmount = 2;
 
     [Header("Horse Flavor")]
     [TextArea(3, 10)]
@@ -156,11 +156,11 @@ public class HorseEncounter : Encounter
             return evilHorseAccept;
         }
 
+
         PlayerStats.instance.maxHP += healthBoostAmount;
-        PlayerStats.instance.playerHP += healthBoostAmount;
-        PlayerStats.instance.dmg += damageBoostAmount;
-        PlayerStats.instance.speed += speedBoostAmount;
-        PlayerStats.instance.baseTypingSpeed += typingSpeedBoostAmount;
+        PlayerStats.instance.Heal(healthBoostAmount);
+        PlayerStats.instance.AddDamage(damageBoostAmount);
+        PlayerStats.instance.IncreaseSpeed(speedBoostAmount);
         GameManager.instance.LeaveEnounter();
         return goodHorseAccept;
     }

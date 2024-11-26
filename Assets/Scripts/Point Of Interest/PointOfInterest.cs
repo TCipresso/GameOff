@@ -70,6 +70,11 @@ public class PointOfInterest : ScriptableObject
         return routes;
     }
 
+    public void AddRoute(Route route)
+    {
+        routes.Add(route);
+    }
+
     public void SetEncounter(Encounter encounter)
     {
         if (!allowEncounterChange) throw new InvalidOperationException($"{name} does not allow encounter changing.");

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -14,6 +15,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { private set; get; }
     [SerializeField] private bool inEncounter = false; // Only serialized for debugging purposes.
 
+    [Header("Route Prompt Info")]
+    [SerializeField] string routePromptStart;
+    [SerializeField] string routePromptEnd;
+    StringBuilder routePrompt = new StringBuilder();
+    [TextArea(3, 10)][SerializeField] string noRoutePrompt;
+
     /// <summary>
     /// Singleton
     /// </summary>
@@ -25,6 +32,7 @@ public class GameManager : MonoBehaviour
         inEncounter = currentPOI.HasEncounter();
         CheckEncounterType(); // Check the encounter type at the start of the game
         TextOutput.instance.Print(GetCurrentPOIDesc());
+        if (!inEncounter) PromptRoutes();
     }
 
     /// <summary>
@@ -72,6 +80,8 @@ public class GameManager : MonoBehaviour
     /// <returns>The description of the new <see cref="PointOfInterest"/> or a line stating move failure.</returns>
     public string AttemptMove(string[] tokens)
     {
+        if (tokens.Length == 1) return "Usage: move <direction>\ndirection designates which route you want to go down.";
+
         if (inEncounter /*&& !noclipped*/) return "You cannot leave in the middle of an encounter!";
 
         PointOfInterest destination = currentPOI.Move(tokens);
@@ -81,7 +91,19 @@ public class GameManager : MonoBehaviour
 
         CheckEncounterType(); // Check the encounter type after moving
 
+        //Routes need to be prompted *after* description, so just wait a frame. Spaghetti code at its finest.
+        if (!inEncounter) StartCoroutine(PromptRoutesAfterMove()); 
         return currentPOI.GetDescription();
+    }
+
+    /// <summary>
+    /// Just ot make sure route prompts appear after description after moving into a safe room.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator PromptRoutesAfterMove()
+    {
+        yield return null;
+        PromptRoutes();
     }
 
     /// <summary>
@@ -99,6 +121,53 @@ public class GameManager : MonoBehaviour
     public void LeaveEnounter()
     {
         inEncounter = false;
+        PromptRoutes();
+    }
+
+    /// <summary>
+    /// Prompts the player about which directions they can move.
+    /// </summary>
+    public void PromptRoutes()
+    {
+        List<Route> routes = currentPOI.GetRoutes();
+        int routeCount = routes.Count;
+        if (routeCount <= 0) {
+            TextOutput.instance.Print(noRoutePrompt);
+            return;
+        }
+
+        TextOutput.instance.Print(BuildRoutePrompt(routes, routeCount));
+    }
+
+    /// <summary>
+    /// Builds the move prompt for the player.
+    /// </summary>
+    /// <param name="routes">List of <see cref="Route"/>s the player can go.</param>
+    /// <param name="routeCount">The number of routes.</param>
+    /// <returns></returns>
+    private string BuildRoutePrompt(List<Route> routes, int routeCount)
+    {
+        ///"You encounter 2 routes. Which path do you want to go down: x, y, z?"
+        routePrompt.Clear();
+        routePrompt.Append(routePromptStart.TrimEnd());
+        routePrompt.Append(" ");
+        routePrompt.Append(routeCount);
+        routePrompt.Append(" ");
+
+        if (routeCount > 1) routePrompt.Append("routes. ");
+        else routePrompt.Append("route. ");
+
+        routePrompt.Append(routePromptEnd.TrimEnd());
+        routePrompt.Append(" ");
+
+        for (int i = 0; i < routeCount; i++)
+        {
+            routePrompt.Append($"<b>{routes[i].GetDirection()}</b>");
+            if (i < routeCount - 1) routePrompt.Append(", ");
+        }
+        routePrompt.Append("?");
+
+        return routePrompt.ToString();
     }
 
     /// <summary>

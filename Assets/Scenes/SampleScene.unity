@@ -9038,7 +9038,7 @@ MonoBehaviour:
   timerUIElement: {fileID: 42671582}
   background: {fileID: 432186673}
   colorable: {fileID: 997149966}
-  duration: 10
+  duration: 15
   curPoints: 0
   winPoints: 3
   prompts:
@@ -15252,6 +15252,7 @@ GameObject:
   - component: {fileID: 1360784990}
   - component: {fileID: 1360784992}
   - component: {fileID: 1360784993}
+  - component: {fileID: 1360784994}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -15306,8 +15307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad2c55f88249b44aa3487dd8ec1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPOI: {fileID: 11400000, guid: c922461baaf39a54c914cb3f4d4ead77, type: 2}
+  currentPOI: {fileID: 11400000, guid: 197cf5af939de2a45aab7904cdf1e805, type: 2}
   inEncounter: 0
+  routePromptStart: As you look down the hallway, you notice that your path splits
+    into
+  routePromptEnd: 'Which path do you want to <b>move</b> down: '
+  noRoutePrompt: You look down the hallway and notice a wall. This is a dead end.
 --- !u!114 &1360784988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15444,18 +15449,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b6cfb51c0dc3742883ceeeb967cb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPOI: {fileID: 11400000, guid: b888015e971602540b52286e92ab5be7, type: 2}
+  startingRooms:
+  - {fileID: 11400000, guid: b888015e971602540b52286e92ab5be7, type: 2}
+  - {fileID: 11400000, guid: ea9a04512f507b1489480fe14677a59c, type: 2}
+  - {fileID: 11400000, guid: cc8921dea5cd1cd4b95d1a6c8eaa7e09, type: 2}
   combatEncounters:
   - {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
   nonCombatEncounters:
   - {fileID: 11400000, guid: 41e4f0b878d90e34dbc9f49104b13577, type: 2}
   - {fileID: 11400000, guid: e025478594f23e14da6ebe71f62a50f9, type: 2}
   - {fileID: 11400000, guid: 8ba8d3710754e394ca54b1355c04b3de, type: 2}
-  bossEncounters:
-  - {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
-  bossIndex: 0
+  - {fileID: 11400000, guid: 4159ca27e6cbabf4597913667bd22eff, type: 2}
   nCToCRatio: {x: 1, y: 2}
   chanceToIgnoreRatio: 10
+--- !u!114 &1360784994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360784984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e947c47972c03324d83bc3072d58fa76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1375675334
 GameObject:
   m_ObjectHideFlags: 0
@@ -17243,6 +17261,8 @@ MonoBehaviour:
   carrot: {fileID: 439177096}
   colorManager: {fileID: 0}
   cheatCodeManager: {fileID: 0}
+  hintText: 
+  hintTime: 0
   promptMinigame: {fileID: 0}
 --- !u!114 &1491552933
 MonoBehaviour:
@@ -21801,6 +21821,14 @@ MonoBehaviour:
   carrot: {fileID: 1878140573}
   colorManager: {fileID: 2041287936}
   cheatCodeManager: {fileID: 1360784988}
+  hintText: 'Lost? Check your <b>Cheats</b> folder to see what cheats you have! Or
+    you can type:
+
+    -<b>search</b> to describe the room you''re in. Or,
+
+    -<b>help</b>
+    to figure out what keywords you can currently type.'
+  hintTime: 60
 --- !u!114 &1856952951
 MonoBehaviour:
   m_ObjectHideFlags: 0

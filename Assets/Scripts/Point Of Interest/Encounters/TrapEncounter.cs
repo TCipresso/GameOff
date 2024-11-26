@@ -7,9 +7,11 @@ using UnityEngine;
 /// Saving throw type encounter. Player must pass minigame in order to proceed. Take damage, lose speed.
 /// </summary>
 [CreateAssetMenu(menuName = "Scriptable Objects/Encounters/Trap Encounter")]
-public class TrapEncounter : Encounter
+public class TrapEncounter : Encounter, Waiter
 {
-    [Header("TrapStats")]
+    [Header("Trap Stats")]
+    [Tooltip("Gives the player some time to read before the trap starts.")]
+    [SerializeField] float trapDelay = 3f;
     [SerializeField] int speedLoss;
     [SerializeField] int damage;
 
@@ -30,7 +32,7 @@ public class TrapEncounter : Encounter
         if (isSetUp) return base.GetDescription();
         
         isSetUp = true;
-        StartMinigame();
+        Wait.instance.WaitForSeconds(trapDelay, this);
         return base.GetDescription();
     }
 
@@ -64,7 +66,7 @@ public class TrapEncounter : Encounter
     private void TrapFail()
     {
         PlayerStats.instance.TakeDamage(damage);
-        PlayerStats.instance.speed -= speedLoss;
+        PlayerStats.instance.DecreaseSpeed(speedLoss);
         TextOutput.instance.Print(failureResponse);
         LeaveEncounter();
     }
@@ -76,5 +78,11 @@ public class TrapEncounter : Encounter
     {
         TextOutput.instance.Print(successResponse);
         LeaveEncounter();
+    }
+
+    public void WaitComplete()
+    {
+        PlayerStats.instance.TakeDamage(0);
+        StartMinigame();
     }
 }

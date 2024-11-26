@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4beeb7d04620640b069dc466bac822, type: 3}
+  m_Name: Campfire Encounter
+  m_EditorClassIdentifier: 
+  description: You notice a light as you enter the room. A campfire blazes but with
+    no one to sit at it. How long has it been buring? Who made it? Where are they?
+    Your body aches as it wants to rest here.
+  subjectSprite: {fileID: 0}
+  minigame: 0
+  encounterName: Campfire
+  enemyIndex: 0
+  isCombat: 0
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  attackDialogues: []
+  healAmount: 5
+  uses: 3
+  isEvil: 0
+  restText: The tension in your muscles evaporate as you sit next to the campfire.
+    Its flames are still burning but seem to be dwindling.
+  burnOutText: The once roaring flame disappears into darkness. Nothing remains other
+    than the charred pieces of firewood. Your torch is your only source of light.
+  ambushText: You look out into the darkness and find something staring back. Is
+    it the one who built the campfire? Before you get your answers, it lunges at
+    you.
+  leaveText: You leave the campfire alone. Who knows who made it and when they are
+    coming back.
