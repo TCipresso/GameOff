@@ -69,7 +69,7 @@ public class HorseEncounter : Encounter
         isEvil = false;
         if (increaseChancePerGoodHorse) evilHorseChance += evilHorseChanceIncrease;
         if (evilHorseChance > 100) evilHorseChance = 100;
-        return description;
+        return base.GetDescription();
     }
 
     /// <summary>

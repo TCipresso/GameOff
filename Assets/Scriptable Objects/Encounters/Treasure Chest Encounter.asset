@@ -18,7 +18,7 @@ MonoBehaviour:
     Though, juding by its wellworn state, it may be smarter to <i>ignore</i> it.
   subjectSprite: 3
   minigame: 0
-  encounterName: 
+  encounterName: A Box
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
