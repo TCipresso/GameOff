@@ -44,6 +44,7 @@ public class TreasureChestEncounter : Encounter
             switch (token)
             {
                 case "ignore":
+                    ChestOpening.instance.DoNotWantToOpen();
                     LeaveEncounter();
                     return ignoreText;
                 case "inspect":
@@ -57,6 +58,7 @@ public class TreasureChestEncounter : Encounter
     private string InspectChest()
     {
         //No such thing as a free lunch.
+        ChestOpening.instance.WantToOpen();
         PlayerStats.instance.TakeDamage(damage);
         PlayerStats.instance.DecreaseSpeed(speedLost);
         PlayerStats.instance.DecreaseTypingSpeed(textSpeedLost);
