@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ChestOpening is literally just so I can control the chest open
+/// animation without completely redoing everything.
+/// </summary>
 public class ChestOpening : MonoBehaviour
 {
     public static ChestOpening instance {  get; private set; }
@@ -19,11 +23,17 @@ public class ChestOpening : MonoBehaviour
         wantToOpen = false;
     }
 
+    /// <summary>
+    /// Allows playing open animation OnDisable.
+    /// </summary>
     public void WantToOpen()
     {
         wantToOpen = true;
     }
 
+    /// <summary>
+    /// Disallows playing open animation OnDisable.
+    /// </summary>
     public void DoNotWantToOpen()
     {
         wantToOpen = false;
