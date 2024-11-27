@@ -118,6 +118,9 @@ public class InputParser : MonoBehaviour
                 case "help":
                     output = helpHandler.ReadTokens(tokens);
                     break;
+                case "inventory":
+                    output = PlayerInventory.instance.ReadTokens(tokens);
+                    break;
                 case "godmode":
                     cheatCodeManager.TryActivateCheat("GodMode");
                     output = "Godmode enabled!";
@@ -125,6 +128,10 @@ public class InputParser : MonoBehaviour
                 case "noclip":
                     cheatCodeManager.TryActivateCheat("NoClip");
                     output = "No Clip enabled!";
+                    break;
+                case "apple":
+                case "smoke":
+                    output = "Now is not the proper time to use that.";
                     break;
                 default:
                     output = "Unknown command.";

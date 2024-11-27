@@ -16,7 +16,7 @@ MonoBehaviour:
     no one around it. How long has it been burning? Who made it? Where are they?
     Your body aches as it wants to <i>rest</i> here; however, it might be safer to
     <i>leave</i> incase whoever made it returns.
-  subjectSprite: {fileID: 0}
+  subjectSprite: 4
   minigame: 0
   encounterName: A Campfire
   enemyIndex: 0

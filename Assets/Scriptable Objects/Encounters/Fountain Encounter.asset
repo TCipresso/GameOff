@@ -15,7 +15,7 @@ MonoBehaviour:
   description: A fluorescent fuchsia fountain stands in the middle of the room. Its
     water shimmers in the tourch light. It beckons you to <i>bathe</i> in it; though,
     it may be smater to <i>ignore</i> it.
-  subjectSprite: {fileID: 0}
+  subjectSprite: 5
   minigame: 0
   encounterName: A Healing Fountain
   enemyIndex: 0

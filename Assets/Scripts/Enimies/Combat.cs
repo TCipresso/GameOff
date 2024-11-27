@@ -287,6 +287,7 @@ public class Combat : MonoBehaviour
         UpdateInputFieldState();
         playerStats.isDefending = false;
         currentEncounter = null;
+        //You should leave encounter here!
     }
 
     public bool IsCombatActive()

@@ -17,7 +17,7 @@ MonoBehaviour:
     ever coming back. The horse stares into your eyes as if it wants to give you
     something. <i>Pet</i>ting the horse may let you know it better. Do you <i>accept</i>
     or <i>deny</i> the horse's request?
-  subjectSprite: {fileID: 0}
+  subjectSprite: 1
   minigame: 0
   encounterName: A Horse
   enemyIndex: 0
@@ -28,13 +28,14 @@ MonoBehaviour:
   - pet
   - accept
   - deny
+  - apple
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 20
+  evilHorseChance: 10
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0
-  isEvil: 1
+  isEvil: 0
   isSetUp: 0
   healthBoostAmount: 5
   damageBoostAmount: 1

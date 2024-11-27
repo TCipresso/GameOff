@@ -11,7 +11,7 @@ public class Encounter : ScriptableObject, MinigameCaller
 {
     [TextArea(3, 10)]
     [SerializeField] public string description = "This is a test encounter. Type \"continue\" to continue.";
-    [SerializeField] Sprite subjectSprite;
+    [SerializeField] int subjectSprite = -1;
     [SerializeField] int minigame;
 
     [Header("Encounter Details")]
@@ -33,14 +33,16 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <returns>The description of the encounter.</returns>
     public virtual string GetDescription()
     {
+        EncounterSpriteManager.instance.ActivateSprite(subjectSprite);
+        Debug.Log("Getting Description");
         return description;
     }
 
     /// <summary>
     /// Get the sprite that represents the encounter's subject/character.
     /// </summary>
-    /// <returns>A <see cref="Sprite"/> of the encounter's subject/character.</returns>
-    public Sprite GetSubjectSprite()
+    /// <returns>The index of the encounter's subject/character.</returns>
+    public int GetSubjectSprite()
     {
         return subjectSprite;
     }
@@ -103,6 +105,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// </summary>
     public virtual void LeaveEncounter()
     {
+        EncounterSpriteManager.instance.DeactivateSprite(subjectSprite);
         GameManager.instance.LeaveEnounter();
     }
 
