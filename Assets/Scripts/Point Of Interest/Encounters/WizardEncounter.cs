@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -128,15 +129,16 @@ public class WizardEncounter : Encounter, Waiter
 
     private string Smoke()
     {
-        //if (boofs > 0)
-        //{
-            TextOutput.instance.Print(smokeText);
-            ChantPass();
-        //}
-        //else
-        //{
-        //    TextOutput.instance.Print("You have nothing to smoke.");
-        //}
+        try
+        {
+            PlayerInventory.instance.RemoveSmoke();
+        } catch (InvalidOperationException e)
+        {
+            TextOutput.instance.Print(e.Message);
+            return null;
+        }
+        TextOutput.instance.Print(smokeText);
+        ChantPass();
         return null;
     }
 

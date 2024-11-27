@@ -64,12 +64,21 @@ public class PlayerInventory : KeywordHandler
         appleCount += amount;
     }
 
+    /// <summary>
+    /// Remove an apple from inventory.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">There are no apples to remove.</exception>
     public void RemoveApple()
     {
         if (appleCount <= 0) throw new InvalidOperationException("You do not have any apples.");
         appleCount--;
     }
 
+    /// <summary>
+    /// Remove a desired amount of apples from the inventory.
+    /// </summary>
+    /// <param name="amount">Amount of apples to remove.</param>
+    /// <exception cref="InvalidOperationException">There are not enough apples to remove.</exception>
     public void RemoveApple(int amount)
     {
         if (appleCount < amount) throw new InvalidOperationException("You do not have enough apples.");
@@ -91,12 +100,21 @@ public class PlayerInventory : KeywordHandler
         smokeCount += amount;
     }
 
+    /// <summary>
+    /// Remove a smoke from inventory.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">There are no smokes to remove.</exception>
     public void RemoveSmoke() 
     {
         if (smokeCount <= 0) throw new InvalidOperationException("You do not have any smokes.");
         smokeCount--;
     }
 
+    /// <summary>
+    /// Remove a desired amount of smokes from the inventory.
+    /// </summary>
+    /// <param name="amount">Amount of smokes to remove.</param>
+    /// <exception cref="InvalidOperationException">There are not enough smokes to remove.</exception>
     public void RemoveSmoke(int amount)
     {
         if (smokeCount < amount) throw new InvalidOperationException("You do not have enough smokes.");

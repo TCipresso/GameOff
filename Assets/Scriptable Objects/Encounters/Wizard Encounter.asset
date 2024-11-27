@@ -28,6 +28,7 @@ MonoBehaviour:
   keywords:
   - chant
   - pass
+  - smoke
   attackDialogues: []
   chantWait: 3
   chantText: Though still not facing you, you can see the man's ears perk up. "You
