@@ -129,6 +129,10 @@ public class InputParser : MonoBehaviour
                     cheatCodeManager.TryActivateCheat("NoClip");
                     output = "No Clip enabled!";
                     break;
+                case "apple":
+                case "smoke":
+                    output = "Now is not the proper time to use that.";
+                    break;
                 default:
                     output = "Unknown command.";
                     break;
