@@ -25688,6 +25688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest_NC
       objectReference: {fileID: 0}
+    - target: {fileID: 3600509378212313082, guid: 7a003bbd4c50acf4487a9a937dfd4974, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6565017252586467353, guid: 7a003bbd4c50acf4487a9a937dfd4974, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -25864,10 +25868,6 @@ PrefabInstance:
     - target: {fileID: 7634015746113126590, guid: e590dfb386cae65478cbb105e97ef039, type: 3}
       propertyPath: m_Name
       value: Horse_NC
-      objectReference: {fileID: 0}
-    - target: {fileID: 7634015746113126590, guid: e590dfb386cae65478cbb105e97ef039, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
