@@ -15253,6 +15253,7 @@ GameObject:
   - component: {fileID: 1360784992}
   - component: {fileID: 1360784993}
   - component: {fileID: 1360784994}
+  - component: {fileID: 1360784995}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -15476,6 +15477,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e947c47972c03324d83bc3072d58fa76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1360784995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360784984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9cc57c96eebd64a8400abdc7c310f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appleCount: 0
+  smokeCount: 0
 --- !u!1 &1375675334
 GameObject:
   m_ObjectHideFlags: 0
@@ -21825,13 +21840,16 @@ MonoBehaviour:
   helpHandler: {fileID: 2041287937}
   colorManager: {fileID: 2041287936}
   cheatCodeManager: {fileID: 1360784988}
-  hintText: 'Lost? Check your <b>Cheats</b> folder to see what cheats you have! Or
+  hintText: 'Lost? Check your <i>Cheats</i> folder to see what cheats you have! Or
     you can type:
 
-    -<b>search</b> to describe the room you''re in. Or,
+    -<i>inventory</i> to see what items you currently have. Or,
 
-    -<b>help</b>
-    to figure out what keywords you can currently type.'
+    -<i>search</i>
+    to describe the room you''re in. Or,
+
+    -<i>help</i> to figure out what keywords
+    you can currently type.'
   hintTime: 60
 --- !u!114 &1856952951
 MonoBehaviour:

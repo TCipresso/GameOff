@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         //These keywords are found in the InputParser.
         //They're defined here due to the natural flow from Encounter -> POI -> GameManager due their these object's relationships.
         //The code is noodling as we speak.
+        response.Add("inventory");
         response.Add("move");
         response.Add("color");
 

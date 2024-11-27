@@ -118,6 +118,9 @@ public class InputParser : MonoBehaviour
                 case "help":
                     output = helpHandler.ReadTokens(tokens);
                     break;
+                case "inventory":
+                    output = PlayerInventory.instance.ReadTokens(tokens);
+                    break;
                 case "godmode":
                     cheatCodeManager.TryActivateCheat("GodMode");
                     output = "Godmode enabled!";
