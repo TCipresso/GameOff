@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3600509378212313082
+--- !u!1 &2259777728685175865
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6565017252586467353}
-  - component: {fileID: 711923398030607663}
-  - component: {fileID: 8717177205829304197}
-  - component: {fileID: 5586431722559421576}
-  - component: {fileID: 1608619739864862991}
+  - component: {fileID: 4059812832034856764}
+  - component: {fileID: 3575237757699907194}
+  - component: {fileID: 6143925402615154033}
+  - component: {fileID: 5979773952019291921}
+  - component: {fileID: 7955766143227941910}
+  - component: {fileID: 5910531912515286771}
   m_Layer: 5
-  m_Name: Chest_NC
+  m_Name: Chest_Open_NC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!224 &6565017252586467353
+--- !u!224 &4059812832034856764
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3600509378212313082}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 2259777728685175865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.7333548, y: 1.7333548, z: 1.7333548}
   m_ConstrainProportionsScale: 0
@@ -39,21 +40,21 @@ RectTransform:
   m_AnchoredPosition: {x: 595, y: 175}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &711923398030607663
+--- !u!222 &3575237757699907194
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3600509378212313082}
+  m_GameObject: {fileID: 2259777728685175865}
   m_CullTransparentMesh: 1
---- !u!114 &8717177205829304197
+--- !u!114 &6143925402615154033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3600509378212313082}
+  m_GameObject: {fileID: 2259777728685175865}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -77,17 +78,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &5586431722559421576
+--- !u!114 &5979773952019291921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259777728685175865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fcc434dca20b74685e24ccd551d003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openChest: {fileID: 0}
+--- !u!95 &7955766143227941910
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3600509378212313082}
+  m_GameObject: {fileID: 2259777728685175865}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aafe254f09a7e384ab7ecb808526af4d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 613f009de2e407543bd2e98e9df2d519, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -98,16 +112,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1608619739864862991
+--- !u!114 &5910531912515286771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3600509378212313082}
+  m_GameObject: {fileID: 2259777728685175865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4fcc434dca20b74685e24ccd551d003, type: 3}
+  m_Script: {fileID: 11500000, guid: 90e23b13eb3f8a44d8b9bee82bab056e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openChest: {fileID: 0}
