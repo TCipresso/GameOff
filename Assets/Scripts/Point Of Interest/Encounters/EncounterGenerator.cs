@@ -64,8 +64,9 @@ public class EncounterGenerator : MonoBehaviour
 
             List<Route> routes = current.GetRoutes();
             foreach (Route route in routes)
-            {
+            { 
                 PointOfInterest destination = route.GetDestination();
+                if (destination == current) throw new System.Exception($"{current.name} -> {destination.name}: Destination is self.");
                 if (!visited.Contains(destination) && !stack.Contains(destination)) stack.Push(destination);
             }
             
