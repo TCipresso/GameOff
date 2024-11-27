@@ -28,6 +28,7 @@ public class TreasureChestEncounter : Encounter
             switch (token)
             {
                 case "ignore":
+                case "open":
                 case "inspect":
                     return true;
             }
@@ -47,6 +48,7 @@ public class TreasureChestEncounter : Encounter
                     ChestOpening.instance.DoNotWantToOpen();
                     LeaveEncounter();
                     return ignoreText;
+                case "open":
                 case "inspect":
                     return InspectChest();
             }
