@@ -7043,6 +7043,7 @@ MonoBehaviour:
   inputField: {fileID: 524677855}
   textArea: {fileID: 237112759}
   carrot: {fileID: 500680523}
+  helpHandler: {fileID: 0}
   colorManager: {fileID: 0}
   cheatCodeManager: {fileID: 0}
   hintText: 
@@ -21960,6 +21961,7 @@ MonoBehaviour:
   inputField: {fileID: 1770571582}
   textArea: {fileID: 884865440}
   carrot: {fileID: 1280078633}
+  helpHandler: {fileID: 0}
   colorManager: {fileID: 466026791}
   cheatCodeManager: {fileID: 1046918016}
   hintText: 
