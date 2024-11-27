@@ -63,7 +63,7 @@ public class FountainEncounter : Encounter
     private string AcceptFountain()
     {
         PlayerStats.instance.Heal();
-        GameManager.instance.LeaveEnounter();
+        LeaveEncounter();
         return batheString;
     }
 
@@ -73,7 +73,7 @@ public class FountainEncounter : Encounter
     /// <returns>Description of the player leaving.</returns>
     private string DenyFountain()
     {
-        GameManager.instance.LeaveEnounter();
+        LeaveEncounter();
         return ignoreString;
     }
 }
