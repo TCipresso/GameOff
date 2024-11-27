@@ -18,7 +18,7 @@ MonoBehaviour:
     to face you, the man says, "this orb sees the secrets of your future. Only those
     skilled in the arcane arts can look into it. If you know them, you may want to
     <i>chant</i> with me. Otherwise, it would be smarter to <i>pass</i> by."
-  subjectSprite: {fileID: 0}
+  subjectSprite: 6
   minigame: 8
   encounterName: A Wizard
   enemyIndex: 0
