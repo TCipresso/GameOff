@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,8 +59,8 @@ public class HorseEncounter : Encounter
         if (isSetUp) return description;
 
         isSetUp = true;
-        if(evilHorseChance == 0) evilHorseChance = baseEvilHorseChance;
-        if(forceEvilHorse || Random.Range(0, 100) + 1 <= evilHorseChance)
+        if(evilHorseChance < baseEvilHorseChance) evilHorseChance = baseEvilHorseChance;
+        if(forceEvilHorse || UnityEngine.Random.Range(0, 100) + 1 <= evilHorseChance)
         {
             isEvil = true;
             evilHorseChance = baseEvilHorseChance;
@@ -188,13 +189,15 @@ public class HorseEncounter : Encounter
     /// <returns>The horse's response to the apple.</returns>
     private string GiveApple()
     {
-        /*
-         * if(haveApple) {
-         * apples--;
-         */
+        try
+        {
+            PlayerInventory.instance.RemoveApple();
+        } catch(InvalidOperationException e)
+        {
+            return e.Message;
+        }
+
         isEvil = false;
         return appleResponse;
-        //}
-        //return "You have no apples to give.";
     }
 }

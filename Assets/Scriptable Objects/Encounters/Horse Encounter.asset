@@ -28,13 +28,14 @@ MonoBehaviour:
   - pet
   - accept
   - deny
+  - apple
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 20
+  evilHorseChance: 10
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0
-  isEvil: 1
+  isEvil: 0
   isSetUp: 0
   healthBoostAmount: 5
   damageBoostAmount: 1
