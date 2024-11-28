@@ -234,7 +234,7 @@ public class AttackMiniGame : MonoBehaviour
 
         //playerStats.ResetDamage(); //do not touch this Tommy
 
-        Combat.instance.MiniGameCompleted();
+        Combat.instance.MiniGameAttackCompleted();
         gameObject.SetActive(false); // Disable the mini-game
     }
 

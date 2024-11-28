@@ -18,13 +18,15 @@ MonoBehaviour:
 
     >Knife
     drawn eyeing your valubles.'
-  subjectSprite: {fileID: -780591183, guid: a8f4c1eb92c0a0d48adeda2055234b0b, type: 3}
+  subjectSprite: -1
   minigame: 0
   encounterName: Goblin
   enemyIndex: 0
   isCombat: 1
   enemySpeedMin: 3
   enemySpeedMax: 7
+  keywords:
+  - Attack
   attackDialogues:
   - 'The goblin snickers with excitement as it wants all your "Shinies". You look
     aorund the halls desperately looking for a way out. You see a scripture on the

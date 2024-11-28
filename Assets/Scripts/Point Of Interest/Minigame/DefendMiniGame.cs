@@ -137,11 +137,7 @@ public class DefendMiniGame : MonoBehaviour
         }
 
         // Notify Combat that the mini-game has completed
-        Combat.instance.MiniGameCompleted();
-
-        // Transition to the player's turn
-        Combat.instance.SetPlayerTurn();
-
+        Combat.instance.MiniGameDefendCompleted();
         // Disable the mini-game object
         gameObject.SetActive(false);
     }
