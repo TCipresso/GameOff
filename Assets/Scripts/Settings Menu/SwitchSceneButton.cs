@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class QuitToMainMenuButton : MonoBehaviour
+public class SwitchSceneButton : MonoBehaviour
 {
     [SerializeField] string targetScene;
 
-    public void QuitToMainMenu()
+    public void SwitchScene()
     {
         SceneManager.LoadScene(targetScene);
     }
