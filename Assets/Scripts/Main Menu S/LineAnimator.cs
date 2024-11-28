@@ -13,6 +13,18 @@ public class LineAnimator : MonoBehaviour
         StartCoroutine(ActivateLineAnimationsSequentially());
     }
 
+    void OnDisable()
+    {
+        // Disable all objects in the lineAnimations array
+        foreach (GameObject line in lineAnimations)
+        {
+            if (line != null)
+            {
+                line.SetActive(false);
+            }
+        }
+    }
+
     IEnumerator ActivateLineAnimationsSequentially()
     {
         foreach (GameObject line in lineAnimations)

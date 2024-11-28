@@ -28,8 +28,10 @@ public class Combat : MonoBehaviour
     [Header("Mini Games")]
     public GameObject ddrMinigame;    // Attack mini-game
     public GameObject defendMinigame; // Defend mini-game
-    private bool miniGameComplete = false;
     public GameObject Loading;
+
+    private bool AttMiniGameComplete = false; // Tracks attack mini-game completion
+    private bool DefMiniGameComplete = false; // Tracks defend mini-game completion
 
     private enum CombatState
     {
@@ -40,6 +42,7 @@ public class Combat : MonoBehaviour
         WaitForMiniGame,
         EndCombat
     }
+    
 
     private CombatState currentState;
 
@@ -72,7 +75,6 @@ public class Combat : MonoBehaviour
         UpdateInputFieldState();
     }
 
-
     public void InitiateCombat(Encounter encounter)
     {
         Debug.Log("Initializing combat...");
@@ -104,7 +106,6 @@ public class Combat : MonoBehaviour
 
         currentState = CombatState.Intro;
         UpdateInputFieldState();
-        //TextOutput.instance.Print(currentEncounter.description, OutputCarrot.QUESTION);
         float delay = Mathf.Min(currentEncounter.description.Length * 0.05f, 3.0f);
         Invoke(nameof(DoSpeedCheck), delay);
     }
@@ -148,65 +149,61 @@ public class Combat : MonoBehaviour
     private void PlayerAttack()
     {
         ddrMinigame.SetActive(true);
+        AttMiniGameComplete = false;
         currentState = CombatState.WaitForMiniGame;
         UpdateInputFieldState();
-        StartCoroutine(WaitForMiniGameCompletion());
+        StartCoroutine(WaitForAttackCompletion());
     }
 
     private void PlayerDefend()
     {
         Debug.Log("Defend mini-game started!");
         defendMinigame.SetActive(true);
-        miniGameComplete = false;
+        DefMiniGameComplete = false;
         currentState = CombatState.WaitForMiniGame;
         UpdateInputFieldState();
-        StartCoroutine(WaitForMiniGameCompletion());
+        StartCoroutine(WaitForDefendCompletion());
     }
 
-    private IEnumerator WaitForMiniGameCompletion()
+    private IEnumerator WaitForAttackCompletion()
     {
-        yield return new WaitUntil(() => miniGameComplete);
-        CompleteMiniGameAction();
+        yield return new WaitUntil(() => AttMiniGameComplete); // Wait for attack mini-game completion
+        CompleteAttackAction();
     }
 
-    public void MiniGameCompleted()
+    private IEnumerator WaitForDefendCompletion()
     {
-        Debug.Log("Combat has received the mini-game completion signal.");
+        yield return new WaitUntil(() => DefMiniGameComplete); // Wait for defend mini-game completion
+        CompleteDefendAction();
+    }
+
+    public void MiniGameAttackCompleted()
+    {
+        Debug.Log("Attack mini-game completed!");
         Loading.SetActive(false);
-        miniGameComplete = true;
+        AttMiniGameComplete = true;
     }
 
-    private void CompleteMiniGameAction()
+    public void MiniGameDefendCompleted()
     {
-        if (currentState == CombatState.WaitForMiniGame)
-        {
-            if (ddrMinigame.activeSelf)
-            {
-                ApplyDamageAndCheckForEnemyDefeat();
-            }
-            else if (defendMinigame.activeSelf)
-            {
-                ApplyDefense();
-            }
-
-            ddrMinigame.SetActive(false);
-            defendMinigame.SetActive(false);
-            currentState = CombatState.EnemyTurn; // Move to the next combat state
-        }
+        Debug.Log("Defend mini-game completed!");
+        Loading.SetActive(false);
+        DefMiniGameComplete = true;
+        
     }
 
-    /// <summary>
-    /// Handles the result of the defend mini-game, ensuring the combat state updates properly.
-    /// </summary>
-    private void ApplyDefense()
+    private void CompleteAttackAction()
     {
-        Debug.Log("Defense mini-game completed. Applying defense effect.");
+        ApplyDamageAndCheckForEnemyDefeat();
+        ddrMinigame.SetActive(false);
+        SetEnemyTurn();
+    }
 
-        // Reduce incoming damage or set other defensive effects
-        playerStats.isDefending = true; // Example: Reduce damage taken by half in EnemyTurn
-
-        // Reset mini-game completion flag
-        miniGameComplete = false;
+    private void CompleteDefendAction()
+    {
+        ApplyDefense();
+        defendMinigame.SetActive(false);
+        SetPlayerTurn();
     }
 
     private void ApplyDamageAndCheckForEnemyDefeat()
@@ -220,22 +217,21 @@ public class Combat : MonoBehaviour
             {
                 TextOutput.instance.Print("Enemy defeated! You win the encounter!");
                 EndCombat(true);
-            }
-            else
-            {
-                currentState = CombatState.EnemyTurn;
-                StartCoroutine(EnemyTurn());
+                return;
             }
         }
-        miniGameComplete = false; // Reset the flag for the next usage
     }
 
-    private void Investigate(Encounter encounter)
+    private void ApplyDefense()
     {
-        List<string> dialogues = encounter.GetAttackDialogues();
-        string randomHint = dialogues[Random.Range(0, dialogues.Count)];
-        TextOutput.instance.Print($"You investigate: {randomHint}");
-        UpdateInputFieldState();
+        Debug.Log("Defense applied!");
+        playerStats.isDefending = true;
+    }
+
+    private void SetEnemyTurn()
+    {
+        currentState = CombatState.EnemyTurn;
+        StartCoroutine(EnemyTurn());
     }
 
     private IEnumerator EnemyTurn()
@@ -245,30 +241,23 @@ public class Combat : MonoBehaviour
         TextOutput.instance.Print("Enemy's Turn");
         playerStats.ResetDamage();
         yield return new WaitForSecondsRealtime(3);
-        UpdateInputFieldState();
 
         if (currentEnemyScript != null)
         {
-            int enemyAttack = currentEnemyScript.GetAttack();
-            int damage = playerStats.isDefending ? Mathf.CeilToInt(enemyAttack * 0.5f) : enemyAttack;
-
+            int damage = playerStats.isDefending ? Mathf.CeilToInt(currentEnemyScript.GetAttack() * 0.5f) : currentEnemyScript.GetAttack();
             playerStats.TakeDamage(damage);
             TextOutput.instance.Print($"Enemy attacks! You took {damage} damage. Your HP: {playerStats.playerHP}");
-
             playerStats.isDefending = false;
-
-            if (playerStats.playerHP <= 0)
-            {
-                TextOutput.instance.Print("You were defeated! Game over.");
-                currentState = CombatState.EndCombat;
-                EndCombat(false);
-                yield break;
-            }
         }
-        UpdateInputFieldState();
+
         yield return new WaitForSecondsRealtime(1.5f);
-        currentState = CombatState.PlayerTurn;
-        TextOutput.instance.Print("Player's Turn ACTIONS: 'ATTACK'     'DEFEND'     'INVESTIGATE'");
+        SetPlayerTurn();
+    }
+
+    private void Investigate(Encounter encounter)
+    {
+        string randomHint = encounter.GetAttackDialogues()[Random.Range(0, encounter.GetAttackDialogues().Count)];
+        TextOutput.instance.Print($"You investigate: {randomHint}");
         UpdateInputFieldState();
     }
 
@@ -285,9 +274,6 @@ public class Combat : MonoBehaviour
 
         currentState = CombatState.EndCombat;
         UpdateInputFieldState();
-        playerStats.isDefending = false;
-        currentEncounter = null;
-        //You should leave encounter here!
     }
 
     public bool IsCombatActive()

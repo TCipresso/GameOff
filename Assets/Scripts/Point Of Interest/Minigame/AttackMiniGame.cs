@@ -211,6 +211,7 @@ public class AttackMiniGame : MonoBehaviour
         }
 
         spawnedArrows.Clear();
+        DmgIndicator.instance.UpdateIndicatorColor();
     }
 
     private void StartMiniGameTimer()
@@ -234,7 +235,7 @@ public class AttackMiniGame : MonoBehaviour
 
         //playerStats.ResetDamage(); //do not touch this Tommy
 
-        Combat.instance.MiniGameCompleted();
+        Combat.instance.MiniGameAttackCompleted();
         gameObject.SetActive(false); // Disable the mini-game
     }
 
