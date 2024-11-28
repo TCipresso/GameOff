@@ -3008,13 +3008,17 @@ PrefabInstance:
       value: Settings Menu
       objectReference: {fileID: 0}
     - target: {fileID: 9147194246435225616, guid: 2f3f2fc6ebc66c040a6cfef4001f616f, type: 3}
+      propertyPath: visibleObjects.Array.size
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147194246435225616, guid: 2f3f2fc6ebc66c040a6cfef4001f616f, type: 3}
       propertyPath: visibleObjects.Array.data[23]
       value: 
-      objectReference: {fileID: 196751417}
+      objectReference: {fileID: 8830925}
     - target: {fileID: 9147194246435225616, guid: 2f3f2fc6ebc66c040a6cfef4001f616f, type: 3}
       propertyPath: visibleObjects.Array.data[24]
       value: 
-      objectReference: {fileID: 8830925}
+      objectReference: {fileID: 196751417}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
