@@ -26,6 +26,11 @@ public class EncounterGenerator : MonoBehaviour
     [Range(0, 100)]
     [SerializeField] int chanceToIgnoreRatio = 10;
 
+    private void Awake()
+    {
+        GenerateEncounters();
+    }
+
     /// <summary>
     /// Generate floor's encounters based on this object's startingPOI.
     /// </summary>
@@ -137,10 +142,7 @@ public class EncounterGenerator : MonoBehaviour
     private void SetNoncombatEncounter(PointOfInterest root)
     {
         Debug.Log($"{root.name} is a noncombat encounter");
-        int chosenEncounter = 0;
-        if (nonCombatEncounters.Count > 0) chosenEncounter = Random.Range(0, nonCombatEncounters.Count + 1); //Chance for a plainly empty room.
-        if (nonCombatEncounters.Count == 0 || chosenEncounter >= nonCombatEncounters.Count) root.SetEncounter(null); 
-        else root.SetEncounter(nonCombatEncounters[chosenEncounter]);
+        root.SetEncounter(nonCombatEncounters[Random.Range(0, nonCombatEncounters.Count)]);
     }
 
     /// <summary>
