@@ -112,10 +112,10 @@ public class DefendMiniGame : MonoBehaviour
 
         if (isGameRunning)
         {
-            TextOutput.instance.Print("> Player dodged the attack. Zero damage taken.");
-            TextOutput.instance.Print("> COUNTER ATTACK ENGAGED +30 Damage next attack");
+            
 
             EndMiniGame(true); // Mini-game succeeded
+            
         }
     }
 
@@ -139,12 +139,15 @@ public class DefendMiniGame : MonoBehaviour
         if (success)
         {
             Debug.Log("Counter Attack Enabled! +30 damage to the player's next attack.");
+            TextOutput.instance.Print("> Player dodged the attack. Zero damage taken.");
+            TextOutput.instance.Print("> COUNTER ATTACK ENGAGED +30 Damage next attack");
             PlayerStats.instance.AddDamage(30); // Add bonus damage
         }
         else
         {
-            int halfDamage = Mathf.CeilToInt(Combat.instance.GetEnemyAttack() * 0.5f);
-            PlayerStats.instance.TakeDamage(halfDamage); // Apply half-damage
+            int fullDamage = Combat.instance.GetEnemyAttack(); // Get the full enemy attack damage
+            PlayerStats.instance.TakeDamage(fullDamage); // Apply full damage
+            TextOutput.instance.Print($"> Failed to defend. You took {fullDamage} damage.");
         }
 
         // Notify Combat that the mini-game has completed

@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour
 
     private void Start()
     {
-        speed = Random.Range(400f, 400f);
+        speed = Random.Range(5f, 5f);
         Destroy(gameObject, 8f);
     }
 
@@ -20,7 +20,6 @@ public class Arrow : MonoBehaviour
         if (other.CompareTag("Token"))
         {
             Debug.Log("Arrow hit the player! Mini-game failed.");
-            TextOutput.instance.Print(" Player hit by the attack Player took half damage");
             DefendMiniGame.instance.EndMiniGame(false); 
             Destroy(gameObject);
         }

@@ -11509,7 +11509,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 541.2
+  orthographic size: 5.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15797,7 +15797,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -17842,6 +17842,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 394255099}
     m_Modifications:
+    - target: {fileID: 1876355850856965995, guid: 44b497922b48ed842923fe4a5c16a12e, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4823378629092694124, guid: 44b497922b48ed842923fe4a5c16a12e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
