@@ -37,7 +37,6 @@ public class DefendMiniGame : MonoBehaviour
     private void OnEnable()
     {
         isGameRunning = true;
-        Debug.Log("Enemy's Turn: Defend yourself!");
         TextOutput.instance.Print("Enemy's Turn: Defend yourself!");
         StartCoroutine(MiniGameTimer());
     }
@@ -94,19 +93,13 @@ public class DefendMiniGame : MonoBehaviour
 
         if (isGameRunning)
         {
-            Debug.Log("Player successfully defended!");
+            TextOutput.instance.Print("> Player dodged the attack Zero damage Taken.");
+            TextOutput.instance.Print("> COUNTER ATTACK ENGAGED +30 Damage next attack");
+
             EndMiniGame(true); // Mini-game succeeded
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Token")) // Assume "Token" is the arrow/bullet tag
-        {
-            Debug.Log("Player hit by arrow! Taking half damage.");
-            EndMiniGame(false); // Player failed
-        }
-    }
 
     /// <summary>
     /// Ends the mini-game, handling success or failure.

@@ -211,6 +211,7 @@ public class AttackMiniGame : MonoBehaviour
         }
 
         spawnedArrows.Clear();
+        DmgIndicator.instance.UpdateIndicatorColor();
     }
 
     private void StartMiniGameTimer()

@@ -41,6 +41,7 @@ public class PlayerStats : MonoBehaviour
         hpText.text = $"{playerHP}";
         damageText.text = $"{dmg}";
         speedText.text = $"{speed}";
+        DmgIndicator.instance.UpdateIndicatorColor();
     }
 
     void Start()
@@ -107,6 +108,7 @@ public class PlayerStats : MonoBehaviour
         dmg += bonus;
         Debug.Log($"Bonus damage added! Current damage: {dmg}");
         UpdateUI();
+        DmgIndicator.instance.UpdateIndicatorColor();
     }
 
     /// <summary>
@@ -117,6 +119,7 @@ public class PlayerStats : MonoBehaviour
         dmg = baseDmg;
         Debug.Log($"Damage reset to base value: {dmg}");
         UpdateUI();
+        DmgIndicator.instance.UpdateIndicatorColor();
     }
 
     /// <summary>
