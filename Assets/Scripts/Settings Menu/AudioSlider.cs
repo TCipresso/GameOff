@@ -16,6 +16,10 @@ public class AudioSlider : MonoBehaviour
         {
             UpdateAudio(value);
         });
+    }
+
+    private void Start()
+    {
         if (PlayerPrefs.HasKey(mixerChannel)) slider.value = PlayerPrefs.GetFloat(mixerChannel);
         else slider.value = slider.maxValue;
     }
