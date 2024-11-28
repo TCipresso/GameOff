@@ -17592,8 +17592,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1359122050}
-        m_TargetAssemblyTypeName: QuitToMainMenuButton, Assembly-CSharp
-        m_MethodName: QuitToMainMenu
+        m_TargetAssemblyTypeName: SwitchSceneButton, Assembly-CSharp
+        m_MethodName: SwitchScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
