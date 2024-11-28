@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class QuitToMainMenuButton : MonoBehaviour
 {
+    [SerializeField] string targetScene;
+
     public void QuitToMainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(targetScene);
     }
 }
