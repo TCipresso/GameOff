@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < routeCount; i++)
         {
-            routePrompt.Append($"<b>{routes[i].GetDirection()}</b>");
+            routePrompt.Append($"<i>{routes[i].GetDirection()}</i>");
             if (i < routeCount - 1) routePrompt.Append(", ");
         }
         routePrompt.Append("?");
