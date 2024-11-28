@@ -20,6 +20,7 @@ public class Arrow : MonoBehaviour
         if (other.CompareTag("Token"))
         {
             Debug.Log("Arrow hit the player! Mini-game failed.");
+            TextOutput.instance.Print(" Player hit by the attack Player took half damage");
             DefendMiniGame.instance.EndMiniGame(false); 
             Destroy(gameObject);
         }
