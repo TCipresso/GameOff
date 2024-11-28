@@ -32,6 +32,7 @@ public class Combat : MonoBehaviour
 
     private bool AttMiniGameComplete = false; // Tracks attack mini-game completion
     private bool DefMiniGameComplete = false; // Tracks defend mini-game completion
+    public AudioSource attackSoundSource;
 
     private enum CombatState
     {
@@ -212,13 +213,21 @@ public class Combat : MonoBehaviour
         {
             currentEnemyScript.TakeDamage(playerStats.dmg);
             TextOutput.instance.Print($"You attack! The enemy took {playerStats.dmg} damage. Enemy HP: {currentEnemyScript.GetHealth()}");
-
+            PlayAttackSound();
             if (currentEnemyScript.IsDefeated())
             {
                 TextOutput.instance.Print("Enemy defeated! You win the encounter!");
                 EndCombat(true);
                 return;
             }
+        }
+    }
+
+    private void PlayAttackSound()
+    {
+        if (attackSoundSource != null)
+        {
+            attackSoundSource.Play();
         }
     }
 
