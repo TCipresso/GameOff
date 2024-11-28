@@ -5728,7 +5728,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5744,8 +5744,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799de712ed3fb774fba19f2f49a6a86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSlider: {fileID: -1723863493968966522, guid: fe52609668e357e4c92478870f74128c, type: 2}
+  audioMixer: {fileID: 24100000, guid: fe52609668e357e4c92478870f74128c, type: 2}
   slider: {fileID: 557241952}
+  mixerChannel: MusicVol
 --- !u!1 &562103887
 GameObject:
   m_ObjectHideFlags: 0
@@ -15851,7 +15852,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15867,8 +15868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799de712ed3fb774fba19f2f49a6a86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSlider: {fileID: -7152912785127219372, guid: fe52609668e357e4c92478870f74128c, type: 2}
+  audioMixer: {fileID: 24100000, guid: fe52609668e357e4c92478870f74128c, type: 2}
   slider: {fileID: 1301757445}
+  mixerChannel: AmbienceVol
 --- !u!1 &1307875242
 GameObject:
   m_ObjectHideFlags: 0
@@ -22994,7 +22996,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23010,8 +23012,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799de712ed3fb774fba19f2f49a6a86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSlider: {fileID: 24300002, guid: fe52609668e357e4c92478870f74128c, type: 2}
+  audioMixer: {fileID: 24100000, guid: fe52609668e357e4c92478870f74128c, type: 2}
   slider: {fileID: 1779688499}
+  mixerChannel: MasterVol
 --- !u!1 &1786602472
 GameObject:
   m_ObjectHideFlags: 0
@@ -26924,7 +26927,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -26940,8 +26943,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799de712ed3fb774fba19f2f49a6a86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSlider: {fileID: -6866713004344059490, guid: fe52609668e357e4c92478870f74128c, type: 2}
+  audioMixer: {fileID: 24100000, guid: fe52609668e357e4c92478870f74128c, type: 2}
   slider: {fileID: 2077546239}
+  mixerChannel: SFXVol
 --- !u!1 &2079549711
 GameObject:
   m_ObjectHideFlags: 0
