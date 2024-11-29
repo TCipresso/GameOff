@@ -127,16 +127,6 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <returns>True if encounter can handle input, false otherwise.</returns>
     public virtual bool IsEncounterKeyword(string[] tokens)
     {
-        foreach (string token in tokens)
-        {
-            switch (token)
-            {
-                case "continue":
-                case "play":
-                case "godmode":
-                    return true;
-            }
-        }
         return false;
     }
 
@@ -147,23 +137,6 @@ public class Encounter : ScriptableObject, MinigameCaller
     /// <returns>A response message from activity.</returns>
     public virtual string ParseEncounterKeywords(string[] tokens)
     {
-        foreach (string token in tokens)
-        {
-            switch (token)
-            {
-                case "continue":
-                    LeaveEncounter();
-                    Debug.Log("Leaving Encounter");
-                    return "Leaving Encounter";
-                case "play": //godmode test
-                    StartMinigame();
-                    return "Starting Minigame";
-                case "godmode": //godmode test
-                    StartMinigame();
-                    return "Starting Minigame";
-            }
-        }
-
         return $"Keyword not recognized.";
     }
 
