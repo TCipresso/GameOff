@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Penultimate Encounter
   m_EditorClassIdentifier: 
   description: You shouldn't be seeing this description.
-  subjectSprite: {fileID: 0}
+  subjectSprite: -1
   minigame: 0
   encounterName: An End
   enemyIndex: 0
@@ -21,26 +21,24 @@ MonoBehaviour:
   enemySpeedMin: 3
   enemySpeedMax: 7
   keywords:
-  - <color=#ff000099>noclip</color>
+  - <color=#ff000005>Try the secrets you know</color>
   attackDialogues: []
-  noclipResponse: After uttering that word, you place your hand on the wall... and
-    miss. Your hand went through the wall. You push the rest of your body through
-    the wall. A corridor awaits on the other side.
+  noclipResponse: <color=#ff0000>You are more clever than I thought. Fine, I'll let
+    you through.</color>
   descriptions:
   - Your heart sinks as you approach a wall. The path forward has been cut off. Looking
     back, all you see is the darkness of the void. You can hear the scuttering of
     the creatures you came across and the ones you have not seen. All paths lead
     to this point. No way this is the end of the dungeon.
-  - Upon closer inspection, you see a constant stream of dust pouring from the wall.
-    Occasionally more dust falls out of the wall as if it was breathing.
-  - You put your face against the wall. It's warm. The warm air of the wall classes
-    with the permafrost air of the dungeon. There is something wrong with this wall.
-  - You slam your tools against the wall. Nothing. You try again; harder this time.
-    Nothing. You try with all your might. Nothing. It is as if this world only responds
-    to the things it wants you to do. What it wants from you is unknown to you, but
-    not <color=#ff0000>you.</color>
+  - You press your head against the wall. There is <color=#ff0000>no</color> way
+    through it.
+  - In your frustration, you punch the wall. Your finger bleeds as you <color=#ff0000>clip</color>
+    it against the wall.
   - <i>N</i>othing y<i>o</i>u try is getting you <i>c</i>loser to the end. It is
     as if <i>l</i>ife doesn't want you to continue. Even <i>i</i>f there was a route
     around, who knows what horrors occu<i>p</i>y this dungeon.
-  descriptionIndex: -1
-  isSetUp: 0
+  - Give it up already. It should be clear that there is nothing you can do. You
+    are stuck here and are completely at the whim of the dungeon's design. The only
+    power <color=#ff0000>you</color> have is to give up.
+  descriptionIndex: 4
+  isSetUp: 1
