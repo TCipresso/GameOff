@@ -21,6 +21,17 @@ public class AudioSlider : MonoBehaviour
         });
     }
 
+    public void UpdateAudio(float value)
+    {
+        PlayerPrefs.SetFloat(mixerChannel, value);
+        audioMixer.SetFloat(mixerChannel, DecimalToDb(value));
+    }
+
+    private float DecimalToDb(float value)
+    {
+        return Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
+    }
+
     private void Start()
     {
         if (PlayerPrefs.HasKey(mixerChannel)) slider.value = PlayerPrefs.GetFloat(mixerChannel);
@@ -29,28 +40,21 @@ public class AudioSlider : MonoBehaviour
 
         slider.onValueChanged.AddListener((value) => 
         {
-            if(Mathf.Abs(valueCheckpoint - value) >= .15)
-            {
-                valueCheckpoint = value;
-                if (valueChangeNoise != null)
-                {
-                    if ((bool)audioSource?.isPlaying) audioSource.Stop();
-                    audioSource?.PlayOneShot(valueChangeNoise);
-                }
-            }
+            PlayValueChangeAudio(value);
         });
     }
 
-    public void UpdateAudio(float value)
+    private void PlayValueChangeAudio(float value)
     {
-        PlayerPrefs.SetFloat(mixerChannel, value);
-        audioMixer.SetFloat(mixerChannel, DecimalToDb(value));
-        Debug.Log(value);
-    }
-
-    private float DecimalToDb(float value)
-    {
-        return Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
+        if (Mathf.Abs(valueCheckpoint - value) >= .15)
+        {
+            valueCheckpoint = value;
+            if (valueChangeNoise != null)
+            {
+                if ((bool)audioSource?.isPlaying) audioSource.Stop();
+                audioSource?.PlayOneShot(valueChangeNoise);
+            }
+        }
     }
 
     public void RemovePerf()
