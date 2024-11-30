@@ -54,7 +54,7 @@ public class LibraryEncounter : Encounter, Waiter
     /// </summary>
     private void MinigameWin()
     {
-        //TODO: This is where I'd give the player the cheat code.
+        CheatCodeManager.instance.GiveRandCheat();
         TextOutput.instance.Print(readSuccess);
         LeaveEncounter();
     }
