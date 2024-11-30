@@ -18,6 +18,7 @@ public class CampfireEncounter : Encounter
     int usesLeft;
     [SerializeField] bool isEvil;
     [SerializeField] bool isSetUp = false; //Serialized for debugging
+    [SerializeField] bool cheatRefilled = false;
 
     [Header("Campfire Flavor")]
     [TextArea(3, 10)] [SerializeField] string restText;
@@ -35,6 +36,7 @@ public class CampfireEncounter : Encounter
         if(isSetUp) return base.GetDescription();
 
         usesLeft = uses;
+        cheatRefilled = false;
         if (Random.Range(0, 2) == 0) isEvil = true;
         else isEvil = false;
         isSetUp = true;
@@ -84,6 +86,7 @@ public class CampfireEncounter : Encounter
     private string Rest()
     {
         PlayerStats.instance.Heal(healAmount);
+        CheatCodeManager.instance.AddCheatCharge();
         usesLeft--;
 
         if(usesLeft > 0)
@@ -93,6 +96,7 @@ public class CampfireEncounter : Encounter
 
         if(isEvil)
         {
+            EncounterSpriteManager.instance.DeactivateSprite(subjectSprite);
             Combat.instance.InitiateCombat(this);
             TextOutput.instance.Print(burnOutText);
             return ambushText;

@@ -156,6 +156,7 @@ public class HorseEncounter : Encounter
     {
         if(isEvil)
         {
+            EncounterSpriteManager.instance.DeactivateSprite(subjectSprite);
             Combat.instance.InitiateCombat(this);
             return evilHorseAccept;
         }
