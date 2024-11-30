@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd257afb9cacf584fa32841335d85399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 1230579431}
+  test: {fileID: 82266065}
 --- !u!1 &136642430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916a3e5cb61c37645b6af3d633b5713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -1100
+  speed: -10
   onFixedUpdate: 0
   horizontal: 0
   vertical: 1
@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 2079549712}
-  distance: 700
+  distance: 7
   limitHorizontal: 0
   limitVertical: 1
   limitLinear: 0
@@ -7812,7 +7812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1e53dc0bf683f4eb746879306fed3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 800
+  speed: 5
   rb: {fileID: 647248599}
 --- !u!114 &647248595
 MonoBehaviour:
@@ -12021,7 +12021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916a3e5cb61c37645b6af3d633b5713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -1100
+  speed: -10
   onFixedUpdate: 0
   horizontal: 0
   vertical: 1
@@ -12076,7 +12076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 2079549712}
-  distance: 700
+  distance: 7
   limitHorizontal: 0
   limitVertical: 1
   limitLinear: 0
@@ -18997,7 +18997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916a3e5cb61c37645b6af3d633b5713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -1100
+  speed: -10
   onFixedUpdate: 0
   horizontal: 0
   vertical: 1
@@ -19052,7 +19052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 2079549712}
-  distance: 700
+  distance: 7
   limitHorizontal: 0
   limitVertical: 1
   limitLinear: 0
@@ -21679,7 +21679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916a3e5cb61c37645b6af3d633b5713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -1100
+  speed: -10
   onFixedUpdate: 0
   horizontal: 0
   vertical: 1
@@ -21734,7 +21734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 2079549712}
-  distance: 700
+  distance: 7
   limitHorizontal: 0
   limitVertical: 1
   limitLinear: 0
@@ -24149,7 +24149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916a3e5cb61c37645b6af3d633b5713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -1100
+  speed: -10
   onFixedUpdate: 0
   horizontal: 0
   vertical: 1
@@ -24204,7 +24204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 2079549712}
-  distance: 700
+  distance: 7
   limitHorizontal: 0
   limitVertical: 1
   limitLinear: 0
