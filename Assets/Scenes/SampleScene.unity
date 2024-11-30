@@ -20328,7 +20328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad2c55f88249b44aa3487dd8ec1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPOI: {fileID: 11400000, guid: 197cf5af939de2a45aab7904cdf1e805, type: 2}
+  currentPOI: {fileID: 11400000, guid: b888015e971602540b52286e92ab5be7, type: 2}
   inEncounter: 0
   routePromptStart: As you look down the hallway, you notice that your path splits
     into
