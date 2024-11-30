@@ -17,6 +17,6 @@ MonoBehaviour:
   maxUses: 3
   minigameIndex: 2
   effect:
-    effectType: 0
-    intValue: 0
+    effectType: 1
+    intValue: 100
     floatValue: 0

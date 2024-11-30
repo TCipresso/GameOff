@@ -27,15 +27,15 @@ public class CheatCode : ScriptableObject
         if (currentUses <= 0)
         {
             Debug.Log("Nice try, cheater! No more charges left.");
-            return false; // Indicate that the cheat couldn't be executed
+            return false; 
         }
 
         if (effect != null)
         {
             effect.ApplyEffect();
-            currentUses--; // Decrease charges
+            currentUses--; 
             TextOutput.instance.Print($"{cheatName} has {currentUses} charges remaining.");
-            return true; // Indicate success
+            return true; 
         }
         else
         {
@@ -66,7 +66,7 @@ public class CheatCode : ScriptableObject
         currentUses += amount;
         if (currentUses > maxUses)
         {
-            currentUses = maxUses; // Cap the charges to the maximum
+            currentUses = maxUses;
         }
     }
 
@@ -76,12 +76,12 @@ public class CheatCode : ScriptableObject
 [System.Serializable]
 public class CheatEffect
 {
-    public enum EffectType { GodMode, ExtraDamage, FreeAction, Heal, Custom }
+    public enum EffectType { GodMode, MegaDamages, SuperSpeed, Foresight , NoClip }
     public EffectType effectType;
 
     [Header("Effect Values")]
-    public int intValue;   // For effects like extra damage or heal amount
-    public float floatValue; // For effects like speed multipliers
+    public int intValue;
+    public float floatValue;
 
     /// <summary>
     /// Applies the specified effect based on the type.
@@ -94,24 +94,25 @@ public class CheatEffect
                 PlayerStats.instance.EnableGodMode(); // Example: Set health to 9999
                 Debug.Log("God mode enabled.");
                 break;
-           /* case EffectType.ExtraDamage:
-                PlayerStats.instance.AddDamage(intValue); // Increase damage
+            case EffectType.MegaDamages:
+                PlayerStats.instance.MegaDamage(intValue); // Increase damage by x times (2)
                 Debug.Log($"Added {intValue} extra damage.");
                 break;
-            case EffectType.FreeAction:
-                Debug.Log("Free action granted!");
-                // Add logic for free actions here
+            case EffectType.SuperSpeed:
+                PlayerStats.instance.IncreaseSpeed(intValue); // Increase speed to x (2)
+                Debug.Log($"Added {intValue} extra speed.");
                 break;
-            case EffectType.Heal:
-                PlayerStats.instance.Heal(intValue); // Heal the player
-                Debug.Log($"Player healed by {intValue} points.");
+            case EffectType.Foresight:
+                Debug.Log("Foresight effect executed.");
+                //Hans put FORESIGHT CALL HERE
                 break;
-            case EffectType.Custom:
-                Debug.Log("Custom effect executed.");
-                // Implement custom logic here
-              */  break;
+            case EffectType.NoClip:
+                Debug.Log("Foresight effect executed.");
+                //Hans put whatever u want NoClip to do outisde combat here.
+                //Tommy put whatever u want NoClip to do inside combat here.
+                break;
             default:
-                Debug.LogWarning("No valid effect type found!");
+                Debug.LogWarning("No valid effect type found");
                 break;
         }
     }
