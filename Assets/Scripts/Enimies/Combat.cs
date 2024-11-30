@@ -17,6 +17,7 @@ public class Combat : MonoBehaviour
 
     [Header("UI Components")]
     [SerializeField] private GameObject playerInputFieldObject;
+    public GameObject gameOverScreen;
 
     [Header("Combat State")]
     private bool combatActive = false;
@@ -128,6 +129,12 @@ public class Combat : MonoBehaviour
     public void HandlePlayerInput(string input)
     {
         if (!combatActive || currentState != CombatState.PlayerTurn) return;
+
+        if (CheatCodeManager.instance.TryActivateCheat(input))
+        {
+            Debug.Log($"Cheat code '{input}' attempted!");
+            return;
+        }
 
         switch (input.ToLower())
         {
@@ -293,10 +300,14 @@ public class Combat : MonoBehaviour
 
     private void EndCombat(bool playerWon)
     {
-        currentState = CombatState.EndCombat;
         combatActive = false;
         TextOutput.instance.Print(playerWon ? "You are victorious!" : "Combat lost!");
-        
+
+        if (!playerWon && gameOverScreen != null)
+        {
+            Debug.Log("Player has been defeated. Triggering GameOver screen.");
+            gameOverScreen.SetActive(true);
+        }
 
         if (currentEnemy != null)
         {
@@ -305,9 +316,14 @@ public class Combat : MonoBehaviour
         }
 
         currentState = CombatState.EndCombat;
+        PlayerStats.instance.ResetStats();
         StartCoroutine(ClearTextOutputAfterDelay());
         UpdateInputFieldState();
-        //LeaveEncounter();
+        playerStats.isDefending = false;
+        currentEncounter = null;
+
+        // Uncomment the following when transitioning to navigation or another system
+        // LeaveEncounter();
     }
 
     private IEnumerator ClearTextOutputAfterDelay()
