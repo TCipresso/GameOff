@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0fd8f53b9809dd47ab01e6cce91210d, type: 3}
+  m_Name: Boss_E
+  m_EditorClassIdentifier: 
+  description: 'A Giant goblin appears down the hallway.
+
+    > Points at you laughing.
+    Mocking your size, calling you a little bug.'
+  subjectSprite: -1
+  minigame: 3
+  encounterName: Giant Goblin
+  enemyIndex: 5
+  isCombat: 1
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  keywords:
+  - unlock
+  - all
+  attackDialogues:
+  - "\n> This is not an ordinary goblin.\n The goblins has a glow to its eyes, plus
+    the unusual large size.\n This goblin has an enchantment of some kind. \n It
+    carries a key of gold. Possibly the key to <b><i>unlock</i></b> a chest nearby.\n
+    this key could be what reveals <b><i>all</i></b> within this foul place.\n  \n"

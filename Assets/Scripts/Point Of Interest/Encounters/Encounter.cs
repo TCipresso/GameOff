@@ -23,6 +23,7 @@ public class Encounter : ScriptableObject, MinigameCaller
     [SerializeField] List<string> keywords = new List<string>(); //Only to be shown to the player.
 
     [Header("Enemy Attack Dialogue")]
+    [TextArea(3, 10)]
     [SerializeField] List<string> attackDialogues = new List<string>(); // List of attack dialogues
 
     private int enemySpeed; // Speed of the enemy for this encounter
