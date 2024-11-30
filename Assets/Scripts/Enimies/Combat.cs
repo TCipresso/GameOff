@@ -24,12 +24,12 @@ public class Combat : MonoBehaviour
     private Encounter currentEncounter;
 
     [Header("Mini Games")]
-    public GameObject ddrMinigame;    // Attack mini-game
-    public GameObject defendMinigame; // Defend mini-game
+    public GameObject ddrMinigame;    
+    public GameObject defendMinigame; 
     public GameObject Loading;
 
-    private bool AttMiniGameComplete = false; // Tracks attack mini-game completion
-    private bool DefMiniGameComplete = false; // Tracks defend mini-game completion
+    private bool AttMiniGameComplete = false; 
+    private bool DefMiniGameComplete = false; 
     public AudioSource attackSoundSource;
 
     private enum CombatState
@@ -66,7 +66,7 @@ public class Combat : MonoBehaviour
 
     public void SetPlayerTurn()
     {
-        if (currentState == CombatState.EndCombat) return; // Prevent further actions
+        if (currentState == CombatState.EndCombat) return; 
         currentState = CombatState.PlayerTurn;
 
         Debug.Log("Player's Turn: Choose your next action.");
@@ -111,7 +111,7 @@ public class Combat : MonoBehaviour
 
     private void DoSpeedCheck()
     {
-        if (currentState == CombatState.EndCombat) return; // Prevent actions after combat ends
+        if (currentState == CombatState.EndCombat) return;
 
         if (playerStats.speed >= currentEnemyScript.speed)
         {
@@ -177,13 +177,13 @@ public class Combat : MonoBehaviour
 
     private IEnumerator WaitForAttackCompletion()
     {
-        yield return new WaitUntil(() => AttMiniGameComplete); // Wait for attack mini-game completion
+        yield return new WaitUntil(() => AttMiniGameComplete);
         CompleteAttackAction();
     }
 
     private IEnumerator WaitForDefendCompletion()
     {
-        yield return new WaitUntil(() => DefMiniGameComplete); // Wait for defend mini-game completion
+        yield return new WaitUntil(() => DefMiniGameComplete);
         CompleteDefendAction();
     }
 
@@ -322,13 +322,12 @@ public class Combat : MonoBehaviour
         playerStats.isDefending = false;
         currentEncounter = null;
 
-        // Uncomment the following when transitioning to navigation or another system
         // LeaveEncounter();
     }
 
     private IEnumerator ClearTextOutputAfterDelay()
     {
-        yield return new WaitForSecondsRealtime(5f); // Wait to ensure the victory/defeat message is visible
+        yield return new WaitForSecondsRealtime(5f);
         TextOutput.instance.Clear();
     }
 

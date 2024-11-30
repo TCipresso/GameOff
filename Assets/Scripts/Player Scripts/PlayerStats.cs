@@ -16,6 +16,7 @@ public class PlayerStats : MonoBehaviour
     private float currentTypingSpeed;
     private int previousHP;
     public bool isDefending = false;
+    private bool isGodModeActive = false; 
 
     [Header("UI References")]
     public TextMeshProUGUI hpText;
@@ -39,8 +40,7 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        baseSpeed = speed;
-        currentTypingSpeed = baseTypingSpeed;
+        baseSpeed = 100;
         UpdateUI();
     }
 
@@ -55,6 +55,12 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(int amount)
     {
         playerHP -= amount;
+
+        if (!isGodModeActive)
+        {
+            previousHP = playerHP;
+        }
+
         if (playerHP <= 0)
         {
             playerHP = 0;
@@ -124,14 +130,27 @@ public class PlayerStats : MonoBehaviour
         UpdateUI();
     }
 
+    public void MegaDamage(int bonus)
+    {
+        dmg += bonus;
+        Debug.Log($"Bonus damage added! Current damage: {dmg}");
+        UpdateUI();
+    }
+
     public void EnableGodMode()
     {
+        isGodModeActive = true; 
         previousHP = playerHP;
         playerHP = 999999;
         Debug.Log($"GodMode enabled! Current HP: {playerHP}");
         UpdateUI();
     }
 
+    public void DisableGodMode()
+    {
+        isGodModeActive = false; 
+        Debug.Log("GodMode disabled.");
+    }
 
     public void ResetCurrentHealth()
     {
@@ -153,9 +172,6 @@ public class PlayerStats : MonoBehaviour
         Debug.Log($"Typing speed reset to base value: {currentTypingSpeed}");
     }
 
-    /// <summary>
-    /// Resets all player stats except for current HP.
-    /// </summary>
     public void ResetStats()
     {
         Debug.Log("Resetting player stats to base values.");
@@ -163,8 +179,8 @@ public class PlayerStats : MonoBehaviour
         speed = baseSpeed;
         currentTypingSpeed = baseTypingSpeed;
         playerHP = previousHP;
+        isGodModeActive = false;
         Debug.Log($"Stats reset. Current HP: {playerHP}, Damage: {dmg}, Speed: {speed}, Typing Speed: {currentTypingSpeed}");
         UpdateUI();
     }
-
 }
