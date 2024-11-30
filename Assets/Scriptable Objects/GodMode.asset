@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cheatName: GodMode
   alternateSpellings: []
-  maxUses: 0
-  minigameIndex: 0
+  maxUses: 3
+  minigameIndex: 8
+  effect:
+    effectType: 0
+    intValue: 9999
+    floatValue: 9999

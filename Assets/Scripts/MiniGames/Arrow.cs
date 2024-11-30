@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour
 
     private void Start()
     {
-        speed = Random.Range(400f, 400f);
+        speed = Random.Range(5f, 5f);
         Destroy(gameObject, 8f);
     }
 

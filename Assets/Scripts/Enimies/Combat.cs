@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; // Required for TextMeshPro components
+using TMPro;
 
-/// <summary>
-/// Handles the turn-based combat system.
-/// </summary>
 public class Combat : MonoBehaviour
 {
     public static Combat instance;
@@ -20,6 +17,7 @@ public class Combat : MonoBehaviour
 
     [Header("UI Components")]
     [SerializeField] private GameObject playerInputFieldObject;
+    public GameObject gameOverScreen;
 
     [Header("Combat State")]
     private bool combatActive = false;
@@ -32,6 +30,7 @@ public class Combat : MonoBehaviour
 
     private bool AttMiniGameComplete = false; // Tracks attack mini-game completion
     private bool DefMiniGameComplete = false; // Tracks defend mini-game completion
+    public AudioSource attackSoundSource;
 
     private enum CombatState
     {
@@ -42,7 +41,6 @@ public class Combat : MonoBehaviour
         WaitForMiniGame,
         EndCombat
     }
-    
 
     private CombatState currentState;
 
@@ -68,6 +66,7 @@ public class Combat : MonoBehaviour
 
     public void SetPlayerTurn()
     {
+        if (currentState == CombatState.EndCombat) return; // Prevent further actions
         currentState = CombatState.PlayerTurn;
 
         Debug.Log("Player's Turn: Choose your next action.");
@@ -112,6 +111,8 @@ public class Combat : MonoBehaviour
 
     private void DoSpeedCheck()
     {
+        if (currentState == CombatState.EndCombat) return; // Prevent actions after combat ends
+
         if (playerStats.speed >= currentEnemyScript.speed)
         {
             currentState = CombatState.PlayerTurn;
@@ -129,6 +130,12 @@ public class Combat : MonoBehaviour
     {
         if (!combatActive || currentState != CombatState.PlayerTurn) return;
 
+        if (CheatCodeManager.instance.TryActivateCheat(input))
+        {
+            Debug.Log($"Cheat code '{input}' attempted!");
+            return;
+        }
+
         switch (input.ToLower())
         {
             case "attack":
@@ -141,7 +148,10 @@ public class Combat : MonoBehaviour
                 Investigate(currentEncounter);
                 break;
             default:
-                TextOutput.instance.Print("Invalid command. Please type 'attack', 'defend', or 'investigate'");
+                if (currentState != CombatState.EndCombat)
+                {
+                    TextOutput.instance.Print("Invalid command. Please type 'attack', 'defend', or 'investigate'");
+                }
                 return;
         }
     }
@@ -189,22 +199,39 @@ public class Combat : MonoBehaviour
         Debug.Log("Defend mini-game completed!");
         Loading.SetActive(false);
         DefMiniGameComplete = true;
-        
     }
 
     private void CompleteAttackAction()
     {
         ApplyDamageAndCheckForEnemyDefeat();
         ddrMinigame.SetActive(false);
-        SetEnemyTurn();
+
+        if (combatActive)
+        {
+            SetEnemyTurn();
+        }
+        else
+        {
+            Debug.Log("Combat has ended; not transitioning to enemy turn.");
+        }
     }
+
 
     private void CompleteDefendAction()
     {
         ApplyDefense();
         defendMinigame.SetActive(false);
-        SetPlayerTurn();
+
+        if (combatActive)
+        {
+            SetPlayerTurn();
+        }
+        else
+        {
+            Debug.Log("Combat has ended; not transitioning to player's turn.");
+        }
     }
+
 
     private void ApplyDamageAndCheckForEnemyDefeat()
     {
@@ -212,13 +239,21 @@ public class Combat : MonoBehaviour
         {
             currentEnemyScript.TakeDamage(playerStats.dmg);
             TextOutput.instance.Print($"You attack! The enemy took {playerStats.dmg} damage. Enemy HP: {currentEnemyScript.GetHealth()}");
-
+            PlayAttackSound();
             if (currentEnemyScript.IsDefeated())
             {
                 TextOutput.instance.Print("Enemy defeated! You win the encounter!");
                 EndCombat(true);
                 return;
             }
+        }
+    }
+
+    private void PlayAttackSound()
+    {
+        if (attackSoundSource != null)
+        {
+            attackSoundSource.Play();
         }
     }
 
@@ -236,6 +271,7 @@ public class Combat : MonoBehaviour
 
     private IEnumerator EnemyTurn()
     {
+
         UpdateInputFieldState();
         yield return new WaitForSecondsRealtime(3);
         TextOutput.instance.Print("Enemy's Turn");
@@ -256,6 +292,7 @@ public class Combat : MonoBehaviour
 
     private void Investigate(Encounter encounter)
     {
+
         string randomHint = encounter.GetAttackDialogues()[Random.Range(0, encounter.GetAttackDialogues().Count)];
         TextOutput.instance.Print($"You investigate: {randomHint}");
         UpdateInputFieldState();
@@ -266,6 +303,12 @@ public class Combat : MonoBehaviour
         combatActive = false;
         TextOutput.instance.Print(playerWon ? "You are victorious!" : "Combat lost!");
 
+        if (!playerWon && gameOverScreen != null)
+        {
+            Debug.Log("Player has been defeated. Triggering GameOver screen.");
+            gameOverScreen.SetActive(true);
+        }
+
         if (currentEnemy != null)
         {
             currentEnemy.SetActive(false);
@@ -273,7 +316,20 @@ public class Combat : MonoBehaviour
         }
 
         currentState = CombatState.EndCombat;
+        PlayerStats.instance.ResetStats();
+        StartCoroutine(ClearTextOutputAfterDelay());
         UpdateInputFieldState();
+        playerStats.isDefending = false;
+        currentEncounter = null;
+
+        // Uncomment the following when transitioning to navigation or another system
+        // LeaveEncounter();
+    }
+
+    private IEnumerator ClearTextOutputAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(5f); // Wait to ensure the victory/defeat message is visible
+        TextOutput.instance.Clear();
     }
 
     public bool IsCombatActive()

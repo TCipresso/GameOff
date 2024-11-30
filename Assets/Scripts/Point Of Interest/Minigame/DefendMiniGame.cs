@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DefendMiniGame : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class DefendMiniGame : MonoBehaviour
     [Header("Lineers")]
     public List<GameObject> Lineers; // List of objects to disable after the mini-game
 
+    [Header("UI Components")]
+    public Image timerBarImage; // Timer bar as an image
+
     private Vector2 inputDirection;
+    private float remainingTime;
 
     private void Awake()
     {
@@ -37,6 +42,9 @@ public class DefendMiniGame : MonoBehaviour
     private void OnEnable()
     {
         isGameRunning = true;
+        remainingTime = gameDuration; // Initialize timer
+        UpdateTimerBar(); // Initialize the timer bar UI
+
         TextOutput.instance.Print("Enemy's Turn: Defend yourself!");
         StartCoroutine(MiniGameTimer());
     }
@@ -49,6 +57,17 @@ public class DefendMiniGame : MonoBehaviour
     void Update()
     {
         if (!isGameRunning) return;
+
+        // Update the timer
+        if (remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+            UpdateTimerBar();
+        }
+        else
+        {
+            EndMiniGame(true); // Timer ran out, player succeeded
+        }
 
         HandleInput();
         MovePlayer();
@@ -93,13 +112,12 @@ public class DefendMiniGame : MonoBehaviour
 
         if (isGameRunning)
         {
-            TextOutput.instance.Print("> Player dodged the attack Zero damage Taken.");
-            TextOutput.instance.Print("> COUNTER ATTACK ENGAGED +30 Damage next attack");
+            
 
             EndMiniGame(true); // Mini-game succeeded
+            
         }
     }
-
 
     /// <summary>
     /// Ends the mini-game, handling success or failure.
@@ -121,17 +139,29 @@ public class DefendMiniGame : MonoBehaviour
         if (success)
         {
             Debug.Log("Counter Attack Enabled! +30 damage to the player's next attack.");
+            TextOutput.instance.Print("> Player dodged the attack. Zero damage taken.");
+            TextOutput.instance.Print("> COUNTER ATTACK ENGAGED +30 Damage next attack");
             PlayerStats.instance.AddDamage(30); // Add bonus damage
         }
         else
         {
-            int halfDamage = Mathf.CeilToInt(Combat.instance.GetEnemyAttack() * 0.5f);
-            PlayerStats.instance.TakeDamage(halfDamage); // Apply half-damage
+            int fullDamage = Combat.instance.GetEnemyAttack(); // Get the full enemy attack damage
+            PlayerStats.instance.TakeDamage(fullDamage); // Apply full damage
+            TextOutput.instance.Print($"> Failed to defend. You took {fullDamage} damage.");
         }
 
         // Notify Combat that the mini-game has completed
         Combat.instance.MiniGameDefendCompleted();
         // Disable the mini-game object
         gameObject.SetActive(false);
+    }
+
+    private void UpdateTimerBar()
+    {
+        if (timerBarImage != null)
+        {
+            float normalizedTime = remainingTime / gameDuration;
+            timerBarImage.rectTransform.localScale = new Vector3(normalizedTime, 1, 1);
+        }
     }
 }
