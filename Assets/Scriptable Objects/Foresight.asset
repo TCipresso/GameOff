@@ -15,8 +15,8 @@ MonoBehaviour:
   cheatName: Foresight
   alternateSpellings: []
   maxUses: 3
-  minigameIndex: 0
+  minigameIndex: 3
   effect:
-    effectType: 0
+    effectType: 3
     intValue: 0
     floatValue: 0

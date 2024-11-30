@@ -9,6 +9,9 @@ public class AudioSlider : MonoBehaviour
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] Slider slider;
     [SerializeField] string mixerChannel;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip valueChangeNoise;
+    private float valueCheckpoint;
 
     private void Awake()
     {
@@ -22,6 +25,16 @@ public class AudioSlider : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(mixerChannel)) slider.value = PlayerPrefs.GetFloat(mixerChannel);
         else slider.value = slider.maxValue;
+        valueCheckpoint = slider.value;
+
+        slider.onValueChanged.AddListener((value) => 
+        {
+            if(Mathf.Abs(valueCheckpoint - value) >= .1)
+            {
+                valueCheckpoint = value;
+                if(valueChangeNoise != null) audioSource?.PlayOneShot(valueChangeNoise);
+            }
+        });
     }
 
     public void UpdateAudio(float value)

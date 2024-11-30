@@ -48,6 +48,7 @@ MonoBehaviour:
     Did you accidentally curse yourself? For a moment, your vision blurs. When your
     vision returns, the man is gone. The orb has losts its luster. It's nothing more
     than a decoration now. With nothing else to do, you leave the room.
+  cheatCode: {fileID: 11400000, guid: 43ce91a15e270a44d84f56eb1a751758, type: 2}
   speedLost: 10
   typingSpeedLost: 5
   damage: 10

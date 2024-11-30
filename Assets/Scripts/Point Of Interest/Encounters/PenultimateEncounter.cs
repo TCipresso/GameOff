@@ -36,7 +36,6 @@ public class PenultimateEncounter : Encounter
 
     public override List<string> GetEncounterKeywords()
     {
-        if (Random.Range(0, 1000) < 999) return null;
         return base.GetEncounterKeywords();
     }
 
