@@ -17,7 +17,7 @@ MonoBehaviour:
     it may be smater to <i>ignore</i> it.
   subjectSprite: 5
   minigame: 0
-  encounterName: A Healing Fountain
+  encounterName: A Fountain
   enemyIndex: 0
   isCombat: 0
   enemySpeedMin: 3
