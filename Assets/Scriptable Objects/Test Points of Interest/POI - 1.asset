@@ -22,3 +22,4 @@ MonoBehaviour:
   image: {fileID: 0}
   encounter: {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
   noEncounterString: This room is empty. You are safe.
+  allowEncounterChange: 1

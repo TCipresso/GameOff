@@ -317,13 +317,26 @@ public class Combat : MonoBehaviour
 
         currentState = CombatState.EndCombat;
         PlayerStats.instance.ResetStats();
-        StartCoroutine(ClearTextOutputAfterDelay());
+        ResetEnemyStats();
         UpdateInputFieldState();
         playerStats.isDefending = false;
         currentEncounter = null;
 
-        // LeaveEncounter();
+        GameManager.instance.LeaveEnounter();
+        playerInputFieldObject.SetActive(true);
     }
+
+    public void ResetEnemyStats()
+    {
+        foreach (GameObject enemyPrefab in enemyPrefabs)
+        {
+            if (enemyPrefab.TryGetComponent<Enemy>(out Enemy enemyScript))
+            {
+                enemyScript.ResetStats();
+            }
+        }
+    }
+
 
     private IEnumerator ClearTextOutputAfterDelay()
     {

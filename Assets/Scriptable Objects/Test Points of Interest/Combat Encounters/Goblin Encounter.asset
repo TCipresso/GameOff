@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e5bbc22f217284b9bebe27a1d91c45, type: 3}
+  m_Name: Goblin Encounter
+  m_EditorClassIdentifier: 
+  description: This is a test encounter. Type "continue" to continue.
+  subjectSprite: -1
+  minigame: 0
+  encounterName: 
+  enemyIndex: 0
+  isCombat: 0
+  enemySpeedMin: 3
+  enemySpeedMax: 7
+  keywords: []
+  attackDialogues: []
+  noclipResponse: 
+  descriptions: []
+  descriptionIndex: -1
+  isSetUp: 0

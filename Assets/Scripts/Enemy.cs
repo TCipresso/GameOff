@@ -2,46 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy: MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    [SerializeField] int health;
-    [SerializeField] int damage;
+    [SerializeField] private int health;
+    [SerializeField] private int damage;
     [SerializeField] public int speed;
 
-    /// <summary>
-    /// Reduces the enemy's health.
-    /// </summary>
-    /// <param name="damage">Amount of damage taken.</param>
+    private int originalHealth;
+    private int originalDamage;
+    private int originalSpeed;
+
+    private void Awake()
+    {
+        // Save the original stats
+        originalHealth = health;
+        originalDamage = damage;
+        originalSpeed = speed;
+    }
+
     public void TakeDamage(int damage)
     {
         health -= damage;
     }
 
-    /// <summary>
-    /// Gets the enemy's attack value.
-    /// </summary>
-    /// <returns>The attack value.</returns>
     public int GetAttack()
     {
         return damage;
     }
 
-    /// <summary>
-    /// Gets the current health of the enemy.
-    /// </summary>
-    /// <returns>The current health.</returns>
     public int GetHealth()
     {
         return health;
     }
 
-    /// <summary>
-    /// Checks if the enemy is defeated.
-    /// </summary>
-    /// <returns>True if health is 0 or below, false otherwise.</returns>
     public bool IsDefeated()
     {
         return health <= 0;
     }
+
+    /// <summary>
+    /// Resets the enemy's stats to their original values.
+    /// </summary>
+    public void ResetStats()
+    {
+        health = originalHealth;
+        damage = originalDamage;
+        speed = originalSpeed;
+        Debug.Log($"{name} stats have been reset: Health={health}, Damage={damage}, Speed={speed}");
+    }
 }
+
 

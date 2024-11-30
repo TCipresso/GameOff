@@ -40,7 +40,7 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        baseSpeed = 100;
+        baseSpeed = 50;
         UpdateUI();
     }
 
