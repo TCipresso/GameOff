@@ -166,7 +166,7 @@ public class HorseEncounter : Encounter
         PlayerStats.instance.Heal(healthBoostAmount);
         PlayerStats.instance.AddDamage(damageBoostAmount);
         PlayerStats.instance.IncreaseSpeed(speedBoostAmount);
-        GameManager.instance.LeaveEnounter();
+        LeaveEncounter();
         return goodHorseAccept;
     }
 
@@ -176,7 +176,7 @@ public class HorseEncounter : Encounter
     /// <returns>Horse's respone to denial.</returns>
     private string DenyHorse()
     {
-        GameManager.instance.LeaveEnounter();
+        LeaveEncounter();
         if (isEvil)
         {
             return evilHorseDeny;
