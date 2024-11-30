@@ -15,7 +15,7 @@ MonoBehaviour:
   cheatName: GodMode
   alternateSpellings: []
   maxUses: 3
-  minigameIndex: 8
+  minigameIndex: 0
   effect:
     effectType: 0
     intValue: 9999
