@@ -10,25 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0fd8f53b9809dd47ab01e6cce91210d, type: 3}
-  m_Name: E - 1
+  m_Name: Spider_E
   m_EditorClassIdentifier: 
-  description: '>Encounter for POI - 1
+  description: 'A Giant Spider appears down the hallway.
 
-    >A goblin appears down the hallway.
-
-    >Knife
-    drawn eyeing your valubles.'
+    > The fangs on this
+    beast are as big as your hand.'
   subjectSprite: -1
-  minigame: 0
-  encounterName: Goblin
-  enemyIndex: 0
+  minigame: 2
+  encounterName: Giant Spider
+  enemyIndex: 2
   isCombat: 1
   enemySpeedMin: 3
   enemySpeedMax: 7
   keywords:
   - Attack
   attackDialogues:
-  - 'The goblin snickers with excitement as it wants all your "Shinies". You look
-    aorund the halls desperately looking for a way out. You see a scripture on the
-    ground with the symbol of holy magic. The first page you open enlightens the
-    word: "Goblin Mode" then vanishes.'
+  - "\n> A beast of this size is unheard of. \n So large, yet still so nimble you
+    wish you had its power. \n You have heard of a spider this large before.\n It
+    was a man from the lands called Australia.\n He told you the best way to beat
+    it is to use:\n \"SuperSpeed\""
