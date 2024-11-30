@@ -29,10 +29,14 @@ public class AudioSlider : MonoBehaviour
 
         slider.onValueChanged.AddListener((value) => 
         {
-            if(Mathf.Abs(valueCheckpoint - value) >= .1)
+            if(Mathf.Abs(valueCheckpoint - value) >= .15)
             {
                 valueCheckpoint = value;
-                if(valueChangeNoise != null) audioSource?.PlayOneShot(valueChangeNoise);
+                if (valueChangeNoise != null)
+                {
+                    if ((bool)audioSource?.isPlaying) audioSource.Stop();
+                    audioSource?.PlayOneShot(valueChangeNoise);
+                }
             }
         });
     }
