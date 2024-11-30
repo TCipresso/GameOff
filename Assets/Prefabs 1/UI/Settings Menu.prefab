@@ -108,7 +108,7 @@ MonoBehaviour:
   slider: {fileID: 5448792675115973741}
   mixerChannel: SFXVol
   audioSource: {fileID: 2242583207080410817}
-  valueChangeNoise: {fileID: 8300000, guid: 571a5b7dd737ff244baa7128050e9234, type: 3}
+  valueChangeNoise: {fileID: 8300000, guid: d43f435acd9c2694096a6b135254b54f, type: 3}
 --- !u!1 &1288732474103213169
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,10 +357,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6866713004344059490, guid: fe52609668e357e4c92478870f74128c, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 571a5b7dd737ff244baa7128050e9234, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d43f435acd9c2694096a6b135254b54f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.2
+  m_Pitch: 0.6
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
   slider: {fileID: 6475836916574533948}
   mixerChannel: AmbienceVol
   audioSource: {fileID: 3379133377929095716}
-  valueChangeNoise: {fileID: 8300000, guid: 571a5b7dd737ff244baa7128050e9234, type: 3}
+  valueChangeNoise: {fileID: 8300000, guid: d43f435acd9c2694096a6b135254b54f, type: 3}
 --- !u!1 &3118578732496291872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   slider: {fileID: 4201191864642668035}
   mixerChannel: MasterVol
   audioSource: {fileID: 3379133377929095716}
-  valueChangeNoise: {fileID: 8300000, guid: 571a5b7dd737ff244baa7128050e9234, type: 3}
+  valueChangeNoise: {fileID: 8300000, guid: d43f435acd9c2694096a6b135254b54f, type: 3}
 --- !u!1 &4744130318227368174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,10 +1478,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7152912785127219372, guid: fe52609668e357e4c92478870f74128c, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 571a5b7dd737ff244baa7128050e9234, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d43f435acd9c2694096a6b135254b54f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.2
+  m_Pitch: 0.6
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2284,7 +2284,7 @@ MonoBehaviour:
   slider: {fileID: 4237569581960750379}
   mixerChannel: MusicVol
   audioSource: {fileID: 322152645391429163}
-  valueChangeNoise: {fileID: 8300000, guid: 571a5b7dd737ff244baa7128050e9234, type: 3}
+  valueChangeNoise: {fileID: 8300000, guid: d43f435acd9c2694096a6b135254b54f, type: 3}
 --- !u!1 &7700333181017931707
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,10 +2699,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1723863493968966522, guid: fe52609668e357e4c92478870f74128c, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 571a5b7dd737ff244baa7128050e9234, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d43f435acd9c2694096a6b135254b54f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.2
+  m_Pitch: 0.6
   Loop: 0
   Mute: 0
   Spatialize: 0
