@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
         if (!inEncounter) PromptRoutes();
     }
 
+    public PointOfInterest GetCurrentPOI()
+    {
+        return currentPOI;
+    }
+
     /// <summary>
     /// Gets current <see cref="PointOfInterest"/> description.
     /// </summary>

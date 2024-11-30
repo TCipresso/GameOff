@@ -84,6 +84,7 @@ public class CampfireEncounter : Encounter
     private string Rest()
     {
         PlayerStats.instance.Heal(healAmount);
+        CheatCodeManager.instance.AddCheatCharge();
         usesLeft--;
 
         if(usesLeft > 0)
@@ -93,6 +94,7 @@ public class CampfireEncounter : Encounter
 
         if(isEvil)
         {
+            EncounterSpriteManager.instance.DeactivateSprite(subjectSprite);
             Combat.instance.InitiateCombat(this);
             TextOutput.instance.Print(burnOutText);
             return ambushText;

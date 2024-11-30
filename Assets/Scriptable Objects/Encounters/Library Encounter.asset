@@ -17,7 +17,7 @@ MonoBehaviour:
     eye can see. Who knows what ancience secrets this library stores. In the middle
     of the library sits a book upon a pedestal. It is written in a language you have
     never seen before. <i>Read</i> it or <i>ignore</i> it?
-  subjectSprite: {fileID: 0}
+  subjectSprite: -1
   minigame: 10
   encounterName: A Library
   enemyIndex: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
   - ignore
   attackDialogues: []
   waitBeforeReadingBook: 3
-  readText: You peer into the words written on the page. The symbols are plastered
+  readText: You peer into the words written on the page. The runes are plastered
     with no rhyme or rhythm; however, you start to piece together what is written
     the longer you stare.
   readSuccess: The words on the page start making sense to you, but what is written

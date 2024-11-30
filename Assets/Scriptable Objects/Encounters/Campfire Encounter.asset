@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4beeb7d04620640b069dc466bac822, type: 3}
   m_Name: Campfire Encounter
   m_EditorClassIdentifier: 
-  description: You notice a light as you enter the room. A campfire blazes but with
-    no one around it. How long has it been burning? Who made it? Where are they?
-    Your body aches as it wants to <i>rest</i> here; however, it might be safer to
-    <i>leave</i> incase whoever made it returns.
+  description: You notice a light as you enter the room. A campfire blazes with no
+    one around it. How long has it been burning? Who made it? Where are they? Your
+    body aches as it wants to <i>rest</i> here; however, it might be safer to <i>leave</i>
+    incase whoever made it returns.
   subjectSprite: 4
   minigame: 0
   encounterName: A Campfire
@@ -35,7 +35,7 @@ MonoBehaviour:
     Its roaring flames are dwindling.
   burnOutText: The once roaring flames disappear into darkness. Nothing remains other
     than the charred pieces of firewood. Your torch is your only source of light.
-  ambushText: You look out into the darkness and see something staring back. Is it
-    the one who built the campfire? Before you get your answers, it lunges at you.
+  ambushText: You stare into the darkness... and it stares back. Is it the one who
+    built the campfire? Before you get your answers, it lunges at you.
   leaveText: You leave the campfire alone. Who knows who made it and when they are
     coming back.

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c219f9598dd2a246a14ca5a8031c2ee, type: 3}
   m_Name: Horse Encounter
   m_EditorClassIdentifier: 
-  description: A horse stands alone in the center of the room. A saddle sits on its
-    back, but its rider is no where to be found. There are no signs of its rider
-    ever coming back. The horse stares into your eyes as if it wants to give you
-    something. <i>Pet</i>ting the horse may let you know it better. Do you <i>accept</i>
-    or <i>deny</i> the horse's request?
+  description: A horse stands alone in the center of the room. It is wearing a saddle,
+    but its rider is no where to be found. There are no signs of its rider ever coming
+    back. The horse stares into your eyes as if it wants to give you something. <i>Pet</i>ting
+    the horse may let you know it better. Do you <i>accept</i> or <i>deny</i> the
+    horse's request?
   subjectSprite: 1
   minigame: 0
   encounterName: A Horse
@@ -31,7 +31,7 @@ MonoBehaviour:
   - apple
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 10
+  evilHorseChance: 0
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0

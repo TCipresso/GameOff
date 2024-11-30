@@ -20328,7 +20328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad2c55f88249b44aa3487dd8ec1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPOI: {fileID: 11400000, guid: 14eac94e7fb95ba4cbea116c50ea2eb7, type: 2}
+  currentPOI: {fileID: 11400000, guid: 197cf5af939de2a45aab7904cdf1e805, type: 2}
   inEncounter: 0
   routePromptStart: As you look down the hallway, you notice that your path splits
     into
@@ -20503,6 +20503,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc8921dea5cd1cd4b95d1a6c8eaa7e09, type: 2}
   combatEncounters:
   - {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
+  - {fileID: 11400000, guid: 63737eaba05141c42917900e61d1d92c, type: 2}
+  - {fileID: 11400000, guid: 9bd2f34fb34f7cb48959770ae3f4e62a, type: 2}
   nonCombatEncounters:
   - {fileID: 11400000, guid: 41e4f0b878d90e34dbc9f49104b13577, type: 2}
   - {fileID: 11400000, guid: e025478594f23e14da6ebe71f62a50f9, type: 2}

@@ -11,7 +11,7 @@ public class Encounter : ScriptableObject, MinigameCaller
 {
     [TextArea(3, 10)]
     [SerializeField] public string description = "This is a test encounter. Type \"continue\" to continue.";
-    [SerializeField] int subjectSprite = -1;
+    [SerializeField] protected int subjectSprite = -1;
     [SerializeField] int minigame;
 
     [Header("Encounter Details")]
