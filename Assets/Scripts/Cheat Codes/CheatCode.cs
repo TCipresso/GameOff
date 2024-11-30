@@ -104,7 +104,7 @@ public class CheatEffect
                 break;
             case EffectType.Foresight:
                 Debug.Log("Foresight effect executed.");
-                //Hans put FORESIGHT CALL HERE
+                Foresight();
                 break;
             case EffectType.NoClip:
                 Debug.Log("Foresight effect executed.");
@@ -114,6 +114,20 @@ public class CheatEffect
             default:
                 Debug.LogWarning("No valid effect type found");
                 break;
+        }
+
+    }
+
+    private void Foresight()
+    {
+        List<Route> foresight = GameManager.instance.GetCurrentPOIRoutes();
+        foreach (Route route in foresight)
+        {
+            PointOfInterest destination = route.GetDestination();
+            string futureEncounterName = destination.HasEncounter() ?
+                destination.GetEncounter().GetEncounterName() :
+                "nothing";
+            TextOutput.instance.Print($"To the {route.GetDirection()}, there is {futureEncounterName}.");
         }
     }
 }

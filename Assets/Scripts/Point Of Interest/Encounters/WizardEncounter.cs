@@ -50,7 +50,7 @@ public class WizardEncounter : Encounter, Waiter
     private void ChantPass()
     {
         TextOutput.instance.Print(chantPassText);
-        Foresight();
+        Foresight(); //Left this here because I don't want to force the player to play two minigames.
         CheatCodeManager.instance.AddCheatToDiscovered(cheatCode);
         LeaveEncounter();
     }
