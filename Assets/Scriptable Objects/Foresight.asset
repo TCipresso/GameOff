@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ed0996c01dabcf44bd7ae7686c2b34c, type: 3}
-  m_Name: NoClip
+  m_Name: Foresight
   m_EditorClassIdentifier: 
-  cheatName: noclip
+  cheatName: Foresight
   alternateSpellings: []
-  maxUses: 2
-  minigameIndex: 1
+  maxUses: 3
+  minigameIndex: 0
   effect:
     effectType: 0
     intValue: 0

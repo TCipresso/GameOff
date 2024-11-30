@@ -9,9 +9,9 @@ public class UIManager : MonoBehaviour
     public PlayerStats playerStats;
 
     [Header("Flicker Colors")]
-    public Color flickerColorRed = Color.red; 
-    public Color flickerColorBlack = Color.black; 
-    public Color normalColor = Color.green;   
+    public Color flickerColorRed = Color.red;
+    public Color flickerColorBlack = Color.black;
+    public Color normalColor = Color.green;
 
     [Header("Flicker Settings")]
     public int flickerCount = 3;
@@ -25,6 +25,9 @@ public class UIManager : MonoBehaviour
     [Header("Enemy Sprites")]
     public List<Image> enemySprites;
 
+    [Header("Audio Settings")]
+    public AudioSource audioSource; // Reference to the AudioSource component
+    public AudioClip healthChangeClip; // Clip to play on health change
 
     void Start()
     {
@@ -36,7 +39,22 @@ public class UIManager : MonoBehaviour
 
     void HandleHealthChanged()
     {
+        // Play the health change sound
+        PlayHealthChangeSound();
+
+        // Start the flicker effect
         StartCoroutine(FlickerEffect());
+    }
+
+    /// <summary>
+    /// Plays the sound effect when health changes.
+    /// </summary>
+    private void PlayHealthChangeSound()
+    {
+        if (audioSource != null && healthChangeClip != null)
+        {
+            audioSource.PlayOneShot(healthChangeClip);
+        }
     }
 
     IEnumerator FlickerEffect()
@@ -57,7 +75,6 @@ public class UIManager : MonoBehaviour
 
     void SetAllUIColor(Color color)
     {
-        // This method now includes enemy sprites in the flickering
         foreach (var image in images)
         {
             image.color = color;
@@ -74,7 +91,6 @@ public class UIManager : MonoBehaviour
                 bgImage.color = color;
             }
         }
-        // Include enemy sprites in the universal color set
         foreach (var sprite in enemySprites)
         {
             sprite.color = color;
@@ -83,7 +99,6 @@ public class UIManager : MonoBehaviour
 
     void ResetUIColor()
     {
-        // Reset colors for all UI elements to normalColor, except enemy sprites
         foreach (var image in images)
         {
             if (!enemySprites.Contains(image)) // Exclude enemy sprites
@@ -105,7 +120,6 @@ public class UIManager : MonoBehaviour
 
     void SetEnemyUIColor(Color color)
     {
-        // Specifically set enemy sprites' color
         foreach (var sprite in enemySprites)
         {
             sprite.color = color;
