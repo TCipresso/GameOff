@@ -105,6 +105,13 @@ public class InputParser : MonoBehaviour
         {
             output = GameManager.instance.ParsePOIKeyword(tokens);
         }
+        else if (CheatCodeManager.instance.TryActivateCheat(input))
+        {
+            StopCoroutine(giveHint);
+            if (gameObject.activeSelf) giveHint = StartCoroutine(GiveHint());
+            Debug.Log($"Cheat code '{input}' attempted!");
+            return;
+        }
         else
         {
             switch (tokens[0])
