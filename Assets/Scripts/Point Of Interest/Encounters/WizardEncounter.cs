@@ -22,6 +22,9 @@ public class WizardEncounter : Encounter, Waiter
     [TextArea(3, 10)][SerializeField] string chantPassText;
     [TextArea(3, 10)][SerializeField] string chantFailText;
 
+    [Header("Wizard Cheat")]
+    [SerializeField] CheatCode cheatCode;
+
     [Header("Wizard Punishment")]
     [SerializeField] int speedLost = 10;
     [SerializeField] int typingSpeedLost = 5;
@@ -48,7 +51,7 @@ public class WizardEncounter : Encounter, Waiter
     {
         TextOutput.instance.Print(chantPassText);
         Foresight();
-        //TODO: Here, I'd give the player the foresight cheat.
+        CheatCodeManager.instance.AddCheatToDiscovered(cheatCode);
         LeaveEncounter();
     }
 
