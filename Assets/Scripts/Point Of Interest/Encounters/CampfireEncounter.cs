@@ -18,7 +18,6 @@ public class CampfireEncounter : Encounter
     int usesLeft;
     [SerializeField] bool isEvil;
     [SerializeField] bool isSetUp = false; //Serialized for debugging
-    [SerializeField] bool cheatRefilled = false;
 
     [Header("Campfire Flavor")]
     [TextArea(3, 10)] [SerializeField] string restText;
@@ -36,7 +35,6 @@ public class CampfireEncounter : Encounter
         if(isSetUp) return base.GetDescription();
 
         usesLeft = uses;
-        cheatRefilled = false;
         if (Random.Range(0, 2) == 0) isEvil = true;
         else isEvil = false;
         isSetUp = true;

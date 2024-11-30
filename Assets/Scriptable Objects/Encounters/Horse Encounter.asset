@@ -31,7 +31,7 @@ MonoBehaviour:
   - apple
   attackDialogues: []
   baseEvilHorseChance: 10
-  evilHorseChance: 10
+  evilHorseChance: 0
   evilHorseChanceIncrease: 10
   increaseChancePerGoodHorse: 1
   forceEvilHorse: 0
