@@ -298,7 +298,7 @@ public class Combat : MonoBehaviour
         UpdateInputFieldState();
     }
 
-    private void EndCombat(bool playerWon)
+    public void EndCombat(bool playerWon)
     {
         combatActive = false;
         TextOutput.instance.Print(playerWon ? "You are victorious!" : "Combat lost!");
@@ -320,9 +320,9 @@ public class Combat : MonoBehaviour
         ResetEnemyStats();
         UpdateInputFieldState();
         playerStats.isDefending = false;
+        currentEncounter.LeaveEncounter();
         currentEncounter = null;
 
-        GameManager.instance.LeaveEnounter();
         playerInputFieldObject.SetActive(true);
     }
 

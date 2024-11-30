@@ -107,9 +107,8 @@ public class CheatEffect
                 Foresight();
                 break;
             case EffectType.NoClip:
-                Debug.Log("Foresight effect executed.");
-                //Hans put whatever u want NoClip to do outisde combat here.
-                //Tommy put whatever u want NoClip to do inside combat here.
+                Debug.Log("Noclip effect executed.");
+                NoClip();
                 break;
             default:
                 Debug.LogWarning("No valid effect type found");
@@ -129,5 +128,15 @@ public class CheatEffect
                 "nothing";
             TextOutput.instance.Print($"To the {route.GetDirection()}, there is {futureEncounterName}.");
         }
+    }
+    
+    private void NoClip()
+    {
+        if(GameManager.instance.IsInEncounter())
+        {
+            Encounter current = GameManager.instance.GetCurrentPOI().GetEncounter();
+            if (current.IsCombatEncounter()) Combat.instance.EndCombat(true); //Tommy put whatever u want NoClip to do inside combat here.
+            else current.LeaveEncounter(); //Hans put whatever u want NoClip to do outisde combat here.
+        }   
     }
 }

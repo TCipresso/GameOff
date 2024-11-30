@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routes: []
   image: {fileID: 0}
-  encounter: {fileID: 11400000, guid: 0e05e3b854702004e9b09992e394584f, type: 2}
+  encounter: {fileID: 11400000, guid: 627c561ed43e1c741802c0e0d54acadb, type: 2}
   noEncounterString: This room is empty. You are safe.
   allowEncounterChange: 0
