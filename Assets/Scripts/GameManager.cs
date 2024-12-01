@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
     {
         if (tokens.Length == 1) return "Usage: move <direction>\ndirection: designates which route you want to go down.";
 
-        if (inEncounter /*&& !noclipped*/) return "You cannot leave in the middle of an encounter!";
+        if (inEncounter) return "You cannot leave in the middle of an encounter!";
 
         PointOfInterest destination = currentPOI.Move(tokens);
         if (destination == null) return "Cannot move in that direction.";

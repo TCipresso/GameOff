@@ -20,7 +20,7 @@ MonoBehaviour:
   subjectSprite: 1
   minigame: 0
   encounterName: A Horse
-  enemyIndex: 0
+  enemyIndex: 3
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
@@ -29,7 +29,12 @@ MonoBehaviour:
   - accept
   - deny
   - apple
-  attackDialogues: []
+  attackDialogues:
+  - '
+
+    >Although the feral horse is staring violently at you, you can''t help
+    but to feel sympathy towards it. Its not its fault that it was abandoned here.
+    It is only doing what cornered animals do. You cannot blame it for its violence.'
   baseEvilHorseChance: 10
   evilHorseChance: 0
   evilHorseChanceIncrease: 10

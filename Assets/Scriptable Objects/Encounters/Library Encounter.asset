@@ -17,7 +17,7 @@ MonoBehaviour:
     eye can see. Who knows what ancience secrets this library stores. In the middle
     of the library sits a book upon a pedestal. It is written in a language you have
     never seen before. <i>Read</i> it or <i>ignore</i> it?
-  subjectSprite: -1
+  subjectSprite: 8
   minigame: 10
   encounterName: A Library
   enemyIndex: 0

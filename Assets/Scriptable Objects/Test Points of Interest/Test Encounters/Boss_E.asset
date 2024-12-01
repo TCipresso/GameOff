@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fd8f53b9809dd47ab01e6cce91210d, type: 3}
   m_Name: Boss_E
   m_EditorClassIdentifier: 
-  description: 'A Giant goblin appears down the hallway.
-
-    > Points at you laughing.
-    Mocking your size, calling you a little bug.'
+  description: You walk down to the final room of the dungeon. Thinking of the gold
+    and glory that awaits you at the end of the dungeon, you charge down the hallway...
+    to find a goblin. Yes, it is bigger than most... but really? This is all there
+    was at the end of the dungeon? Everything you worked for just for this??? You
+    let out your anger on the beast.
   subjectSprite: -1
   minigame: 3
   encounterName: Giant Goblin
@@ -27,7 +28,10 @@ MonoBehaviour:
   - unlock
   - all
   attackDialogues:
-  - "\n> This is not an ordinary goblin.\n The goblins has a glow to its eyes, plus
-    the unusual large size.\n This goblin has an enchantment of some kind. \n It
-    carries a key of gold. Possibly the key to <b><i>unlock</i></b> a chest nearby.\n
-    this key could be what reveals <b><i>all</i></b> within this foul place.\n  \n"
+  - '
+
+    > This goblin is like no other. It has a glow to its eyes and is unusually
+    large. The beast must have been enchanted by someone. It looks like it is carrying
+    a golden key; possibly the key to <b><i>unlock</i></b> a near by chest. Please,
+    please, please be a chest nearby. This cannot possibly be the last thing in the
+    dungeon. If it is, unleash <b><i>all</i></b> of your anger onto it.'

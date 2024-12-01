@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Message
@@ -56,7 +57,7 @@ public class LvlZeroIntro : MonoBehaviour
 
             dialogueText.text = "";
 
-            StartCoroutine(TypeMessages(mainMessages, null));
+            StartCoroutine(TypeMessages(mainMessages, () => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }));
         }
     }
 

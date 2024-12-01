@@ -26,6 +26,7 @@ public class PenultimateEncounter : Encounter
     {
         if(!isSetUp)
         {
+            EncounterSpriteManager.instance.ActivateSprite(subjectSprite);
             isSetUp = true;
             descriptionIndex = -1;
         }

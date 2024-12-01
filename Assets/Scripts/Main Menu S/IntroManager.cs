@@ -231,7 +231,7 @@ Copyright (C) 1972 - 1985, Fistbump Technologies."
         }
 
         yield return new WaitForSecondsRealtime(2f);
-        SceneManager.LoadScene("Level 0");
+        SceneManager.LoadScene(1);
     }
 
     private IEnumerator FadeIn(Image image)
