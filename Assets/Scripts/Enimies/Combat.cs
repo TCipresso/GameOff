@@ -28,6 +28,10 @@ public class Combat : MonoBehaviour
     public GameObject defendMinigame; 
     public GameObject Loading;
 
+    [Header("Music")]
+    [SerializeField] AudioSource battleMusic;
+    [SerializeField] AudioSource regularMusic;
+
     private bool AttMiniGameComplete = false; 
     private bool DefMiniGameComplete = false; 
     public AudioSource attackSoundSource;
@@ -79,6 +83,9 @@ public class Combat : MonoBehaviour
         Debug.Log("Initializing combat...");
         combatActive = true;
         currentEncounter = encounter;
+
+        regularMusic.Pause();
+        battleMusic.Play();
 
         int enemyIndex = encounter.GetEnemyIndex();
         if (enemyIndex >= 0 && enemyIndex < enemyPrefabs.Count)
@@ -301,6 +308,9 @@ public class Combat : MonoBehaviour
     public void EndCombat(bool playerWon)
     {
         combatActive = false;
+        battleMusic.Stop();
+        regularMusic.Play();
+        
         TextOutput.instance.Print(playerWon ? "You are victorious!" : "Combat lost!");
 
         if (!playerWon && gameOverScreen != null)
