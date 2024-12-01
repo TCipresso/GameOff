@@ -19,7 +19,7 @@ MonoBehaviour:
     let out your anger on the beast.
   subjectSprite: -1
   minigame: 3
-  encounterName: Giant Goblin
+  encounterName: Boss_E
   enemyIndex: 5
   isCombat: 1
   enemySpeedMin: 3
