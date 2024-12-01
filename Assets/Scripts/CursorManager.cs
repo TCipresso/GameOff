@@ -7,26 +7,22 @@ public class CursorManager : MonoBehaviour
     public Texture2D customCursor;
     public Texture2D hoverCursor;
     public Texture2D redClickCursor;
-    public Image uiCursorImage; // Reference to the UI Image used as a cursor
+    public Image uiCursorImage;
     public Sprite customCursorSprite;
     public Sprite hoverCursorSprite;
     public Sprite redClickSprite;
-    public Camera mainCamera; // Reference to the main camera
+    public Camera mainCamera;
 
     private bool isHoveringButton = false;
 
     private void Start()
     {
-        // Disable the hardware cursor
         Cursor.visible = false;
-
-        // Set the default UI cursor image
         ChangeCursor(customCursorSprite);
     }
 
     private void Update()
     {
-        // Convert screen position to world position for the cursor image
         Vector3 cursorWorldPosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane));
         uiCursorImage.transform.position = new Vector3(cursorWorldPosition.x, cursorWorldPosition.y, uiCursorImage.transform.position.z);
 
