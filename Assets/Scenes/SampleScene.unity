@@ -31717,6 +31717,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4603024212779087648, guid: 47a38071ab5729445b0778b2970b02c4, type: 3}
+      propertyPath: health
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8393656469887062093, guid: 47a38071ab5729445b0778b2970b02c4, type: 3}
       propertyPath: m_Name
       value: Horse
@@ -31739,8 +31743,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1070009629}
     m_Modifications:
     - target: {fileID: 1876355850856965995, guid: 44b497922b48ed842923fe4a5c16a12e, type: 3}
+      propertyPath: damage
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1876355850856965995, guid: 44b497922b48ed842923fe4a5c16a12e, type: 3}
       propertyPath: health
-      value: 250
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4823378629092694124, guid: 44b497922b48ed842923fe4a5c16a12e, type: 3}
       propertyPath: m_Pivot.x
@@ -32223,6 +32231,10 @@ PrefabInstance:
     - target: {fileID: 4383155598459560011, guid: 437687c906a6bd54bb39dbadb4afa527, type: 3}
       propertyPath: damage
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383155598459560011, guid: 437687c906a6bd54bb39dbadb4afa527, type: 3}
+      propertyPath: health
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5421370795771776350, guid: 437687c906a6bd54bb39dbadb4afa527, type: 3}
       propertyPath: m_Name
@@ -32987,6 +32999,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6103348373430435863, guid: 3366797a93e313a428135712d5e049ab, type: 3}
+      propertyPath: damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103348373430435863, guid: 3366797a93e313a428135712d5e049ab, type: 3}
+      propertyPath: health
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33428,7 +33448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5446393356830286797, guid: 06419491c60624f49bdf82d1281752bf, type: 3}
       propertyPath: health
-      value: 1500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8501302904097024866, guid: 06419491c60624f49bdf82d1281752bf, type: 3}
       propertyPath: m_Controller
