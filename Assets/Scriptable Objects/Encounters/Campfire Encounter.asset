@@ -26,7 +26,11 @@ MonoBehaviour:
   keywords:
   - rest
   - leave
-  attackDialogues: []
+  attackDialogues:
+  - "\n> The goblin snickers with excitement as it wants all your \"Shinies\". \nYou
+    look aorund the halls desperately looking for a way out. \nYou see a scripture
+    on the ground with the symbol of holy magic. \nThe first page you open enlightens
+    the words \n\"Goblin Mode\""
   healAmount: 5
   uses: 3
   isEvil: 0
