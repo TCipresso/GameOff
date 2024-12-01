@@ -27,8 +27,10 @@ MonoBehaviour:
   trapDelay: 3
   speedLoss: 5
   damage: 5
-  failureResponse: You fail to open the trap. Out of options, you pull out your leg
-    with all your might. Your leg flies out of the trap bruised and injured.
-  successResponse: You free your leg from the trap. Luckly the metal bars didn't
+  failureResponse: You fail to open the trap. The spikes rise from the ground and
+    pierce your foot. Luckily, they did not do that much damage, but you are going
+    to have a limp for a while.
+  successResponse: You free your leg from the trap. In the nick of time, you dive
+    out of the way. The spikes narrowly avoiding you. Luckly the metal bars didn't
     shut too tight. You are relatively unscathed.
   isSetUp: 0
