@@ -6256,8 +6256,8 @@ MonoBehaviour:
   textBox3: {fileID: 324335793}
   uiAnimation: {fileID: 1961705105}
   flickerDuration: 0.1
-  typingSpeed1: 0.005
-  typingSpeed2: 0.005
+  typingSpeed1: 0.001
+  typingSpeed2: 0.001
   typingSpeed3: 0.001
   fadeDuration: 1
   offDisableDelay: 0.1
