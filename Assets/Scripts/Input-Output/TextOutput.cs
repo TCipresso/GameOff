@@ -24,6 +24,8 @@ public class TextOutput : MonoBehaviour
 
     private Queue<string> messageQueue = new Queue<string>();
     private bool isTyping = false;
+    private float typingSoundCooldown = 0.1f; // Minimum interval between sound effects
+    private float lastTypingSoundTime = 0f;   // Tracks the last time a sound was played
 
     private void Awake()
     {
@@ -55,10 +57,14 @@ public class TextOutput : MonoBehaviour
             {
                 textMeshProUGUI.text += c;
                 charCount++;
-                if (charCount % charsPerSound == 0)
+
+                // Play typing sound if enough characters have been typed and cooldown has passed
+                if (charCount % charsPerSound == 0 && Time.time >= lastTypingSoundTime + typingSoundCooldown)
                 {
                     audioSource.PlayOneShot(typingSound);
+                    lastTypingSoundTime = Time.time; // Update the last played time
                 }
+
                 yield return new WaitForSecondsRealtime(typingSpeed);
             }
         }

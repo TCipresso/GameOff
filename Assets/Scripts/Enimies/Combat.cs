@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Combat : MonoBehaviour
 {
@@ -24,16 +25,16 @@ public class Combat : MonoBehaviour
     private Encounter currentEncounter;
 
     [Header("Mini Games")]
-    public GameObject ddrMinigame;    
-    public GameObject defendMinigame; 
+    public GameObject ddrMinigame;
+    public GameObject defendMinigame;
     public GameObject Loading;
 
     [Header("Music")]
     [SerializeField] AudioSource battleMusic;
     [SerializeField] AudioSource regularMusic;
 
-    private bool AttMiniGameComplete = false; 
-    private bool DefMiniGameComplete = false; 
+    private bool AttMiniGameComplete = false;
+    private bool DefMiniGameComplete = false;
     public AudioSource attackSoundSource;
 
     private enum CombatState
@@ -70,7 +71,7 @@ public class Combat : MonoBehaviour
 
     public void SetPlayerTurn()
     {
-        if (currentState == CombatState.EndCombat) return; 
+        if (currentState == CombatState.EndCombat) return;
         currentState = CombatState.PlayerTurn;
 
         Debug.Log("Player's Turn: Choose your next action.");
@@ -318,8 +319,14 @@ public class Combat : MonoBehaviour
         combatActive = false;
         battleMusic.Stop();
         regularMusic.Play();
-        
         TextOutput.instance.Print(playerWon ? "You are victorious!" : "Combat lost!");
+
+        if (currentEncounter != null && currentEncounter.GetEncounterName() == "Boss_E" && playerWon)
+        {
+            Debug.Log("Boss defeated! Loading victory scene...");
+            SceneManager.LoadScene("End Scene");
+            return;
+        }
 
         if (!playerWon && gameOverScreen != null)
         {

@@ -4,26 +4,20 @@ using TMPro;
 
 public class IntroTwo : MonoBehaviour
 {
-    public TextMeshProUGUI CMPNAME; // Reference to the TextMeshPro component
-    public float fadeDuration = 1.5f; // Duration for fading in/out
-    public float holdDuration = 2f; // Duration to hold text fully visible
+    public TextMeshProUGUI CMPNAME;
+    public float fadeDuration = 1.5f;
+    public float holdDuration = 2f;
 
     private void Start()
     {
-        // Start the sequence with timing as specified
         StartCoroutine(PlayIntroSequence());
     }
 
     private IEnumerator PlayIntroSequence()
     {
-        // Wait 2 seconds in real time, then fade in the CMPNAME text
         yield return new WaitForSecondsRealtime(2f);
         yield return StartCoroutine(FadeInText(CMPNAME));
-
-        // Hold the text fully visible for the specified duration in real time
         yield return new WaitForSecondsRealtime(holdDuration);
-
-        // Fade out the CMPNAME text
         yield return StartCoroutine(FadeOutText(CMPNAME));
     }
 
@@ -31,14 +25,14 @@ public class IntroTwo : MonoBehaviour
     {
         float elapsedTime = 0f;
         Color color = text.color;
-        color.a = 0; // Start fully transparent
+        color.a = 0;
         text.color = color;
 
         while (elapsedTime < fadeDuration)
         {
             color.a = Mathf.Lerp(0, 1, elapsedTime / fadeDuration);
             text.color = color;
-            elapsedTime += Time.unscaledDeltaTime; // Use real-time delta
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 
@@ -50,14 +44,14 @@ public class IntroTwo : MonoBehaviour
     {
         float elapsedTime = 0f;
         Color color = text.color;
-        color.a = 1; // Start fully opaque
+        color.a = 1;
         text.color = color;
 
         while (elapsedTime < fadeDuration)
         {
             color.a = Mathf.Lerp(1, 0, elapsedTime / fadeDuration);
             text.color = color;
-            elapsedTime += Time.unscaledDeltaTime; // Use real-time delta
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 

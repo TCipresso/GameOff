@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8010927fc9b56904d84eaf376e5bc19e, type: 3}
   m_Name: Wizard Encounter
   m_EditorClassIdentifier: 
-  description: The walls are lined with jars of unknown substances. Books of arcane
+  description: 'The walls are lined with jars of unknown substances. Books of arcane
     writings line the floor. A man with an overgrown beard and a sharp pointed hat
     stands in the middle of the room staring into a glossy white orb. Without turning
     to face you, the man says, "this orb sees the secrets of your future. Only those
     skilled in the arcane arts can look into it. If you know them, you may want to
-    <i>chant</i> with me. Otherwise, it would be smarter to <i>pass</i> by."
+    <i><color=#D40000>chant</color></i> with me. Otherwise, it would be smarter to
+    <i><color=#D40000>pass</color></i> by."
+
+'
   subjectSprite: 6
   minigame: 8
   encounterName: A Wizard

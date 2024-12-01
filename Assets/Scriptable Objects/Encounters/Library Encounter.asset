@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d318624d792444fb67da5aa2c11e8f, type: 3}
   m_Name: Library Encounter
   m_EditorClassIdentifier: 
-  description: As you enter the room, the smell of old, decrepit books fill your
+  description: 'As you enter the room, the smell of old, decrepit books fills your
     nose. Ancient books line the walls and stack on top of each other as far as the
-    eye can see. Who knows what ancience secrets this library stores. In the middle
+    eye can see. Who knows what ancient secrets this library stores. In the middle
     of the library sits a book upon a pedestal. It is written in a language you have
-    never seen before. <i>Read</i> it or <i>ignore</i> it?
+    never seen before. <i><color=#D40000>Read</color></i> it or <i><color=#D40000>ignore</color></i>
+    it?
+
+'
   subjectSprite: 8
   minigame: 10
   encounterName: A Library

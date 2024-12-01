@@ -18,5 +18,5 @@ MonoBehaviour:
   minigameIndex: 2
   effect:
     effectType: 1
-    intValue: 200
+    intValue: 125
     floatValue: 0
