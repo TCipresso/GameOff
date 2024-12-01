@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Cheat Code")]
 public class CheatCode : ScriptableObject
@@ -76,7 +77,7 @@ public class CheatCode : ScriptableObject
 [System.Serializable]
 public class CheatEffect
 {
-    public enum EffectType { GodMode, MegaDamages, SuperSpeed, Foresight , NoClip }
+    public enum EffectType { GodMode, MegaDamages, SuperSpeed, Foresight , NoClip, Restart, UnlockAll, MatPat }
     public EffectType effectType;
 
     [Header("Effect Values")]
@@ -110,6 +111,18 @@ public class CheatEffect
                 Debug.Log("Noclip effect executed.");
                 NoClip();
                 break;
+            case EffectType.Restart:
+                Debug.Log("Noclip effect executed.");
+                Restart();
+                break;
+            case EffectType.UnlockAll:
+                Debug.Log("Noclip effect executed.");
+                UnlockAll();
+                break;
+            case EffectType.MatPat:
+                Debug.Log("Noclip effect executed.");
+                MatPat();
+                break;
             default:
                 Debug.LogWarning("No valid effect type found");
                 break;
@@ -129,14 +142,71 @@ public class CheatEffect
             TextOutput.instance.Print($"To the {route.GetDirection()}, there is {futureEncounterName}.");
         }
     }
-    
+
     private void NoClip()
     {
-        if(GameManager.instance.IsInEncounter())
+        if (GameManager.instance.IsInEncounter())
         {
             Encounter current = GameManager.instance.GetCurrentPOI().GetEncounter();
-            if (current.IsCombatEncounter()) Combat.instance.EndCombat(true); //Tommy put whatever u want NoClip to do inside combat here.
-            else current.LeaveEncounter(); //Hans put whatever u want NoClip to do outisde combat here.
-        }   
+
+            if (current.IsCombatEncounter())
+            {
+                Combat.instance.EndCombat(true);
+                Combat.instance.SetCombatStateToEnd();
+                Debug.Log("NoClip: Combat encounter ended, state set to EndCombat.");
+            }
+            else
+            {
+                current.LeaveEncounter();
+                Debug.Log("NoClip: Non-combat encounter skipped.");
+            }
+        }
+        else
+        {
+            Debug.Log("NoClip: No encounter to skip.");
+        }
+    }
+
+
+    private void Restart()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+    }
+
+    private void UnlockAll()
+    {
+        if (CheatCodeManager.instance == null)
+        {
+            Debug.LogError("CheatCodeManager instance is missing!");
+            return;
+        }
+
+        int cheatCount = CheatCodeManager.instance.undiscoveredCheatCodes.Count;
+
+        if (cheatCount > 0)
+        {
+            foreach (CheatCode cheat in CheatCodeManager.instance.undiscoveredCheatCodes)
+            {
+                CheatCodeManager.instance.AddCheatToDiscovered(cheat);
+            }
+
+            CheatCodeManager.instance.undiscoveredCheatCodes.Clear();
+
+            Debug.Log($"Unlocked all cheats! {cheatCount} cheats have been moved to discovered.");
+            TextOutput.instance.Print($"Unlocked all cheats! {cheatCount} cheats are now available.");
+        }
+        else
+        {
+            Debug.Log("No cheats left to unlock!");
+            TextOutput.instance.Print("No cheats left to unlock!");
+        }
+    }
+
+    private void MatPat()
+    {
+        TextOutput.instance.Print($"You seek lore I see. Then you may have it. The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿");
     }
 }
+
+

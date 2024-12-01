@@ -15,8 +15,8 @@ MonoBehaviour:
   cheatName: matpat
   alternateSpellings: []
   maxUses: 9999
-  minigameIndex: 0
+  minigameIndex: 9
   effect:
-    effectType: 0
+    effectType: 7
     intValue: 0
     floatValue: 0
