@@ -20,7 +20,7 @@ MonoBehaviour:
   subjectSprite: 1
   minigame: 0
   encounterName: A Horse
-  enemyIndex: 0
+  enemyIndex: 3
   isCombat: 0
   enemySpeedMin: 3
   enemySpeedMax: 7
