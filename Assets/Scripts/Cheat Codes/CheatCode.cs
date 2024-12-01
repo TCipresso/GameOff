@@ -77,7 +77,7 @@ public class CheatCode : ScriptableObject
 [System.Serializable]
 public class CheatEffect
 {
-    public enum EffectType { GodMode, MegaDamages, SuperSpeed, Foresight , NoClip, Restart, UnlockAll, MatPat, MaxAmmo }
+    public enum EffectType { GodMode, MegaDamages, SuperSpeed, Foresight , NoClip, Restart, UnlockAll, MatPat, MaxAmmo, Heal }
     public EffectType effectType;
 
     [Header("Effect Values")]
@@ -126,6 +126,10 @@ public class CheatEffect
             case EffectType.MaxAmmo:
                 Debug.Log("PlusOne effect executed.");
                 MaxAmmo();
+                break;
+            case EffectType.Heal:
+                Debug.Log("PlusOne effect executed.");
+                Heal();
                 break;
             default:
                 Debug.LogWarning("No valid effect type found");
@@ -238,6 +242,13 @@ public class CheatEffect
             Debug.Log("No cheats available to reload charges.");
             TextOutput.instance.Print("No cheats available to reload charges.");
         }
+    }
+
+    private void Heal()
+    {
+        PlayerStats.instance.Heal(intValue);
+        Debug.Log($"Player healed by {intValue} points.");
+        TextOutput.instance.Print($"Healed by {intValue} points! Current HP: {PlayerStats.instance.playerHP}");
     }
 
 }
