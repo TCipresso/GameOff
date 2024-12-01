@@ -15,7 +15,7 @@ MonoBehaviour:
   description: You hear a clink as you take a step. You look down and find a metal
     plate. Right as you realized what happened, metal bars shut tight on your leg.
     You struggle to set your leg free.
-  subjectSprite: {fileID: 0}
+  subjectSprite: 7
   minigame: 2
   encounterName: A Trap
   enemyIndex: 0
