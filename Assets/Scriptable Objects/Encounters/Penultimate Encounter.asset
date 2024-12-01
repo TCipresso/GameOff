@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Penultimate Encounter
   m_EditorClassIdentifier: 
   description: You shouldn't be seeing this description.
-  subjectSprite: -1
+  subjectSprite: 9
   minigame: 0
   encounterName: An End
   enemyIndex: 0
@@ -41,4 +41,4 @@ MonoBehaviour:
     are stuck here and are completely at the whim of the dungeon's design. The only
     power <color=#ff0000>you</color> have is to give up.
   descriptionIndex: 4
-  isSetUp: 1
+  isSetUp: 0
