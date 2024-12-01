@@ -77,7 +77,7 @@ public class CheatCode : ScriptableObject
 [System.Serializable]
 public class CheatEffect
 {
-    public enum EffectType { GodMode, MegaDamages, SuperSpeed, Foresight , NoClip, Restart, UnlockAll, MatPat }
+    public enum EffectType { GodMode, MegaDamages, SuperSpeed, Foresight , NoClip, Restart, UnlockAll, MatPat, MaxAmmo }
     public EffectType effectType;
 
     [Header("Effect Values")]
@@ -122,6 +122,10 @@ public class CheatEffect
             case EffectType.MatPat:
                 Debug.Log("Noclip effect executed.");
                 MatPat();
+                break;
+            case EffectType.MaxAmmo:
+                Debug.Log("PlusOne effect executed.");
+                MaxAmmo();
                 break;
             default:
                 Debug.LogWarning("No valid effect type found");
@@ -207,6 +211,35 @@ public class CheatEffect
     {
         TextOutput.instance.Print($"You seek lore I see. Then you may have it. The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿");
     }
+
+    private void MaxAmmo()
+    {
+        if (CheatCodeManager.instance == null)
+        {
+            Debug.LogError("CheatCodeManager instance is missing!");
+            return;
+        }
+
+        List<CheatCode> discoveredCheats = CheatCodeManager.instance.GetDiscoveredCheats();
+
+        if (discoveredCheats.Count > 0)
+        {
+            foreach (CheatCode cheat in discoveredCheats)
+            {
+                cheat.ResetCharges();
+            }
+
+            Debug.Log($"All discovered cheats have been given +1 charge.");
+            TextOutput.instance.Print("MAX AMMO");
+            TextOutput.instance.Print(" All cheats charges are replenished.");
+        }
+        else
+        {
+            Debug.Log("No cheats available to reload charges.");
+            TextOutput.instance.Print("No cheats available to reload charges.");
+        }
+    }
+
 }
 
 
