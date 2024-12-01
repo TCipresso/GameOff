@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed0996c01dabcf44bd7ae7686c2b34c, type: 3}
   m_Name: UnlockAll
   m_EditorClassIdentifier: 
-  cheatName: unlockall
+  cheatName: unlock all
   alternateSpellings: []
   maxUses: 1
   minigameIndex: 4
   effect:
-    effectType: 0
+    effectType: 6
     intValue: 0
     floatValue: 0

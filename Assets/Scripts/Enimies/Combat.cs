@@ -239,6 +239,14 @@ public class Combat : MonoBehaviour
         }
     }
 
+    public void SetCombatStateToEnd()
+    {
+        currentState = CombatState.EndCombat;
+        combatActive = false;
+        Debug.Log("Combat state set to EndCombat.");
+    }
+
+
 
     private void ApplyDamageAndCheckForEnemyDefeat()
     {
