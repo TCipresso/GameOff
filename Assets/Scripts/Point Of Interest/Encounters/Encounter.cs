@@ -15,16 +15,16 @@ public class Encounter : ScriptableObject, MinigameCaller
     [SerializeField] int minigame;
 
     [Header("Encounter Details")]
-    [SerializeField] string encounterName; // Name of the encounter
-    [SerializeField] int enemyIndex; // Index of the enemy in EncounterManager
-    [SerializeField] bool isCombat; // Whether this is a combat encounter
-    [SerializeField] int enemySpeedMin = 3; // Minimum speed of the enemy
-    [SerializeField] int enemySpeedMax = 7; // Maximum speed of the enemy
-    [SerializeField] List<string> keywords = new List<string>(); //Only to be shown to the player.
+    [SerializeField] string encounterName;
+    [SerializeField] int enemyIndex;
+    [SerializeField] bool isCombat;
+    [SerializeField] int enemySpeedMin = 3;
+    [SerializeField] int enemySpeedMax = 7;
+    [SerializeField] List<string> keywords = new List<string>();
 
     [Header("Enemy Attack Dialogue")]
     [TextArea(3, 10)]
-    [SerializeField] List<string> attackDialogues = new List<string>(); // List of attack dialogues
+    [SerializeField] List<string> attackDialogues = new List<string>();
 
     private int enemySpeed; // Speed of the enemy for this encounter
 

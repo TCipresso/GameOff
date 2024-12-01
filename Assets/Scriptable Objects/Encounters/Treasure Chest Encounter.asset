@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b1c7d79817140428b053face7e9195, type: 3}
   m_Name: Treasure Chest Encounter
   m_EditorClassIdentifier: 
-  description: As you make your way through the halls, a worn box catches your eye.
-    The ancient box appears to have not been open for a long time. Dungeons are known
-    for their gold filled chests; perhaps it is worth it to <i>inspect</i> its contents.
-    Though, juding by its wellworn state, it may be smarter to <i>ignore</i> it.
+  description: 'As you make your way through the halls, a worn box catches your eye.
+    The ancient box appears to have not been opened for a long time. Dungeons are
+    known for their gold-filled chests; perhaps it is worth it to <i><color=#D40000>inspect</color></i>
+    its contents. Though, judging by its well-worn state, it may be smarter to <i><color=#D40000>ignore</color></i>
+    it.
+
+'
   subjectSprite: 3
   minigame: 0
   encounterName: A Box

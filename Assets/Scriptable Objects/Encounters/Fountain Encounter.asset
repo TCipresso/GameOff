@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419576b96c9075e4e9a86d272c9948b4, type: 3}
   m_Name: Fountain Encounter
   m_EditorClassIdentifier: 
-  description: A fluorescent fuchsia fountain stands in the middle of the room. Its
-    water shimmers in the tourch light. It beckons you to <i>bathe</i> in it; though,
-    it may be smater to <i>ignore</i> it.
+  description: 'A fluorescent fuchsia fountain stands in the middle of the room.
+    Its water shimmers in the torch light. It beckons you to <i><color=#D40000>bathe</color></i>
+    in it; though, it may be smarter to <i><color=#D40000>ignore</color></i> it.
+
+'
   subjectSprite: 5
   minigame: 0
   encounterName: A Fountain

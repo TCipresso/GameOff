@@ -25,7 +25,9 @@ MonoBehaviour:
   enemySpeedMax: 7
   keywords:
   - Attack
+  - Defend
+  - Investigate
   attackDialogues:
   - "\n> You lean closer seeing the Cube's previous meal. \n A knight of perhaps
     high or meaningless standing.\n You notice on the knights armor an anctient rune.\n
-    Written in a language you do not understand it says\n \"MegaDmg\""
+    Written in a language you do not understand it says\n \"Max Ammo\""
