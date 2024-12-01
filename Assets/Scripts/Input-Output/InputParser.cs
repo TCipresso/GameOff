@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 /// <summary>
 /// InputParser is an object to be used with text input.
@@ -143,6 +144,16 @@ public class InputParser : MonoBehaviour
                 default:
                     output = "Unknown command.";
                     break;
+            }
+        }
+
+        List<Route> routes = GameManager.instance.GetCurrentPOI().GetRoutes();
+        foreach (Route route in routes)
+        {
+            if (tokens[0].Equals(route.GetDirection()))
+            {
+                output = GameManager.instance.AttemptMove(tokens);
+                break;
             }
         }
 
